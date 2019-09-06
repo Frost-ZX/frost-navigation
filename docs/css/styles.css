@@ -200,15 +200,19 @@ footer img {
     width: 1.5em;
 }
 
-/* 全屏文字 */
+/* 滚动条 */
 
-.fullscreen-text {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    font-size: 10vw;
-    transform: translate(-50%, -50%);
-    transition: opacity 1s;
+::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 0;
+}
+::-webkit-scrollbar-track {
+    background: #eee;
+    border-radius: 0;
 }
 
 /* 链接的图标 */
@@ -224,6 +228,109 @@ main section li a:not(.back) {
     padding-left: 45px !important;
 }
 */
+
+/* 全屏文字 */
+
+.fullscreen-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    font-size: 10vw;
+    transform: translate(-50%, -50%);
+    transition: opacity 1s;
+}
+
+/* 搜索面板 */
+
+.search-panel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 300px;
+    width: 500px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%);
+}
+.search-bar{
+    text-align: center;
+}
+.search-bar .search-input {
+    margin: 20px 5px 0 0;
+    padding: 0 15px;
+    width: 60%;
+    height: 50px;
+    border: solid 2px #03A9F4;
+    font-size: 20px;
+}
+.search-bar .search-submit, .search-bar .search-cancel {
+    width: 75px;
+    height: 50px;
+    border: none;
+    background-color: #03A9F4;
+    font-size: 20px;
+    color: #FFF;
+}
+.search-bar .search-submit {
+    margin-right: 5px;
+}
+.search-result {
+    margin-top: 10px;
+    padding: 0 16px;
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+}
+.search-result a {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+@media screen and (max-width: 500px) {
+    .search-panel {
+        top: 32%;
+        height: 300px;
+        width: 100%;
+    }
+    .search-bar .search-input {
+        margin: 15px 5px 0 0;
+        padding: 0 10px;
+        width: 50%;
+        height: 40px;
+        font-size: 16px;
+    }
+    .search-bar .search-submit, .search-bar .search-cancel {
+        width: 16%;
+        height: 40px;
+        font-size: 16px;
+    }
+    .search-result {
+        padding: 0 6%;
+        height: calc(100% - 80px);
+    }
+    .search-result a {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+}
+
+/* 悬浮栏 */
+
+.floating-bar {
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    padding-top: 7px;
+    width: 50px;
+    height: 32px;
+    background-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.8);
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    opacity: 0.9;
+    transform: translateX(-50%)
+}
 
 /* 选中 */
 

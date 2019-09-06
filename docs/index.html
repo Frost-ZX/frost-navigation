@@ -90,10 +90,10 @@
         <section>
             <h2>博客 / 论坛 / 社区</h2>
             <div id="list_2">
-                <ul>
+                <ul class="JTA">
                     <li>
                         <a href="#">博客</a>
-                        <ul>
+                        <ul class="JTB">
                             <li><a href="https://4ssh.cn/">4SSH</a></li>
                             <li><a href="http://lolicorn.com/">安和 Blog</a></li>
                             <li><a href="https://www.myitmx.com/">枫叶博客</a></li>
@@ -118,7 +118,7 @@
                     </li>
                     <li>
                         <a href="#">社区</a>
-                        <ul>
+                        <ul class="JTC">
                             <li><a href="https://tieba.baidu.com/">百度贴吧</a></li>
                             <li><a href="https://www.douban.com/">豆瓣</a></li>
                             <li><a href="https://www.oschina.net/">开源中国</a></li>
@@ -554,7 +554,7 @@
             <div id="list_10">
                 <ul>
                     <li>
-                        <a href="#">Chrome</a>
+                        <a href="#">Chrome（浏览器限制，需要复制链接后手动打开）</a>
                         <ul>
                             <li><a href="chrome://user-actions/">操作记录</a></li>
                             <li><a href="chrome://version/">关于版本</a></li>
@@ -1125,7 +1125,16 @@
             </div>
         </section>
     </main>
+    <div class="search-panel">
+        <div class="search-bar">
+            <input type="text" class="search-input" autofocus>
+            <button class="search-submit" onclick="SearchMode = 1; search();">搜索</button>
+            <button class="search-cancel" onclick="SearchMode = 2; search();">关闭</button>
+        </div>
+        <div class="search-result"></div>
+    </div>
     <div class="fullscreen-text">加载中...</div>
+    <div class="floating-bar" onclick="SearchPanel.style.display = 'block'; SearchInput.focus();">搜索</div>
     <footer>
         &#169; 2019 <a href="https://github.com/Frost-ZX/frost-navigation">Frost 网址导航</a>
         | Made by <a href="https://frost-zx.github.io/" target="_blank">Frost-ZX</a>

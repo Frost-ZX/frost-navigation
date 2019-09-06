@@ -21,7 +21,7 @@ function loadList() {
     ListCount = ListCount + 1;
     if (ListCount == ListCountMax) {
       clearInterval(I_LoadList);
-      setTimeout("setTarget();displayList();console.log('列表加载完毕');", 200); // 调用
+      setTimeout("setTarget(); displayList(); console.log('列表加载完毕');", 200); // 调用
     }
     ListID = "#list_" + ListCount;
     $(ListID).slinky(SlinkyOption);
@@ -53,3 +53,31 @@ function displayList() {
 
 // 调用（加载列表，间隔 100 毫秒）
 var I_LoadList = setInterval("loadList()", 100);
+
+// 搜索框
+var SearchMode = 1;
+var SearchPanel = document.getElementsByClassName("search-panel")[0];
+var SearchInput = document.getElementsByClassName("search-input")[0];
+var SearchList = document.getElementsByTagName("main")[0].getElementsByTagName("a");
+var SearchText = document.getElementsByClassName("search-input")[0];
+var SearchResult = document.getElementsByClassName("search-result")[0];
+var SearchResultSource = "";   
+var SearchResultItem = "";
+function search() {
+    var SearchListCount = SearchList.length;
+    var SearchWord = SearchText.value;
+    if (SearchMode == 1 && SearchWord != "") {
+        SearchResult.innerHTML = "";
+        for (var i = 0; i < SearchListCount; i++) {
+            if (SearchList[i].innerText.indexOf(SearchWord) != -1 && SearchList[i].href.endsWith("#") == false) {
+                SearchResultSource = SearchList[i];
+                SearchResultItem = SearchResultSource.cloneNode(true);
+                SearchResult.appendChild(SearchResultItem);
+            }
+        }
+    } else if (SearchMode == 1 && SearchWord == "") {
+        SearchResult.innerHTML = "请输入关键词";
+    } else if (SearchMode == 2) {
+        SearchPanel.style.display = "none";
+    }
+}
