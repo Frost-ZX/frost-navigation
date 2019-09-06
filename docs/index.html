@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-cmn-Hans">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -17,7 +17,10 @@
         <p>Frost Site Navigation</p>
     </header>
     <main>
-        <!-- 一个模块（id="list_ID" 对应 JavaScript 中的 #list_ID）
+        <!--
+        增加一个大类
+        需要修改 id="list_ID" 中的“ID”和 JavaScript 中的“ListCountMax”
+        “ID”根据列表数量顺延
         <section>
             <h2>一级标题</h2>
             <div id="list_ID">
@@ -36,10 +39,11 @@
         -->
         <section>
             <h2>百科 / 科普 / 资料</h2>
-            <div id="list_knowledge">
+            <div id="list_1">
                 <ul>
                     <li>
                         <a href="#">菜鸟教程</a>
+                        <!-- <ul class="active"> -->
                         <ul>
                             <li><a href="https://www.runoob.com/">菜鸟教程</a></li>
                             <li><a href="http://www.runoob.com/http/http-status-codes.html">HTTP 状态码</a></li>
@@ -85,7 +89,7 @@
         </section>
         <section>
             <h2>博客 / 论坛 / 社区</h2>
-            <div id="list_community">
+            <div id="list_2">
                 <ul>
                     <li>
                         <a href="#">博客</a>
@@ -127,7 +131,7 @@
         </section>
         <section>
             <h2>创作 / 制作</h2>
-            <div id="list_create">
+            <div id="list_3">
                 <ul>
                     <li>
                         <a href="#">编程</a>
@@ -210,7 +214,7 @@
         </section>
         <section>
             <h2>多媒体</h2>
-            <div id="list_media">
+            <div id="list_4">
                 <ul>
                     <li>
                         <a href="#">视频</a>
@@ -253,6 +257,7 @@
                                 <li><a href="https://haokan.baidu.com/">好看视频</a></li>
                                 <li><a href="http://www.mgtv.com/">芒果TV</a></li>
                                 <li><a href="http://v.qq.com/">腾讯视频</a></li>
+                                <li><a href="https://www.xinpianchang.com/">新片场</a></li>
                                 <li><a href="http://www.youku.com/">优酷</a></li>
                                 <li><a href="http://www.acfun.cn/">AcFun</a></li>
                                 <li><a href="https://www.tokyostreetview.com/">TokyoStreetView</a></li>
@@ -316,7 +321,7 @@
         </section>
         <section>
             <h2>工具</h2>
-            <div id="list_tool">
+            <div id="list_5">
                 <ul>
                     <li>
                         <a href="#">测试</a>
@@ -470,7 +475,7 @@
         </section>
         <section>
             <h2>购物</h2>
-            <div id="list_shopping">
+            <div id="list_6">
                 <ul>
                     <li><a href="https://www.dangdang.com/">当当网</a></li>
                     <li><a href="https://www.jd.com/">京东</a></li>
@@ -483,8 +488,28 @@
             </div>
         </section>
         <section>
+            <h2>金融</h2>
+            <div id="list_7">
+                <ul>
+                    <li>
+                        <a href="#">银行</a>
+                        <ul>
+                            <li><a href="http://www.bankcomm.com/">交通银行</a></li>
+                            <li><a href="http://www.cmbchina.com/">招商银行</a></li>
+                            <li><a href="https://www.icbc.com.cn/">中国工商银行</a></li>
+                            <li><a href="http://www.ccb.com/">中国建设银行</a></li>
+                            <li><a href="http://www.abchina.com/">中国农业银行</a></li>
+                            <li><a href="http://www.pbc.gov.cn/">中国人民银行</a></li>
+                            <li><a href="http://www.boc.cn/">中国银行</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.alipay.com/">支付宝</a></li>
+                </ul>
+            </div>
+        </section>
+        <section>
             <h2>设计</h2>
-            <div id="list_design">
+            <div id="list_8">
                 <ul>
                     <li><a href="https://huaban.com/">花瓣网</a></li>
                     <li><a href="https://www.uigreat.com/">优阁网（UIGREAT）</a></li>
@@ -497,7 +522,7 @@
         </section>
         <section>
             <h2>生活</h2>
-            <div id="list_life">
+            <div id="list_9">
                 <ul>
                     <li>
                         <a href="#">出行</a>
@@ -526,7 +551,7 @@
         </section>
         <section>
             <h2>调试</h2>
-            <div id="list_debug">
+            <div id="list_10">
                 <ul>
                     <li>
                         <a href="#">Chrome</a>
@@ -558,7 +583,7 @@
         </section>
         <section>
             <h2>网络</h2>
-            <div id="list_network">
+            <div id="list_11">
                 <ul>
                     <li>
                         <a href="#">管理</a>
@@ -595,7 +620,7 @@
         </section>
         <section>
             <h2>系统</h2>
-            <div id="list_system">
+            <div id="list_12">
                 <ul>
                     <li>
                         <a href="#">Android</a>
@@ -642,7 +667,7 @@
         </section>
         <section>
             <h2>写作</h2>
-            <div id="list_writing">
+            <div id="list_13">
                 <ul>
                     <li><a href="https://www.jianshu.com/">简书</a></li>
                     <li><a href="http://www.lofter.com/">LOFTER</a></li>
@@ -651,7 +676,7 @@
         </section>
         <section>
             <h2>学习</h2>
-            <div id="list_study">
+            <div id="list_14">
                 <ul>
                     <li><a href="https://www.91suke.com/">速课网</a></li>
                     <li><a href="https://www.certiport.com/">My Certiport</a></li>
@@ -659,23 +684,8 @@
             </div>
         </section>
         <section>
-            <h2>银行</h2>
-            <div id="list_bank">
-                <ul>
-                    <li><a href="http://www.bankcomm.com/">交通银行</a></li>
-                    <li><a href="http://www.cmbchina.com/">招商银行</a></li>
-                    <li><a href="https://www.icbc.com.cn/">中国工商银行</a></li>
-                    <li><a href="http://www.ccb.com/">中国建设银行</a></li>
-                    <li><a href="http://www.abchina.com/">中国农业银行</a></li>
-                    <li><a href="http://www.pbc.gov.cn/">中国人民银行</a></li>
-                    <li><a href="http://www.boc.cn/">中国银行</a></li>
-                    <li><a href="https://www.alipay.com/">支付宝</a></li>
-                </ul>
-            </div>
-        </section>
-        <section>
             <h2>游戏</h2>
-            <div id="list_game">
+            <div id="list_15">
                 <ul>
                     <li>
                         <a href="#">网站</a>
@@ -888,7 +898,7 @@
         </section>
         <section>
             <h2>资讯</h2>
-            <div id="list_news">
+            <div id="list_16">
                 <ul>
                     <li>
                         <a href="#">新闻</a>
@@ -910,7 +920,7 @@
         </section>
         <section>
             <h2>资源</h2>
-            <div id="list_resource">
+            <div id="list_17">
                 <ul>
                     <li>
                         <a href="#">轨道交通</a>
@@ -1117,7 +1127,7 @@
     </main>
     <div class="fullscreen-text">加载中...</div>
     <footer>
-        &#169; 2019 <a href="index.html">Frost 网址导航</a>
+        &#169; 2019 <a href="https://github.com/Frost-ZX/frost-navigation">Frost 网址导航</a>
         | Made by <a href="https://frost-zx.github.io/" target="_blank">Frost-ZX</a>
         <br/>
         Template: <a href="https://github.com/alizahid/slinky" target="_blank">Slinky</a>

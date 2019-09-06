@@ -1,4 +1,5 @@
 // 查找字符 tChar 在 str 中第 num 次出现的位置
+/* 暂时用不到
 function findChar(str, tChar, num) {
     var charPos = str.indexOf(tChar);
     num = num - 1;
@@ -9,29 +10,26 @@ function findChar(str, tChar, num) {
     }
     return charPos;
 }
+*/
 
-/* 一个模块
- * #list_ID 对应 DIV 标签中的 id="list_ID"
- * window.slinky = $('#list_ID').slinky();
- */
+// 加载列表
+var SlinkyOption = {title: true, speed: 200}; // Slinky 插件的 Option
+var ListID = "#list_"
+var ListCount = 0;
+var ListCountMax = 17; // 列表总数
 function loadList() {
-    window.slinky = $('#list_knowledge').slinky(); // 百科 / 科普
-    window.slinky = $('#list_community').slinky(); // 博客 / 论坛 / 社区
-    window.slinky = $('#list_create').slinky(); // 创作 / 制作
-    window.slinky = $('#list_media').slinky(); // 多媒体
-    window.slinky = $('#list_tool').slinky(); // 工具
-    window.slinky = $('#list_shopping').slinky(); // 购物
-    window.slinky = $('#list_design').slinky(); // 设计
-    window.slinky = $('#list_life').slinky(); // 生活
-    window.slinky = $('#list_debug').slinky(); // 调试
-    window.slinky = $('#list_network').slinky(); // 网络
-    window.slinky = $('#list_system').slinky(); // 系统
-    window.slinky = $('#list_writing').slinky(); // 写作
-    window.slinky = $('#list_study').slinky(); // 学习
-    window.slinky = $('#list_bank').slinky(); // 银行
-    window.slinky = $('#list_game').slinky(); // 游戏
-    window.slinky = $('#list_news').slinky(); // 资讯
-    window.slinky = $('#list_resource').slinky(); // 资源
+    ListCount = ListCount + 1;
+    if (ListCount == ListCountMax) {
+      clearInterval(I_LoadList);
+      setTimeout("setTarget();displayList();console.log('列表加载完毕');", 200); // 调用
+    }
+    ListID = "#list_" + ListCount;
+    $(ListID).slinky(SlinkyOption);
+    // console.log("已加载 " + ListCount + " 个列表");
+}
+
+// 设置 target = "_blank"
+function setTarget() {
     var aList = document.getElementsByTagName("a");
     for (var i = 0; i < aList.length; i++) {
         if (aList[i].href.endsWith("#") == false) {
@@ -53,4 +51,5 @@ function displayList() {
     setTimeout("document.getElementsByClassName('fullscreen-text')[0].style.display = 'none';", 1000);
 }
 
-setTimeout("loadList();displayList()", 1000);
+// 调用（加载列表，间隔 100 毫秒）
+var I_LoadList = setInterval("loadList()", 100);
