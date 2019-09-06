@@ -288,7 +288,7 @@ main section li a:not(.back) {
 }
 @media screen and (max-width: 500px) {
     .search-panel {
-        top: 32%;
+        /* top: 32%; */
         height: 300px;
         width: 100%;
     }
