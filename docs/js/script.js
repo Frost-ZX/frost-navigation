@@ -19,13 +19,16 @@ var ListCount = 0;
 var ListCountMax = 17; // 列表总数
 function loadList() {
     ListCount = ListCount + 1;
-    if (ListCount == ListCountMax) {
-      clearInterval(I_LoadList);
-      setTimeout("setTarget(); displayList(); console.log('列表加载完毕');", 200); // 调用
-    }
     ListID = "#list_" + ListCount;
     $(ListID).slinky(SlinkyOption);
-    // console.log("已加载 " + ListCount + " 个列表");
+    document.title = "已加载 " + ListCount + " 个列表";
+    // 加载完毕
+    if (ListCount == ListCountMax) {
+      clearInterval(I_LoadList);
+      setTarget();
+      displayList();
+      document.title = 'Frost 网址导航';
+    }
 }
 
 // 设置 target = "_blank"
@@ -56,28 +59,28 @@ var I_LoadList = setInterval("loadList()", 100);
 
 // 搜索框
 var SearchMode = 1;
-var SearchPanel = document.getElementsByClassName("search-panel")[0];
-var SearchInput = document.getElementsByClassName("search-input")[0];
-var SearchList = document.getElementsByTagName("main")[0].getElementsByTagName("a");
-var SearchText = document.getElementsByClassName("search-input")[0];
-var SearchResult = document.getElementsByClassName("search-result")[0];
-var SearchResultSource = "";   
+var SearchPanel = document.getElementsByClassName("search-panel")[0]; // 搜索面板
+var SearchInput = document.getElementsByClassName("search-input")[0]; // 输入框
+var SearchList = document.getElementsByTagName("main")[0].getElementsByTagName("a"); // 搜索源
+var SearchText = document.getElementsByClassName("search-input")[0]; // 关键词
+var SearchResult = document.getElementsByClassName("search-result")[0]; // 搜索结果
 var SearchResultItem = "";
 function search() {
-    var SearchListCount = SearchList.length;
-    var SearchWord = SearchText.value;
+    var SearchListCount = SearchList.length; // 循环次数
+    var SearchWord = SearchText.value.toLowerCase();
     if (SearchMode == 1 && SearchWord != "") {
-        SearchResult.innerHTML = "";
+        SearchResult.innerHTML = ""; // 清空搜索结果
         for (var i = 0; i < SearchListCount; i++) {
-            if (SearchList[i].innerText.indexOf(SearchWord) != -1 && SearchList[i].href.endsWith("#") == false) {
-                SearchResultSource = SearchList[i];
-                SearchResultItem = SearchResultSource.cloneNode(true);
+            if (SearchList[i].innerText.toLowerCase().indexOf(SearchWord) != -1 && SearchList[i].href.endsWith("#") == false) {
+                SearchResultItem = SearchList[i].cloneNode(true);
                 SearchResult.appendChild(SearchResultItem);
             }
         }
     } else if (SearchMode == 1 && SearchWord == "") {
         SearchResult.innerHTML = "请输入关键词";
     } else if (SearchMode == 2) {
-        SearchPanel.style.display = "none";
+        SearchInput.value = ""; // 清空输入框
+        SearchResult.innerHTML = ""; // 清空搜索结果
+        SearchPanel.style.visibility = "hidden"; // 隐藏搜索面板
     }
 }
