@@ -23,6 +23,10 @@
 
 /* global */
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: #F9F9F9;
     color: #222;
@@ -37,6 +41,7 @@ body {
     /* text-transform: lowercase; */
     width: 30em;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 a {

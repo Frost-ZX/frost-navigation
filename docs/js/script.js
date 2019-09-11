@@ -21,13 +21,13 @@ function loadList() {
     ListCount = ListCount + 1;
     ListID = "#list_" + ListCount;
     $(ListID).slinky(SlinkyOption);
-    document.title = "已加载 " + ListCount + " 个列表";
+    // document.title = "已加载 " + ListCount + " 个列表";
     // 加载完毕
     if (ListCount == ListCountMax) {
       clearInterval(I_LoadList);
       setTarget();
       displayList();
-      document.title = 'Frost 网址导航';
+      // document.title = 'Frost 网址导航';
     }
 }
 
