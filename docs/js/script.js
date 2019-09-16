@@ -31,18 +31,20 @@ function loadList() {
     }
 }
 
+// 链接列表数组
+var LinkList = document.getElementsByTagName("main")[0].getElementsByTagName("a");
+
 // 设置 target = "_blank"
 function setTarget() {
-    var aList = document.getElementsByTagName("a");
-    for (var i = 0; i < aList.length; i++) {
-        if (aList[i].href.endsWith("#") == false) {
+    for (var i = 0; i < LinkList.length; i++) {
+        if (LinkList[i].href.endsWith("#") == false) {
             /* 自动加图标（失败）
-            var slashPos = findChar(aList[i].href, '/', 3);
-            getFavicon = aList[i].href.substring(0, slashPos) + "/favicon.ico";
+            var slashPos = findChar(LinkList[i].href, '/', 3);
+            getFavicon = LinkList[i].href.substring(0, slashPos) + "/favicon.ico";
             var imgTag = "<img src='" + getFavicon + "' />";
-            aList[i].insertAdjacentHTML("beforeBegin", imgTag);
+            LinkList[i].insertAdjacentHTML("beforeBegin", imgTag);
             */
-            aList[i].target = "_blank";
+            LinkList[i].target = "_blank";
         }
     }
 }
@@ -61,19 +63,20 @@ var I_LoadList = setInterval("loadList()", 100);
 var SearchMode = 1;
 var SearchPanel = document.getElementsByClassName("search-panel")[0]; // 搜索面板
 var SearchInput = document.getElementsByClassName("search-input")[0]; // 输入框
-var SearchList = document.getElementsByTagName("main")[0].getElementsByTagName("a"); // 搜索源
 var SearchText = document.getElementsByClassName("search-input")[0]; // 关键词
 var SearchResult = document.getElementsByClassName("search-result")[0]; // 搜索结果
 var SearchResultItem = "";
 function search() {
-    var SearchListCount = SearchList.length; // 循环次数
+    var LinkListCount = LinkList.length; // 循环次数
     var SearchWord = SearchText.value.toLowerCase();
     if (SearchMode == 1 && SearchWord != "") {
         SearchResult.innerHTML = ""; // 清空搜索结果
-        for (var i = 0; i < SearchListCount; i++) {
-            if (SearchList[i].innerText.toLowerCase().indexOf(SearchWord) != -1 && SearchList[i].href.endsWith("#") == false) {
-                SearchResultItem = SearchList[i].cloneNode(true);
-                SearchResult.appendChild(SearchResultItem);
+        for (var i = 0; i < LinkListCount; i++) {
+            if (LinkList[i].href.endsWith("#") == false) {
+                if (LinkList[i].innerText.toLowerCase().indexOf(SearchWord) != -1 || LinkList[i].href.indexOf(SearchWord) != -1) {
+                    SearchResultItem = LinkList[i].cloneNode(true);
+                    SearchResult.appendChild(SearchResultItem);
+                }
             }
         }
     } else if (SearchMode == 1 && SearchWord == "") {
