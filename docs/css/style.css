@@ -220,6 +220,37 @@ footer img {
     border-radius: 0;
 }
 
+/* 工具面板 */
+
+.tool-panel {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.tool-panel-bar {
+    height: 5vh;
+    background-color: #F5F5F5;
+}
+
+.tool-panel-close {
+    position: absolute;
+    top: 0;
+    right: 8px;
+    height: 5vh;
+    width: 5vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    background-color: #4CAF50;
+}
+
+.tool-panel-iframe {
+}
+
+.tool-panel-iframe iframe {
+    height: 95vh;
+    width: 100vw;
+}
+
 /* 链接的图标 */
 
 /*

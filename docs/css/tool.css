@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #F5F5F5;
+}
+
+/* 滚动条 */
+
+::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 0;
+}
+::-webkit-scrollbar-track {
+    background: #eee;
+    border-radius: 0;
+}
+
+/* 选中 */
+
+::selection {
+    background:#03A9F4;
+    color:#FFF;
+}
+::-moz-selection {
+    background:#03A9F4;
+    color:#FFF;
+}
+::-webkit-selection {
+    background:#03A9F4;
+    color:#FFF;
+}
+
+/* 主要 */
+
+.main {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 400px;
+}
+
+.main > div {
+    margin: 20px 0;
+    padding: 15px;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #FFF;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main > div header {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.main > div textarea {
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #03A9F4;
+    font-size: 16px;
+    box-shadow: 0 0 5px rgba(3, 169, 244, 0.2);
+}
+
+.tool-button {
+    display: inline-block;
+    user-select: none;
+    padding: 5px 10px;
+    background-color: #03A9F4;
+    text-align: center;
+    font-size: 14px;
+    color: #FFF;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(3, 169, 244, 0.4);
+}
+
+.tool-button:hover {
+    background-color: #2196F3;
+}
+
+/* 计算 */
+
+.tool-calculate textarea {
+    width: 100%;
+    resize: none;
+}
+
+.tool-calculate-tofixed {
+    width: 20px;
+    font-size: 14px;
+}
+
+.tool-calculate .tool-button {
+    margin: 5px 5px 2px 0;
+}
+
+/* 生成批量下载链接 */
+
+.tool-genlink-link input {
+    margin-bottom: 10px;
+    height: 20px;
+    width: 80%;
+}
+
+.tool-genlink-settings {
+    font-size: 14px;
+}
+
+.tool-genlink .tool-button {
+    position: relative;
+    left: 50%;
+    margin-bottom: 10px;
+    transform: translateX(-50%);
+}
+
+.tool-genlink textarea {
+    width: 100%;
+    resize: none;
+    font-size: 14px;
+}
