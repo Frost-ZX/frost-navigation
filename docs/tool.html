@@ -4,38 +4,89 @@
     <meta charset="utf-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>Frost 网址导航 - 工具</title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <title>Frost 网址导航 - 小工具</title>
     <link rel="stylesheet" href="css/tool.css"/>
 </head>
 <body>
     <div class="main">
-        <div class="tool-calculate">
+        <!-- 导航 -->
+        <div class="tool-nav">
+            <header>导航</header>
+            <div class="tool-nav-link">
+                <ul>
+                	<li><a href="#tool-calculate">简易计算</a></li>
+                	<li><a href="#tool-genlink">生成批量下载链接</a></li>
+                	<li><a href="#tool-runjs">运行 JavaScript</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 简易计算 -->
+        <div id="tool-calculate" class="tool-calculate">
             <header>简易计算</header>
-            <textarea id="tool-calculate-input" rows="5" placeholder="请输入算式"></textarea>
+            <textarea id="tool-calculate-input" rows="6" placeholder="请输入算式（请使用“半角”符号）&#10;加：+ 减：- 乘：* 除：/&#10;多层括号：仅需使用 ()&#10;乘方运算：幂(底数, 指数)&#10;平方根：平方根(数值或算式)"></textarea>
             <div>保留小数点后 <input class="tool-calculate-tofixed" type="text" title="0 ~ 16 之间（默认：4）" value="4" /> 位数</div>
             <div class="tool-calculate-result">结果：<span></span></div>
             <div class="tool-button" onclick="toolCalculateSubmit()">计算</div>
             <div class="tool-button" onclick="toolCalculateClear()">清空</div>
         </div>
-        <div class="tool-genlink">
+        <!-- 生成批量下载链接 -->
+        <div id="tool-genlink" class="tool-genlink">
             <header>生成批量下载链接</header>
             <div class="tool-genlink-link">
-                网址：<input type="text" placeholder="变量用 (*) 表示" />
+                <b>网址：</b><input type="text" placeholder="变量用 (*) 表示" />
             </div>
+            <hr />
             <div class="tool-genlink-settings">
-                <input type="radio" name="genlink-settings" value="a" />
-                等差数列 首项：项数：公差：
-                <br />
-                <input type="radio" name="genlink-settings" value="b" />
-                等比数列 首项：项数：公比：
-                <br />
-                <input type="radio" name="genlink-settings" value="c" />
-                字母变化 从：到：
+                <div class="genlink-settings-a">
+                    <input type="radio" name="genlink-settings" id="genlink-settings-a" checked />
+                    <label for="genlink-settings-a">等差数列</label>
+                    首项：<input type="text" value="1" />
+                    项数：<input type="text" value="5" />
+                    公差：<input type="text" value="1" /><br />
+                    <input type="checkbox" name="genlink-settings-a-reverse" id="genlink-settings-a-zero" />
+                    <label for="genlink-settings-a-zero">补0（暂不支持负数）&nbsp;</label>
+                    <input type="checkbox" name="genlink-settings-a-reverse" id="genlink-settings-a-reverse" />
+                    <label for="genlink-settings-a-reverse">倒序</label>
+                </div>
+                <hr />
+                <div class="genlink-settings-b">
+                    <input type="radio" name="genlink-settings" id="genlink-settings-b" />
+                    <label for="genlink-settings-b">等比数列</label>
+                    首项：<input type="text" value="1" />
+                    项数：<input type="text" value="5" />
+                    公比：<input type="text" value="2" /><br />
+                    <input type="checkbox" name="genlink-settings-b-reverse" id="genlink-settings-b-zero"  />
+                    <label for="genlink-settings-b-zero">补0（暂不支持负数）&nbsp;</label>
+                    <input type="checkbox" name="genlink-settings-b-reverse" id="genlink-settings-b-reverse" />
+                    <label for="genlink-settings-b-reverse">倒序</label>
+                </div>
+                <hr />
+                <div class="genlink-settings-c">
+                    <input type="radio" name="genlink-settings" id="genlink-settings-c" />
+                    <label for="genlink-settings-c">字母变化</label>
+                    从：<input type="text" value="a" maxlength="1" />
+                    到：<input type="text" value="z" maxlength="1" /><br />
+                    <input type="checkbox" name="genlink-settings-c-reverse" id="genlink-settings-c-reverse" />
+                    <label for="genlink-settings-c-reverse">倒序</label>
+                </div>
             </div>
-            <div class="tool-button" onclick="">生成</div>
+            <hr />
+            <div class="tool-button" onclick="toolGenLinkSubmit()">生成</div>
+            <div class="tool-button" onclick="toolGenLinkClear()">清空</div>
             <textarea id="tool-genlink-result" rows="8" placeholder="结果"></textarea>
         </div>
+        <!-- 运行 JavaScript -->
+        <div id="tool-runjs" class="tool-runjs">
+            <header>运行 JavaScript</header>
+            <textarea id="tool-runjs-input" rows="6" placeholder="请输入 JavaScript 代码"></textarea>
+            <div class="tool-button" onclick="toolRunJSSubmit()">运行</div>
+            <div class="tool-button" onclick="toolRunJSClear()">清空</div>
+        </div>
     </div>
-    <script src="js/tool.js"></script>
+    <!-- 返回顶部 -->
+    <div class="to-top" onclick="document.body.scrollTop = 0; document.documentElement.scrollTop = 0;">▲</div>
+    <!-- JavaScript -->
+    <script src="js/tool.min.js"></script>
 </body>
 </html>

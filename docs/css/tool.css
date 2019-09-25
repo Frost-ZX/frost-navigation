@@ -5,8 +5,14 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
+    padding: 20px 0 50px 0;
     background-color: #F5F5F5;
+    scroll-behavior: smooth;
 }
 
 /* 滚动条 */
@@ -52,6 +58,7 @@ body {
     padding: 15px;
     box-sizing: border-box;
     width: 100%;
+    border-radius: 5px;
     background-color: #FFF;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -63,12 +70,21 @@ body {
     font-weight: bold;
 }
 
+.main > div input:focus {
+    outline: none;
+}
+
 .main > div textarea {
     padding: 5px;
     box-sizing: border-box;
+    width: 100%;
     border: 1px solid #03A9F4;
-    font-size: 16px;
     box-shadow: 0 0 5px rgba(3, 169, 244, 0.2);
+    font-size: 14px;
+}
+
+.main > div textarea:focus {
+    outline: none;
 }
 
 .tool-button {
@@ -81,17 +97,47 @@ body {
     color: #FFF;
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(3, 169, 244, 0.4);
+    transition: background 0.2s;
 }
 
 .tool-button:hover {
     background-color: #2196F3;
 }
 
+/* 导航 */
+
+.tool-nav ul li {
+    display: inline-block;
+    list-style: none;
+}
+
+.tool-nav ul li a {
+    display: block;
+    float: left;
+    padding: 5px 9px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    text-decoration: none;
+    font-size: 14px;
+    color: #FFF;
+    transition: background 0.2s;
+}
+
+.tool-nav ul li a:hover {
+    background-color: #8BC34A;
+}
+
+.tool-nav-link {
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+}
+
 /* 计算 */
 
 .tool-calculate textarea {
-    width: 100%;
-    resize: none;
+    resize: vertical;
+    font-size: 16px;
 }
 
 .tool-calculate-tofixed {
@@ -105,25 +151,68 @@ body {
 
 /* 生成批量下载链接 */
 
+.tool-genlink hr {
+    height: 0;
+    border: 0.5px solid #EEE;
+}
+
 .tool-genlink-link input {
     margin-bottom: 10px;
+    padding: 0 2px;
     height: 20px;
     width: 80%;
+    border: 1px solid #03A9F4;
 }
 
 .tool-genlink-settings {
+    user-select: none;
+    font-size: 14px;
+}
+
+.tool-genlink-settings > div {
+    margin: 5px 0;
+}
+
+.tool-genlink-settings input[type="text"] {
+    width: 25px;
     font-size: 14px;
 }
 
 .tool-genlink .tool-button {
-    position: relative;
-    left: 50%;
-    margin-bottom: 10px;
-    transform: translateX(-50%);
+    margin: 10px 5px 10px 0;
 }
 
 .tool-genlink textarea {
-    width: 100%;
-    resize: none;
+    resize: vertical;
     font-size: 14px;
+}
+
+/* 运行 JavaScript */
+
+.tool-runjs textarea {
+    resize: vertical;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.tool-runjs .tool-button {
+    margin: 5px 5px 0 0;
+}
+
+/* 返回顶部 */
+
+.to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px rgba(76, 175, 80, 0.5);
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 36px;
+    font-size: 20px;
+    color: #FFF;
+    user-select: none;
 }

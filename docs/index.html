@@ -16,6 +16,7 @@
         <h1>Frost 网址导航</h1>
         <p>Frost Site Navigation</p>
     </header>
+    <!-- 链接列表 -->
     <main>
         <!--
         增加一个大类
@@ -1221,6 +1222,7 @@
             </div>
         </section>
     </main>
+    <!-- 搜索面板 -->
     <div class="search-panel">
         <div class="search-bar">
             <input class="search-input" type="text" placeholder="请输入关键词" onkeydown="if (event.keyCode == 13) {SearchMode = 1; search();}">
@@ -1229,23 +1231,27 @@
         </div>
         <div class="search-result"></div>
     </div>
-    <!--
+    <!-- 工具面板 -->
     <div class="tool-panel">
         <div class="tool-panel-bar">
-            <div class="tool-panel-close"></div>
+            <div class="tool-panel-blank"></div>
+            <div class="tool-panel-newtab" onclick="window.open('tool.html');">新窗口</div>
+            <div class="tool-panel-close" onclick="ToolPanel.style.visibility = 'hidden';">关闭</div>
         </div>
         <div class="tool-panel-iframe">
             <iframe src="tool.html" frameborder="0"></iframe>
         </div>
     </div>
-    -->
+    <!-- 加载中提示 -->
     <div class="fullscreen-text">加载中...</div>
+    <!-- 悬浮栏 -->
     <div class="floating-bar">
         <div class="floating-bar-search" onclick="SearchPanel.style.visibility = 'visible'; SearchInput.focus();">搜索</div>
-        <div class="floating-bar-tool" onclick="alert('开发中');">工具</div>
+        <div class="floating-bar-tool" onclick="ToolPanel.style.visibility = 'visible';">工具</div>
         <div class="floating-bar-about" onclick="window.open('https://github.com/Frost-ZX/frost-navigation/blob/master/README.md');">关于</div>
         <div class="floating-bar-totop" onclick="document.body.scrollTop = 0; document.documentElement.scrollTop = 0;">▲</div>
     </div>
+    <!-- 底栏 -->
     <footer>
         &#169; 2019 <a href="https://github.com/Frost-ZX/frost-navigation">Frost 网址导航</a>
         | Made by <a href="https://frost-zx.github.io/" target="_blank">Frost-ZX</a>
@@ -1254,6 +1260,7 @@
         | Made with <img src="files/heart.svg" alt="love"/>
         by <a href="http://designplox.com">Ali Zahid</a>
     </footer>
+    <!-- JavaScript -->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/slinky.min.js"></script>
     <script src="js/script.min.js"></script>

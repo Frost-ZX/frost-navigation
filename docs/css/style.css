@@ -9,8 +9,6 @@
  * text #222
  */
 
-/* reset */
-
 * {
     border-radius: 0;
     box-sizing: border-box;
@@ -20,8 +18,6 @@
     padding: 0;
     user-select: none;
 }
-
-/* global */
 
 html {
     scroll-behavior: smooth;
@@ -223,31 +219,54 @@ footer img {
 /* 工具面板 */
 
 .tool-panel {
+    visibility: hidden;
+    z-index: 100;
     position: fixed;
     left: 0;
     bottom: 0;
 }
 
 .tool-panel-bar {
-    height: 5vh;
-    background-color: #F5F5F5;
+    height: 32px;
+}
+
+.tool-panel-newtab, .tool-panel-close {
+    position: absolute;
+    top: 0;
+    height: 32px;
+    width: 64px;
+    box-shadow: -2px 0 10px 0 rgba(0, 0, 0, 0.1);
+    line-height: 32px;
+    text-align: center;
+    font-size: 14px;
+    color: #FFF;
+}
+
+.tool-panel-blank {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 32px;
+    width: 100%;
+    background-color: #FFF;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tool-panel-newtab {
+    right: 72px;
+    background-color: #2196F3;
 }
 
 .tool-panel-close {
-    position: absolute;
-    top: 0;
     right: 8px;
-    height: 5vh;
-    width: 5vh;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    background-color: #4CAF50;
+    background-color: #F44336;
 }
 
 .tool-panel-iframe {
 }
 
 .tool-panel-iframe iframe {
-    height: 95vh;
+    height: calc(100vh - 32px);
     width: 100vw;
 }
 
@@ -271,7 +290,7 @@ main section li a:not(.back) {
     position: fixed;
     top: 50%;
     left: 50%;
-    font-size: 10vw;
+    font-size: 5vw;
     transform: translate(-50%, -50%);
     transition: opacity 1s;
 }
@@ -310,7 +329,7 @@ main section li a:not(.back) {
     height: 50px;
     border: none;
     background-color: #03A9F4;
-    box-shadow: 0 0 5px rgba(3, 169, 244, 0.1);
+    box-shadow: 0 5px 10px -5px rgba(3, 169, 244, 0.4);
     font-size: 20px;
     color: #FFF;
     transition: background 0.2s;
@@ -363,6 +382,7 @@ main section li a:not(.back) {
 /* 悬浮栏 */
 
 .floating-bar {
+    z-index: 50;
     position: fixed;
     left: 0;
     bottom: 20px;
