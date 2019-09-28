@@ -68,6 +68,7 @@ body {
     text-align: center;
     font-size: 20px;
     font-weight: bold;
+    user-select: none;
 }
 
 .main > div input:focus {
@@ -104,6 +105,40 @@ body {
     background-color: #2196F3;
 }
 
+/* Unix 时间戳转换 */
+
+#tool-unixtime > div {
+    user-select: none;
+}
+
+#tool-unixtime > div > span {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#tool-unixtime > p {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#tool-unixtime input[type="text"] {
+    width: 160px;
+    border: 1px solid #03A9F4;
+    font-size: 14px;
+}
+
+#tool-unixtime label {
+    font-size: 14px;
+}
+
+#tool-unixtime .tool-button {
+    margin: 5px 5px 2px 0;
+}
+
 /* 导航 */
 
 .tool-nav ul li {
@@ -135,28 +170,28 @@ body {
 
 /* 计算 */
 
-.tool-calculate textarea {
+#tool-calculate textarea {
     resize: vertical;
     font-size: 16px;
 }
 
-.tool-calculate-tofixed {
+#tool-calculate-tofixed {
     width: 20px;
     font-size: 14px;
 }
 
-.tool-calculate .tool-button {
+#tool-calculate .tool-button {
     margin: 5px 5px 2px 0;
 }
 
 /* 生成批量下载链接 */
 
-.tool-genlink hr {
+#tool-genlink hr {
     height: 0;
     border: 0.5px solid #EEE;
 }
 
-.tool-genlink-link input {
+#tool-genlink-link input {
     margin-bottom: 10px;
     padding: 0 2px;
     height: 20px;
@@ -164,38 +199,38 @@ body {
     border: 1px solid #03A9F4;
 }
 
-.tool-genlink-settings {
+#tool-genlink-settings {
     user-select: none;
     font-size: 14px;
 }
 
-.tool-genlink-settings > div {
+#tool-genlink-settings > div {
     margin: 5px 0;
 }
 
-.tool-genlink-settings input[type="text"] {
+#tool-genlink-settings input[type="text"] {
     width: 25px;
     font-size: 14px;
 }
 
-.tool-genlink .tool-button {
+#tool-genlink .tool-button {
     margin: 10px 5px 10px 0;
 }
 
-.tool-genlink textarea {
+#tool-genlink textarea {
     resize: vertical;
     font-size: 14px;
 }
 
 /* 运行 JavaScript */
 
-.tool-runjs textarea {
+#tool-runjs textarea {
     resize: vertical;
     font-family: monospace;
     font-size: 14px;
 }
 
-.tool-runjs .tool-button {
+#tool-runjs .tool-button {
     margin: 5px 5px 0 0;
 }
 

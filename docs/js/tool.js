@@ -1,15 +1,118 @@
+/* --------------- */
+/* Unix 时间戳转换 */
+/* --------------- */
+
+// 函数：获取时间戳 //
+function toolUnixTimeGetNowA(TimeSet, SettingBA, SettingBB) {
+    var Time = new Date();               // 创建 Date 对象
+    // 若已设定参数 TimeSet，则根据 TimeSet 设置时间 //
+    if (TimeSet != '') {
+        Time.setFullYear(TimeSet.substring(0, 4));  // TimeSet 的子串：年
+        Time.setMonth(TimeSet.substring(5, 7) - 1); // TimeSet 的子串：月
+        Time.setDate(TimeSet.substring(8, 10));     // TimeSet 的子串：日
+        Time.setHours(TimeSet.substring(11, 13));   // TimeSet 的子串：时
+        Time.setMinutes(TimeSet.substring(14, 16)); // TimeSet 的子串：分
+        Time.setSeconds(TimeSet.substring(17, 19)); // TimeSet 的子串：秒
+        // console.log(Time)
+    }
+    if (TimeSet != '' && SettingBA == true && SettingBB == false) {
+        // 模式：秒 //
+        var TextLength = Time.getTime().toString().length;
+        return Time.getTime().toString().substring(0, TextLength - 3);         // 返回时间戳
+    } else if (TimeSet != '' && SettingBA == false && SettingBB == true) {
+        // 模式：毫秒 //
+        var TextLength = Time.getTime().toString().length;
+        return Time.getTime().toString().substring(0, TextLength - 3) + "000"; // 返回时间戳
+    } else {
+        return Time.getTime(); // 返回时间戳
+    }
+}
+
+// 函数：获取时间 //
+function toolUnixTimeGetNowB(TimeSet) {
+    var Time = new Date();               // 创建 Date 对象
+    // 若已设定参数 TimeSet，则根据 TimeSet 设置时间 //
+    if (TimeSet != '') {
+        Time.setTime(TimeSet);
+    }
+    var TimeYear = Time.getFullYear();   // 年
+    var TimeMonth = Time.getMonth() + 1; // 月
+    // 补零 //
+    if (TimeMonth.toString().length == 1) {
+        TimeMonth = "0" + TimeMonth;
+    }
+    var TimeDate = Time.getDate();       // 日
+    // 补零 //
+    if (TimeDate.toString().length == 1) {
+        TimeDate = "0" + TimeDate;
+    }
+    var TimeHour = Time.getHours();      // 时
+    // 补零 //
+    if (TimeHour.toString().length == 1) {
+        TimeHour = "0" + TimeHour;
+    }
+    var TimeMinute = Time.getMinutes();  // 分
+    // 补零 //
+    if (TimeMinute.toString().length == 1) {
+        TimeMinute = "0" + TimeMinute;
+    }
+    var TimeSecond = Time.getSeconds();  // 秒
+    // 补零 //
+    if (TimeSecond.toString().length == 1) {
+        TimeSecond = "0" + TimeSecond;
+    }
+    // 返回：年-月-日 时:分:秒 //
+    return TimeYear + "-" + TimeMonth + "-" + TimeDate + " " + TimeHour + ":" + TimeMinute + ":" + TimeSecond;
+}
+
+// 按钮：当前 //
+function toolUnixTimeNow() {
+    var GetInputA = document.getElementById("tool-unixtime-input-a").getElementsByTagName("input")[0];   // 输入框 A
+    var GetInputB = document.getElementById("tool-unixtime-input-b").getElementsByTagName("input")[0];   // 输入框 B
+    var GetSettingAA = document.getElementById("unixtime-setting-aa").checked;                           // A 模式：秒
+    var GetSettingAB = document.getElementById("unixtime-setting-ab").checked;                           // A 模式：毫秒
+    var GetSettingBA = document.getElementById("unixtime-setting-ba").checked;                           // B 模式：秒
+    var GetSettingBB = document.getElementById("unixtime-setting-bb").checked;                           // B 模式：毫秒
+    // 调用函数，获取时间 //
+    GetInputA.value = toolUnixTimeGetNowA('', GetSettingAA, GetSettingAB); // 时间戳
+    GetInputB.value = toolUnixTimeGetNowB('', GetSettingBA, GetSettingBB); // 时间
+}
+
+// 按钮：转换 //
+function toolUnixTimeSubmit() {
+    var GetInputA = document.getElementById("tool-unixtime-input-a").getElementsByTagName("input")[0];   // 输入框 A
+    var GetInputB = document.getElementById("tool-unixtime-input-b").getElementsByTagName("input")[0];   // 输入框 B
+    var GetOutputA = document.getElementById("tool-unixtime-output-a").getElementsByTagName("input")[0]; // 输出框 A
+    var GetOutputB = document.getElementById("tool-unixtime-output-b").getElementsByTagName("input")[0]; // 输出框 B
+    var GetSettingAA = document.getElementById("unixtime-setting-aa").checked;                     // A 模式：秒
+    var GetSettingAB = document.getElementById("unixtime-setting-ab").checked;                     // A 模式：毫秒
+    var GetSettingBA = document.getElementById("unixtime-setting-ba").checked;                     // B 模式：秒
+    var GetSettingBB = document.getElementById("unixtime-setting-bb").checked;                     // B 模式：毫秒
+    // 调用函数，转换时间 //
+    GetOutputA.value = toolUnixTimeGetNowB(GetInputA.value, GetSettingAA, GetSettingAB);           // 转换为时间
+    GetOutputB.value = toolUnixTimeGetNowA(GetInputB.value, GetSettingBA, GetSettingBB);           // 转换为时间戳
+}
+
+// 按钮：重置 //
+function toolUnixTimeClear() {
+    document.getElementById("tool-unixtime-input-a").getElementsByTagName("input")[0].value = '';  // 清空输入框 A
+    document.getElementById("tool-unixtime-input-b").getElementsByTagName("input")[0].value = '';  // 清空输入框 B
+    document.getElementById("tool-unixtime-output-a").getElementsByTagName("input")[0].value = ''; // 清空输出框 A
+    document.getElementById("tool-unixtime-output-b").getElementsByTagName("input")[0].value = ''; // 清空输出框 B
+}
+
 /* ---- */
 /* 计算 */
 /* ---- */
 
 function toolCalculateSubmit() {
-    GetInput = document.getElementById("tool-calculate-input");                // 算式输入框
-    GetToFixed = document.getElementsByClassName("tool-calculate-tofixed")[0]; // 保留小数点后的位数
-    GetResult = document.getElementsByClassName("tool-calculate-result")[0].getElementsByTagName("span")[0]; // 结果
-    GetCal = GetInput.value;                    // 获取输入的算式
-    GetCal = GetCal.replace(/π/g, "Math.PI");  // 替换（圆周率，Math.PI）
-    GetCal = GetCal.replace(/幂/g, "Math.pow"); // 替换（乘方运算，Math.pow）
-    GetCal = GetCal.replace(/平方根/g, "Math.sqrt"); // 替换（乘方运算，Math.pow）
+    GetInput = document.getElementById("tool-calculate-input");     // 算式输入框
+    GetToFixed = document.getElementById("tool-calculate-tofixed"); // 保留小数点后的位数
+    GetResult = document.getElementById("tool-calculate-result").getElementsByTagName("span")[0]; // 结果
+    GetCal = GetInput.value;                                        // 获取输入的算式
+    GetCal = GetCal.replace(/π/g, "Math.PI");                      // 替换（圆周率，Math.PI）
+    GetCal = GetCal.replace(/幂/g, "Math.pow");                     // 替换（乘方运算，Math.pow）
+    GetCal = GetCal.replace(/平方根/g, "Math.sqrt");                // 替换（乘方运算，Math.pow）
     // 运行 //
     if (GetToFixed.value >= 0 && GetToFixed.value <= 16) {
         GetResult.innerText = eval(GetCal).toFixed(GetToFixed.value);
@@ -19,9 +122,9 @@ function toolCalculateSubmit() {
 }
 
 function toolCalculateClear() {
-    GetInput = document.getElementById("tool-calculate-input"); // 算式输入框
-    GetInput.value = '';                                        // 清空“输入框”和“结果”
-    GetResult.innerText = '';                                   // 清空“结果”
+    GetInput = document.getElementById("tool-calculate-input");     // 算式输入框
+    GetInput.value = '';                                            // 清空“输入框”和“结果”
+    GetResult.innerText = '';                                       // 清空“结果”
 }
 
 /* ---------------- */
@@ -30,12 +133,12 @@ function toolCalculateClear() {
 
 function toolGenLinkSubmit() {
     var VarText = "(*)"; // 变量表示
-    var BaseLink = document.getElementsByClassName("tool-genlink-link")[0].getElementsByTagName("input")[0].value; // 网址
-    var GetSettingType = document.getElementsByName("genlink-settings"); // 批量变化类型
+    var BaseLink = document.getElementById("tool-genlink-link").getElementsByTagName("input")[0].value; // 网址
+    var GetSettingType = document.getElementsByName("genlink-settings");                                // 批量变化类型
     // 设定 //
-    var GetSettingA = document.getElementsByClassName("genlink-settings-a")[0].getElementsByTagName("input"); // 等差数列
-    var GetSettingB = document.getElementsByClassName("genlink-settings-b")[0].getElementsByTagName("input"); // 等比数列
-    var GetSettingC = document.getElementsByClassName("genlink-settings-c")[0].getElementsByTagName("input"); // 字母变化
+    var GetSettingA = document.getElementById("tool-genlink-settings-a").getElementsByTagName("input"); // 等差数列
+    var GetSettingB = document.getElementById("tool-genlink-settings-b").getElementsByTagName("input"); // 等比数列
+    var GetSettingC = document.getElementById("tool-genlink-settings-c").getElementsByTagName("input"); // 字母变化
     // 结果 //
     var GetResult = document.getElementById("tool-genlink-result");
     var LinkReplace = '';

@@ -15,30 +15,77 @@
             <header>导航</header>
             <div class="tool-nav-link">
                 <ul>
+                	<li><a href="#tool-unixtime">Unix 时间戳转换</a></li>
                 	<li><a href="#tool-calculate">简易计算</a></li>
                 	<li><a href="#tool-genlink">生成批量下载链接</a></li>
                 	<li><a href="#tool-runjs">运行 JavaScript</a></li>
                 </ul>
             </div>
         </div>
+        <!-- Unix 时间戳转换 -->
+        <div id="tool-unixtime">
+            <header>Unix 时间戳转换（未完成）</header>
+            <!-- 时间戳转换为时间 -->
+            <p><marquee behavior="alternate" direction="right">时间戳转换为时间</marquee></p>
+            <!-- 输入框 -->
+            <div id="tool-unixtime-input-a">
+                <span>Unix 时间戳：</span><input type="text" />
+            </div>
+            <!-- 输出框 -->
+            <div id="tool-unixtime-output-a">
+                <span>时间：</span><input type="text" readonly />
+            </div>
+            <!-- 模式 -->
+            <div class="tool-unixtime-setting-a">
+                <span>模式：</span>
+                <input type="radio" name="unixtime-setting-a" id="unixtime-setting-aa" />
+                <label for="unixtime-setting-aa">秒(s)</label>
+                <input type="radio" name="unixtime-setting-a" id="unixtime-setting-ab" checked />
+                <label for="unixtime-setting-ab">毫秒(ms)</label>
+            </div>
+            <hr />
+            <!-- 时间转换为时间戳 -->
+            <p><marquee behavior="alternate" direction="right">时间转换为时间戳</marquee></p>
+            <!-- 输入框 -->
+            <div id="tool-unixtime-input-b">
+                <span>时间：</span><input type="text" />
+            </div>
+            <!-- 输出框 -->
+            <div id="tool-unixtime-output-b">
+                <span>Unix 时间戳：</span><input type="text" readonly />
+            </div>
+            <!-- 模式 -->
+            <div class="tool-unixtime-setting-b">
+                <span>模式：</span>
+                <input type="radio" name="unixtime-setting-b" id="unixtime-setting-ba" checked />
+                <label for="unixtime-setting-ba">秒(s)</label>
+                <input type="radio" name="unixtime-setting-b" id="unixtime-setting-bb" />
+                <label for="unixtime-setting-bb">毫秒(ms)</label>
+            </div>
+            <hr />
+            <!-- 按钮 -->
+            <div class="tool-button" onclick="toolUnixTimeNow()">当前</div>
+            <div class="tool-button" onclick="toolUnixTimeSubmit()">转换</div>
+            <div class="tool-button" onclick="toolUnixTimeClear()">重置</div>
+        </div>
         <!-- 简易计算 -->
-        <div id="tool-calculate" class="tool-calculate">
+        <div id="tool-calculate">
             <header>简易计算</header>
             <textarea id="tool-calculate-input" rows="6" placeholder="请输入算式（请使用“半角”符号）&#10;加：+ 减：- 乘：* 除：/&#10;多层括号：仅需使用 ()&#10;乘方运算：幂(底数, 指数)&#10;平方根：平方根(数值或算式)"></textarea>
-            <div>保留小数点后 <input class="tool-calculate-tofixed" type="text" title="0 ~ 16 之间（默认：4）" value="4" /> 位数</div>
-            <div class="tool-calculate-result">结果：<span></span></div>
+            <div>保留小数点后 <input id="tool-calculate-tofixed" type="text" title="0 ~ 16 之间（默认：4）" value="4" /> 位数</div>
+            <div id="tool-calculate-result">结果：<span></span></div>
             <div class="tool-button" onclick="toolCalculateSubmit()">计算</div>
             <div class="tool-button" onclick="toolCalculateClear()">清空</div>
         </div>
         <!-- 生成批量下载链接 -->
-        <div id="tool-genlink" class="tool-genlink">
+        <div id="tool-genlink">
             <header>生成批量下载链接</header>
-            <div class="tool-genlink-link">
+            <div id="tool-genlink-link">
                 <b>网址：</b><input type="text" placeholder="变量用 (*) 表示" />
             </div>
             <hr />
-            <div class="tool-genlink-settings">
-                <div class="genlink-settings-a">
+            <div id="tool-genlink-settings">
+                <div id="tool-genlink-settings-a">
                     <input type="radio" name="genlink-settings" id="genlink-settings-a" checked />
                     <label for="genlink-settings-a">等差数列</label>
                     首项：<input type="text" value="1" />
@@ -50,7 +97,7 @@
                     <label for="genlink-settings-a-reverse">倒序</label>
                 </div>
                 <hr />
-                <div class="genlink-settings-b">
+                <div id="tool-genlink-settings-b">
                     <input type="radio" name="genlink-settings" id="genlink-settings-b" />
                     <label for="genlink-settings-b">等比数列</label>
                     首项：<input type="text" value="1" />
@@ -62,7 +109,7 @@
                     <label for="genlink-settings-b-reverse">倒序</label>
                 </div>
                 <hr />
-                <div class="genlink-settings-c">
+                <div id="tool-genlink-settings-c">
                     <input type="radio" name="genlink-settings" id="genlink-settings-c" />
                     <label for="genlink-settings-c">字母变化</label>
                     从：<input type="text" value="a" maxlength="1" />
@@ -77,7 +124,7 @@
             <textarea id="tool-genlink-result" rows="8" placeholder="结果"></textarea>
         </div>
         <!-- 运行 JavaScript -->
-        <div id="tool-runjs" class="tool-runjs">
+        <div id="tool-runjs">
             <header>运行 JavaScript</header>
             <textarea id="tool-runjs-input" rows="6" placeholder="请输入 JavaScript 代码"></textarea>
             <div class="tool-button" onclick="toolRunJSSubmit()">运行</div>
