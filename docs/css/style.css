@@ -379,6 +379,55 @@ main section li a:not(.back) {
     }
 }
 
+/* 搜索引擎 */
+
+.search-engine {
+    width: 100%;
+}
+
+.search-engine-bar {
+   height: 45px;
+   width: 100%;
+   background-color: #FFF;
+   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+   white-space: nowrap;
+}
+
+#search-engine-input {
+   padding-left: 15px;
+   box-sizing: border-box;
+   height: 100%;
+   width: calc(100% - 45px);
+   border: none;
+   font-size: 14px;
+}
+
+.search-engine-submit {
+    display: inline-block;
+    position: relative;
+    top: 7px;
+    left: 7px;
+    height: 24px;
+    width: 24px;
+    color: #03A9F4;
+    fill: currentcolor;
+    user-select: none;
+}
+
+.search-engine-select ul {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.search-engine-select ul li {
+    display: inline-block;
+    margin: 0 5px;
+    list-style: none;
+    font-size: 16px;
+}
+
 /* 悬浮栏 */
 
 .floating-bar {

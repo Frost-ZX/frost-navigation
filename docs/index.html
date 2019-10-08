@@ -16,6 +16,35 @@
         <h1>Frost 网址导航</h1>
         <p>Frost Site Navigation</p>
     </header>
+    <!-- 搜索引擎 -->
+    <div class="search-engine">
+        <div class="search-engine-bar">
+            <input id="search-engine-input" type="text" placeholder="输入关键词进行搜索" onkeydown="if (event.keyCode == 13) {searchWeb();}" />
+            <svg class="search-engine-submit" viewBox="0 0 24 24" onclick="searchWeb()">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+            </svg>
+        </div>
+        <div class="search-engine-select">
+            <ul>
+            	<li>
+                    <input type="radio" name="search-engine-selection" id="search-engine-baidu" checked />
+                    <label for="search-engine-baidu">百度</label>
+                </li>
+            	<li>
+                    <input type="radio" name="search-engine-selection" id="search-engine-bing" />
+                    <label for="search-engine-bing">Bing</label>
+                </li>
+            	<li>
+                    <input type="radio" name="search-engine-selection" id="search-engine-google" />
+                    <label for="search-engine-google">Google</label>
+                </li>
+            	<li>
+                    <input type="radio" name="search-engine-selection" id="search-engine-bilibili" />
+                    <label for="search-engine-bilibili">bilibili</label>
+                </li>
+            </ul>
+        </div>
+    </div>
     <!-- 链接列表 -->
     <main>
         <!--
@@ -265,6 +294,7 @@
                                         <li><a href="https://message.bilibili.com/">bilibili（消息中心）</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="https://www.8kraw.com//">8KRAW - 正版视频素材库</a></li>
                                 <li><a href="http://www.iqiyi.com/">爱奇艺</a></li>
                                 <li><a href="http://v.baidu.com/">百度视频</a></li>
                                 <li><a href="https://www.vmovier.com/">场库 - 高品质短片分享平台</a></li>
@@ -1229,9 +1259,9 @@
     <!-- 搜索面板 -->
     <div class="search-panel">
         <div class="search-bar">
-            <input class="search-input" type="text" placeholder="请输入关键词" onkeydown="if (event.keyCode == 13) {SearchMode = 1; search();}">
-            <button class="search-submit" onclick="SearchMode = 1; search();">搜索</button>
-            <button class="search-cancel" onclick="SearchMode = 2; search();">关闭</button>
+            <input class="search-input" type="text" placeholder="请输入关键词" onkeydown="if (event.keyCode == 13) {SearchMode = 1; searchLink();}">
+            <button class="search-submit" onclick="SearchMode = 1; searchLink();">查找</button>
+            <button class="search-cancel" onclick="SearchMode = 2; searchLink();">关闭</button>
         </div>
         <div class="search-result"></div>
     </div>
@@ -1250,7 +1280,7 @@
     <div class="fullscreen-text">加载中...</div>
     <!-- 悬浮栏 -->
     <div class="floating-bar">
-        <div class="floating-bar-search" onclick="SearchPanel.style.visibility = 'visible'; SearchInput.focus();">搜索</div>
+        <div class="floating-bar-search" onclick="SearchPanel.style.visibility = 'visible'; SearchInput.focus();">查找</div>
         <div class="floating-bar-tool" onclick="ToolPanel.style.visibility = 'visible';">工具</div>
         <div class="floating-bar-about" onclick="window.open('https://github.com/Frost-ZX/frost-navigation/blob/master/README.md');">关于</div>
         <div class="floating-bar-totop" onclick="document.body.scrollTop = 0; document.documentElement.scrollTop = 0;">▲</div>

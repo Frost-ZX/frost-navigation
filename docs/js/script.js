@@ -91,7 +91,7 @@ var SearchPanel = document.getElementsByClassName("search-panel")[0];   // 搜�
 var SearchInput = document.getElementsByClassName("search-input")[0];   // 搜索输入框
 var SearchResult = document.getElementsByClassName("search-result")[0]; // 搜索结果
 var SearchResultItem = "";
-function search() {
+function searchLink() {
     var LinkListCount = LinkList.length;                                // 循环次数
     var SearchWord = SearchInput.value.toLowerCase();                   // 搜索关键词
     if (SearchMode == 1 && SearchWord != "") {
@@ -115,6 +115,30 @@ function search() {
         SearchPanel.style.visibility = "hidden";      // 隐藏搜索面板
     } else {
         SearchResult.innerHTML = "异常";
+    }
+}
+
+/* -------- */
+/* 搜索引擎 */
+/* -------- */
+
+function searchWeb() {
+    var GetSearchWord = document.getElementById("search-engine-input");                      // 关键词输入框
+    var SearchWord = GetSearchWord.value;                                                    // 关键词
+    var GetSearchEngineBaidu = document.getElementById("search-engine-baidu").checked;       // 百度
+    var GetSearchEngineBing = document.getElementById("search-engine-bing").checked;         // Bing
+    var GetSearchEngineGoogle = document.getElementById("search-engine-google").checked;     // Google
+    var GetSearchEnginebilibili = document.getElementById("search-engine-bilibili").checked; // bilibili
+    if (GetSearchEngineBaidu == true) {
+        window.open("https://www.baidu.com/s?ie=UTF-8&wd=" + SearchWord);
+    } else if (GetSearchEngineBing == true) {
+        window.open("https://cn.bing.com/search?q=" + SearchWord);
+    } else if (GetSearchEngineGoogle == true) {
+        window.open("https://www.google.com/search?q=" + SearchWord);
+    } else if (GetSearchEnginebilibili == true) {
+        window.open("https://search.bilibili.com/all" + "?keyword=" + SearchWord);
+    } else {
+        GetSearchWord.value = "搜索引擎选择有误！"
     }
 }
 
