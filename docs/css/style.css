@@ -389,6 +389,7 @@ main section li a:not(.back) {
    height: 45px;
    width: 100%;
    background-color: #FFF;
+   border-radius: 5px;
    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
    white-space: nowrap;
 }
@@ -398,6 +399,7 @@ main section li a:not(.back) {
    box-sizing: border-box;
    height: 100%;
    width: calc(100% - 45px);
+   background-color: transparent;
    border: none;
    font-size: 14px;
 }
@@ -415,10 +417,9 @@ main section li a:not(.back) {
 }
 
 .search-engine-select ul {
+    margin-top: 20px;
     width: 100%;
-    height: 40px;
     text-align: center;
-    line-height: 40px;
 }
 
 .search-engine-select ul li {
@@ -426,6 +427,43 @@ main section li a:not(.back) {
     margin: 0 5px;
     list-style: none;
     font-size: 16px;
+}
+
+/* radio 样式 */
+.search-engine-select ul li input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+.search-engine-select ul li input[type="radio"] + label:before {
+  content: '';
+  border-radius: 0px;
+  background: #FFF;
+  border: 1px solid #999;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  top: 0;
+  margin-right: 0.25em;
+  vertical-align: top;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+.search-engine-select ul li input[type="radio"]:checked + label:before {
+  background-color: #03A9F4;
+  box-shadow: inset 0 0 0 2px #FFF;
+}
+.search-engine-select ul li input[type="radio"]:focus + label:before {
+  outline: none;
+  border-color: #00BCD4;
+}
+.search-engine-select ul li input[type="radio"]:disabled + label:before {
+  box-shadow: inset 0 0 0 2px #FFF;
+  border-color: #999;
+  background: #999;
+}
+.search-engine-select ul li input[type="radio"] + label:empty:before {
+  margin-right: 0;
 }
 
 /* 悬浮栏 */
