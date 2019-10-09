@@ -351,6 +351,12 @@ main section li a:not(.back) {
     margin-bottom: 10px;
     font-size: 20px;
 }
+#search-result-title {
+    border-bottom: 1px solid #DDD;
+}
+#search-result-link {
+    margin-top: 7px;
+}
 @media screen and (max-width: 500px) {
     .search-panel {
         /* top: 32%; */
@@ -384,7 +390,6 @@ main section li a:not(.back) {
 .search-engine {
     width: 100%;
 }
-
 .search-engine-bar {
    height: 45px;
    width: 100%;
@@ -393,7 +398,6 @@ main section li a:not(.back) {
    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
    white-space: nowrap;
 }
-
 #search-engine-input {
    padding-left: 15px;
    box-sizing: border-box;
@@ -403,7 +407,6 @@ main section li a:not(.back) {
    border: none;
    font-size: 14px;
 }
-
 .search-engine-submit {
     display: inline-block;
     position: relative;
@@ -415,20 +418,17 @@ main section li a:not(.back) {
     fill: currentcolor;
     user-select: none;
 }
-
 .search-engine-select ul {
     margin-top: 20px;
     width: 100%;
     text-align: center;
 }
-
 .search-engine-select ul li {
     display: inline-block;
     margin: 0 5px;
     list-style: none;
     font-size: 16px;
 }
-
 /* radio 样式 */
 .search-engine-select ul li input[type="radio"] {
   position: absolute;

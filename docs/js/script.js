@@ -89,32 +89,41 @@ var I_LoadList = setInterval("loadList()", 100);
 var SearchMode = 1;
 var SearchPanel = document.getElementsByClassName("search-panel")[0];   // 搜索面板
 var SearchInput = document.getElementsByClassName("search-input")[0];   // 搜索输入框
-var SearchResult = document.getElementsByClassName("search-result")[0]; // 搜索结果
+var SearchResultTitle = document.getElementById("search-result-title"); // 搜索结果（标题）
+var SearchResultLink = document.getElementById("search-result-link");   // 搜索结果（链接）
 var SearchResultItem = "";
 function searchLink() {
     var LinkListCount = LinkList.length;                                // 循环次数
     var SearchWord = SearchInput.value.toLowerCase();                   // 搜索关键词
     if (SearchMode == 1 && SearchWord != "") {
-        SearchResult.innerHTML = "";                                    // 清空搜索结果
+        SearchResultTitle.innerHTML = "";                               // 清空搜索结果（标题）
+        SearchResultLink.innerHTML = "";                                // 清空搜索结果（链接）
         for (var i = 0; i < LinkListCount; i++) {
             // 排除 href 是 # 的元素 //
             if (LinkList[i].href.endsWith("#") == false) {
                 // 匹配关键词 //
-                if (LinkList[i].innerText.toLowerCase().indexOf(SearchWord) != -1 || LinkList[i].href.indexOf(SearchWord) != -1) {
-                    // 复制元素 //
+                if (LinkList[i].innerText.toLowerCase().indexOf(SearchWord) != -1) {
+                    // 匹配标题 //
                     SearchResultItem = LinkList[i].cloneNode(true);
-                    SearchResult.appendChild(SearchResultItem);
+                    SearchResultTitle.appendChild(SearchResultItem); // 复制元素
+                } else if (LinkList[i].href.indexOf(SearchWord) != -1) {
+                    // 匹配链接 //
+                    SearchResultItem = LinkList[i].cloneNode(true);
+                    SearchResultLink.appendChild(SearchResultItem);  // 复制元素
                 }
             }
         }
     } else if (SearchMode == 1 && SearchWord == "") {
-        SearchResult.innerHTML = "请输入关键词";
+        SearchResultTitle.innerHTML = "";
+        SearchResultLink.innerHTML = "未输入关键词";
     } else if (SearchMode == 2) {
         SearchInput.value = "";                       // 清空输入框
-        SearchResult.innerHTML = "";                  // 清空搜索结果
+        SearchResultTitle.innerHTML = "";             // 清空搜索结果（标题）
+        SearchResultLink.innerHTML = "";              // 清空搜索结果（链接）
         SearchPanel.style.visibility = "hidden";      // 隐藏搜索面板
     } else {
-        SearchResult.innerHTML = "异常";
+        SearchResultTitle.innerHTML = "";
+        SearchResultLink.innerHTML = "异常";
     }
 }
 
