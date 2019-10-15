@@ -15,7 +15,9 @@
             <header>索引</header>
             <div class="tool-nav-link">
                 <ul>
+                	<li><a href="index.html">主页</a></li>
                 	<li><a href="#tool-unixtime">Unix 时间戳转换</a></li>
+                    <li><a href="#tool-downloadtime">计算下载用时</a></li>
                 	<li><a href="#tool-calculate">简易计算</a></li>
                 	<li><a href="#tool-genlink">生成批量下载链接</a></li>
                 	<li><a href="#tool-runjs">运行 JavaScript</a></li>
@@ -24,9 +26,9 @@
         </div>
         <!-- Unix 时间戳转换 -->
         <div id="tool-unixtime">
-            <header>Unix 时间戳转换（未完成）</header>
+            <header>Unix 时间戳转换</header>
             <!-- 时间戳转换为时间 -->
-            <p><marquee behavior="alternate" direction="right">时间戳转换为时间</marquee></p>
+            <p><marquee behavior="alternate" direction="right">时间戳转换为北京时间</marquee></p>
             <!-- 输入框 -->
             <div id="tool-unixtime-input-a">
                 <span>Unix 时间戳：</span><input type="text" />
@@ -45,7 +47,7 @@
             </div>
             <hr />
             <!-- 时间转换为时间戳 -->
-            <p><marquee behavior="alternate" direction="right">时间转换为时间戳</marquee></p>
+            <p><marquee behavior="alternate" direction="right">北京时间转换为时间戳</marquee></p>
             <!-- 输入框 -->
             <div id="tool-unixtime-input-b">
                 <span>时间：</span><input type="text" />
@@ -67,6 +69,31 @@
             <div class="tool-button" onclick="toolUnixTimeNow()">当前</div>
             <div class="tool-button" onclick="toolUnixTimeSubmit()">转换</div>
             <div class="tool-button" onclick="toolUnixTimeClear()">重置</div>
+        </div>
+        <!-- 计算下载用时 -->
+        <div id="tool-downloadtime">
+            <header>计算下载用时（未完成）</header>
+            <!-- 输入 -->
+            <div id="tool-downloadtime-input">
+                <b>文件大小：</b><input type="text" /><br />
+                <b>下载速度：</b><input type="text" />
+            </div>
+            <!-- 结果 -->
+            <div id="tool-downloadtime-output">
+                <b>大约用时：</b><span>待计算</span>
+            </div>
+            <!-- 按钮 -->
+            <div class="tool-button" onclick="toolDownloadTimeSubmit()">计算</div>
+            <div class="tool-button" onclick="toolDownloadTimeClear()">重置</div>
+            <!-- 帮助 -->
+            <div id="tool-downloadtime-help">
+                <p><b>文件大小</b></p>
+                <p>数值 + 单位（B / KB / MB / GB / TB）</p>
+                <p>例如：2 KB、5.5 GB</p>
+                <p><b>下载速度（每秒）</b></p>
+                <p>数值 + 单位（B / KB / MB / GB / TB）</p>
+                <p>例如：2 KB、5.5 GB</p>
+            </div>
         </div>
         <!-- 简易计算 -->
         <div id="tool-calculate">

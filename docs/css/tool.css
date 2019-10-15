@@ -4,11 +4,9 @@
     margin: 0;
     padding: 0;
 }
-
 html {
     scroll-behavior: smooth;
 }
-
 body {
     padding: 20px 0 50px 0;
     background-color: #F5F5F5;
@@ -52,7 +50,6 @@ body {
     width: 90%;
     max-width: 400px;
 }
-
 .main > div {
     margin: 20px 0;
     padding: 15px;
@@ -62,7 +59,6 @@ body {
     background-color: #FFF;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 .main > div header {
     margin-bottom: 10px;
     text-align: center;
@@ -70,11 +66,9 @@ body {
     font-weight: bold;
     user-select: none;
 }
-
 .main > div input:focus {
     outline: none;
 }
-
 .main > div textarea {
     padding: 5px;
     box-sizing: border-box;
@@ -83,11 +77,9 @@ body {
     box-shadow: 0 0 5px rgba(3, 169, 244, 0.2);
     font-size: 14px;
 }
-
 .main > div textarea:focus {
     outline: none;
 }
-
 .tool-button {
     display: inline-block;
     user-select: none;
@@ -100,52 +92,16 @@ body {
     box-shadow: 2px 2px 5px rgba(3, 169, 244, 0.4);
     transition: background 0.2s;
 }
-
 .tool-button:hover {
     background-color: #2196F3;
 }
 
-/* Unix 时间戳转换 */
-
-#tool-unixtime > div {
-    user-select: none;
-}
-
-#tool-unixtime > div > span {
-    display: inline-block;
-    width: 100px;
-    text-align: right;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-#tool-unixtime > p {
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-#tool-unixtime input[type="text"] {
-    width: 160px;
-    border: 1px solid #03A9F4;
-    font-size: 14px;
-}
-
-#tool-unixtime label {
-    font-size: 14px;
-}
-
-#tool-unixtime .tool-button {
-    margin: 5px 5px 2px 0;
-}
-
-/* 导航 */
+/* 索引 */
 
 .tool-nav ul li {
     display: inline-block;
     list-style: none;
 }
-
 .tool-nav ul li a {
     display: block;
     float: left;
@@ -157,29 +113,74 @@ body {
     color: #FFF;
     transition: background 0.2s;
 }
-
 .tool-nav ul li a:hover {
     background-color: #8BC34A;
 }
-
 .tool-nav-link {
     margin: 0 auto;
     box-sizing: border-box;
     width: 100%;
 }
 
-/* 计算 */
+/* Unix 时间戳转换 */
+#tool-unixtime > div {
+    user-select: none;
+}
+#tool-unixtime > div > span {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+}
+#tool-unixtime > p {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+#tool-unixtime input[type="text"] {
+    width: 160px;
+    border: 1px solid #03A9F4;
+    font-size: 14px;
+}
+#tool-unixtime label {
+    font-size: 14px;
+}
+#tool-unixtime .tool-button {
+    margin: 5px 5px 2px 0;
+}
+
+/* 计算下载用时 */
+#tool-downloadtime {
+    
+}
+#tool-downloadtime-input {
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid #EEE;
+}
+#tool-downloadtime-output {
+    padding: 10px 0;
+    border-bottom: 1px solid #EEE;
+}
+#tool-downloadtime .tool-button {
+    margin: 10px 5px 10px 0;
+}
+#tool-downloadtime-help {
+    padding: 10px 0 0 0;
+    border-top: 1px solid #EEE;
+    font-size: 14px;
+}
+
+/* 简易计算 */
 
 #tool-calculate textarea {
     resize: vertical;
     font-size: 16px;
 }
-
 #tool-calculate-tofixed {
     width: 20px;
     font-size: 14px;
 }
-
 #tool-calculate .tool-button {
     margin: 5px 5px 2px 0;
 }
@@ -190,7 +191,6 @@ body {
     height: 0;
     border: 0.5px solid #EEE;
 }
-
 #tool-genlink-link input {
     margin-bottom: 10px;
     padding: 0 2px;
@@ -198,25 +198,20 @@ body {
     width: 80%;
     border: 1px solid #03A9F4;
 }
-
 #tool-genlink-settings {
     user-select: none;
     font-size: 14px;
 }
-
 #tool-genlink-settings > div {
     margin: 5px 0;
 }
-
 #tool-genlink-settings input[type="text"] {
     width: 25px;
     font-size: 14px;
 }
-
 #tool-genlink .tool-button {
     margin: 10px 5px 10px 0;
 }
-
 #tool-genlink textarea {
     resize: vertical;
     font-size: 14px;
@@ -229,7 +224,6 @@ body {
     font-family: monospace;
     font-size: 14px;
 }
-
 #tool-runjs .tool-button {
     margin: 5px 5px 0 0;
 }

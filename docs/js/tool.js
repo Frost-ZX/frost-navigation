@@ -2,38 +2,45 @@
 /* Unix 时间戳转换 */
 /* --------------- */
 
-// 函数：获取时间戳 //
-function toolUnixTimeGetNowA(TimeSet, SettingBA, SettingBB) {
-    var Time = new Date();               // 创建 Date 对象
-    // 若已设定参数 TimeSet，则根据 TimeSet 设置时间 //
-    if (TimeSet != '') {
-        Time.setFullYear(TimeSet.substring(0, 4));  // TimeSet 的子串：年
-        Time.setMonth(TimeSet.substring(5, 7) - 1); // TimeSet 的子串：月
-        Time.setDate(TimeSet.substring(8, 10));     // TimeSet 的子串：日
-        Time.setHours(TimeSet.substring(11, 13));   // TimeSet 的子串：时
-        Time.setMinutes(TimeSet.substring(14, 16)); // TimeSet 的子串：分
-        Time.setSeconds(TimeSet.substring(17, 19)); // TimeSet 的子串：秒
-        // console.log(Time)
-    }
-    if (TimeSet != '' && SettingBA == true && SettingBB == false) {
+// 函数：将传入的时间转换为时间戳 //
+function toolUnixTimeToUnix(GetTime, isMillisecond) {
+    var Time = new Date();                      // 创建 Date 对象
+    // 根据 GetTime 设置时间 //
+    Time.setFullYear(GetTime.substring(0, 4));  // GetTime 的子串：年
+    Time.setMonth(GetTime.substring(5, 7) - 1); // GetTime 的子串：月
+    Time.setDate(GetTime.substring(8, 10));     // GetTime 的子串：日
+    Time.setHours(GetTime.substring(11, 13));   // GetTime 的子串：时
+    Time.setMinutes(GetTime.substring(14, 16)); // GetTime 的子串：分
+    Time.setSeconds(GetTime.substring(17, 19)); // GetTime 的子串：秒
+    // 调试 //
+    // console.log("时间：" + Time);
+    // 根据 isMillisecond 确认输出的单位
+    if (isMillisecond == false) {
         // 模式：秒 //
-        var TextLength = Time.getTime().toString().length;
+        var TextLength = Time.getTime().toString().length;                     // 获取字符串长度
         return Time.getTime().toString().substring(0, TextLength - 3);         // 返回时间戳
-    } else if (TimeSet != '' && SettingBA == false && SettingBB == true) {
+    } else if (isMillisecond == true) {
         // 模式：毫秒 //
-        var TextLength = Time.getTime().toString().length;
+        var TextLength = Time.getTime().toString().length;                     // 获取字符串长度
         return Time.getTime().toString().substring(0, TextLength - 3) + "000"; // 返回时间戳
     } else {
-        return Time.getTime(); // 返回时间戳
+        return "模式有误！";
     }
 }
 
-// 函数：获取时间 //
-function toolUnixTimeGetNowB(TimeSet) {
+// 函数：将传入的时间戳转换为时间 //
+function toolUnixTimeToTime(GetUnix, isMillisecond) {
     var Time = new Date();               // 创建 Date 对象
-    // 若已设定参数 TimeSet，则根据 TimeSet 设置时间 //
-    if (TimeSet != '') {
-        Time.setTime(TimeSet);
+    // 根据 isMillisecond 确认输入的单位
+    if (isMillisecond == false) {
+        // 模式：秒 //
+        GetUnix = GetUnix + "000";       // 补零变为毫秒
+        Time.setTime(GetUnix);           // 根据 GetUnix 设置时间
+    } else if (isMillisecond == true) {
+        // 模式：毫秒 //
+        Time.setTime(GetUnix);           // 根据 GetUnix 设置时间
+    } else {
+        Time.setTime("0");               // 把时间设置为 0
     }
     var TimeYear = Time.getFullYear();   // 年
     var TimeMonth = Time.getMonth() + 1; // 月
@@ -74,8 +81,14 @@ function toolUnixTimeNow() {
     var GetSettingBA = document.getElementById("unixtime-setting-ba").checked;                           // B 模式：秒
     var GetSettingBB = document.getElementById("unixtime-setting-bb").checked;                           // B 模式：毫秒
     // 调用函数，获取时间 //
-    GetInputA.value = toolUnixTimeGetNowA('', GetSettingAA, GetSettingAB); // 时间戳
-    GetInputB.value = toolUnixTimeGetNowB('', GetSettingBA, GetSettingBB); // 时间
+    if (GetSettingAA == true) {
+        var Time = new Date();                                                    // 创建 Date 对象
+        var TextLength = Time.getTime().toString().length;                        // 获取字符串长度
+        GetInputA.value = Time.getTime().toString().substring(0, TextLength - 3); // 时间戳（秒）
+    } else if (GetSettingAB == true) {
+        GetInputA.value = new Date().getTime();                                   // 时间戳（毫秒）
+    }
+    GetInputB.value = toolUnixTimeToTime(new Date().getTime(), true);             // 时间
 }
 
 // 按钮：转换 //
@@ -89,8 +102,14 @@ function toolUnixTimeSubmit() {
     var GetSettingBA = document.getElementById("unixtime-setting-ba").checked;                     // B 模式：秒
     var GetSettingBB = document.getElementById("unixtime-setting-bb").checked;                     // B 模式：毫秒
     // 调用函数，转换时间 //
-    GetOutputA.value = toolUnixTimeGetNowB(GetInputA.value, GetSettingAA, GetSettingAB);           // 转换为时间
-    GetOutputB.value = toolUnixTimeGetNowA(GetInputB.value, GetSettingBA, GetSettingBB);           // 转换为时间戳
+    if (GetSettingAA == true) {
+        // 秒 //
+        GetOutputA.value = toolUnixTimeToTime(GetInputA.value, false);                             // 转换为时间
+    } else if (GetSettingAB == true) {
+        // 毫秒 //
+        GetOutputA.value = toolUnixTimeToTime(GetInputA.value, GetSettingAB);                      // 转换为时间
+    }
+    GetOutputB.value = toolUnixTimeToUnix(GetInputB.value, GetSettingBB);                          // 转换为时间戳
 }
 
 // 按钮：重置 //
