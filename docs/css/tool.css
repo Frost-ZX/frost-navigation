@@ -9,13 +9,24 @@ html {
 }
 body {
     padding: 20px 0 50px 0;
+    background-color: #999;
+    scroll-behavior: smooth;
+}
+
+/* 背景 */
+
+.page-background {
+    z-index: -100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     background-attachment: fixed;
-    background-color: #F9F9F9;
     background-image: url(../img/Unsplash_V6TWE6h8gyg.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    scroll-behavior: smooth;
 }
 
 /* 滚动条 */
@@ -256,12 +267,25 @@ body {
     transition: all 0.5s;
 }
 .to-top:hover {
-    right: 25px;
-    bottom: 25px;
-    height: 40px;
-    width: 40px;
-    line-height: 40px;
-    font-size: 20px;
-    color: #FFF;
-    transform: rotate(360deg);
+    animation: ToTopAnimation 0.5s ease-in-out;
+}
+
+/* 动画 */
+
+@keyframes ToTopAnimation {
+    0% {
+    }
+    50% {
+        right: 25px;
+        bottom: 25px;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        font-size: 20px;
+        color: #FFF;
+    }
+    100% {
+        color: #2196F3;
+        transform: rotate(360deg);
+    }
 }
