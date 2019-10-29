@@ -11,7 +11,8 @@
     transform: translateZ(0);
 }
 
-.slinky-menu ul, .slinky-menu li {
+.slinky-menu ul,
+.slinky-menu li {
     list-style: none;
     margin: 0;
 }
@@ -76,7 +77,8 @@
     background: rgba(90, 200, 250, 0.5);
 }
 
-.slinky-theme-default .next::after, .slinky-theme-default .back::before {
+.slinky-theme-default .next::after,
+.slinky-theme-default .back::before {
     background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+ICAgIDxwYXRoIGQ9Ik0xMi4yMTkgMi4yODFMMTAuNzggMy43MiAxOC4wNjIgMTFIMnYyaDE2LjA2M2wtNy4yODIgNy4yODEgMS40MzggMS40MzggOS05IC42ODctLjcxOS0uNjg3LS43MTl6IiAvPjwvc3ZnPg==) center no-repeat;
     background-size: 1em;
     content: '';
@@ -95,10 +97,12 @@
     transform: scaleX(-1);
 }
 
-.slinky-theme-default .next:hover::after, .slinky-theme-default .back:hover::before {
+.slinky-theme-default .next:hover::after,
+.slinky-theme-default .back:hover::before {
     opacity: 0.75;
 }
 
-.slinky-theme-default .next:active::after, .slinky-theme-default .back:active::before {
+.slinky-theme-default .next:active::after,
+.slinky-theme-default .back:active::before {
     opacity: 1;
 }

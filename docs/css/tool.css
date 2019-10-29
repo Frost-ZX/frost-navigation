@@ -9,7 +9,12 @@ html {
 }
 body {
     padding: 20px 0 50px 0;
-    background-color: #F5F5F5;
+    background-attachment: fixed;
+    background-color: #F9F9F9;
+    background-image: url(../img/Unsplash_V6TWE6h8gyg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     scroll-behavior: smooth;
 }
 
@@ -20,11 +25,14 @@ body {
     width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-    background: #999;
+    background-color: #CCC;
     border-radius: 0;
 }
+::-webkit-scrollbar-thumb:hover {
+    background-color: #03A9F4;
+}
 ::-webkit-scrollbar-track {
-    background: #eee;
+    background-color: #FFF;
     border-radius: 0;
 }
 
@@ -48,7 +56,7 @@ body {
 .main {
     margin: 0 auto;
     width: 90%;
-    max-width: 400px;
+    max-width: 450px;
 }
 .main > div {
     margin: 20px 0;
@@ -57,7 +65,7 @@ body {
     width: 100%;
     border-radius: 5px;
     background-color: #FFF;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 .main > div header {
     margin-bottom: 10px;
@@ -234,14 +242,26 @@ body {
     position: fixed;
     right: 20px;
     bottom: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.1);
+    background-color: #FFF;
+    text-align: center;
+    line-height: 50px;
+    font-family: monospace;
+    font-size: 20px;
+    color: #2196F3;
+    user-select: none;
+    transition: all 0.5s;
+}
+.to-top:hover {
+    right: 25px;
+    bottom: 25px;
     height: 40px;
     width: 40px;
-    border-radius: 50%;
-    box-shadow: 2px 2px 5px rgba(76, 175, 80, 0.5);
-    background-color: #4CAF50;
-    text-align: center;
-    line-height: 36px;
+    line-height: 40px;
     font-size: 20px;
     color: #FFF;
-    user-select: none;
+    transform: rotate(360deg);
 }
