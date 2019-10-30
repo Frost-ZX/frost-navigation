@@ -226,6 +226,17 @@ footer p {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.page-background:after {
+    content: "";
+    z-index: -90;
+    position: inherit;
+    top: inherit;
+    left: inherit;
+    width: inherit;
+    height: inherit;
+    background: inherit;
+    filter: blur(4px);
+}
 
 /* 滚动条 */
 
@@ -328,7 +339,7 @@ main section li a:not(.back) {
     transition: opacity 1s;
 }
 
-/* 搜索面板 */
+/* 查找面板 */
 
 .search-panel {
     visibility: hidden;
@@ -338,6 +349,7 @@ main section li a:not(.back) {
     height: 300px;
     width: 500px;
     background-color: #fff;
+    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transform: translate(-50%, -50%);
 }
@@ -394,9 +406,8 @@ main section li a:not(.back) {
 }
 @media screen and (max-width: 500px) {
     .search-panel {
-        /* top: 32%; */
         height: 300px;
-        width: 100%;
+        width: 95%;
     }
     .search-bar .search-input {
         margin: 15px 5px 0 0;

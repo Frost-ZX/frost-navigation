@@ -18,12 +18,14 @@
     </header>
     <!-- 搜索引擎 -->
     <div class="search-engine">
+        <!-- 搜索栏 -->
         <div class="search-engine-bar">
             <input id="search-engine-input" type="text" placeholder="输入关键词进行搜索" onkeydown="if (event.keyCode == 13) {searchWeb();}" />
             <svg class="search-engine-submit" viewbox="0 0 24 24" onclick="searchWeb()">
                 <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
             </svg>
         </div>
+        <!-- 搜索引擎选择 -->
         <div class="search-engine-select">
             <ul>
                 <li>
@@ -48,25 +50,26 @@
     <!-- 链接列表 -->
     <main>
         <!--
-    增加一个大类
-    需要修改 id="list_ID" 中的“ID”和 JavaScript 中的“ListCountMax”
-    “ID”根据列表数量顺延
-    <section>
-        <h2>一级标题</h2>
-        <div id="list_ID">
-            <ul>
-                <li>
-                    <a href="#">二级标题</a>
-                    <ul>
-                        <li><a href="链接">链接标题</a></li>
-                        <li><a href="链接">链接标题</a></li>
-                    </ul>
-                </li>
-                <li><a href="链接">链接标题</a></li>
-            </ul>
-        </div>
-    </section>
-    -->
+        增加一个大类
+        1. 修改 id="list_ID" 中的“ID”
+        2. 修改 JavaScript 中的“ListCountMax”
+        3. “ID”根据列表数量顺延
+        <section>
+            <h2>一级标题</h2>
+            <div id="list_ID">
+                <ul>
+                    <li>
+                        <a href="#">二级标题</a>
+                        <ul>
+                            <li><a href="链接">链接标题</a></li>
+                            <li><a href="链接">链接标题</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="链接">链接标题</a></li>
+                </ul>
+            </div>
+        </section>
+        -->
         <section>
             <h2>百科 / 教程 / 科普 / 资料</h2>
             <div id="list_1">
@@ -94,7 +97,13 @@
                         <a href="#">教程</a>
                         <ul>
                             <li><a href="https://www.runoob.com/">菜鸟教程</a></li>
-                            <li><a href="http://www.w3school.com.cn/">w3school 在线教程</a></li>
+                            <li>
+                                <a href="#">w3school 在线教程</a>
+                                <ul>
+                                    <li><a href="http://www.w3school.com.cn/">w3school 在线教程</a></li>
+                                    <li><a href="http://www.w3school.com.cn/tiy/t.asp">W3School 在线测试工具</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -215,8 +224,7 @@
                                             <li>
                                                 <a href="#">官方</a>
                                                 <ul>
-                                                    <li><a href="https://www.vocaloid.com/">VOCALOID ( ボーカロイド・ボカロ )
-                                                            公式サイト</a></li>
+                                                    <li><a href="https://www.vocaloid.com/">VOCALOID ( ボーカロイド・ボカロ ) 公式サイト</a></li>
                                                     <li><a href="http://www.zenith-grp.com/henian/">上海禾念信息科技有限公司</a></li>
                                                     <li><a href="https://shop69979973.taobao.com/">上海禾念（淘宝网）</a></li>
                                                 </ul>
@@ -293,6 +301,7 @@
                                     <li><a href="http://www.youku.com/">优酷</a></li>
                                     <li><a href="http://www.acfun.cn/">AcFun</a></li>
                                     <li><a href="https://www.tokyostreetview.com/">TokyoStreetView</a></li>
+                                    <li><a href="https://www.utovr.com/">UtoVR - 带您进入VR世界</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -377,7 +386,6 @@
                             <li><a href="https://screen.51240.com/">屏幕检测</a></li>
                             <li><a href="http://nstool.netease.com/">网易 DNS 检测</a></li>
                             <li><a href="http://www.color.org/version4html.xalter">ICC Version 4</a></li>
-                            <li><a href="http://www.w3school.com.cn/tiy/t.asp">W3School 在线测试工具</a></li>
                         </ul>
                     </li>
                     <li>
@@ -421,6 +429,7 @@
                             <li><a href="http://tool.mkblog.cn/">孟坤工具箱</a></li>
                             <li><a href="http://tool.uixsj.cn/">现实君工具箱</a></li>
                             <li><a href="https://tool.lu/">在线工具</a></li>
+                            <li><a href="http://www.bejson.com/">Be JSON</a></li>
                             <!-- <li><a href="https://tools.imiku.me/">MikuTools</a></li> -->
                         </ul>
                     </li>
@@ -739,8 +748,6 @@
                         <a href="#">Windows</a>
                         <ul>
                             <li><a href="https://msdn.itellyou.cn/">MSDN，我告诉你</a></li>
-                            <li><a href="http://www.microsoft.com/zh-cn/download/details.aspx?id=5842">Windows 7
-                                    Service Pack 1</a></li>
                         </ul>
                     </li>
                     <li>
@@ -805,10 +812,8 @@
                                         <ul>
                                             <li><a href="http://www.zuimc.com/">最MC论坛</a></li>
                                             <li><a href="https://www.mcbbs.net/forum.php">Minecraft 中文论坛</a></li>
-                                            <li><a href="http://forum.minecraft-hk.com/portal.php">Minecraft-HK
-                                                    Community</a></li>
-                                            <li><a href="https://www.planetminecraft.com/">Planet Minecraft
-                                                    Community</a></li>
+                                            <li><a href="http://forum.minecraft-hk.com/portal.php">Minecraft-HK Community</a></li>
+                                            <li><a href="https://www.planetminecraft.com/">Planet Minecraft Community</a></li>
                                         </ul>
                                     </li>
                                     <li>
@@ -817,8 +822,7 @@
                                             <li>
                                                 <a href="#">官方</a>
                                                 <ul>
-                                                    <li><a href="https://minecraft-zh.gamepedia.com/">中文 Minecraft
-                                                            Wiki</a></li>
+                                                    <li><a href="https://minecraft-zh.gamepedia.com/">中文 Minecraft Wiki</a></li>
                                                     <li><a href="https://minecraft-zh.gamepedia.com/附魔">附魔</a></li>
                                                     <li><a href="https://minecraft-zh.gamepedia.com/记分板">记分板</a></li>
                                                     <li><a href="https://minecraft-zh.gamepedia.com/命令">命令</a></li>
@@ -901,29 +905,26 @@
                                     <li><a href="http://www.minecraft-crafting.net/">Crafting Guide</a></li>
                                     <li><a href="https://cuberite.org/">Cuberite</a></li>
                                     <li><a href="https://www.mcedit-unified.net/">MCEdit Unified</a></li>
+                                    <li><a href="https://mcreator.net/">MCreator - The Best Minecraft Mod Maker Ever</a></li>
+                                    <li><a href="https://overviewer.org/">Minecraft Overviewer</a></li>
                                     <li><a href="http://www.realtimerendering.com/erich/minecraft/public/mineways/">Mineways</a></li>
-                                    <li><a href="https://mcreator.net/">MCreator - The Best Minecraft Mod Maker
-                                            Ever</a></li>
                                     <li><a href="https://zh-cn.namemc.com/">NameMC</a></li>
                                     <li><a href="https://www.minecraftjson.com/">Tellraw Generator</a></li>
-                                    <li><a href="https://www.universalminecrafteditor.com/">Universal Minecraft
-                                            Editor</a></li>
+                                    <li><a href="https://www.universalminecrafteditor.com/">Universal Minecraft Editor</a></li>
                                 </ul>
                             </li>
                             <!--
-                        <li>
-                            <a href="#">黑科技</a>
-                            <ul>
-                                <li><a href="http://www.mchacks.net/">Minecraft Hacked Clients</a></li>
-                            </ul>
-                        </li>
-                        -->
+                            <li>
+                                <a href="#">黑科技</a>
+                                <ul>
+                                    <li><a href="http://www.mchacks.net/">Minecraft Hacked Clients</a></li>
+                                </ul>
+                            </li>
+                            -->
                             <li>
                                 <a href="#">开发</a>
                                 <ul>
                                     <li><a href="https://mcforge-cn.readthedocs.io/zh/latest/">Forge 文档</a></li>
-                                    <li><a href="https://mcforge-cn.readthedocs.io/zh/latest/gettingstarted/structuring/">Forge
-                                            文档 - Mod 的结构</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -935,21 +936,14 @@
                                             <li><a href="https://www.bakaxl.com/">BakaXL</a></li>
                                             <li><a href="http://jespertheend.com/">Jesper the End</a></li>
                                             <li><a href="https://www.mineimator.com/">Mine-imator</a></li>
-                                            <li><a href="https://www.curseforge.com/minecraft/mc-mods">Minecraft
-                                                    CurseForge (Mod)</a></li>
+                                            <li><a href="https://www.curseforge.com/minecraft/mc-mods">Minecraft CurseForge (Mod)</a></li>
                                             <li><a href="http://www.minecraftxz.com/">Minecraft 中文下载站</a></li>
                                         </ul>
                                     </li>
                                     <li>
                                         <a href="#">光影</a>
                                         <ul>
-                                            <li><a href="http://dedelner.net/">dedelner</a></li>
-                                            <li><a href="http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1290991-v05-mrmeepz-shaders-the-cats-shaderpack">MrMeepz'
-                                                    Shaders</a></li>
                                             <li><a href="http://sonicether.com/shaders/">SEUS</a></li>
-                                            <li><a href="http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1294110-a-super-shaders">super
-                                                    Shaders</a></li>
-                                            <li><a href="https://werrusshaders.wordpress.com/">Werrus Shaders</a></li>
                                         </ul>
                                     </li>
                                     <li>
@@ -961,8 +955,7 @@
                                                     <li><a href="http://files.minecraftforge.net/">Forge</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="http://chickenbones.net/Pages/links.html">Chicken Bones
-                                                    Downloads</a></li>
+                                            <li><a href="http://chickenbones.net/Pages/links.html">Chicken Bones Downloads</a></li>
                                             <li><a href="http://chocolateminecraft.com/">Chocolate Minecraft</a></li>
                                             <li><a href="http://ichun.us/">iChun's blog</a></li>
                                             <li><a href="http://www.liteloader.com/">LiteLoader</a></li>
@@ -987,13 +980,7 @@
                     <li>
                         <a href="#">RPG</a>
                         <ul>
-                            <li>
-                                <a href="#">橙光</a>
-                                <ul>
-                                    <li><a href="http://www.66rpg.com/">橙光游戏中心</a></li>
-                                    <li><a href="http://www.66rpg.com/game/1006301">厉害了我的国，一起去看辉煌中国</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="http://www.66rpg.com/">橙光游戏中心</a></li>
                         </ul>
                     </li>
                     <li>
@@ -1042,10 +1029,12 @@
                         <a href="#">建站</a>
                         <ul>
                             <li>
-                                <a href="#">插件</a>
+                                <a href="#">插件 / 框架</a>
                                 <ul>
+                                    <li><a href="https://www.bootcss.com/">Bootstrap 中文网</a></li>
                                     <li><a href="https://highlightjs.org/">highlight.js</a></li>
                                     <li><a href="https://jquery.com/">jQuery</a></li>
+                                    <li><a href="http://layer.layui.com/">layer</a></li>
                                     <li><a href="https://leafletjs.com/">Leaflet - 可交互的地图</a></li>
                                     <li><a href="http://threejs.org/">three.js – JavaScript 3D library</a></li>
                                 </ul>
@@ -1057,8 +1046,6 @@
                                     <li><a href="https://store.get233.com/">Mirages 主题</a></li>
                                 </ul>
                             </li>
-                            <li><a href="https://www.bootcss.com/">Bootstrap 中文网</a></li>
-                            <li><a href="http://layer.layui.com/">layer</a></li>
                             <li><a href="https://lnmp.org/">LNMP 一键安装包</a></li>
                             <li><a href="https://www.lsky.pro/">Lsky Pro - 图床</a></li>
                             <li><a href="http://www.directorylister.com/">PHP Directory Lister</a></li>
@@ -1096,6 +1083,8 @@
                                 <a href="#">播放器</a>
                                 <ul>
                                     <li><a href="#">Potplayer</a></li>
+                                    <li><a href="https://player.qq.com/">QQ影音</a></li>
+                                    <li><a href="https://www.videolan.org/">VLC</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -1112,15 +1101,13 @@
                                             <li><a href="https://violentmonkey.github.io/">Violentmonkey</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="https://sourceforge.net/projects/npp-plugins/files/">Notepad++
-                                            Plugins</a></li>
+                                    <li><a href="https://sourceforge.net/projects/npp-plugins/files/">Notepad++ Plugins</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#">创作 / 制作</a>
                                 <ul>
-                                    <li><a href="https://helpx.adobe.com/download-install/kb/creative-cloud-apps-download.html">Adobe
-                                            Creative Cloud apps</a></li>
+                                    <li><a href="https://helpx.adobe.com/download-install/kb/creative-cloud-apps-download.html">Adobe Creative Cloud apps</a></li>
                                     <li><a href="https://www.libreoffice.org/">LibreOffice</a></li>
                                     <li><a href="https://ephtracy.github.io/">MagicaVoxel</a></li>
                                     <li><a href="https://www.midieditor.org/">MidiEditor</a></li>
@@ -1147,8 +1134,9 @@
                                     <li><a href="https://www.cockos.com/licecap/">LICEcap</a></li>
                                     <li><a href="http://www.linuxliveusb.com/">LinuxLive USB Creator</a></li>
                                     <li><a href="http://pooi.moe/Locale-Emulator/">Locale Emulator</a></li>
+                                    <li><a href="https://www.mp3tag.de/">Mp3tag - 标签编辑器</a></li>
                                     <li><a href="https://zh.snipaste.com/">Snipaste</a></li>
-                                    <li><a href="https://x64dbg.com/">x64dbg - An open-source debugger for Windows</a></li>
+                                    <li><a href="https://x64dbg.com/">x64dbg - 开源的 Windows 调试工具</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -1175,10 +1163,8 @@
                                 <a href="#">虚拟化</a>
                                 <ul>
                                     <li><a href="https://www.virtualbox.org/">Oracle VM VirtualBox</a></li>
-                                    <li><a href="http://download.virtualbox.org/virtualbox/">Oracle VM VirtualBox
-                                            (Download)</a></li>
-                                    <li><a href="https://www.vmware.com/cn/products/workstation-pro.html">VMware
-                                            Workstation Pro</a></li>
+                                    <li><a href="http://download.virtualbox.org/virtualbox/">Oracle VM VirtualBox (Download)</a></li>
+                                    <li><a href="https://www.vmware.com/cn/products/workstation-pro.html">VMware Workstation Pro</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -1206,9 +1192,7 @@
                             <li>
                                 <a href="#">其他</a>
                                 <ul>
-                                    <li><a href="http://blog.sina.com.cn/s/blog_5f162b830102wosd.html">33 个 GIF
-                                            网页预加载 PSD</a></li>
-                                    <li><a href="http://geek.prdsarea.com/forum-256-1.html">MMD 模型</a></li>
+                                    <li><a href="http://geek.prdsarea.com/forum-256-1.html">尼特部落 - MMD 模型下载区</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -1234,8 +1218,7 @@
                             <li><a href="https://lbs.amap.com/">高德开放平台</a></li>
                             <li><a href="http://www.itpk.cn/robot.php">茉莉机器人 API</a></li>
                             <li><a href="https://open.tencent.com/">腾讯开放平台</a></li>
-                            <li><a href="javascript:prompt('API','https://music.163.com/song/media/outer/url?id={音乐 ID}.mp3'); void(0);">网易云音乐音频
-                                    API</a></li>
+                            <li><a href="javascript:prompt('API','https://music.163.com/song/media/outer/url?id=音乐 ID.mp3'); void(0);">网易云音乐音频 API</a></li>
                             <li><a href="https://open.weixin.qq.com/">微信开放平台</a></li>
                             <li><a href="https://open.weibo.com/">新浪微博开放平台</a></li>
                             <li><a href="https://www.xfyun.cn/">讯飞开放平台</a></li>
@@ -1263,7 +1246,7 @@
             </div>
         </section>
     </main>
-    <!-- 搜索面板 -->
+    <!-- 查找面板 -->
     <div class="search-panel">
         <div class="search-bar">
             <input class="search-input" type="text" placeholder="请输入关键词" onkeydown="if (event.keyCode == 13) {SearchMode = 1; searchLink();}">

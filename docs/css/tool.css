@@ -28,6 +28,17 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.page-background:after {
+    content: "";
+    z-index: -90;
+    position: inherit;
+    top: inherit;
+    left: inherit;
+    width: inherit;
+    height: inherit;
+    background: inherit;
+    filter: blur(4px);
+}
 
 /* 滚动条 */
 
