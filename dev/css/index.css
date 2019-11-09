@@ -13,14 +13,8 @@
     border-radius: 0;
     box-sizing: border-box;
     font-weight: normal;
-    margin: 0;
     outline: none;
-    padding: 0;
     user-select: none;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 body {
@@ -209,51 +203,6 @@ footer p {
     height: 1.5em;
     margin-right: 1em;
     width: 1.5em;
-}
-
-/* 背景 */
-
-.page-background {
-    z-index: -100;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-attachment: fixed;
-    background-image: url(../img/Unsplash_V6TWE6h8gyg.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.page-background:after {
-    content: "";
-    z-index: -90;
-    position: inherit;
-    top: inherit;
-    left: inherit;
-    width: inherit;
-    height: inherit;
-    background: inherit;
-    filter: blur(4px);
-}
-
-/* 滚动条 */
-
-::-webkit-scrollbar {
-    height: 8px;
-    width: 8px;
-}
-::-webkit-scrollbar-thumb {
-    background-color: #CCC;
-    border-radius: 0;
-}
-::-webkit-scrollbar-thumb:hover {
-    background-color: #03A9F4;
-}
-::-webkit-scrollbar-track {
-    background-color: #FFF;
-    border-radius: 0;
 }
 
 /* 工具面板 */
@@ -547,35 +496,4 @@ main section li a:not(.back) {
 .floating-bar-about,
 .floating-bar-totop {
     margin-left: 5px;
-}
-
-/* 选中 */
-
-::selection {
-    background:#03A9F4;
-    color:#FFF;
-}
-::-moz-selection {
-    background:#03A9F4;
-    color:#FFF;
-}
-::-webkit-selection {
-    background:#03A9F4;
-    color:#FFF;
-}
-
-/* 动画 */
-
-@keyframes spinner {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-@keyframes FloatingBarSlide {
-    from {
-        bottom: -50px;
-    }
 }

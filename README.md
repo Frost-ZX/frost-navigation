@@ -28,7 +28,7 @@
 
 ### 自定义
 
-[下载](https://github.com/Frost-ZX/frost-navigation/archive/master.zip) 后打开 `docs/index.html` 和 `docs/js/script.js` 根据需要进行修改。
+[下载](https://github.com/Frost-ZX/frost-navigation/archive/master.zip) 后打开 `docs/index.html` 和 `docs/js/script.min.js`（完整文件：`dev/js/script.js`） 根据需要进行修改。
 
 ## 第三方资源
 
@@ -39,7 +39,9 @@
 
 ## To Do
 
-- [x] 搜索框
+- [x] 搜索框（搜索引擎）
+- [x] 搜索框（网址）
+- [x] 小工具
 - [ ] 加入链接图标
 - [ ] 加入更多的链接
 - [ ] 美化
