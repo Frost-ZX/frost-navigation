@@ -208,13 +208,14 @@ footer p {
 /* 工具面板 */
 
 .tool-panel {
-    /* visibility: hidden; */
+    display: none;
     z-index: 100;
     position: fixed;
     left: 0;
-    bottom: -110%;
-    opacity: 0;
+    bottom: 0;
+    opacity: 1;
     transition: all 0.5s;
+    animation: ToolPanelShow 0.5s;
 }
 
 .tool-panel-bar {

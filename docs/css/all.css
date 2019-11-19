@@ -101,3 +101,13 @@ html {
         transform: rotate(360deg);
     }
 }
+@keyframes ToolPanelShow {
+    from {
+        bottom: -110%;
+        opacity: 0;
+    }
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
+}

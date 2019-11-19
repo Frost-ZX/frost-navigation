@@ -3,7 +3,6 @@
 /* ---- */
 
 // Slinky 插件的设置 //
-
 var SlinkyOption = {
     title: true,
     speed: 200
@@ -15,11 +14,9 @@ var ListCountMax = 17;                                                         /
 var FullsSreenText = document.getElementsByClassName("fullscreen-text")[0];    // 全屏文字
 
 // main 中的 A 标签的对象的集合（链接列表）//
-
 var LinkList = document.getElementsByTagName("main")[0].getElementsByTagName("a");
 
 // 搜索面板 //
-
 var SearchMode = 1;
 var SearchPanel = document.getElementsByClassName("search-panel")[0];          // 搜索面板
 var SearchInput = document.getElementsByClassName("search-input")[0];          // 搜索输入框
@@ -28,14 +25,12 @@ var SearchResultLink = document.getElementById("search-result-link");          /
 var SearchResultItem = "";
 
 // 搜索引擎 //
-
 var SearchEngineBaidu = document.getElementById("search-engine-baidu");        // 百度
 var SearchEngineBing = document.getElementById("search-engine-bing");          // Bing
 var SearchEngineGoogle = document.getElementById("search-engine-google");      // Google
 var SearchEnginebilibili = document.getElementById("search-engine-bilibili");  // bilibili
 
 // 工具面板 //
-
 var ToolPanel = document.getElementsByClassName("tool-panel")[0];   
 
 
@@ -44,7 +39,6 @@ var ToolPanel = document.getElementsByClassName("tool-panel")[0];
 /* ---- */
 
 // 查找字符 tChar 在 str 中第 num 次出现的位置 //
-
 function findChar(str, tChar, num) {
     var charPos = str.indexOf(tChar);
     num = num - 1;
@@ -56,8 +50,9 @@ function findChar(str, tChar, num) {
     return charPos;
 }
 
-// 设置 target = "_blank" //
+/* 链接列表 */
 
+// 设置 target = "_blank" //
 function setTarget() {
     for (var i = 0; i < LinkList.length; i++) {
         if (LinkList[i].href.endsWith("#") == false) {
@@ -73,7 +68,6 @@ function setTarget() {
 }
 
 // 显示列表 //
-
 function displayList() {
     document.getElementsByTagName("main")[0].style.opacity = "1";
     FullsSreenText.style.opacity = "0";
@@ -81,7 +75,6 @@ function displayList() {
 }
 
 // 加载列表 //
-
 function loadList() {
     ListCount = ListCount + 1;
     ListID = "#list_" + ListCount;
@@ -97,7 +90,7 @@ function loadList() {
 }
 var I_LoadList = setInterval("loadList()", 100);                               // 加载列表，间隔 100 毫秒
 
-// 搜索面板 //
+/* 链接搜索 */
 
 function searchLink() {
     var LinkListCount = LinkList.length;                                       // 循环次数
@@ -134,8 +127,9 @@ function searchLink() {
     }
 }
 
-// 搜索引擎 //
+/* 搜索引擎 */
 
+// 搜索 //
 function searchWeb() {
     var GetSearchWord = document.getElementById("search-engine-input");        // 关键词输入框
     var SearchWord = GetSearchWord.value;                                      // 关键词
@@ -151,6 +145,8 @@ function searchWeb() {
         GetSearchWord.value = "搜索引擎选择有误！"
     }
 }
+
+// 储存当前搜索引擎 //
 function setSearchEngine(Name) {
     switch (Name)
     {
@@ -168,6 +164,8 @@ function setSearchEngine(Name) {
         break;
     }
 }
+
+// 设置当前搜索引擎 //
 function getSearchEngine() {
     var SearchEngine = localStorage.getItem("SearchEngine");
     if (SearchEngine == "baidu") {
@@ -181,3 +179,21 @@ function getSearchEngine() {
     }
 }
 getSearchEngine();
+
+/* 工具面板 */
+
+// 显示 //
+function showToolPanel() {
+    ToolPanel.style.display = 'block';
+}
+
+// 关闭 //
+function closeToolPanel() {
+    ToolPanel.style.bottom = '-110%';
+    ToolPanel.style.opacity = '0';
+    setTimeout(function () {
+        ToolPanel.style.display = 'none';
+        ToolPanel.style.bottom = '0';
+        ToolPanel.style.opacity = '1';
+    }, 500);
+}

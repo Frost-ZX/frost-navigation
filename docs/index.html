@@ -428,6 +428,7 @@
                         <ul>
                             <li><a href="https://www.toolnb.com/">爱资料在线工具</a></li>
                             <li><a href="http://tool.mkblog.cn/">孟坤工具箱</a></li>
+                            <li><a href="https://wn.run/">万能命令 - 快捷寻找和直达你想要的各类工具</a></li>
                             <li><a href="http://tool.uixsj.cn/">现实君工具箱</a></li>
                             <li><a href="https://tool.lu/">在线工具</a></li>
                             <li><a href="http://www.bejson.com/">Be JSON</a></li>
@@ -438,7 +439,7 @@
                         <a href="#">举报</a>
                         <ul>
                             <li><a href="https://www.12321.cn/">12321 网络不良与垃圾信息举报受理中心</a></li>
-                            <li><a href="http://net.china.com.cn/">国家网信办举报中心</a></li>
+                            <li><a href="http://www.12377.cn/">国家网信办举报中心</a></li>
                         </ul>
                     </li>
                     <li>
@@ -1264,7 +1265,7 @@
         <div class="tool-panel-bar">
             <div class="tool-panel-blank"></div>
             <div class="tool-panel-newtab" onclick="window.open('tool.html');">新窗口</div>
-            <div class="tool-panel-close" onclick="ToolPanel.style.bottom = '-110%'; ToolPanel.style.opacity = '0';">关闭</div>
+            <div class="tool-panel-close" onclick="closeToolPanel()">关闭</div>
         </div>
         <div class="tool-panel-iframe">
             <iframe src="tool.html" frameborder="0"></iframe>
@@ -1275,7 +1276,7 @@
     <!-- 悬浮栏 -->
     <div class="floating-bar">
         <div class="floating-bar-search" onclick="SearchPanel.style.visibility = 'visible'; SearchInput.focus();">查找</div>
-        <div class="floating-bar-tool" onclick="ToolPanel.style.bottom = '0'; ToolPanel.style.opacity = '1';">工具</div>
+        <div class="floating-bar-tool" onclick="showToolPanel()">工具</div>
         <div class="floating-bar-about" onclick="window.open('https://github.com/Frost-ZX/frost-navigation/blob/master/README.md');">关于</div>
         <div class="floating-bar-totop" onclick="document.body.scrollTop = 0; document.documentElement.scrollTop = 0;">▲</div>
     </div>
