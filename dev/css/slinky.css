@@ -5,7 +5,7 @@
     transform: translateZ(0);
 }
 
-.slinky-menu > ul {
+.slinky-menu>ul {
     left: 0;
     position: relative;
     transform: translateZ(0);
@@ -76,6 +76,11 @@
 
 .slinky-theme-default a:not(.back):active {
     background: rgba(90, 200, 250, 0.5);
+}
+
+/* 显示链接 */
+.slinky-theme-default a:not([href="#"]):not([href^="javascript"])::after {
+    content: attr(href);
 }
 
 .slinky-theme-default .next::after,

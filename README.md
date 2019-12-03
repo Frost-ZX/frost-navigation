@@ -8,7 +8,7 @@
 ### 页面链接
 
 - [链接一](https://frost-zx.github.io/frost-navigation/)（GitHub Pages）
-- [链接二](https://frost-zx.top/)（网站）
+- [链接二](http://nav.frost-zx.top/)（网站）
 
 ### 提交链接
 

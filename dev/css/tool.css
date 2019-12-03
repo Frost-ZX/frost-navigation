@@ -97,7 +97,6 @@ body {
     font-weight: bold;
 }
 #tool-unixtime > p {
-    text-align: center;
     font-size: 16px;
     font-weight: bold;
 }
@@ -178,6 +177,20 @@ body {
 #tool-genlink textarea {
     resize: vertical;
     font-size: 14px;
+}
+
+/* 新窗口（小窗）中打开 */
+
+#tool-newwindow > div {
+    margin-bottom: 10px;
+}
+#tool-newwindow-link input[type="text"] {
+    padding: 5px;
+    width: 80%;
+}
+#tool-newwindow-meta input[type="text"] {
+    padding: 5px;
+    width: 100px;
 }
 
 /* 运行 JavaScript */

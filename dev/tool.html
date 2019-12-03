@@ -21,6 +21,7 @@
                     <li><a href="#tool-downloadtime">计算下载用时</a></li>
                 	<li><a href="#tool-calculate">简易计算</a></li>
                 	<li><a href="#tool-genlink">生成批量下载链接</a></li>
+                	<li><a href="#tool-newwindow">新窗口（小窗）中打开</a></li>
                 	<li><a href="#tool-runjs">运行 JavaScript</a></li>
                 </ul>
             </div>
@@ -29,7 +30,7 @@
         <div id="tool-unixtime">
             <header>Unix 时间戳转换</header>
             <!-- 时间戳转换为时间 -->
-            <p><marquee behavior="alternate" direction="right">时间戳转换为北京时间</marquee></p>
+            <p>时间戳转换为北京时间</p>
             <!-- 输入框 -->
             <div id="tool-unixtime-input-a">
                 <span>Unix 时间戳：</span><input type="text" />
@@ -48,7 +49,7 @@
             </div>
             <hr />
             <!-- 时间转换为时间戳 -->
-            <p><marquee behavior="alternate" direction="right">北京时间转换为时间戳</marquee></p>
+            <p>北京时间转换为时间戳</p>
             <!-- 输入框 -->
             <div id="tool-unixtime-input-b">
                 <span>时间：</span><input type="text" />
@@ -99,7 +100,7 @@
         <!-- 简易计算 -->
         <div id="tool-calculate">
             <header>简易计算</header>
-            <textarea id="tool-calculate-input" rows="6" placeholder="请输入算式（请使用“半角”符号）&#10;加：+ 减：- 乘：* 除：/&#10;多层括号：仅需使用 ()&#10;乘方运算：幂(底数, 指数)&#10;平方根：平方根(数值或算式)"></textarea>
+            <textarea id="tool-calculate-input" rows="8" placeholder="请输入算式（请使用“半角”符号）&#10;注意：受浮点精度影响，结果仅供参考&#10;加：+ 减：- 乘：* 除：/&#10;多层括号：仅需使用 ()&#10;乘方运算：幂(底数, 指数)&#10;平方根：平方根(数值或算式)"></textarea>
             <div>保留小数点后 <input id="tool-calculate-tofixed" type="text" title="0 ~ 16 之间（默认：4）" value="4" /> 位数</div>
             <div id="tool-calculate-result">结果：<span></span></div>
             <div class="tool-button" onclick="toolCalculateSubmit()">计算</div>
@@ -109,7 +110,8 @@
         <div id="tool-genlink">
             <header>生成批量下载链接</header>
             <div id="tool-genlink-link">
-                <b>网址：</b><input type="text" placeholder="变量用 (*) 表示" />
+                <span>网址：</span>
+                <input type="text" placeholder="变量用 (*) 表示" />
             </div>
             <hr />
             <div id="tool-genlink-settings">
@@ -150,6 +152,21 @@
             <div class="tool-button" onclick="toolGenLinkSubmit()">生成</div>
             <div class="tool-button" onclick="toolGenLinkClear()">清空</div>
             <textarea id="tool-genlink-result" rows="8" placeholder="结果"></textarea>
+        </div>
+        <!-- 新窗口（小窗）中打开 -->
+        <div id="tool-newwindow">
+            <header>新窗口（小窗）中打开</header>
+            <div id="tool-newwindow-link">
+                <span>网址：</span>
+                <input type="text" placeholder="需包含协议（例如 https://）" />
+            </div>
+            <div id="tool-newwindow-meta">
+                <span>大小：</span>
+                <input type="text" placeholder="宽度（默认 400）" />
+                <input type="text" placeholder="高度（默认 300）" />
+            </div>
+            <div class="tool-button" onclick="toolNewWindowSubmit()">打开</div>
+            <div class="tool-button" onclick="toolNewWindowClear()">清空</div>
         </div>
         <!-- 运行 JavaScript -->
         <div id="tool-runjs">

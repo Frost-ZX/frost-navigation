@@ -114,10 +114,10 @@ function toolUnixTimeSubmit() {
 
 // 按钮：重置 //
 function toolUnixTimeClear() {
-    document.getElementById("tool-unixtime-input-a").getElementsByTagName("input")[0].value = '';  // 清空输入框 A
-    document.getElementById("tool-unixtime-input-b").getElementsByTagName("input")[0].value = '';  // 清空输入框 B
-    document.getElementById("tool-unixtime-output-a").getElementsByTagName("input")[0].value = ''; // 清空输出框 A
-    document.getElementById("tool-unixtime-output-b").getElementsByTagName("input")[0].value = ''; // 清空输出框 B
+    document.querySelector("#tool-unixtime-input-a input").value = '';                             // 清空输入框 A
+    document.querySelector("#tool-unixtime-input-b input").value = '';                             // 清空输入框 B
+    document.querySelector("#tool-unixtime-output-a input").value = '';                             // 清空输出框 A
+    document.querySelector("#tool-unixtime-output-b input").value = '';                             // 清空输出框 B
 }
 
 /* ---- */
@@ -287,16 +287,39 @@ function toolGenLinkClear() {
     GetResult.placeholder = "结果";
 }
 
+/* -------------------- */
+/* 新窗口（小窗）中打开 */
+/* -------------------- */
+
+function toolNewWindowSubmit() {
+    var link = document.querySelector("#tool-newwindow-link input").value;               // 网址
+    var width = document.querySelectorAll("#tool-newwindow-meta input")[0].value;        // 宽度
+    var height = document.querySelectorAll("#tool-newwindow-meta input")[1].value;       // 高度
+    if (width == "") {
+        width = 400;
+    }
+    if (height == "") {
+        height = 300;
+    }
+    window.open(link, "_blank", "height=" + height + ", width=" + width + ", toolbar=no, menubar=no, scrollbars=yes, resizable=yes, location=yes, status=yes");
+}
+
+function toolNewWindowClear() {
+    document.querySelector("#tool-newwindow-link input").value = "";                     // 网址
+    document.querySelectorAll("#tool-newwindow-meta input")[0].value = "";               // 宽度
+    document.querySelectorAll("#tool-newwindow-meta input")[1].value = "";               // 高度
+}
+
 /* --------------- */
 /* 运行 JavaScript */
 /* --------------- */
 
 function toolRunJSSubmit() {
-    GetCode = document.getElementById("tool-runjs-input");  // 代码输入框
-    eval(GetCode.value);                                    // 运行
+    var GetCode = document.querySelector("#tool-runjs-input");  // 代码输入框
+    eval(GetCode.value);                                        // 运行
 }
 
 function toolRunJSClear() {
-    GetCode = document.getElementById("tool-runjs-input");  // 代码输入框
-    GetCode.value = '';                                     // 清空
+    var GetCode = document.querySelector("#tool-runjs-input");  // 代码输入框
+    GetCode.value = '';                                         // 清空
 }
