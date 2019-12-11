@@ -24,25 +24,28 @@
 
 ### 离线使用
 
-支持离线使用，[下载](https://github.com/Frost-ZX/frost-navigation/archive/master.zip) 后打开 `docs` 文件夹下的 `index.html` 即可，也可以将其加入浏览器的书签栏或在浏览器设置中将其设置为主页。
+支持离线使用，[下载](https://github.com/Frost-ZX/frost-navigation/archive/master.zip) 后打开 `index.html` 即可，也可以将其加入浏览器的书签栏或在浏览器设置中将其设置为主页。  
+`注意：需要手动更新文件`
 
 ### 自定义
 
-[下载](https://github.com/Frost-ZX/frost-navigation/archive/master.zip) 后打开 `dev/index.html` 和 `dev/js/script.js` 根据需要进行修改。
+- [下载](https://github.com/Frost-ZX/frost-navigation/archive/master.zip) 后打开 `index.html` 和 `js/script.js` 根据需要进行修改。
+- 修改完毕后，请根据需要在 `index.html` 中把 `<script src="js/index.min.js"></script>` 改为 `<script src="js/index.js"></script>` 或把 `js/script.js` 压缩为 `js/script.min.js`。
 
 ## 第三方资源
 
 ### 插件
 
-- [Slinky - A light-weight, responsive, mobile-like navigation menu plugin](https://github.com/alizahid/slinky)
-- [jQuery 3.2.1](https://jquery.org/license/)
+- [Slinky](https://github.com/alizahid/slinky)
+- [jQuery 3.2.1](https://jquery.org/)
 
 ## To Do
 
+- [x] 网站名称右侧显示网址
 - [x] 搜索框（搜索引擎）
 - [x] 搜索框（网址）
 - [x] 小工具
 - [ ] 加入链接图标
-- [ ] 加入更多的链接
 - [ ] 美化
+- [ ] 完善链接
 - [ ] 优化代码
