@@ -1,9 +1,40 @@
-var SettingFontSize = localStorage.getItem("SettingFont");
+/* ---- */
+/* 变量 */
+/* ---- */
 
-/* -------- */
-/* 字体大小 */
-/* -------- */
+var Settings = {
+    // 全局 //
+    Global: {
+        FontSize: localStorage.getItem("SettingFont")      // 字体大小
+    },
+    // 工具 //
+    Tool: {
+        // 生成随机字符串 //
+        GenString: {
+            length: "8",                                   // 长度
+            hasNum: true,                                  // 包含数字
+            hasChar: false,                                // 包含字母
+            hasSymbol: false,                              // 包含其他符号
+            caseSense: true,                               // 包含大小写
+            lowerCase: false                               // 全小写
+        }
+    }
+}
 
+/* ---- */
+/* 函数 */
+/* ---- */
+
+/* 返回顶部 */
+
+function toTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+/* 设置 */
+
+// 字体大小 //
 function toolSettingsFont(mode) {
     var RootEle = document.querySelector("html");
     var Input = document.querySelector(".tool-setting-font p input");
@@ -11,18 +42,18 @@ function toolSettingsFont(mode) {
     switch (mode){
         // 重置 //
         case "reset":
-            SettingFontSize = "16";
-            localStorage.setItem("SettingFont", SettingFontSize);
-            Output.innerHTML = Input.value = SettingFontSize;
-            RootEle.style.fontSize = SettingFontSize + "px";
+            Settings.Global.FontSize = "16";
+            localStorage.setItem("SettingFont", Settings.Global.FontSize);
+            Output.innerHTML = Input.value = Settings.Global.FontSize;
+            RootEle.style.fontSize = Settings.Global.FontSize + "px";
             break;
         // 获取 //
         case "get":
-            if (SettingFontSize == null) {
+            if (Settings.Global.FontSize == null) {
                 toolSettingsFont("reset");
             }
-            Output.innerHTML = Input.value = SettingFontSize;
-            RootEle.style.fontSize = SettingFontSize + "px";
+            Output.innerHTML = Input.value = Settings.Global.FontSize;
+            RootEle.style.fontSize = Settings.Global.FontSize + "px";
             break;
         // 显示数值 //
         case "show":
@@ -30,21 +61,18 @@ function toolSettingsFont(mode) {
             break;
         // 设置 //
         case "set":
-            SettingFontSize = Input.value;
-            localStorage.setItem("SettingFont", SettingFontSize);
-            RootEle.style.fontSize = SettingFontSize + "px";
+            Settings.Global.FontSize = Input.value;
+            localStorage.setItem("SettingFont", Settings.Global.FontSize);
+            RootEle.style.fontSize = Settings.Global.FontSize + "px";
             break;
         default:
             break;
     }
 }
-toolSettingsFont("get");
 
-/* --------------- */
 /* Unix 时间戳转换 */
-/* --------------- */
 
-// 函数：将传入的时间转换为时间戳 //
+// 将传入的时间转换为时间戳 //
 function toolUnixTimeToUnix(GetTime, isMillisecond) {
     var Time = new Date();                      // 创建 Date 对象
     // 根据 GetTime 设置时间 //
@@ -70,7 +98,7 @@ function toolUnixTimeToUnix(GetTime, isMillisecond) {
     }
 }
 
-// 函数：将传入的时间戳转换为时间 //
+// 将传入的时间戳转换为时间 //
 function toolUnixTimeToTime(GetUnix, isMillisecond) {
     var Time = new Date();               // 创建 Date 对象
     // 根据 isMillisecond 确认输入的单位
@@ -114,7 +142,7 @@ function toolUnixTimeToTime(GetUnix, isMillisecond) {
     return TimeYear + "-" + TimeMonth + "-" + TimeDate + " " + TimeHour + ":" + TimeMinute + ":" + TimeSecond;
 }
 
-// 按钮：当前 //
+// 当前 //
 function toolUnixTimeNow() {
     var GetInputA = document.getElementById("tool-unixtime-input-a").getElementsByTagName("input")[0];   // 输入框 A
     var GetInputB = document.getElementById("tool-unixtime-input-b").getElementsByTagName("input")[0];   // 输入框 B
@@ -133,7 +161,7 @@ function toolUnixTimeNow() {
     GetInputB.value = toolUnixTimeToTime(new Date().getTime(), true);             // 时间
 }
 
-// 按钮：转换 //
+// 转换 //
 function toolUnixTimeSubmit() {
     var GetInputA = document.getElementById("tool-unixtime-input-a").getElementsByTagName("input")[0];   // 输入框 A
     var GetInputB = document.getElementById("tool-unixtime-input-b").getElementsByTagName("input")[0];   // 输入框 B
@@ -162,9 +190,7 @@ function toolUnixTimeClear() {
     document.querySelector("#tool-unixtime-output-b input").value = '';                             // 清空输出框 B
 }
 
-/* ---- */
 /* 计算 */
-/* ---- */
 
 function toolCalculateSubmit() {
     GetInput = document.getElementById("tool-calculate-input");     // 算式输入框
@@ -188,9 +214,7 @@ function toolCalculateClear() {
     GetResult.innerText = '';                                       // 清空“结果”
 }
 
-/* ---------------- */
 /* 生成批量下载链接 */
-/* ---------------- */
 
 function toolGenLinkSubmit() {
     var VarText = "(*)"; // 变量表示
@@ -340,32 +364,35 @@ function toolGenLinkClear() {
  * 065 - 090：A - Z
  * 091 - 096：[ - `
  * 097 - 122：a - z
- * 123 - 127：{ - 空格
+ * 123 - 127：{ -
  * 
  * @param length 长度
- * @param hasNum 是否包含数字（1-包含，0-不包含）
- * @param hasChar 是否包含字母（1-包含，0-不包含）
- * @param hasSymbol 是否包含其他符号（1-包含，0-不包含）
- * @param caseSense 是否大小写敏感（1-敏感，0-不敏感）
- * @param lowerCase 是否只需要小写，当 caseSense 为 0 时起作用（1-全部小写，0-全部大写）
+ * @param hasNum 是否包含数字
+ * @param hasChar 是否包含字母
+ * @param hasSymbol 是否包含其他符号
+ * @param caseSense 是否包含大小写
+ * @param lowerCase 是否全小写，当 caseSense 为 false 时起作用
  */
 
 function toolGenString(length, hasNum, hasChar, hasSymbol, caseSense, lowerCase) {
-    var m = "";
-    if (hasNum == "0" && hasChar == "0" && hasSymbol == "0") return m;
-    for (var i = length; i >= 0; i--) {
+    var m = "请选中数字、字母或其他符号的其中一项！";
+    if (hasNum == false && hasChar == false && hasSymbol == false) {
+        return m;
+    }
+    m = "";
+    for (var i = length; i > 0; i--) {
         var num = Math.floor((Math.random() * 94) + 33);
         if (
             (
-                (hasNum == "0") && ((num >= 48) && (num <= 57))
+                (hasNum == false) && ((num >= 48) && (num <= 57))
             ) || (
-                (hasChar == "0") && ((
+                (hasChar == false) && ((
                     (num >= 65) && (num <= 90)
                 ) || (
                     (num >= 97) && (num <= 122)
                 ))
             ) || (
-                (hasSymbol == "0") && ((
+                (hasSymbol == false) && ((
                     (num >= 33) && (num <= 47)
                 ) || (
                     (num >= 58) && (num <= 64)
@@ -381,15 +408,47 @@ function toolGenString(length, hasNum, hasChar, hasSymbol, caseSense, lowerCase)
         }
         m += String.fromCharCode(num);
     }
-    if (caseSense == "0") {
-        m = (lowerCase == "0") ? m.toUpperCase() : m.toLowerCase();
+    if (caseSense == false) {
+        m = (lowerCase == false) ? m.toUpperCase() : m.toLowerCase();
     }
     return m;
 }
 
-/* -------------------- */
+function toolGenStringSettings(name) {
+    var InputSettings = document.querySelectorAll("#genstring-settings p input");
+    var ObjSettings = Settings.Tool.GenString;
+    switch (name){
+        case "length":
+            ObjSettings.length = InputSettings[0].value;
+            break;
+        case "hasNum":
+            ObjSettings.hasNum = InputSettings[1].checked;
+            break;
+        case "hasChar":
+            ObjSettings.hasChar = InputSettings[2].checked;
+            break;
+        case "hasSymbol":
+            ObjSettings.hasSymbol = InputSettings[3].checked;
+            break;
+        case "caseSense":
+            ObjSettings.caseSense = InputSettings[4].checked;
+            break;
+        case "lowerCase":
+            ObjSettings.lowerCase = InputSettings[5].checked;
+            break;
+        default:
+            break;
+    }
+}
+
+function toolGenStringSubmit() {
+    var Result = document.querySelector("#genstring-result input");
+    var ObjSettings = Settings.Tool.GenString;
+    var Str = toolGenString(ObjSettings.length, ObjSettings.hasNum, ObjSettings.hasChar, ObjSettings.hasSymbol, ObjSettings.caseSense, ObjSettings.lowerCase);
+    Result.value = Str;
+}
+
 /* 新窗口（小窗）中打开 */
-/* -------------------- */
 
 function toolNewWindowSubmit() {
     var link = document.querySelector("#tool-newwindow-link input").value;               // 网址
@@ -410,9 +469,7 @@ function toolNewWindowClear() {
     document.querySelectorAll("#tool-newwindow-meta input")[1].value = "";               // 高度
 }
 
-/* --------------- */
 /* 运行 JavaScript */
-/* --------------- */
 
 function toolRunJSSubmit() {
     var GetCode = document.querySelector("#tool-runjs-input");  // 代码输入框
@@ -423,3 +480,15 @@ function toolRunJSClear() {
     var GetCode = document.querySelector("#tool-runjs-input");  // 代码输入框
     GetCode.value = '';                                         // 清空
 }
+
+/* ---- */
+/* 事件 */
+/* ---- */
+
+
+
+/* ---- */
+/* 调用 */
+/* ---- */
+
+toolSettingsFont("get"); // 读取字体大小

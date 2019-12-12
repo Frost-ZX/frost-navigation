@@ -159,7 +159,7 @@
                     </p>
                     <p>
                         <input type="checkbox" name="genlink-settings-a-reverse" id="genlink-settings-a-zero" />
-                        <label for="genlink-settings-a-zero">补0（暂不支持负数）&nbsp;</label>
+                        <label for="genlink-settings-a-zero">补0（不支持负数）&nbsp;</label>
                         <input type="checkbox" name="genlink-settings-a-reverse" id="genlink-settings-a-reverse" />
                         <label for="genlink-settings-a-reverse">倒序</label>
                     </p>
@@ -175,7 +175,7 @@
                     </p>
                     <p>
                         <input type="checkbox" name="genlink-settings-b-reverse" id="genlink-settings-b-zero"  />
-                        <label for="genlink-settings-b-zero">补0（暂不支持负数）&nbsp;</label>
+                        <label for="genlink-settings-b-zero">补0（不支持负数）&nbsp;</label>
                         <input type="checkbox" name="genlink-settings-b-reverse" id="genlink-settings-b-reverse" />
                         <label for="genlink-settings-b-reverse">倒序</label>
                     </p>
@@ -202,17 +202,25 @@
         </div>
         <!-- 生成随机字符串 -->
         <div id="tool-genstring">
-            <header>生成随机字符串（未完成）</header>
+            <header>生成随机字符串</header>
             <div id="genstring-settings">
-                <p><b>选项</b></p>
                 <p>
-                    <input type="checkbox" id="genstring-setting-a" checked /><label for="genstring-setting-a"> 数字</label>
-                    <input type="checkbox" id="genstring-setting-b" /><label for="genstring-setting-b"> 字母</label>
-                    <input type="checkbox" id="genstring-setting-c" /><label for="genstring-setting-c"> 其他符号</label>
-                    <input type="checkbox" id="genstring-setting-d" checked /><label for="genstring-setting-d"> 大小写</label>
+                    <label for="genstring-setting-a">长度：</label>
+                    <input type="text" id="genstring-setting-a" value="8" oninput="toolGenStringSettings('length')" />
                 </p>
                 <p>
-                    <input type="checkbox" id="genstring-setting-e" /><label for="genstring-setting-e"> 全小写（选中“大小写”时起作用）</label>
+                    <input type="checkbox" id="genstring-setting-b" checked onchange="toolGenStringSettings('hasNum')" />
+                    <label for="genstring-setting-b">数字</label>
+                    <input type="checkbox" id="genstring-setting-c" onchange="toolGenStringSettings('hasChar')" />
+                    <label for="genstring-setting-c">字母</label>
+                    <input type="checkbox" id="genstring-setting-d" onchange="toolGenStringSettings('hasSymbol')" />
+                    <label for="genstring-setting-d">其他符号</label>
+                    <input type="checkbox" id="genstring-setting-e" checked onchange="toolGenStringSettings('caseSense')" />
+                    <label for="genstring-setting-e">大小写</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="genstring-setting-f" onchange="toolGenStringSettings('lowerCase')" />
+                    <label for="genstring-setting-f">全小写（需选中“字母”且不选中“大小写”）</label>
                 </p>
             </div>
             <hr />
@@ -220,8 +228,12 @@
                 <b>结果：</b><input type="text" />
             </div>
             <hr />
+            <div>
+                代码来源：<a href="https://www.cnblogs.com/hankuksui/p/9892729.html" target="_blank">hankuksui</a>
+            </div>
+            <hr />
             <div class="tool-button">
-                <div onclick="">生成</div>
+                <div onclick="toolGenStringSubmit()">生成</div>
             </div>
         </div>
         <!-- 新窗口（小窗）中打开 -->
@@ -254,7 +266,7 @@
         </div>
     </div>
     <!-- 返回顶部 -->
-    <div class="to-top" onclick="document.body.scrollTop = 0; document.documentElement.scrollTop = 0;">▲</div>
+    <div class="to-top" onclick="toTop()">▲</div>
     <!-- 背景 -->
     <div class="page-background"></div>
     <!-- JavaScript -->

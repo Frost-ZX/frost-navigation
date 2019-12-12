@@ -196,6 +196,7 @@ body {
 
 #genstring-result input[type="text"] {
     width: 80%;
+    font-family: monospace;
 }
 
 /* 新窗口（小窗）中打开 */
