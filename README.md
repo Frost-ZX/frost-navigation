@@ -33,8 +33,7 @@
 
 ### 自定义
 
-- [下载](https://github.com/Frost-ZX/frost-navigation/archive/master.zip) 后打开 `index.html` 和 `js/script.js` 根据需要进行修改。
-- 修改完毕后，请根据需要在 `index.html` 中把 `<script src="js/index.min.js"></script>` 改为 `<script src="js/index.js"></script>` 或把 `js/script.js` 压缩为 `js/script.min.js`。
+- [下载](https://github.com/Frost-ZX/frost-navigation/archive/master.zip) 后打开 `index.html` 和 `assets/js/nav-links.js` 根据需要进行修改。
 
 ## 第三方资源
 

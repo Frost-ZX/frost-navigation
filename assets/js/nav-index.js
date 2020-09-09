@@ -2,17 +2,6 @@
 /* 变量 */
 /* ---- */
 
-// Slinky 插件的设置 //
-var SlinkyOption = {
-    title: true,
-    speed: 200
-};
-
-var ListID = "#list_";                                                         // 列表 ID 前缀
-var ListCount = 0;
-var ListCountMax = 17;                                                         // 列表总数
-var FullsSreenText = document.querySelector(".fullscreen-text");               // 全屏文字
-
 // main 中的 A 标签的对象的集合（链接列表）//
 var LinkList = document.querySelectorAll("main a");
 
@@ -37,60 +26,6 @@ var ToolPanel = document.querySelector(".tool-panel");
 /* ---- */
 /* 函数 */
 /* ---- */
-
-// 查找字符 tChar 在 str 中第 num 次出现的位置 //
-function findChar(str, tChar, num) {
-    var charPos = str.indexOf(tChar);
-    num = num - 1;
-    if (num > 0) {
-        for (var i = 0; i < num; i++) {
-            charPos = str.indexOf(tChar, charPos + 1);
-        }
-    }
-    return charPos;
-}
-
-/* 链接列表 */
-
-// 设置 target = "_blank" //
-function setTarget() {
-    for (var i = 0; i < LinkList.length; i++) {
-        if (LinkList[i].href.endsWith("#") == false) {
-            LinkList[i].target = "_blank";
-            /* 自动加图标（暂不使用）
-            var slashPos = findChar(LinkList[i].href, '/', 3);
-            getFavicon = "https://www.google.cn/s2/favicons?domain=" + LinkList[i].href.substring(0, slashPos);
-            var imgTag = "<img src='" + getFavicon + "' />";
-            LinkList[i].insertAdjacentHTML("beforeBegin", imgTag);
-            */
-        }
-    }
-}
-
-// 显示列表 //
-function displayList() {
-    document.querySelector("main").style.opacity = "1";
-    FullsSreenText.style.opacity = "0";
-    setTimeout(function () {
-        document.querySelector(".fullscreen-text").style.display = "none";
-    }, 1000);
-}
-
-// 加载列表 //
-function loadList() {
-    ListCount = ListCount + 1;
-    ListID = "#list_" + ListCount;
-    $(ListID).slinky(SlinkyOption);
-    FullsSreenText.innerHTML = "已加载 " + ListCount + " 个分类";              // 全屏文字
-    // 加载完毕 //
-    if (ListCount == ListCountMax) {
-        clearInterval(I_LoadList);                                             // 停止定时执行
-        FullsSreenText.innerHTML = "加载完毕";                                 // 全屏文字
-        setTarget();                                                           // 设置 target
-        displayList();                                                         // 显示列表
-    }
-}
-var I_LoadList = setInterval("loadList()", 100);                               // 加载列表，间隔 100 毫秒
 
 /* 链接查找 */
 

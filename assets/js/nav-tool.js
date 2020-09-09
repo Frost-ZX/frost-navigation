@@ -25,13 +25,6 @@ var Settings = {
 /* 函数 */
 /* ---- */
 
-/* 返回顶部 */
-
-function toTop() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
-
 /* 设置 */
 
 // 字体大小 //
