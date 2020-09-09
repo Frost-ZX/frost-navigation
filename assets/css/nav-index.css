@@ -24,7 +24,7 @@ a:active {
 h2 {
     color: #FFF;
     font-size: 1.6em;
-    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 2px #00000040;
 }
 h3 {
     color: #03A9F4;
@@ -47,7 +47,7 @@ header p {
 }
 
 main {
-    /* opacity: 0; */
+    opacity: 0;
     background-color: transparent;
     transition: opacity 1s;
 }
@@ -77,20 +77,22 @@ footer p {
     animation: ToolPanelShow 0.5s;
 }
 
-.tool-panel-bar {
-    height: 32px;
+.tool-panel-bar,
+.tool-panel-newtab,
+.tool-panel-close,
+.tool-panel-blank {
+    height: 40px;
 }
 
 .tool-panel-newtab,
 .tool-panel-close {
     position: absolute;
     top: 0;
-    height: 32px;
-    width: 64px;
-    box-shadow: -2px 0 10px 0 rgba(0, 0, 0, 0.1);
-    line-height: 32px;
+    width: 80px;
+    box-shadow: -2px 0 10px 0 #00000020;
+    line-height: 40px;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
     color: #FFF;
 }
 
@@ -98,14 +100,13 @@ footer p {
     position: absolute;
     top: 0;
     left: 0;
-    height: 32px;
     width: 100%;
     background-color: #FFF;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px #00000020;
 }
 
 .tool-panel-newtab {
-    right: 72px;
+    right: calc(80px + 8px);
     background-color: #2196F3;
 }
 
@@ -115,7 +116,7 @@ footer p {
 }
 
 .tool-panel-iframe iframe {
-    height: calc(100vh - 32px);
+    height: calc(100vh - 40px);
     width: 100vw;
 }
 
@@ -161,34 +162,35 @@ main section li a:not(.back) {
 }
 .search-bar{
     text-align: center;
+    font-size: 0;
 }
 .search-bar .search-input {
+    position: relative;
+    top: -2px; /* 修正 border 导致的垂直位移 */
     margin: 20px 5px 0 0;
-    padding: 0 15px;
+    padding: 0 10px;
     width: 60%;
-    height: 50px;
-    border: solid 2px #03A9F4;
-    box-shadow: 0 0 5px rgba(3, 169, 244, 0.1);
-    font-size: 20px;
+    height: 40px;
+    border: solid 2px #4CAF50;
+    font-size: 16px;
     transition: border 0.2s;
 }
 .search-bar .search-input:hover {
-    border: solid 2px #00BCD4;
+    border-color: #388E3C;
 }
 .search-bar .search-submit,
 .search-bar .search-cancel {
-    width: 75px;
-    height: 50px;
+    width: 70px;
+    height: 40px;
     border: none;
-    background-color: #03A9F4;
-    box-shadow: 0 5px 10px -5px rgba(3, 169, 244, 0.4);
-    font-size: 20px;
+    background-color: #4CAF50;
+    font-size: 16px;
     color: #FFF;
     transition: background 0.2s;
 }
 .search-bar .search-submit:hover,
 .search-bar .search-cancel:hover {
-    background-color: #00BCD4;
+    background-color: #388E3C;
 }
 .search-bar .search-submit {
     margin-right: 5px;
@@ -202,7 +204,7 @@ main section li a:not(.back) {
 .search-result a {
     display: block;
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 18px;
 }
 #search-result-title {
     border-bottom: 1px solid #DDD;
@@ -288,39 +290,39 @@ main section li a:not(.back) {
 }
 /* radio 样式 */
 .search-engine-select ul li input[type="radio"] {
-  position: absolute;
-  opacity: 0;
+    position: absolute;
+    opacity: 0;
 }
 .search-engine-select ul li input[type="radio"] + label:before {
-  content: '';
-  border-radius: 0px;
-  background: #FFF;
-  border: 1px solid #999;
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  position: relative;
-  top: 0;
-  margin-right: 0.25em;
-  vertical-align: top;
-  text-align: center;
-  transition: all 0.25s ease;
+    content: '';
+    border-radius: 0px;
+    background: #FFF;
+    border: 1px solid #999;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    position: relative;
+    top: 0;
+    margin-right: 0.25em;
+    vertical-align: top;
+    text-align: center;
+    transition: all 0.25s ease;
 }
 .search-engine-select ul li input[type="radio"]:checked + label:before {
-  background-color: #03A9F4;
-  box-shadow: inset 0 0 0 2px #FFF;
+    background-color: #4CAF50;
+    box-shadow: inset 0 0 0 2px #FFF;
 }
 .search-engine-select ul li input[type="radio"]:focus + label:before {
-  outline: none;
-  border-color: #00BCD4;
+    outline: none;
+    border-color: #4CAF50;
 }
 .search-engine-select ul li input[type="radio"]:disabled + label:before {
-  box-shadow: inset 0 0 0 2px #FFF;
-  border-color: #999;
-  background: #999;
+    box-shadow: inset 0 0 0 2px #FFF;
+    border-color: #999;
+    background: #999;
 }
 .search-engine-select ul li input[type="radio"] + label:empty:before {
-  margin-right: 0;
+    margin-right: 0;
 }
 
 /* 悬浮栏 */
@@ -329,28 +331,32 @@ main section li a:not(.back) {
     z-index: 50;
     position: fixed;
     left: 0;
-    bottom: 20px;
+    bottom: 0;
+    padding: 4px 0;
+    box-shadow: 0 0 10px 0 #00000020;
+    background-color: #FFF;
     width: 100%;
-    /* opacity: 0.9; */
     text-align: center;
+    font-size: 0;
     animation: FloatingBarSlide 1s ease-out 1;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .floating-bar-search,
 .floating-bar-tool,
 .floating-bar-about,
 .floating-bar-totop {
     display: inline-block;
-    width: 50px;
-    height: 32px;
-    background-color: #4CAF50;
-    box-shadow: 0 8px 10px -4px rgba(76, 175, 80, 0.5);
+    width: 64px;
+    height: 35px;
+    background-color: #009688;
     text-align: center;
-    line-height: 32px;
-    font-size: 14px;
+    line-height: 35px;
+    font-size: 16px;
     color: #fff;
 }
 .floating-bar-tool,
 .floating-bar-about,
 .floating-bar-totop {
-    margin-left: 5px;
+    margin-left: 4px;
 }
