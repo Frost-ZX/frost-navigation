@@ -21,6 +21,10 @@
 
 - 该功能待开发
 
+### 注意
+
+- 部分链接由于不能及时更新，可能已过期（不存在、指向了错误的网站等），访问时请注意。若您在使用时发现相关情况，欢迎进行反馈。
+
 
 ## 本项目使用
 
@@ -28,6 +32,7 @@
 - [Vue Router](https://router.vuejs.org/)
 - [Element UI - 桌面端组件库](https://element.eleme.cn/)
 - [ress - Modern CSS reset](https://github.com/filipelinhares/ress)
+
 
 ## 反馈
 
@@ -37,7 +42,7 @@
 
 ### 修正链接
 
-请到 [Issues](https://github.com/Frost-ZX/frost-navigation/issues)  ，根据相关提示进行提交。
+请到 [Issues](https://github.com/Frost-ZX/frost-navigation/issues) ，根据相关提示进行提交。
 
 
 ## 开发
