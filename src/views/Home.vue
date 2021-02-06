@@ -24,7 +24,15 @@
         <el-main class="home-content">
 
             <!-- 链接搜索框 -->
-            <el-input v-model="linkSearchText" class="link-search" placeholder="输入关键词以搜索链接"></el-input>
+            <el-input v-model="linkSearch.keyword" class="link-search" placeholder="输入关键词以搜索链接"
+                prefix-icon="el-icon-search" clearable
+            >
+                <el-select slot="prepend" v-model="linkSearch.type" placeholder="类型">
+                    <el-option label="全部" value="all"></el-option>
+                    <el-option label="标题" value="title"></el-option>
+                    <el-option label="链接" value="link"></el-option>
+                </el-select>
+            </el-input>
             
             <!-- 链接列表树 -->
             <el-tree ref="linkTree" class="link-tree" :data="currentLinks" :props="{ label: 'title', children: 'sub' }"
@@ -50,19 +58,28 @@ export default {
             navLinks: this.$root.navLinks,
             // 当前显示的链接
             currentLinks: [],
-            // 搜索关键词
-            linkSearchText: '',
-            linkSearchDebounce: null
+            // 搜索链接
+            linkSearch: {
+                debounce: null,
+                keyword: '',
+                type: 'all'
+            }
         };
     },
     watch: {
-        'linkSearchText': {
+        'linkSearch.keyword': {
             handler(value) {
-                clearTimeout(this.linkSearchDebounce);
+                clearTimeout(this.linkSearch.debounce);
 
-                this.linkSearchDebounce = setTimeout(() => {
+                this.linkSearch.debounce = setTimeout(() => {
                     this.$refs.linkTree.filter(value);
                 }, 500);
+            }
+        },
+        'linkSearch.type': {
+            handler() {
+                // 更改搜索类型时自动重新搜索
+                this.$refs.linkTree.filter(this.linkSearch.keyword);
             }
         }
     },
@@ -95,12 +112,27 @@ export default {
          */
         searchLink(value, data) {
             // 关键词为空，显示全部
+
             if (value == '') {
                 return true
             }
 
             // 过滤后
-            var result = (data.title.indexOf(value) !== -1) || (data.link && (data.link.indexOf(value) !== -1));
+
+            var searchType = this.linkSearch.type;
+            var result = false;
+
+            if (searchType == 'all') {
+                // 全部
+                result = (data.title.toLowerCase().indexOf(value) !== -1) || (data.link && (data.link.indexOf(value) !== -1));
+            } else if (searchType == 'title') {
+                // 标题
+                result = (data.title.toLowerCase().indexOf(value) !== -1);
+            } else if (searchType == 'link') {
+                // 链接
+                result = (data.link && (data.link.indexOf(value) !== -1));
+            }
+
             return result;
         }
     },
@@ -132,6 +164,18 @@ export default {
         z-index: 100;
         top: 0;
         margin-bottom: 1rem;
+
+        /deep/ .el-input-group__prepend {
+            background-color: #FFF;
+
+            .el-select .el-input {
+                width: 4.5rem;
+
+                input {
+                    padding: 0 0.75rem;
+                }
+            }
+        }
     }
 
     .link-tree {
