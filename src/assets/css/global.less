@@ -1,0 +1,60 @@
+/* -- 全局样式 -- */
+
+// 变量
+
+@headerHeight: 4rem;
+
+@colorPrimary: #409EFF;
+@colorSecondary: #67C23A;
+@colorWhite: #F5F5F5;
+
+// 滚动条
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: #F5F5F5;
+
+    &:hover {
+        background-color: @colorPrimary;
+    }
+}
+
+// 标签
+
+html {
+    font-size: 16px;
+}
+
+body {
+    user-select: none;
+}
+
+// 阴影
+
+.shadow-1 {
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+// 加载中（链接列表）
+
+.loading-link {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(0.2rem);
+
+    .el-icon-loading {
+        font-size: 2rem !important;
+    }
+
+    .el-loading-text {
+        font-size: 1.5rem !important;
+    }
+}
