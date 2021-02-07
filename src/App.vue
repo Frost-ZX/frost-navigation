@@ -5,13 +5,14 @@
             <!-- Header -->
             <el-header class="main-header shadow-1">
                 <!-- LOGO -->
-                <el-avatar class="logo" shape="square" size="medium" src="./favicon.ico"></el-avatar>
+                <el-avatar class="logo" shape="square" size="small" src="./favicon.ico"></el-avatar>
 
                 <!-- 菜单 -->
                 <el-menu class="menu" default-active="home" mode="horizontal">
                     <el-menu-item index="title" class="title" disabled>Frost 网址导航</el-menu-item>
                     <el-menu-item index="home">主页</el-menu-item>
                     <el-menu-item index="tools" disabled>小工具</el-menu-item>
+                    <el-menu-item index="settings" disabled>设置</el-menu-item>
                 </el-menu>
             </el-header>
 
@@ -39,6 +40,7 @@
             line-height: 2.5rem;
 
             &.is-active {
+                border-bottom-color: transparent;
                 color: @colorPrimary !important;
             }
         }

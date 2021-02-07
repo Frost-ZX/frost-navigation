@@ -4,9 +4,9 @@
 
 @headerHeight: 4rem;
 
-@colorPrimary: #409EFF;
+@colorPrimary: #2196F3;
 @colorSecondary: #67C23A;
-@colorWhite: #F5F5F5;
+@colorWhite: #F9F9F9;
 
 // 滚动条
 
@@ -21,7 +21,7 @@
 
 ::-webkit-scrollbar-thumb {
     border-radius: 1rem;
-    background-color: #F5F5F5;
+    background-color: #EEE;
 
     &:hover {
         background-color: @colorPrimary;
@@ -30,12 +30,24 @@
 
 // 标签
 
-html {
-    font-size: 16px;
-}
-
 body {
     user-select: none;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+// 限制长度
+
+.limitLine(@line) {
+    display: -webkit-box;
+    -webkit-line-clamp: @line;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.limit-line-1 {
+    .limitLine(1);
 }
 
 // 阴影
@@ -44,7 +56,11 @@ body {
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
 }
 
-// 加载中（链接列表）
+.shadow-2 {
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+
+// 载入中（链接列表）
 
 .loading-link {
     background-color: rgba(255, 255, 255, 0.5) !important;
@@ -57,4 +73,10 @@ body {
     .el-loading-text {
         font-size: 1.5rem !important;
     }
+}
+
+// Element
+
+.el-select-dropdown {
+    border: none !important;
 }

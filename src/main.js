@@ -3,11 +3,12 @@ import ElementUI from 'element-ui';
 import App from './App.vue';
 import router from './router';
 
-import navLinks from '../public/static/js/navLinks'
-import utils from './assets/js/utils'
+import config from './assets/js/config';
+import navLinks from './assets/js/navLinks';
+import utils from './assets/js/utils';
 
 import 'ress/ress.css';
-import 'element-ui/lib/theme-chalk/index.css';
+import './assets/css/element.scss';
 
 (function () {
     var init = utils.initNavLinkID();
@@ -25,6 +26,7 @@ new Vue({
     router,
     data: function () {
         return {
+            config,
             navLinks,
             utils
         }

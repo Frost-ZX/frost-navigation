@@ -8,7 +8,7 @@ class Utils {
      * 初始化链接列表，设置唯一ID
      */
     initNavLinkID() {
-        // 加载中提示
+        // 载入中提示
         var loading = Loading.service({
             customClass: 'loading-link',
             lock: true,
@@ -50,7 +50,7 @@ class Utils {
         var timer = setInterval(() => {
             if (currentIndex == currentIndexCpy) {
                 clearInterval(timer);
-                // 加载中提示
+                // 载入中提示
                 loading.close();
             }
 
@@ -59,6 +59,23 @@ class Utils {
         }, 1000);
 
         return fn;
+    }
+
+    /**
+     * 输出日志
+     * 
+     * @param {string} type 日志类型（info、warn、error）
+     * @param {string} title 日志标题
+     * @param {any} datas 日志内容
+     */
+    log(type, title, ...datas) {
+        if (type == 'info') {
+            console.info(`[${title}]`, datas);
+        } else if (type == 'warn') {
+            console.warn(`[${title}]`, datas);
+        } else if (type == 'error') {
+            console.error(`[${title}]`, datas);
+        }
     }
 
 }
