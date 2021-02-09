@@ -3,7 +3,7 @@
 
         <!-- 侧边栏 -->
         <el-aside class="home-aside">
-            <el-menu class="side-nav" default-active="search" @select="changeCategory">
+            <el-menu class="side-nav" default-active="search" :collapse="config.sideMenuCollapse" @select="changeCategory">
 
                 <!-- 搜索引擎 -->
                 <el-menu-item index="search">
@@ -18,7 +18,7 @@
                 </el-menu-item>
 
                 <!-- 分类 -->
-                <el-menu-item v-for="(item, itemIndex) in navLinks" :key="'list-' + itemIndex" :index="itemIndex.toString()">
+                <el-menu-item v-for="(item, itemIndex) in navLinks.list" :key="'list-' + itemIndex" :index="itemIndex.toString()">
                     <i class="el-icon-link"></i>
                     <span slot="title">{{ item.title }}</span>
                 </el-menu-item>
@@ -28,85 +28,95 @@
 
         <!-- 内容 -->
         <el-main class="home-content">
+            <div class="wrapper">
 
-            <!-- 搜索引擎 -->
-            <div v-show="show.searchEngine" class="search-engine">
+                <!-- 搜索引擎 -->
+                <div v-show="show.searchEngine" class="search-engine">
 
-                <!-- 搜索栏 -->
-                <div class="search-bar shadow-2">
+                    <!-- 搜索栏 -->
+                    <div class="search-bar shadow-3">
 
-                    <!-- 输入 -->
-                    <input v-model="searchEngine.keyword" class="input" type="text"
-                        @keydown.enter.exact="searchEngineSubmit()"
-                    />
+                        <!-- 输入 -->
+                        <input v-model="searchEngine.keyword" class="input" type="text"
+                            @keydown.enter.exact="searchEngineSubmit()"
+                        />
 
-                    <!-- 清除 -->
-                    <div v-show="searchEngine.keyword.length > 0" class="btn btn-clear"
-                        @click="searchEngine.keyword = ''"
-                    >
-                        <i class="el-icon-close"></i>
+                        <!-- 清除 -->
+                        <div v-show="searchEngine.keyword.length > 0" class="btn btn-clear"
+                            @click="searchEngine.keyword = ''"
+                        >
+                            <i class="el-icon-close"></i>
+                        </div>
+
+                        <!-- 搜索 -->
+                        <div class="btn btn-search" @click="searchEngineSubmit()">
+                            <i class="el-icon-search"></i>
+                        </div>
+
                     </div>
 
-                    <!-- 搜索 -->
-                    <div class="btn btn-search" @click="searchEngineSubmit()">
-                        <i class="el-icon-search"></i>
-                    </div>
+                    <!-- 选择搜索引擎 -->
+                    <el-radio-group v-model="config.searchEngine" class="search-type" size="small">
+
+                        <!-- 自动生成 -->
+                        <el-radio v-for="item in searchEngine.types" :key="item.name"
+                            :label="item.name" class="shadow-2"
+                        >
+                            <Icon :path="item.icon || 'website/default.svg'" size="1.2em" />
+                            <i class="name">{{ item.name }}</i>
+                            <i class="desc">{{ item.desc }}</i>
+                        </el-radio>
+
+                        <!-- 占位 -->
+                        <el-radio label="0"></el-radio>
+
+                    </el-radio-group>
 
                 </div>
 
-                <!-- 选择搜索引擎 -->
-                <el-radio-group v-model="searchEngine.type" class="search-type" size="small">
+                <!-- 链接搜索框 -->
+                <el-input v-show="show.linkSearch" v-model="linkSearch.keyword"
+                    class="link-search shadow-2" placeholder="搜索链接" clearable
+                >
+                    <el-select slot="prepend" v-model="linkSearch.type" placeholder="类型">
+                        <el-option label="全部" value="all"></el-option>
+                        <el-option label="标题" value="title"></el-option>
+                        <el-option label="链接" value="link"></el-option>
+                    </el-select>
+                </el-input>
 
-                    <!-- 自动生成 -->
-                    <el-radio v-for="item in searchEngine.types" :key="item.name"
-                        :label="item.name" class="shadow-2"
+                <!-- 链接列表树 -->
+                <el-tree v-show="show.linkTree" ref="linkTree" class="link-tree shadow-2"
+                    :data="currentLinks" node-key="id" empty-text=""
+                    :props="{ label: 'title', children: 'sub' }" :filter-node-method="searchLink"
+                    :default-expand-all="false" :expand-on-click-node="true"
+                >
+                    <div slot-scope="{ node, data }" class="link-item" :title="data.update"
+                        @click="openLink(data.link, data.showOnly)"
                     >
-                        <i class="name">{{ item.name }}</i>
-                        <i class="desc">{{ item.desc }}</i>
-                    </el-radio>
-
-                    <!-- 占位 -->
-                    <el-radio label="0"></el-radio>
-
-                </el-radio-group>
+                        <span class="title">{{ node.label }}</span>
+                        <span class="link">{{ data.link }}</span>
+                    </div>
+                </el-tree>
 
             </div>
-
-            <!-- 链接搜索框 -->
-            <el-input v-show="show.linkSearch" v-model="linkSearch.keyword"
-                class="link-search shadow-2" placeholder="搜索链接" clearable
-            >
-                <el-select slot="prepend" v-model="linkSearch.type" placeholder="类型">
-                    <el-option label="全部" value="all"></el-option>
-                    <el-option label="标题" value="title"></el-option>
-                    <el-option label="链接" value="link"></el-option>
-                </el-select>
-            </el-input>
-
-            <!-- 链接列表树 -->
-            <el-tree v-show="show.linkTree" ref="linkTree" class="link-tree shadow-2"
-                :data="currentLinks" node-key="id" empty-text=""
-                :props="{ label: 'title', children: 'sub' }" :filter-node-method="searchLink"
-                :default-expand-all="false" :expand-on-click-node="false"
-            >
-                <div slot-scope="{ node, data }" class="link-item" :title="data.update"
-                    @click="openLink(data.link, data.showOnly)"
-                >
-                    <span class="title limit-line-1">{{ node.label }}</span>
-                    <span class="link limit-line-1">{{ data.link }}</span>
-                </div>
-            </el-tree>
-
         </el-main>
 
     </el-container>
 </template>
 
 <script>
+import Icon from '@/components/Icon.vue';
+
 export default {
     name: 'Home',
+    components: {
+        Icon
+    },
     data() {
         return {
+            config: this.$root.config.storage,
+            utils: this.$root.utils,
             // 显示的内容
             show: {
                 searchEngine: true,
@@ -116,10 +126,9 @@ export default {
             // 搜索引擎
             searchEngine: {
                 keyword: '',
-                type: this.$root.config.searchEngine.default,
-                types: this.$root.config.searchEngine.list
+                types: this.$root.config.searchEngines
             },
-            // 所有链接
+            // 导航链接
             navLinks: this.$root.navLinks,
             // 当前显示的链接
             currentLinks: [],
@@ -159,12 +168,12 @@ export default {
                 this.show.linkSearch = false;
                 this.show.linkTree = false;
             } else if (index == 'all') {
-                this.currentLinks = this.navLinks;
+                this.currentLinks = this.navLinks.list;
                 this.show.searchEngine = false;
                 this.show.linkSearch = true;
                 this.show.linkTree = true;
             } else {
-                this.currentLinks = this.navLinks[Number(index)].sub;
+                this.currentLinks = this.navLinks.list[Number(index)].sub;
                 this.show.searchEngine = false;
                 this.show.linkSearch = true;
                 this.show.linkTree = true;
@@ -240,8 +249,11 @@ export default {
             return result;
         }
     },
-    // beforeRouteEnter(from, to, next) {
-    // },
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            vm.utils.changeTitle();
+        });
+    }
 }
 </script>
 
@@ -257,9 +269,17 @@ export default {
 }
 
 .home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
     padding: 1rem;
     background-color: @colorWhite;
+
+    .wrapper {
+        width: 100%;
+        max-width: 60rem;
+    }
 
     /deep/ .search-engine {
         display: flex;
@@ -274,6 +294,7 @@ export default {
             top: 0.5rem;
             z-index: 100;
             width: 100%;
+            min-width: 16rem;
             max-width: 40rem;
             height: 2.8rem;
             border-radius: 0.25rem;
@@ -283,6 +304,7 @@ export default {
             .input {
                 flex-grow: 1;
                 padding-left: 1rem;
+                width: 0;
                 height: 100%;
                 outline: none;
             }
@@ -302,7 +324,7 @@ export default {
             .btn-clear {
                 width: 2rem;
                 opacity: 0.5;
-                transition: opacity 0.25s;
+                transition: opacity @transitionTime;
 
                 &:hover {
                     opacity: 1;
@@ -311,7 +333,7 @@ export default {
 
             .btn-search {
                 color: @colorPrimary;
-                transition: background 0.25s, color 0.25s;
+                transition: background @transitionTime, color @transitionTime;
 
                 &:hover {
                     background-color: @colorPrimary;
@@ -333,11 +355,13 @@ export default {
                 margin-top: 0;
                 padding: 1em;
                 width: 45%;
-                min-width: 16em;
+                min-width: 18em;
+                border-bottom: solid 0.15rem transparent;
                 border-radius: 0.25em;
                 background-color: #FFF;
                 text-align: left;
                 font-weight: normal;
+                transition: border @transitionTime;
 
                 // 隐藏占位元素
                 &:last-child {
@@ -348,6 +372,10 @@ export default {
                 &:last-child:nth-child(odd) {
                     display: none;
                 }
+
+                &.is-checked {
+                    border-bottom-color: @colorPrimary;
+                }
             }
 
             .el-radio__input {
@@ -356,9 +384,15 @@ export default {
 
             .el-radio__label {
                 padding: 0;
+                transition: color @transitionTime;
 
                 i {
+                    vertical-align: middle;
                     font-style: normal;
+                }
+
+                .fn-icon {
+                    margin-right: 0.4em;
                 }
 
                 .desc {

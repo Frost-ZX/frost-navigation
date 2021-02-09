@@ -8,11 +8,13 @@
 @colorSecondary: #67C23A;
 @colorWhite: #F9F9F9;
 
+@transitionTime: .25s;
+
 // 滚动条
 
 ::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: .5rem;
+    height: .5rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -29,6 +31,10 @@
 }
 
 // 标签
+
+html {
+    transition: font-size @transitionTime;
+}
 
 body {
     user-select: none;
@@ -50,21 +56,42 @@ body {
     .limitLine(1);
 }
 
+// 背景居中
+
+.bgCenter() {
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg-center-contain {
+    .bgCenter();
+    background-size: contain;
+}
+
+.bg-center-cover {
+    .bgCenter();
+    background-size: cover;
+}
+
 // 阴影
 
 .shadow-1 {
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, .1);
 }
 
 .shadow-2 {
-    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.05);
+    box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .05);
+}
+
+.shadow-3 {
+    box-shadow: 0 .5rem 1rem -0.4rem rgba(0, 0, 0, .12);
 }
 
 // 载入中（链接列表）
 
 .loading-link {
-    background-color: rgba(255, 255, 255, 0.5) !important;
-    backdrop-filter: blur(0.2rem);
+    background-color: rgba(255, 255, 255, .5) !important;
+    backdrop-filter: blur(.2rem);
 
     .el-icon-loading {
         font-size: 2rem !important;
