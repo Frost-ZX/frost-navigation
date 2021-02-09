@@ -1,6 +1,16 @@
-// 链接列表
+// 导航链接列表
 // 更新：2021-02-08
-const navLinks = [
+
+import { Loading } from 'element-ui';
+
+let datas = {
+    // 列表
+    list: [],
+    // 版本号
+    version: 16
+};
+
+let navLinks = [
     // 主分类
     {
         // 标题
@@ -86,15 +96,18 @@ const navLinks = [
                 links: [
                     {
                         link: 'http://www.ichgz.com/',
-                        title: '广州市非物质文化遗产保护中心'
+                        title: '广州市非物质文化遗产保护中心',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'http://www.ihchina.cn/',
-                        title: '中国非物质文化遗产网'
+                        title: '中国非物质文化遗产网',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'https://ctext.org/zhs',
-                        title: '中国哲学书电子化计划'
+                        title: '中国哲学书电子化计划',
+                        update: '2021-02-08'
                     }
                 ]
             }
@@ -217,6 +230,11 @@ const navLinks = [
                         link: 'https://segmentfault.com/',
                         title: 'SegmentFault 思否',
                         update: '2021-02-07'
+                    },
+                    {
+                        link: 'https://www.v2ex.com/',
+                        title: 'V2EX',
+                        update: '2021-02-08'
                     }
                 ]
             },
@@ -359,11 +377,13 @@ const navLinks = [
                 links: [
                     {
                         link: 'https://h5.bce.baidu.com/',
-                        title: '百度 H5'
+                        title: '百度 H5',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'https://playcanvas.com/',
-                        title: 'PlayCanvas'
+                        title: 'PlayCanvas',
+                        update: '2021-02-08'
                     }
                 ]
             },
@@ -387,15 +407,18 @@ const navLinks = [
                                         links: [
                                             {
                                                 link: 'https://www.vocaloid.com/',
-                                                title: 'VOCALOID ( ボーカロイド・ボカロ ) 公式サイト'
-                                            },
-                                            {
-                                                link: 'http://www.zenith-grp.com/henian/',
-                                                title: '上海禾念信息科技有限公司'
+                                                title: 'VOCALOID ( ボーカロイド・ボカロ ) 公式サイト',
+                                                update: '2021-02-08'
                                             },
                                             {
                                                 link: 'https://shop69979973.taobao.com/',
-                                                title: '上海禾念（淘宝网）'
+                                                title: '上海禾念（淘宝网）',
+                                                update: '2021-02-08'
+                                            },
+                                            {
+                                                link: 'http://www.zenith-grp.com/',
+                                                title: '天矢禾念娱乐集团',
+                                                update: '2021-02-08'
                                             }
                                         ]
                                     },
@@ -404,11 +427,13 @@ const navLinks = [
                                         links: [
                                             {
                                                 link: 'http://www.luotianyi.org/forum.php',
-                                                title: '洛天依中文网'
+                                                title: '洛天依中文网',
+                                                update: '2021-02-08'
                                             },
                                             {
                                                 link: 'http://bbs.ivocaloid.com/',
-                                                title: 'iVocaloid论坛'
+                                                title: 'iVocaloid论坛',
+                                                update: '2021-02-08'
                                             }
                                         ]
                                     },
@@ -432,7 +457,8 @@ const navLinks = [
                 links: [
                     {
                         link: 'https://afdian.net/',
-                        title: '爱发电'
+                        title: '爱发电',
+                        update: '2021-02-08'
                     }
                 ]
             }
@@ -449,109 +475,88 @@ const navLinks = [
                         links: [
                             {
                                 link: 'https://www.8kraw.com//',
-                                title: '8KRAW - 正版视频素材库'
+                                title: '8KRAW - 正版视频素材库',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'http://www.iqiyi.com/',
-                                title: '爱奇艺'
+                                title: '爱奇艺',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'http://v.baidu.com/',
-                                title: '百度视频'
+                                title: '百度视频',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://www.vmovier.com/',
-                                title: '场库 - 高品质短片分享平台'
+                                title: '场库 - 高品质短片分享平台',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'http://www.le.com/',
-                                title: '乐视视频'
+                                title: '乐视视频',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://haokan.baidu.com/',
-                                title: '好看视频'
+                                title: '好看视频',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'http://www.mgtv.com/',
-                                title: '芒果TV'
+                                title: '芒果TV',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'http://v.qq.com/',
-                                title: '腾讯视频'
+                                title: '腾讯视频',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://www.xinpianchang.com/',
-                                title: '新片场'
+                                title: '新片场',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'http://www.youku.com/',
-                                title: '优酷'
+                                title: '优酷',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'http://www.acfun.cn/',
-                                title: 'AcFun'
+                                title: 'AcFun',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://www.tokyostreetview.com/',
-                                title: 'TokyoStreetView'
+                                title: 'TokyoStreetView',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://www.utovr.com/',
-                                title: 'UtoVR - 带您进入VR世界'
+                                title: 'UtoVR - 带您进入VR世界',
+                                update: '2021-02-08'
                             }
                         ],
                         sub: [
-                            {
-                                title: '直播',
-                                links: [
-                                    {
-                                        link: 'http://pad.cretech.cn/livecloud/pcindex.php',
-                                        title: '创先泰克教育云'
-                                    },
-                                    {
-                                        link: 'https://www.douyu.com/',
-                                        title: '斗鱼'
-                                    },
-                                    {
-                                        link: 'https://www.huya.com/',
-                                        title: '虎牙直播'
-                                    },
-                                    {
-                                        link: 'http://v.163.com/',
-                                        title: '网易直播'
-                                    },
-                                    {
-                                        link: 'https://www.earthtv.com/',
-                                        title: 'earthTV'
-                                    },
-                                    {
-                                        link: 'http://www.skylinewebcams.com/',
-                                        title: 'SkylineWebcams'
-                                    },
-                                    {
-                                        link: 'https://www.twitch.tv/',
-                                        title: 'Twitch'
-                                    }
-                                ]
-                            },
                             {
                                 title: 'bilibili',
                                 links: [
                                     {
                                         link: 'https://www.bilibili.com/',
-                                        title: 'bilibili（主站）'
+                                        title: 'bilibili（主站）',
+                                        update: '2021-02-08'
                                     },
                                     {
                                         link: 'https://live.bilibili.com/',
-                                        title: 'bilibili（直播）'
+                                        title: 'bilibili（直播）',
+                                        update: '2021-02-08'
                                     },
                                     {
                                         link: 'https://search.bilibili.com/',
-                                        title: 'bilibili（搜索）'
-                                    },
-                                    {
-                                        link: 'https://message.bilibili.com/',
-                                        title: 'bilibili（消息中心）'
+                                        title: 'bilibili（搜索）',
+                                        update: '2021-02-08'
                                     }
                                 ]
                             }
@@ -562,19 +567,58 @@ const navLinks = [
                         links: [
                             {
                                 link: 'https://www.jijidown.com/',
-                                title: '哔哩哔哩唧唧'
+                                title: '哔哩哔哩唧唧',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://www.kanbilibili.com/',
-                                title: '看哔哩哔哩'
+                                title: '看哔哩哔哩',
+                                update: '2021-02-08'
                             },
                             {
-                                link: 'https://biliquery.typcn.com/',
-                                title: 'Bilibili 工具箱'
+                                link: 'https://www.biliob233.com/',
+                                title: 'BiliOB233 - B站历史数据统计分析',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://www.biliplus.com/',
-                                title: 'BiliPlus'
+                                title: 'BiliPlus',
+                                update: '2021-02-08'
+                            }
+                        ]
+                    },
+                    {
+                        title: '直播',
+                        links: [
+                            {
+                                link: 'https://www.douyu.com/',
+                                title: '斗鱼',
+                                update: '2021-02-08'
+                            },
+                            {
+                                link: 'https://www.huya.com/',
+                                title: '虎牙直播',
+                                update: '2021-02-08'
+                            },
+                            {
+                                link: 'http://v.163.com/',
+                                title: '网易直播',
+                                update: '2021-02-08'
+                            },
+                            {
+                                link: 'https://www.earthtv.com/',
+                                title: 'earthTV',
+                                update: '2021-02-08'
+                            },
+                            {
+                                link: 'http://www.skylinewebcams.com/',
+                                title: 'SkylineWebcams',
+                                update: '2021-02-08'
+                            },
+                            {
+                                link: 'https://www.twitch.tv/',
+                                title: 'Twitch',
+                                update: '2021-02-08'
                             }
                         ]
                     },
@@ -601,19 +645,23 @@ const navLinks = [
                         links: [
                             {
                                 link: 'https://image.baidu.com/',
-                                title: '百度图片'
+                                title: '百度图片',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://imgur.com/',
-                                title: 'Imgur'
+                                title: 'Imgur',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://http.cat/',
-                                title: 'HTTP Cats'
+                                title: 'HTTP Cats',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://unsplash.com/',
-                                title: 'Unsplash'
+                                title: 'Unsplash',
+                                update: '2021-02-08'
                             }
                         ]
                     },
@@ -652,27 +700,38 @@ const navLinks = [
                         links: [
                             {
                                 link: 'http://www.5nd.com/',
-                                title: '5nd'
+                                title: '5nd 音乐网',
+                                update: '2021-02-08'
+                            },
+                            {
+                                link: 'http://5sing.kugou.com/',
+                                title: '5SING - 中国原创音乐基地',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://www.kugou.com/',
-                                title: '酷狗音乐'
+                                title: '酷狗音乐',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://www.kuwo.cn/',
-                                title: '酷我音乐'
+                                title: '酷我音乐',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://music.taihe.com/',
-                                title: '千千音乐'
+                                title: '千千音乐',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://music.163.com/',
-                                title: '网易云音乐'
+                                title: '网易云音乐',
+                                update: '2021-02-08'
                             },
                             {
                                 link: 'https://y.qq.com/',
-                                title: 'QQ音乐'
+                                title: 'QQ音乐',
+                                update: '2021-02-08'
                             }
                         ]
                     },
@@ -705,31 +764,42 @@ const navLinks = [
         title: '工具',
         sub: [
             {
+                title: '版本控制',
+                links: [
+                    {
+                        link: 'https://gitee.com/',
+                        title: 'Gitee（码云）',
+                        update: '2021-02-08'
+                    },
+                    {
+                        link: 'https://github.com/',
+                        title: 'GitHub',
+                        update: '2021-02-08'
+                    }
+                ]
+            },
+            {
                 title: '编辑',
                 links: [
                     {
                         link: 'https://xiezuocat.com/',
-                        title: '秘塔写作猫'
-                    },
-                    {
-                        link: 'http://www.atool.org/colorpicker.php',
-                        title: '颜色选择器'
+                        title: '秘塔写作猫',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'https://pandao.github.io/editor.md/',
-                        title: 'Editor.md'
-                    },
-                    {
-                        link: 'https://phlntn.com/emojibuilder/',
-                        title: 'Emoji Builder'
+                        title: 'Editor.md - 开源在线 Markdown 编辑器',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'https://simplemde.com/',
-                        title: 'SimpleMDE'
+                        title: 'SimpleMDE - JavaScript Markdown Editor',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'https://smartmockups.com/',
-                        title: 'Smartmockups - 产品 Mockup 生成器'
+                        title: 'Smartmockups - 免费产品模板生成工具',
+                        update: '2021-02-08'
                     }
                 ]
             },
@@ -741,16 +811,16 @@ const navLinks = [
                         title: '浏览器信息'
                     },
                     {
-                        link: 'https://screen.51240.com/',
-                        title: '屏幕检测'
-                    },
-                    {
                         link: 'http://nstool.netease.com/',
                         title: '网易 DNS 检测'
                     },
                     {
+                        link: 'https://screen.bmcx.com/',
+                        title: '在线屏幕检测'
+                    },
+                    {
                         link: 'http://www.color.org/version4html.xalter',
-                        title: 'ICC Version 4'
+                        title: 'ICC Version 4 检测'
                     }
                 ]
             },
@@ -871,28 +941,28 @@ const navLinks = [
                 links: [
                     {
                         link: 'https://www.toolnb.com/',
-                        title: '爱资料在线工具'
+                        title: '爱资料在线工具',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'http://tool.mkblog.cn/',
-                        title: '孟坤工具箱'
+                        title: '孟坤工具箱',
+                        update: '2021-02-08'
                     },
                     {
-                        link: 'https://wn.run/',
-                        title: '万能命令 - 快捷寻找和直达你想要的各类工具'
-                    },
-                    {
-                        link: 'http://tool.uixsj.cn/',
-                        title: '现实君工具箱'
+                        link: 'https://wanneng.run/',
+                        title: '万能命令 - 快捷寻找和直达你想要的各类工具',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'https://tool.lu/',
-                        title: '在线工具',
+                        title: '在线工具 - 程序员的工具箱',
                         update: '2021-02-08'
                     },
                     {
                         link: 'http://www.bejson.com/',
-                        title: 'Be JSON'
+                        title: 'Be JSON',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'https://tools.miku.ac/',
@@ -906,11 +976,13 @@ const navLinks = [
                 links: [
                     {
                         link: 'https://www.12321.cn/',
-                        title: '12321 网络不良与垃圾信息举报受理中心'
+                        title: '12321 网络不良与垃圾信息举报受理中心',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'http://www.12377.cn/',
-                        title: '国家网信办举报中心'
+                        title: '国家网信办举报中心',
+                        update: '2021-02-08'
                     }
                 ]
             },
@@ -919,11 +991,13 @@ const navLinks = [
                 links: [
                     {
                         link: 'https://habitica.com/',
-                        title: 'Habitica'
+                        title: 'Habitica',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'https://www.pcjs.org/',
-                        title: 'PCjs Machines'
+                        title: 'PCjs Machines',
+                        update: '2021-02-08'
                     }
                 ]
             },
@@ -932,15 +1006,13 @@ const navLinks = [
                 links: [
                     {
                         link: 'http://720yun.com/',
-                        title: '720云全景虚拟现实社区'
+                        title: '720云全景虚拟现实社区',
+                        update: '2021-02-08'
                     },
                     {
-                        link: 'http://www.earthol.org/',
-                        title: '地球在线'
-                    },
-                    {
-                        link: 'http://sh-meet.bigpixel.cn/',
-                        title: '上海超级全景'
+                        link: 'http://www.bigpixel.cn/',
+                        title: '千亿像素看中国',
+                        update: '2021-02-08'
                     }
                 ]
             },
@@ -1095,6 +1167,11 @@ const navLinks = [
                     {
                         link: 'https://www.mi.com/',
                         title: '小米商城',
+                        update: '2021-02-08'
+                    },
+                    {
+                        link: 'https://www.amazon.cn/',
+                        title: '亚马逊',
                         update: '2021-02-08'
                     },
                     {
@@ -1579,6 +1656,11 @@ const navLinks = [
                                         update: '2021-02-08'
                                     },
                                     {
+                                        link: 'https://www.apkmirror.com/',
+                                        title: 'APK Mirror',
+                                        update: '2021-02-08'
+                                    },
+                                    {
                                         link: 'https://apkpure.com/',
                                         title: 'APK Pure',
                                         update: '2021-02-08'
@@ -1675,6 +1757,16 @@ const navLinks = [
                 update: '2021-02-08'
             },
             {
+                link: 'https://study.163.com/',
+                title: '网易云课堂',
+                update: '2021-02-08'
+            },
+            {
+                link: 'https://www.icourse163.org/',
+                title: '中国大学 MOOC（慕课）',
+                update: '2021-02-08'
+            },
+            {
                 link: 'https://www.certiport.com/',
                 title: 'My Certiport',
                 update: '2021-02-08'
@@ -1700,6 +1792,11 @@ const navLinks = [
                     {
                         link: 'http://www.7k7k.com/',
                         title: '7k7k',
+                        update: '2021-02-08'
+                    },
+                    {
+                        link: 'http://www.66rpg.com/',
+                        title: '橙光游戏中心',
                         update: '2021-02-08'
                     },
                     {
@@ -1750,7 +1847,8 @@ const navLinks = [
                         links: [
                             {
                                 link: 'https://minecraft.net/',
-                                title: '官网'
+                                title: '官网',
+                                update: '2021-02-08'
                             }
                         ],
                         sub: [
@@ -1759,19 +1857,23 @@ const navLinks = [
                                 links: [
                                     {
                                         link: 'http://www.zuimc.com/',
-                                        title: '最MC论坛'
+                                        title: '最MC论坛',
+                                        update: '2021-02-08'
                                     },
                                     {
-                                        link: 'https://www.mcbbs.net/forum.php',
-                                        title: 'Minecraft 中文论坛'
+                                        link: 'https://www.mcbbs.net/',
+                                        title: 'Minecraft 中文论坛',
+                                        update: '2021-02-08'
                                     },
                                     {
-                                        link: 'http://forum.minecraft-hk.com/portal.php',
-                                        title: 'Minecraft-HK Community'
+                                        link: 'http://forum.minecraft-hk.com/',
+                                        title: 'Minecraft-HK Community',
+                                        update: '2021-02-08'
                                     },
                                     {
                                         link: 'https://www.planetminecraft.com/',
-                                        title: 'Planet Minecraft Community'
+                                        title: 'Planet Minecraft Community',
+                                        update: '2021-02-08'
                                     }
                                 ]
                             },
@@ -1780,15 +1882,18 @@ const navLinks = [
                                 links: [
                                     {
                                         link: 'https://minecraft-zh.gamepedia.com/',
-                                        title: '中文 Minecraft Wiki'
+                                        title: '中文 Minecraft Wiki',
+                                        update: '2021-02-08'
                                     },
                                     {
                                         link: 'https://www.mcmod.cn/',
-                                        title: 'MC百科'
+                                        title: 'MC百科',
+                                        update: '2021-02-08'
                                     },
                                     {
                                         link: 'http://mineplugin.org/',
-                                        title: 'Minecraft 插件百科'
+                                        title: 'Minecraft 插件百科',
+                                        update: '2021-02-08'
                                     }
                                 ]
                             }
@@ -1985,15 +2090,6 @@ const navLinks = [
                         ]
                     }
                 ]
-            },
-            {
-                title: 'RPG',
-                links: [
-                    {
-                        link: 'http://www.66rpg.com/',
-                        title: '橙光游戏中心'
-                    }
-                ]
             }
         ]
     },
@@ -2002,24 +2098,23 @@ const navLinks = [
         links: [
             {
                 link: 'https://36kr.com/',
-                title: '36kr（36氪）'
+                title: '36kr（36氪）',
+                update: '2021-02-08'
             },
             {
                 link: 'http://jandan.net/',
-                title: '煎蛋'
+                title: '煎蛋 - 地球上没有新鲜事',
+                update: '2021-02-08'
             },
             {
                 link: 'https://sspai.com/',
-                title: '少数派'
+                title: '少数派 - 高效工作，品质生活',
+                update: '2021-02-08'
             },
             {
                 link: 'https://www.qq.com/',
                 title: '腾讯网',
                 update: '2021-02-08'
-            },
-            {
-                link: 'https://info.3g.qq.com/',
-                title: '腾讯网（3G）'
             },
             {
                 link: 'http://www.cctv.com/',
@@ -2169,7 +2264,8 @@ const navLinks = [
                     },
                     {
                         link: 'https://highlightjs.org/',
-                        title: 'highlight.js'
+                        title: 'highlight.js',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'https://jquery.com/',
@@ -2188,7 +2284,8 @@ const navLinks = [
                     },
                     {
                         link: 'http://layer.layui.com/',
-                        title: 'layer'
+                        title: 'layer',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'https://leafletjs.com/',
@@ -2444,48 +2541,49 @@ const navLinks = [
                 title: '素材',
                 links: [
                     {
-                        link: 'http://www.iconpng.com/',
-                        title: '爱看图标网'
+                        link: 'https://www.huiyi8.com/',
+                        title: '绘艺素材网',
+                        update: '2021-02-08'
                     },
                     {
-                        link: 'http://www.huiyi8.com/',
-                        title: '绘艺素材网'
-                    },
-                    {
-                        link: 'http://www.lanrentuku.com/',
-                        title: '懒人图库'
+                        link: 'https://www.lanrentuku.com/',
+                        title: '懒人图库',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'http://www.nipic.com/',
-                        title: '昵图网'
+                        title: '昵图网',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'https://588ku.com/',
-                        title: '千库网'
+                        title: '千库网',
+                        update: '2021-02-08'
                     },
                     {
-                        link: 'http://ico.58pic.com/',
-                        title: '千图网'
-                    },
-                    {
-                        link: 'http://www.ypppt.com/',
-                        title: '优品PPT'
+                        link: 'https://www.ypppt.com/',
+                        title: '优品PPT',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'http://www.easyicon.net/',
-                        title: 'EASYICON'
+                        title: 'Easyicon',
+                        update: '2021-02-08'
                     },
                     {
                         link: 'https://www.iconfont.cn/',
-                        title: 'Iconfont - 阿里巴巴矢量图标库'
+                        title: 'Iconfont - 阿里巴巴矢量图标库',
+                        update: '2021-02-08'
                     },
                     {
-                        link: 'http://www.officeplus.cn/',
-                        title: 'OfficePLUS'
+                        link: 'https://www.officeplus.cn/',
+                        title: 'OfficePLUS - 微软 Office 官方在线模板网站',
+                        update: '2021-02-08'
                     },
                     {
-                        link: 'https://www.pexels.com/zh-tw/',
-                        title: 'Pexels'
+                        link: 'https://www.pexels.com/',
+                        title: 'Pexels - 免费图库相片',
+                        update: '2021-02-08'
                     }
                 ]
             },
@@ -2611,4 +2709,141 @@ const navLinks = [
     }
 ];
 
-export default navLinks;
+let utils = {
+    /**
+     * 初始化导航链接列表
+     * 设置唯一 ID & 改变结构
+     */
+    init: function () {
+        // 载入中提示
+        var loading = Loading.service({
+            customClass: 'loading-link',
+            lock: true,
+            spinner: 'el-icon-loading',
+            text: '载入中，请稍候'
+        });
+
+        var currentIndex = 0;
+        var currentIndexCpy = 0;
+
+        var fn = (obj) => {
+            currentIndex += 1;
+            obj.id = currentIndex;
+
+            // 有链接，无子路径
+            if (obj.links != undefined && obj.sub === undefined) {
+                obj.sub = [];
+            }
+
+            // 递归
+            if (obj.links != undefined) {
+                obj.links.forEach(item => {
+                    // 添加到子路径（适配 Element UI - Tree）
+                    obj.sub.push(item);
+                });
+            }
+
+            // 递归
+            if (obj.sub != undefined) {
+                obj.sub.forEach(item => {
+                    setTimeout(() => {
+                        fn(item);
+                    }, 10 * currentIndex);
+                });
+            }
+        };
+
+        // 检测 currentIndex 是否已停止变化
+        var timer = setInterval(() => {
+            if (currentIndex == currentIndexCpy) {
+                // 停止检测
+                clearInterval(timer);
+
+                // 日志
+                console.log('[导航链接] 初始化完毕');
+
+                // 关闭载入中提示
+                loading.close();
+
+                // 更新
+                datas.list = navLinks;
+
+                // 写入缓存
+                setTimeout(() => {
+                    this.cache('W', navLinks);
+                }, 2 * currentIndex);
+            }
+
+            // 同步
+            currentIndexCpy = currentIndex;
+        }, 1000);
+
+        return fn;
+    },
+
+    /**
+    * 导航链接列表缓存
+    * 
+    * @param {string} mode 模式（读 - R，写 - W）
+    * @param {array} list 写入的导航链接列表（模式为“W”时）
+    * 
+    * @returns {Object} 缓存为最新时 status 为 1，list 为缓存中的导航链接列表，否则 status 为 0。
+    */
+    cache: function (mode, list) {
+        var datasCacheStr;
+        var datasCache = {};
+        var datasCurrent = {};
+
+        if (mode == 'R') {
+
+            // 读取缓存
+            datasCacheStr = localStorage.getItem('navLinksCache');
+
+            // 是否存在缓存
+            if (datasCacheStr === null) {
+                return {
+                    status: 0
+                };
+            } else {
+                datasCache = JSON.parse(datasCacheStr)
+            }
+
+            if (datasCache.version < datas.version) {
+                return {
+                    status: 0
+                };
+            } else {
+                return {
+                    status: 1,
+                    list: datasCache.list
+                };
+            }
+
+        } else if (mode == 'W') {
+
+            datasCurrent.version = datas.version;
+            datasCurrent.list = list;
+
+            // 写入缓存
+            localStorage.setItem('navLinksCache', JSON.stringify(datasCurrent));
+
+        }
+    }
+};
+
+(function () {
+
+    let cache = utils.cache('R');
+
+    if (cache.status == 1) {
+        datas.list = cache.list;
+    } else {
+        let init = utils.init();
+        navLinks.forEach(item => {
+            init(item);
+        });
+    }
+
+})();
+
+export default datas;

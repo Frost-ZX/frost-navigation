@@ -10,14 +10,6 @@ import utils from './assets/js/utils';
 import 'ress/ress.css';
 import './assets/css/element.scss';
 
-(function () {
-    var init = utils.initNavLinkID();
-
-    navLinks.forEach(item => {
-        init(item);
-    });
-})();
-
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false;
