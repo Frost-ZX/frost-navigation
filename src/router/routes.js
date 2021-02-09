@@ -6,11 +6,16 @@ const routes = [
         name: 'Home',
         component: Home
     },
-    // {
-    //     path: '/about',
-    //     name: 'About',
-    //     component: () => import('@/views/About.vue')
-    // }
+    {
+        path: '/tools',
+        name: 'Tools',
+        component: () => import('@/views/Tools.vue')
+    },
+    {
+        path: '/settings',
+        name: 'Settings',
+        component: () => import('@/views/Settings.vue')
+    }
 ];
 
 export default routes;
