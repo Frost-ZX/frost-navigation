@@ -3,7 +3,9 @@
 
         <!-- 侧边栏 -->
         <el-aside class="home-aside">
-            <el-menu class="side-nav" default-active="search" :collapse="config.sideMenuCollapse" @select="changeCategory">
+            <el-menu class="side-nav" default-active="search"
+                :collapse="config.sideMenuCollapse" @select="changeCategory"
+            >
 
                 <!-- 搜索引擎 -->
                 <el-menu-item index="search">
@@ -18,7 +20,9 @@
                 </el-menu-item>
 
                 <!-- 分类 -->
-                <el-menu-item v-for="(item, itemIndex) in navLinks.list" :key="'list-' + itemIndex" :index="itemIndex.toString()">
+                <el-menu-item v-for="(item, itemIndex) in navLinks.list"
+                    :key="'list-' + itemIndex" :index="itemIndex.toString()"
+                >
                     <i class="el-icon-link"></i>
                     <span slot="title">{{ item.title }}</span>
                 </el-menu-item>
@@ -202,6 +206,7 @@ export default {
          * 搜索引擎
          */
         searchEngineSubmit() {
+            var vm = this;
             var search = this.searchEngine;
             var keyword = search.keyword;
             var types = search.types;
@@ -212,13 +217,12 @@ export default {
             }
 
             for (let index in types) {
-                if (types[index].name == search.type) {
+                if (types[index].name == vm.config.searchEngine) {
                     url = types[index].url.replace(/%keyword%/, keyword);
+                    vm.openLink(url);
                     break;
                 }
             }
-
-            window.open(url, '_blank');
         },
         /**
          * 搜索链接
@@ -278,6 +282,7 @@ export default {
 
     .wrapper {
         width: 100%;
+        min-width: 16rem;
         max-width: 60rem;
     }
 
@@ -285,7 +290,6 @@ export default {
         display: flex;
         align-items: center;
         flex-direction: column;
-        padding: 0.5rem;
 
         .search-bar {
             display: flex;
@@ -294,7 +298,6 @@ export default {
             top: 0.5rem;
             z-index: 100;
             width: 100%;
-            min-width: 16rem;
             max-width: 40rem;
             height: 2.8rem;
             border-radius: 0.25rem;
@@ -351,7 +354,7 @@ export default {
             font-size: 1rem;
 
             > label {
-                margin: 3% 1.5%;
+                margin: 1em 0.5em;
                 margin-top: 0;
                 padding: 1em;
                 width: 45%;
