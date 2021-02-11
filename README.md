@@ -13,8 +13,8 @@
 
 #### 离线（需要手动更新）
 
-1. [点击此处下载](https://github.com/Frost-ZX/frost-navigation/archive/master.zip)
-2. 解压出其中的 `docs` 文件夹，放置于任意合适的喜欢的位置（可重命名）
+1. [点击此处下载](https://github.com/Frost-ZX/frost-navigation/archive/gh-pages.zip)
+2. 解压，放置于任意合适的喜欢的位置（可重命名）
 2. 在浏览器中打开 `index.html`（也可以将其加入浏览器的书签栏或在浏览器设置中将其设置为主页） 
 
 #### 自定义
