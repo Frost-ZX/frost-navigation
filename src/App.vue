@@ -22,8 +22,10 @@
                     >{{ item.label }}</el-menu-item>
 
                     <!-- 切换下拉菜单 -->
-                    <el-menu-item class="item-dropdown" @click="showHeaderDropdown = !showHeaderDropdown">
-                        <i class="el-icon-s-fold"></i>
+                    <el-menu-item :class="['item-dropdown', { active: showHeaderDropdown }]"
+                        @click="showHeaderDropdown = !showHeaderDropdown"
+                    >
+                        <i class="el-icon-menu"></i>
                     </el-menu-item>
 
                 </el-menu>
@@ -205,6 +207,12 @@ export default {
     }
 }
 
+.main-container {
+    height: calc(100vh - @headerHeight);
+}
+</style>
+
+<style lang="less" scoped>
 .header-dropdown {
     position: absolute !important;
     z-index: 150;
@@ -220,7 +228,13 @@ export default {
     }
 }
 
-.main-container {
-    height: calc(100vh - @headerHeight);
+.menu .item-dropdown {
+    i {
+        transition: color @transitionTime;
+    }
+
+    &.active i {
+        color: @colorPrimary;
+    }
 }
 </style>
