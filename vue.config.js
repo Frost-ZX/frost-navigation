@@ -24,9 +24,9 @@ module.exports = {
     pluginOptions: {
         'style-resources-loader': {
             preProcessor: 'less',
-            // 全局 Less
+            // 全局 Less 变量
             patterns: [
-                path.resolve(__dirname, 'src/assets/css/global.less')
+                path.resolve(__dirname, 'src/assets/css/variable.less')
             ]
         }
     },

@@ -9,6 +9,7 @@ import utils from './assets/js/utils';
 
 import 'ress/ress.css';
 import './assets/css/element.scss';
+import './assets/css/global.less';
 
 Vue.use(ElementUI);
 
