@@ -18,6 +18,14 @@
                     <el-switch v-model="config.sideMenuCollapse"></el-switch>
                 </el-form-item>
 
+                <el-form-item label="清除数据">
+                    <el-button type="danger" size="medium" @click="resetDatas('settings')">清除设置</el-button>
+                </el-form-item>
+
+                <el-form-item>
+                    <el-button type="danger" size="medium" @click="resetDatas('cache')">清除缓存</el-button>
+                </el-form-item>
+
             </el-form>
 
         </div>
@@ -37,6 +45,46 @@ export default {
         next(vm => {
             vm.utils.changeTitle('设置');
         });
+    },
+    methods: {
+        /**
+         * 清除数据
+         * 
+         * @param {string} type 清除类型（cache、settings）
+         */
+        resetDatas(type) {
+            this.$confirm('确定要清除吗？', '确认', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+
+                if (type == 'cache') {
+                    localStorage.removeItem('navLinksCache');
+                } else if (type == 'settings') {
+                    localStorage.removeItem('config');
+                } else {
+                    return
+                }
+
+                this.$notify({
+                    type: 'success',
+                    message: '已清除，2s 后自动刷新'
+                });
+
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
+
+            }).catch(() => {
+
+                this.$notify({
+                    type: 'info',
+                    message: '取消清除'
+                });
+
+            });
+        }
     }
 }
 </script>

@@ -99,12 +99,14 @@ export default {
         }
     },
     watch: {
+        // 路由名称
         '$route.name': {
             handler() {
                 // 切换路由时隐藏下拉菜单
                 this.showHeaderDropdown = false;
             }
         },
+        // 更新储存的设置
         'config.storage': {
             handler(obj) {
                 clearTimeout(this.debounce.saveConfig);
@@ -115,6 +117,7 @@ export default {
             },
             deep: true
         },
+        // 改变字体大小
         'config.storage.fontSize': {
             handler(value) {
                 clearTimeout(this.debounce.updateConfig);
