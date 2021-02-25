@@ -1,9 +1,9 @@
 // 导航链接列表
-// 更新：2021-02-20
+// 更新：2021-02-25
 
 var frostNavLinks = {
     // 版本号
-    version: 17,
+    version: 18,
     // 列表
     list: [
         // 主分类
@@ -824,31 +824,33 @@ var frostNavLinks = {
                     links: [
                         {
                             link: 'https://fonts.safe.360.cn/',
-                            title: '360查字体'
-                        },
-                        {
-                            link: 'https://www.metalgearjoe.cn/mn/',
-                            title: '垃圾分类指南'
+                            title: '360查字体',
+                            update: '2021-02-25'
                         },
                         {
                             link: 'https://time.is/',
-                            title: '任何时区的精确时间'
+                            title: '任何时区的精确时间',
+                            update: '2021-02-25'
                         },
                         {
                             link: 'https://www.tianyancha.com/',
-                            title: '天眼查'
+                            title: '天眼查',
+                            update: '2021-02-25'
                         },
                         {
                             link: 'http://www.weather.com.cn/',
-                            title: '中国天气网'
+                            title: '中国天气网',
+                            update: '2021-02-25'
                         },
                         {
                             link: 'http://www.nmc.cn/',
-                            title: '中央气象台'
+                            title: '中央气象台',
+                            update: '2021-02-25'
                         },
                         {
                             link: 'https://bios-pw.org/',
-                            title: 'BIOS Master Password Generator'
+                            title: 'BIOS Master Password Generator',
+                            update: '2021-02-25'
                         }
                     ],
                     sub: [
@@ -857,27 +859,33 @@ var frostNavLinks = {
                             links: [
                                 {
                                     link: 'https://map.baidu.com/',
-                                    title: '百度地图'
+                                    title: '百度地图',
+                                    update: '2021-02-25'
                                 },
                                 {
                                     link: 'https://www.amap.com/',
-                                    title: '高德地图'
+                                    title: '高德地图',
+                                    update: '2021-02-25'
                                 },
                                 {
                                     link: 'https://cybermap.kaspersky.com/cn/',
-                                    title: '卡巴斯基网络威胁实时地图'
+                                    title: '卡巴斯基网络威胁实时地图',
+                                    update: '2021-02-25'
                                 },
                                 {
                                     link: 'https://map.qq.com/',
-                                    title: '腾讯地图'
+                                    title: '腾讯地图',
+                                    update: '2021-02-25'
                                 },
                                 {
                                     link: 'https://cn.bing.com/maps',
-                                    title: 'Bing 地图'
+                                    title: 'Bing 地图',
+                                    update: '2021-02-25'
                                 },
                                 {
                                     link: 'https://www.osgeo.cn/',
-                                    title: 'OSGeo中国中心 - 地理空间数据共享'
+                                    title: 'OSGeo中国中心 - 地理空间数据共享',
+                                    update: '2021-02-25'
                                 }
                             ]
                         },
@@ -886,31 +894,33 @@ var frostNavLinks = {
                             links: [
                                 {
                                     link: 'https://cn.bing.com/',
-                                    title: 'Bing 搜索'
+                                    title: 'Bing 搜索',
+                                    update: '2021-02-25'
                                 },
                                 {
                                     link: 'https://www.google.com/',
-                                    title: 'Google 搜索'
+                                    title: 'Google 搜索',
+                                    update: '2021-02-25'
                                 },
                                 {
                                     link: 'https://www.baidu.com/',
-                                    title: '百度搜索'
+                                    title: '百度搜索',
+                                    update: '2021-02-25'
                                 },
                                 {
                                     link: 'https://www.jiumodiary.com/',
-                                    title: '鸠摩搜索 - 文档搜索引擎'
+                                    title: '鸠摩搜索 - 文档搜索引擎',
+                                    update: '2021-02-25'
                                 },
                                 {
                                     link: 'https://mijisou.com/',
-                                    title: '秘迹搜索'
+                                    title: '秘迹搜索',
+                                    update: '2021-02-25'
                                 },
                                 {
                                     link: 'https://www.sogou.com/',
-                                    title: '搜狗搜索'
-                                },
-                                {
-                                    link: 'http://so.ui001.com/',
-                                    title: '素材搜索'
+                                    title: '搜狗搜索',
+                                    update: '2021-02-25'
                                 }
                             ]
                         },
@@ -1634,11 +1644,13 @@ var frostNavLinks = {
                             links: [
                                 {
                                     link: 'http://adbshell.com/',
-                                    title: 'ADB Shell'
+                                    title: 'ADB Shell',
+                                    update: '2021-02-25'
                                 },
                                 {
                                     link: 'https://limboemulator.weebly.com/',
-                                    title: 'Limbo PC Emulator'
+                                    title: 'Limbo PC Emulator',
+                                    update: '2021-02-25'
                                 }
                             ],
                             sub: [
@@ -1826,11 +1838,13 @@ var frostNavLinks = {
                     links: [
                         {
                             link: 'http://gabrielecirulli.github.io/2048/',
-                            title: '2048'
+                            title: '2048',
+                            update: '2021-02-25'
                         },
                         {
                             link: 'http://cyberzhg.github.io/2048/',
-                            title: '2147483648'
+                            title: '2147483648',
+                            update: '2021-02-25'
                         }
                     ]
                 },
@@ -1907,7 +1921,7 @@ var frostNavLinks = {
                                         },
                                         {
                                             link: 'https://papermc.io/downloads',
-                                            title: 'PaperMCr',
+                                            title: 'PaperMC',
                                             update: '2021-02-20'
                                         },
                                         {
@@ -1942,7 +1956,7 @@ var frostNavLinks = {
                                             title: '服务器列表'
                                         }
                                     ]
-                                },
+                                }
                             ]
                         },
                         {
@@ -2694,11 +2708,13 @@ var frostNavLinks = {
                     links: [
                         {
                             link: 'http://ys168.com/',
-                            title: '永硕E盘'
+                            title: '永硕E盘',
+                            update: '2021-02-25'
                         },
                         {
                             link: 'http://www.ntp.org.cn/',
-                            title: 'NTP 服务器列表'
+                            title: 'NTP 服务器列表',
+                            update: '2021-02-25'
                         }
                     ]
                 }
