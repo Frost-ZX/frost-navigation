@@ -38,9 +38,14 @@ let utils = {
 
             // 递归
             if (obj.links != undefined) {
-                obj.links.forEach(item => {
+                obj.links.forEach((item, index, arr) => {
                     // 添加到子路径（适配 Element UI - Tree）
                     obj.sub.push(item);
+
+                    // 删除自身
+                    if (index === (arr.length - 1)) {
+                        delete obj.links;
+                    }
                 });
             }
 
@@ -49,7 +54,7 @@ let utils = {
                 obj.sub.forEach(item => {
                     setTimeout(() => {
                         fn(item);
-                    }, 10 * currentIndex);
+                    }, 20 * currentIndex);
                 });
             }
         };
