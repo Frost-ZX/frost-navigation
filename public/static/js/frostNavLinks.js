@@ -1,9 +1,9 @@
 // 导航链接列表
-// 更新：2021-02-25
+// 更新：2021-03-02
 
 var frostNavLinks = {
     // 版本号
-    version: 18,
+    version: 19,
     // 列表
     list: [
         // 主分类
@@ -349,6 +349,13 @@ var frostNavLinks = {
                     title: '建模',
                     links: [
                         {
+                            link: 'https://www.tinkercad.com/',
+                            title: 'Tinkercad',
+                            update: '2021-03-03'
+                        }
+                    ],
+                    sub: [
+                        {
                             title: 'Blender',
                             links: [
                                 {
@@ -454,6 +461,16 @@ var frostNavLinks = {
                             link: 'https://afdian.net/',
                             title: '爱发电',
                             update: '2021-02-08'
+                        }
+                    ]
+                },
+                {
+                    title: '其他',
+                    links: [
+                        {
+                            link: 'https://cfm.xiaoice.com/',
+                            title: 'X Studio · 主播',
+                            update: '2021-03-02'
                         }
                     ]
                 }
