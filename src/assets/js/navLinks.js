@@ -122,7 +122,7 @@ let utils = {
             }
 
             // 版本号
-            if (datasCache.version < datas.version) {
+            if (datasCache.version != datas.version) {
                 return {
                     status: 0
                 };
