@@ -9,7 +9,14 @@ const routes = [
     {
         path: '/tools',
         name: 'Tools',
-        component: () => import('@/views/Tools.vue')
+        component: () => import('@/views/Tools.vue'),
+        children: [
+            {
+                path: '/tools/detail',
+                name: 'ToolsDetail',
+                component: () => import('@/views/ToolsDetail.vue')
+            }
+        ]
     },
     {
         path: '/settings',
