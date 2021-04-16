@@ -1,9 +1,9 @@
 // 导航链接列表
-// 更新：2021-04-06
+// 更新：2021-04-16
 
 var frostNavLinks = {
     // 版本号
-    version: '20210406-1',
+    version: '20210416-8',
     // 列表
     list: [
         // 主分类
@@ -103,6 +103,16 @@ var frostNavLinks = {
                             link: 'https://ctext.org/zhs',
                             title: '中国哲学书电子化计划',
                             update: '2021-02-08'
+                        }
+                    ]
+                },
+                {
+                    title: '其他',
+                    links: [
+                        {
+                            link: 'https://topbook.cc/',
+                            title: 'Topbook - 高效生活视频书',
+                            update: '2021-04-16'
                         }
                     ]
                 }
@@ -262,6 +272,11 @@ var frostNavLinks = {
                     title: '通讯',
                     links: [
                         {
+                            link: 'https://www.kaiheila.cn/',
+                            title: '开黑啦',
+                            update: '2021-04-07'
+                        },
+                        {
                             link: 'https://www.materialtools.com/',
                             title: '云短信 - 在线短信接收',
                             update: '2021-02-07'
@@ -310,6 +325,31 @@ var frostNavLinks = {
         {
             title: '创作 / 制作',
             sub: [
+                {
+                    title: '版本控制',
+                    links: [
+                        {
+                            link: 'https://codechina.csdn.net/',
+                            title: 'CODE CHINA',
+                            update: '2021-04-16'
+                        },
+                        {
+                            link: 'https://codechina.csdn.net/mirrors',
+                            title: 'CODE CHINA - GitHub 加速计划',
+                            update: '2021-04-16'
+                        },
+                        {
+                            link: 'https://gitee.com/',
+                            title: 'Gitee（码云）',
+                            update: '2021-02-08'
+                        },
+                        {
+                            link: 'https://github.com/',
+                            title: 'GitHub',
+                            update: '2021-02-08'
+                        }
+                    ]
+                },
                 {
                     title: '编程',
                     links: [
@@ -471,6 +511,21 @@ var frostNavLinks = {
                             link: 'https://cfm.xiaoice.com/',
                             title: 'X Studio · 主播',
                             update: '2021-03-02'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            title: '动漫 / 二次元',
+            sub: [
+                {
+                    title: 'CLAMP',
+                    links: [
+                        {
+                            link: 'http://ccsakura-official.com/',
+                            title: 'カードキャプターさくら公式サイト（魔卡少女樱官网）',
+                            update: '2021-04-01'
                         }
                     ]
                 }
@@ -776,21 +831,6 @@ var frostNavLinks = {
             title: '工具',
             sub: [
                 {
-                    title: '版本控制',
-                    links: [
-                        {
-                            link: 'https://gitee.com/',
-                            title: 'Gitee（码云）',
-                            update: '2021-02-08'
-                        },
-                        {
-                            link: 'https://github.com/',
-                            title: 'GitHub',
-                            update: '2021-02-08'
-                        }
-                    ]
-                },
-                {
                     title: '编辑',
                     links: [
                         {
@@ -1039,6 +1079,36 @@ var frostNavLinks = {
                     ]
                 },
                 {
+                    title: '生成器',
+                    links: [
+                        {
+                            link: 'https://landhere.jp/services/ledsb/',
+                            title: '電光掲示板 Generator',
+                            update: '2021-04-16'
+                        },
+                        {
+                            link: 'https://wongchito.github.io/RailMapGenerator/',
+                            title: '铁路线路图生成器',
+                            update: '2021-04-16'
+                        },
+                        {
+                            link: 'http://data.but.tw/eki/',
+                            title: '站名牌產生器',
+                            update: '2021-04-16'
+                        },
+                        {
+                            link: 'https://crt.dl444.net/',
+                            title: 'CRT 生成器',
+                            update: '2021-04-16'
+                        },
+                        {
+                            link: 'https://tr246.github.io/Sigene/index.html',
+                            title: 'Sigene 駅名標ジェネレーター',
+                            update: '2021-04-16'
+                        }
+                    ]
+                },
+                {
                     title: '网盘 / 云盘',
                     links: [
                         {
@@ -1050,6 +1120,11 @@ var frostNavLinks = {
                             link: 'https://pan.baidu.com/',
                             title: '百度网盘',
                             update: '2021-02-08'
+                        },
+                        {
+                            link: 'https://www.wenshushu.cn/',
+                            title: '文叔叔 - 传文件，找文叔叔',
+                            update: '2021-04-16'
                         },
                         {
                             link: 'https://mega.nz/',
@@ -1326,7 +1401,7 @@ var frostNavLinks = {
             ]
         },
         {
-            title: '生活',
+            title: '生活 / 出行',
             links: [
                 {
                     link: 'http://www.pm25.com/',
@@ -1338,6 +1413,11 @@ var frostNavLinks = {
                 {
                     title: '出行',
                     links: [
+                        {
+                            link: 'http://www.metroman.cn/',
+                            title: '地铁通 - MetroMan',
+                            update: '2021-04-16'
+                        },
                         {
                             link: 'https://www.12306.cn/',
                             title: '中国铁路 12306',
@@ -1584,59 +1664,71 @@ var frostNavLinks = {
                         {
                             link: 'https://www.aliyun.com/',
                             title: '阿里云',
-                            update: '2021-02-08'
+                            update: '2021-04-16'
                         },
                         {
                             link: 'https://cloud.baidu.com/',
                             title: '百度智能云',
-                            update: '2021-02-08'
+                            update: '2021-04-16'
                         },
                         {
                             link: 'https://www.hanming.com/',
                             title: '悍铭数据中心',
-                            update: '2021-02-08'
+                            update: '2021-04-16'
                         },
                         {
                             link: 'https://cloud.tencent.com/',
                             title: '腾讯云',
-                            update: '2021-02-08'
+                            update: '2021-04-16'
+                        },
+                        {
+                            link: 'https://www.upyun.com/',
+                            title: '又拍云',
+                            update: '2021-04-16'
+                        },
+                        {
+                            link: 'https://www.rainyun.com/',
+                            title: '雨云',
+                            update: '2021-04-16'
                         },
                         {
                             link: 'https://www.cloudflare.com/',
                             title: 'Cloudflare',
-                            update: '2021-02-08'
+                            update: '2021-04-16'
                         },
                         {
                             link: 'http://www.mmtrix.com/',
                             title: 'mmTrix - 云应用性能管理',
-                            update: '2021-02-08'
+                            update: '2021-04-16'
                         },
                         {
                             link: 'https://www.nodecache.com/',
                             title: 'Nodecache',
-                            update: '2021-02-08'
+                            update: '2021-04-16'
                         },
                         {
                             link: 'https://vultr.com/',
                             title: 'Vultr',
-                            update: '2021-02-08'
+                            update: '2021-04-16'
                         }
                     ],
-                    sub: {
-                        title: '内网穿透（内网映射）',
-                        links: [
-                            {
-                                link: 'https://frp.cool/',
-                                title: '浮居内网穿透',
-                                update: '2021-03-31'
-                            },
-                            {
-                                link: 'https://www.natfrp.com/',
-                                title: 'Sakura Frp',
-                                update: '2021-03-31'
-                            }
-                        ]
-                    }
+                    sub: [
+                        {
+                            title: '内网穿透（内网映射）',
+                            links: [
+                                {
+                                    link: 'https://frp.cool/',
+                                    title: '浮居内网穿透',
+                                    update: '2021-03-31'
+                                },
+                                {
+                                    link: 'https://www.natfrp.com/',
+                                    title: 'Sakura Frp',
+                                    update: '2021-03-31'
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     title: 'DNS',
@@ -2430,48 +2522,68 @@ var frostNavLinks = {
                             links: [
                                 {
                                     link: 'http://www.wofficebox.com/',
-                                    title: '万彩办公大师'
+                                    title: '万彩办公大师',
+                                    update: '2021-04-16'
                                 },
                                 {
                                     link: 'https://filezilla-project.org/',
-                                    title: 'FileZilla'
+                                    title: 'FileZilla',
+                                    update: '2021-04-16'
                                 },
                                 {
                                     link: 'http://freepiano.tiwb.com/',
-                                    title: 'FreePiano'
+                                    title: 'FreePiano',
+                                    update: '2021-04-16'
                                 },
                                 {
                                     link: 'http://isparta.github.io/',
-                                    title: 'iSparta - PNG压缩与格式转换工具'
+                                    title: 'iSparta - PNG 压缩与格式转换工具',
+                                    update: '2021-04-16'
                                 },
                                 {
                                     link: 'https://www.cockos.com/licecap/',
-                                    title: 'LICEcap',
-                                    update: '2021-02-08'
+                                    title: 'LICEcap - GIF 录制工具',
+                                    update: '2021-04-16'
                                 },
                                 {
                                     link: 'http://www.linuxliveusb.com/',
-                                    title: 'LinuxLive USB Creator'
+                                    title: 'LinuxLive USB Creator',
+                                    update: '2021-04-16'
                                 },
                                 {
                                     link: 'http://pooi.moe/Locale-Emulator/',
-                                    title: 'Locale Emulator'
+                                    title: 'Locale Emulator - 模拟语言区域',
+                                    update: '2021-04-16'
                                 },
                                 {
                                     link: 'https://www.mp3tag.de/',
-                                    title: 'Mp3tag - 标签编辑器'
+                                    title: 'Mp3tag - 标签编辑器',
+                                    update: '2021-04-16'
                                 },
                                 {
                                     link: 'https://www.netsarang.com/',
-                                    title: 'NetSarang'
+                                    title: 'NetSarang',
+                                    update: '2021-04-16'
+                                },
+                                {
+                                    link: 'https://picpick.app/',
+                                    title: 'PicPick - 全功能的屏幕截图工具',
+                                    update: '2021-04-16'
                                 },
                                 {
                                     link: 'https://zh.snipaste.com/',
-                                    title: 'Snipaste'
+                                    title: 'Snipaste - 简单但强大的截图工具',
+                                    update: '2021-04-16'
+                                },
+                                {
+                                    link: 'https://www.enigmaprotector.com/',
+                                    title: 'The Enigma Protector - 软件压缩和加密保护工具',
+                                    update: '2021-04-16'
                                 },
                                 {
                                     link: 'https://www.typora.io/',
-                                    title: 'Typora'
+                                    title: 'Typora - Markdown 编辑器',
+                                    update: '2021-04-16'
                                 },
                                 {
                                     link: 'https://u.tools/',
@@ -2480,7 +2592,8 @@ var frostNavLinks = {
                                 },
                                 {
                                     link: 'https://x64dbg.com/',
-                                    title: 'x64dbg - 开源的 Windows 调试工具'
+                                    title: 'x64dbg - 开源的 Windows 调试工具',
+                                    update: '2021-04-16'
                                 }
                             ]
                         },
@@ -2562,6 +2675,21 @@ var frostNavLinks = {
                                     link: 'https://www.wireshark.org/',
                                     title: 'Wireshark',
                                     update: '2021-02-08'
+                                }
+                            ]
+                        },
+                        {
+                            title: '系统维护',
+                            links: [
+                                {
+                                    link: 'http://www.wepe.com.cn/',
+                                    title: '微PE工具箱',
+                                    update: '2021-04-16'
+                                },
+                                {
+                                    link: 'https://www.ventoy.net/',
+                                    title: 'Ventoy - 多系统启动U盘解决方案',
+                                    update: '2021-04-16'
                                 }
                             ]
                         },
