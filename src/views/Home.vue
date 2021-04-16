@@ -279,6 +279,7 @@ export default {
     position: relative;
     padding: 1rem;
     background-color: @colorWhite;
+    overflow-y: scroll;
 
     .wrapper {
         width: 100%;
