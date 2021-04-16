@@ -38,6 +38,9 @@ export default {
                     title: '计算下载用时',
                     desc: '根据设定的文件大小和下载速度简单计算大约下载完成所需的时间'
                 },
+                'calcRatio': {
+                    title: '计算比例'
+                },
                 'genLinks': {
                     title: '生成批量下载链接',
                     desc: '根据设置，生成有一定规律的用于批量下载的链接'
@@ -45,6 +48,17 @@ export default {
                 'genRandomStr': {
                     title: '生成随机字符串',
                     desc: '生成随机组合的字符串，可用于密码'
+                },
+                'minecraftChunkLocationCalc': {
+                    title: 'Minecraft 区块计算'
+                },
+                'minecraftDynmapRenderdata': {
+                    title: 'Minecraft Dynmap renderdata 生成',
+                    desc: '生成用于 Minecraft Dynmap 插件 / 模组的 renderdata'
+                },
+                'minecraftUUIDConvert': {
+                    title: 'Minecraft UUIDLeast、UUIDMost、UUID 转换',
+                    desc: 'UUIDLeast + UUIDMost -> UUID'
                 },
                 'newWindow': {
                     title: '新窗口（小窗）中打开'
@@ -58,7 +72,7 @@ export default {
                 'timestampConvert': {
                     title: 'Unix 时间戳转换',
                     desc: 'Unix 时间戳转时间 / 时间转 Unix 时间戳'
-                },
+                }
             }
         };
     },
@@ -132,7 +146,6 @@ export default {
         flex-wrap: wrap;
         justify-content: flex-start;
         width: 100%;
-        max-width: 60rem;
     }
 
     .tool-item {
