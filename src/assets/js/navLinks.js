@@ -31,16 +31,21 @@ let utils = {
             currentIndex += 1;
             obj.id = currentIndex;
 
-            // 有链接，无子路径
-            if (obj.links != undefined && obj.sub === undefined) {
-                obj.sub = [];
-            }
-
-            // 递归
+            // 有链接
             if (obj.links != undefined) {
+                // 无子路径
+                if (obj.sub === undefined) {
+                    obj.sub = [];
+                }
+
                 obj.links.forEach((item, index, arr) => {
                     // 添加到子路径（适配 Element UI - Tree）
-                    obj.sub.push(item);
+                    try {
+                        obj.sub.push(item);
+                    } catch (err) {
+                        console.warn('[添加链接到 sub]', err);
+                        console.warn('[出错的 obj]', obj);
+                    }
 
                     // 删除自身
                     if (index === (arr.length - 1)) {
