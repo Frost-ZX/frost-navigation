@@ -62,14 +62,14 @@ export default {
                 if (type == 'cache') {
                     localStorage.removeItem('navLinksCache');
                 } else if (type == 'settings') {
-                    localStorage.removeItem('config');
+                    localStorage.removeItem('navConfig');
                 } else {
                     return
                 }
 
-                this.$notify({
-                    type: 'success',
-                    message: '已清除，2s 后自动刷新'
+                this.$message({
+                    message: '已清除，2s 后自动刷新',
+                    type: 'success'
                 });
 
                 setTimeout(() => {
@@ -78,9 +78,9 @@ export default {
 
             }).catch(() => {
 
-                this.$notify({
-                    type: 'info',
-                    message: '取消清除'
+                this.$message({
+                    message: '取消清除',
+                    type: 'info'
                 });
 
             });

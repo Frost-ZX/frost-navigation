@@ -112,7 +112,7 @@ export default {
                 clearTimeout(this.debounce.saveConfig);
 
                 this.debounce.saveConfig = setTimeout(() => {
-                    localStorage.setItem('config', JSON.stringify(obj));
+                    localStorage.setItem('navConfig', JSON.stringify(obj));
                 }, 2000);
             },
             deep: true
@@ -130,7 +130,7 @@ export default {
         }
     },
     mounted() {
-        var configStr = localStorage.getItem('config');
+        var configStr = localStorage.getItem('navConfig');
         var configObj = {};
 
         if (configStr != null) {
