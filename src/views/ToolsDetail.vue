@@ -1,21 +1,34 @@
 <template>
     <div class="tools-detail">
-        未完成
+        <component :is="detailElem" />
     </div>
 </template>
 
 <script>
+
 export default {
     name: 'ToolsDetail',
     data() {
         return {
             utils: this.$root.utils,
-            routeQuery: {}
+            routeQuery: {},
+            detailElem: null
         }
     },
     beforeRouteEnter(to, from, next) {
         next(vm => {
-            console.log('[打开工具] 参数', vm.$route.query);
+            var params = vm.$route.params;
+            var query = vm.$route.query;
+
+            console.log('[打开工具] params', params);
+            console.log('[打开工具] query', query);
+
+            vm.detailElem = () => {
+                // 动态引入组件
+                var elem = import(`@/components/tools/${query.component}.vue`);
+
+                return elem;
+            };
         });
     }
 }

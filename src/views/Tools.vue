@@ -3,10 +3,21 @@
 
         <div class="wrapper">
 
-            <!-- 工具项 -->
-            <div v-for="(item, key) in toolList" :key="key" class="tool-item shadow-2" @click="openDetail(key)">
-                <div class="item-title">{{ item.title }}</div>
-                <div class="item-content limit-line-3">{{ item.desc || '无简介' }}</div>
+            <!-- 工具分类 -->
+            <div v-for="(categoryItem, categoryKey) in toolList" :key="categoryKey" class="category">
+
+                <!-- 标题 -->
+                <div class="title">{{ categoryItem.title }}</div>
+
+                <!-- 工具项 -->
+                <div v-for="(toolItem, toolKey) in categoryItem.list" :key="toolKey"
+                    :class="['tool-item', 'shadow-2', { disabled: !toolItem.enabled }]"
+                    @click="openDetail(categoryKey, toolKey)"
+                >
+                    <div class="item-title limit-line-1">{{ toolItem.title }}</div>
+                    <div class="item-content limit-line-3">{{ toolItem.desc || '无简介' }}</div>
+                </div>
+
             </div>
 
         </div>
@@ -15,6 +26,7 @@
         <el-drawer direction="btt" size="100%" :append-to-body="true" :destroy-on-close="true"
             :title="detail.title" :visible.sync="detail.show" :before-close="closeDetail"
         >
+            <!-- 内容页 -->
             <div class="tool-content">
                 <router-view></router-view>
             </div>
@@ -24,67 +36,51 @@
 </template>
 
 <script>
+import navTools from '@/assets/js/navTools.js';
+
 export default {
     name: 'Tools',
     data() {
         return {
             utils: this.$root.utils,
+            toolList: navTools,
             detail: {
                 show: false,
                 title: ''
-            },
-            toolList: {
-                'calcDownloadTime': {
-                    title: '计算下载用时',
-                    desc: '根据设定的文件大小和下载速度简单计算大约下载完成所需的时间'
-                },
-                'calcRatio': {
-                    title: '计算比例'
-                },
-                'genLinks': {
-                    title: '生成批量下载链接',
-                    desc: '根据设置，生成有一定规律的用于批量下载的链接'
-                },
-                'genRandomStr': {
-                    title: '生成随机字符串',
-                    desc: '生成随机组合的字符串，可用于密码'
-                },
-                'minecraftChunkLocationCalc': {
-                    title: 'Minecraft 区块计算'
-                },
-                'minecraftDynmapRenderdata': {
-                    title: 'Minecraft Dynmap renderdata 生成',
-                    desc: '生成用于 Minecraft Dynmap 插件 / 模组的 renderdata'
-                },
-                'minecraftUUIDConvert': {
-                    title: 'Minecraft UUIDLeast、UUIDMost、UUID 转换',
-                    desc: 'UUIDLeast + UUIDMost -> UUID'
-                },
-                'newWindow': {
-                    title: '新窗口（小窗）中打开'
-                },
-                'runjs': {
-                    title: '执行 JavaScript'
-                },
-                'simpleCalc': {
-                    title: '简易计算'
-                },
-                'timestampConvert': {
-                    title: 'Unix 时间戳转换',
-                    desc: 'Unix 时间戳转时间 / 时间转 Unix 时间戳'
-                }
             }
         };
     },
     methods: {
-        // 打开工具
-        openDetail(toolName) {
-            // 当前工具信息
-            var info = this.toolList[toolName];
 
-            // 若不存在
-            if (info === undefined) {
-                console.log('[打开工具] 不存在该工具：' + toolName);
+        /**
+         * 打开工具
+         */
+        openDetail(toolCatrgory, toolName) {
+            // 当前工具信息
+            var info = {};
+            
+            try {
+
+                info = this.toolList[toolCatrgory]['list'][toolName];
+
+                if (info === undefined) {
+                    throw new Error('该分类中不存在工具 ' + toolName);
+                }
+
+            } catch (err) {
+                
+                console.warn(`[打开工具] 无法打开该工具（分类：${toolCatrgory} 名称：${toolName}）`);
+                console.warn('[打开工具]', err);
+                return;
+
+            }
+
+            // 禁用
+            if (!info.enabled) {
+                this.$message({
+                    message: '该工具未启用',
+                    type: 'warning'
+                });
                 return;
             }
 
@@ -95,15 +91,23 @@ export default {
             // 路由跳转
             this.$router.push({
                 name: 'ToolsDetail',
+                params: {
+                    category: toolCatrgory,
+                    name: toolName
+                },
                 query: {
-                    name: toolName,
-                    title: info.title
+                    component: info.component
                 }
+            }).catch((err) => {
+                console.log('[路由跳转]', err.name);
             });
             // 显示 drawer
             this.detail.show = true;
         },
-        // 关闭工具
+
+        /**
+         * 关闭工具
+         */
         closeDetail(done) {
             this.$confirm('是否关闭？').then(() => {
                 // 关闭 drawer
@@ -116,13 +120,16 @@ export default {
                 this.utils.changeTitle('小工具');
             }).catch(() => { });
         }
+
     },
     beforeRouteEnter(to, from, next) {
         next(vm => {
+            var route = vm.$route;
+
             // 判断进入的路由
-            if (vm.$route.name == 'ToolsDetail') {
+            if (route.name == 'ToolsDetail') {
                 // 进入：工具内容页面
-                vm.openDetail(vm.$route.query.name);
+                vm.openDetail(route.params.category, route.params.name);
             } else {
                 // 进入：工具列表页面
                 vm.utils.changeTitle('小工具');
@@ -139,40 +146,64 @@ export default {
     align-items: center;
     padding: 2rem;
     background-color: @colorWhite;
+    overflow-y: auto;
 
     .wrapper {
+        width: 100%;
+    }
+
+    .category {
         display: flex;
         align-items: top;
         flex-wrap: wrap;
         justify-content: flex-start;
+        position: relative;
+        padding-top: 3rem;
         width: 100%;
-    }
 
-    .tool-item {
-        flex-shrink: 0;
-        margin: 0.5rem;
-        padding: 1rem;
-        width: 16rem;
-        border-left: 0.2rem solid @colorPrimary;
-        background-color: #FFF;
-        font-size: 0.9rem;
-        color: #555;
-        overflow: hidden;
-        transition: all @transitionTime;
-        cursor: pointer;
-
-        &:hover {
-            border-left-color: @colorSecondary;
-            transform: translateY(-0.2rem);
-        }
-
-        .item-title {
+        .title {
+            position: absolute;
+            top: 1rem;
+            left: 0;
             font-weight: bold;
-            margin-bottom: 0.4rem;
+            color: #555;
         }
 
-        .item-content {
-            color: #999;
+        .tool-item {
+            flex-shrink: 0;
+            margin: .5rem;
+            padding: 1rem;
+            width: 18rem;
+            border-left: .2rem solid @colorPrimary;
+            border-radius: .25rem;
+            background-color: #FFF;
+            font-size: 0;
+            color: #555;
+            overflow: hidden;
+            transition: all @transitionTime;
+            cursor: pointer;
+
+            &:hover {
+                border-left-color: @colorSecondary;
+                transform: translateY(-.2rem);
+            }
+
+            &.disabled {
+                border-left-color: @colorGrey;
+            }
+
+            .item-title {
+                margin-bottom: .5rem;
+                font-weight: bold;
+                font-size: .9rem;
+            }
+
+            .item-content {
+                height: calc(1.5em * 3);
+                line-height: 1.5em;
+                font-size: .75rem;
+                color: #999;
+            }
         }
     }
 }
