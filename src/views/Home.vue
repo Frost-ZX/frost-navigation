@@ -296,12 +296,12 @@ export default {
             display: flex;
             align-items: center;
             position: sticky;
-            top: 0.5rem;
+            top: .5rem;
             z-index: 100;
             width: 100%;
             max-width: 40rem;
             height: 2.8rem;
-            border-radius: 0.25rem;
+            border-radius: .25rem;
             background-color: #FFF;
             overflow: hidden;
 
@@ -327,7 +327,7 @@ export default {
 
             .btn-clear {
                 width: 2rem;
-                opacity: 0.5;
+                opacity: .5;
                 transition: opacity @transitionTime;
 
                 &:hover {
@@ -355,13 +355,13 @@ export default {
             font-size: 1rem;
 
             > label {
-                margin: 1em 0.5em;
+                margin: 1em .5em;
                 margin-top: 0;
                 padding: 1em;
                 width: 45%;
                 min-width: 18em;
-                border-bottom: solid 0.15rem transparent;
-                border-radius: 0.25em;
+                border-bottom: solid .15rem transparent;
+                border-radius: .25em;
                 background-color: #FFF;
                 text-align: left;
                 font-weight: normal;
@@ -396,12 +396,12 @@ export default {
                 }
 
                 .fn-icon {
-                    margin-right: 0.4em;
+                    margin-right: .4em;
                 }
 
                 .desc {
-                    margin-left: 0.5em;
-                    font-size: 0.8em;
+                    margin-left: .5em;
+                    font-size: .8em;
                     color: #CCC;
                 }
             }
@@ -415,7 +415,7 @@ export default {
         z-index: 100;
         top: 0;
         margin-bottom: 1rem;
-        border-radius: 0.25rem;
+        border-radius: .25rem;
         line-height: @height;
         overflow: hidden;
 
@@ -430,7 +430,7 @@ export default {
                 width: 4.5rem;
 
                 input {
-                    padding: 0 0.75rem;
+                    padding: 0 .75rem;
                 }
             }
         }
@@ -442,8 +442,8 @@ export default {
     }
 
     .link-tree {
-        padding: 0.5rem;
-        border-radius: 0.25rem;
+        padding: .5rem;
+        border-radius: .25rem;
         font-size: 14px;
 
         /deep/ .el-tree-node__content {
@@ -460,8 +460,8 @@ export default {
             }
 
             .link {
-                margin-top: 0.2rem;
-                opacity: 0.5;
+                margin-top: .2rem;
+                opacity: .5;
             }
         }
     }
