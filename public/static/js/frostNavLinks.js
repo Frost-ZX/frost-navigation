@@ -1,9 +1,9 @@
 // 导航链接列表
-// 更新：2021-04-16
+// 更新：2021-05-03
 
 var frostNavLinks = {
     // 版本号
-    version: '20210416-8',
+    version: '20210503-1',
     // 列表
     list: [
         // 主分类
@@ -522,6 +522,16 @@ var frostNavLinks = {
                 {
                     title: 'CLAMP',
                     links: [
+                        {
+                            link: 'https://clamp-fans.com/',
+                            title: 'CLAMP-FANS',
+                            update: '2021-05-01'
+                        },
+                        {
+                            link: 'https://clamp-net.com/',
+                            title: 'CLAMP-NET',
+                            update: '2021-05-01'
+                        },
                         {
                             link: 'http://ccsakura-official.com/',
                             title: 'カードキャプターさくら公式サイト（魔卡少女樱官网）',
@@ -1160,6 +1170,11 @@ var frostNavLinks = {
                             link: 'https://web.archive.org/',
                             title: 'Wayback Machine',
                             update: '2021-02-08'
+                        },
+                        {
+                            link: 'https://www.zoomeye.org/',
+                            title: 'ZoomEye - Cyberspace Search Engine',
+                            update: '2021-04-17'
                         }
                     ]
                 },
@@ -2144,6 +2159,11 @@ var frostNavLinks = {
                                     update: '2021-02-08'
                                 },
                                 {
+                                    link: 'https://misode.github.io/',
+                                    title: 'Minecraft Data Pack Generator（数据包生成器）',
+                                    update: '2021-04-17'
+                                },
+                                {
                                     link: 'https://overviewer.org/',
                                     title: 'Minecraft Overviewer',
                                     update: '2021-02-20'
@@ -2158,13 +2178,18 @@ var frostNavLinks = {
                                     update: '2021-02-20'
                                 },
                                 {
+                                    link: 'https://minotar.net/',
+                                    title: 'Minotar - Minecraft 头像 API',
+                                    update: '2021-04-17'
+                                },
+                                {
                                     link: 'https://zh-cn.namemc.com/',
                                     title: 'NameMC',
                                     update: '2021-02-08'
                                 },
                                 {
                                     link: 'https://www.minecraftjson.com/',
-                                    title: 'Tellraw Generator',
+                                    title: 'Tellraw Generator（tellraw 命令生成器）',
                                     update: '2021-02-08'
                                 },
                                 {
@@ -2302,6 +2327,11 @@ var frostNavLinks = {
                     title: '建站',
                     links: [
                         {
+                            link: 'https://www.dokuwiki.org/',
+                            title: 'DokuWiki',
+                            update: '2021-04-17'
+                        },
+                        {
                             link: 'https://lnmp.org/',
                             title: 'LNMP 一键安装包'
                         },
@@ -2320,12 +2350,14 @@ var frostNavLinks = {
                             update: '2021-02-08'
                         },
                         {
-                            link: 'http://www.webmin.com/',
-                            title: 'Webmin'
+                            link: 'https://www.vuepress.cn/',
+                            title: 'VuePress - Vue 驱动的静态网站生成器',
+                            update: '2021-04-17'
                         },
                         {
-                            link: 'https://www.dokuwiki.org/',
-                            title: 'DokuWiki'
+                            link: 'http://www.webmin.com/',
+                            title: 'Webmin',
+                            update: '2021-04-17'
                         }
                     ]
                 },
@@ -2606,6 +2638,11 @@ var frostNavLinks = {
                                     update: '2021-02-08'
                                 },
                                 {
+                                    link: 'https://www.baidufe.com/fehelper/index/index.html',
+                                    title: 'FeHelper - Web 开发者助手',
+                                    update: '2021-04-17'
+                                },
+                                {
                                     link: 'https://greasyfork.org/zh-CN',
                                     title: 'Greasy Fork',
                                     update: '2021-02-08'
@@ -2660,6 +2697,11 @@ var frostNavLinks = {
                                     link: 'https://www.firefox.com.cn/',
                                     title: 'Firefox',
                                     update: '2021-02-08'
+                                },
+                                {
+                                    link: 'https://www.rejetto.com/hfs/',
+                                    title: 'HFS - HTTP File Server',
+                                    update: '2021-04-17'
                                 },
                                 {
                                     link: 'https://natapp.cn/',
