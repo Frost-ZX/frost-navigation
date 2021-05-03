@@ -1,18 +1,17 @@
 <template>
     <div class="tools-detail">
-        <component :is="detailElem" />
+        <component :is="toolElem" />
     </div>
 </template>
 
 <script>
-
 export default {
     name: 'ToolsDetail',
     data() {
         return {
             utils: this.$root.utils,
             routeQuery: {},
-            detailElem: null
+            toolElem: null
         }
     },
     beforeRouteEnter(to, from, next) {
@@ -23,7 +22,7 @@ export default {
             console.log('[打开工具] params', params);
             console.log('[打开工具] query', query);
 
-            vm.detailElem = () => {
+            vm.toolElem = () => {
                 // 动态引入组件
                 var elem = import(`@/components/tools/${query.component}.vue`);
 
@@ -35,5 +34,22 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.tools-detail {
+    display: flex;
+    align-items: top;
+    justify-content: center;
 
+    /deep/ .tool-elem {
+        width: 100%;
+        max-width: 60rem;
+
+        > div {
+            > .title {
+                padding: 1rem 0;
+                font-size: 1rem;
+                font-weight: bold;
+            }
+        }
+    }
+}
 </style>

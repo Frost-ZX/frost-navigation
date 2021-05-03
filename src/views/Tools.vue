@@ -23,13 +23,12 @@
         </div>
 
         <!-- 弹出 -->
-        <el-drawer direction="btt" size="100%" :append-to-body="true" :destroy-on-close="true"
-            :title="detail.title" :visible.sync="detail.show" :before-close="closeDetail"
+        <el-drawer custom-class="drawer-full" direction="btt" size="100%"
+            :append-to-body="true" :destroy-on-close="true" :title="detail.title"
+            :visible.sync="detail.show" :before-close="closeDetail"
         >
-            <!-- 内容页 -->
-            <div class="tool-content">
-                <router-view></router-view>
-            </div>
+            <!-- 内容 -->
+            <router-view></router-view>
         </el-drawer>
 
     </el-container>
@@ -206,9 +205,5 @@ export default {
             }
         }
     }
-}
-
-.tool-content {
-    padding: 0 2rem 2rem 2rem;
 }
 </style>
