@@ -27,8 +27,9 @@ html {
 }
 
 body {
-    user-select: none;
+    color: #555;
     overflow: hidden;
+    user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -96,7 +97,34 @@ body {
     }
 }
 
-// Element
+// Element UI
+
+.el-drawer.drawer-full {
+    .el-drawer__header {
+        z-index: 500;
+        margin: 0 !important;
+        padding: 1rem 1.5rem !important;
+        background-color: @colorPrimary;
+        color: #FFF;
+        .shadow-3();
+    }
+
+    .el-drawer__body {
+        padding: 2rem;
+        overflow-y: auto;
+    }
+}
+
+.el-input {
+    input::-webkit-inner-spin-button,
+    input::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+}
 
 .el-select-dropdown {
     border: none !important;
