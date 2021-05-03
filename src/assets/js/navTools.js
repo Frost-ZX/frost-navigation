@@ -14,6 +14,8 @@ let navTools = {
                 desc: '根据设定的文件大小和下载速度简单计算大约下载完成所需的时间',
                 // 组件名称
                 component: 'CalcDownloadTime',
+                // 更新时间
+                update: '',
                 // 启用状态
                 enabled: false
             },
@@ -84,11 +86,13 @@ let navTools = {
             'new-window': {
                 title: '新窗口（小窗）中打开',
                 component: 'OtherNewWindow',
-                enabled: false
+                update: '2021-05-03',
+                enabled: true
             },
             'run-js': {
                 title: '执行 JavaScript',
                 component: 'OtherRunJS',
+                update: '2021-05-03',
                 enabled: true
             }
         }
