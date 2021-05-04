@@ -79,6 +79,11 @@ export default {
                     id: 'settings',
                     label: '设置',
                     routeName: 'Settings'
+                },
+                {
+                    id: 'about',
+                    label: '关于',
+                    routeName: 'About'
                 }
             ],
             // 显示下拉菜单
