@@ -12,7 +12,7 @@
                 <!-- 工具项 -->
                 <div v-for="(toolItem, toolKey) in categoryItem.list" :key="toolKey"
                     :class="['tool-item', 'shadow-2', { disabled: !toolItem.enabled }]"
-                    @click="openDetail(categoryKey, toolKey)"
+                    @click="detailOpen(categoryKey, toolKey)"
                 >
                     <div class="item-title limit-line-1">{{ toolItem.title }}</div>
                     <div class="item-content limit-line-3">{{ toolItem.desc || '无简介' }}</div>
@@ -25,10 +25,20 @@
         <!-- 弹出 -->
         <el-drawer custom-class="drawer-full" direction="btt" size="100%"
             :append-to-body="true" :destroy-on-close="true" :title="detail.title"
-            :visible.sync="detail.show" :before-close="closeDetail"
+            :visible.sync="detail.show" :before-close="detailClose"
         >
-            <!-- 内容 -->
+
+            <!-- 标题区域 -->
+            <div slot="title" class="header">
+                <span class="title">{{ detail.title }}</span>
+                <el-tooltip content="在新标签页中打开本工具" placement="left">
+                    <i class="btn el-icon-copy-document" @click="detailOpenNewTab()"></i>
+                </el-tooltip>
+            </div>
+
+            <!-- 内容区域 -->
             <router-view></router-view>
+
         </el-drawer>
 
     </el-container>
@@ -52,9 +62,28 @@ export default {
     methods: {
 
         /**
-         * 打开工具
+         * 关闭工具
          */
-        openDetail(toolCatrgory, toolName) {
+        detailClose(done) {
+            this.$confirm('是否关闭？').then(() => {
+                // 关闭 drawer
+                done();
+                // 路由跳转
+                this.$router.push({
+                    name: 'Tools'
+                });
+                // 更新页面标题
+                this.utils.changeTitle('小工具');
+            }).catch(() => { });
+        },
+
+        /**
+         * 打开工具
+         * 
+         * @param {string} toolCatrgory 工具分类
+         * @param {string} toolName 工具名称
+         */
+        detailOpen(toolCatrgory, toolName) {
             // 当前工具信息
             var info = {};
             
@@ -105,19 +134,12 @@ export default {
         },
 
         /**
-         * 关闭工具
+         * 打开工具（新标签页）
          */
-        closeDetail(done) {
-            this.$confirm('是否关闭？').then(() => {
-                // 关闭 drawer
-                done();
-                // 路由跳转
-                this.$router.push({
-                    name: 'Tools'
-                });
-                // 更新页面标题
-                this.utils.changeTitle('小工具');
-            }).catch(() => { });
+        detailOpenNewTab() {
+            var url = window.location.href;
+
+            window.open(url, '_blank');
         }
 
     },
@@ -128,7 +150,7 @@ export default {
             // 判断进入的路由
             if (route.name == 'ToolsDetail') {
                 // 进入：工具内容页面
-                vm.openDetail(route.params.category, route.params.name);
+                vm.detailOpen(route.params.category, route.params.name);
             } else {
                 // 进入：工具列表页面
                 vm.utils.changeTitle('小工具');
@@ -203,6 +225,20 @@ export default {
                 font-size: .75rem;
                 color: #999;
             }
+        }
+    }
+}
+
+.drawer-full {
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .btn {
+            margin: 0 0.5rem;
+            font-size: inherit;
+            cursor: pointer;
         }
     }
 }
