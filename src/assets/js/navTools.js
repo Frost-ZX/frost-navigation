@@ -43,7 +43,7 @@ let navTools = {
                 title: '生成随机字符串',
                 desc: '生成随机组合的字符串，可用于密码',
                 component: 'GenRandomStr',
-                enabled: false
+                enabled: true
             }
         }
     },
