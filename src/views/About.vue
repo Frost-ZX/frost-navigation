@@ -85,10 +85,6 @@ export default {
             line-height: 1.8rem;
             font-size: 0.85rem;
             color: #888;
-
-            /deep/ .el-link {
-                font-size: inherit;
-            }
         }
     }
 }

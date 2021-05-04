@@ -47,13 +47,14 @@ export default {
         });
     },
     methods: {
+
         /**
          * 清除数据
          * 
          * @param {string} type 清除类型（cache、settings）
          */
         resetDatas(type) {
-            this.$confirm('确定要清除吗？', '确认', {
+            this.$confirm('确定要清除吗？', '', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'
@@ -85,6 +86,7 @@ export default {
 
             });
         }
+
     }
 }
 </script>

@@ -45,9 +45,24 @@ export default {
 
         > div {
             > .title {
-                padding: 1rem 0;
+                position: relative;
+                margin: 1.5rem 0;
                 font-size: 1rem;
-                font-weight: bold;
+                color: #222;
+            }
+
+            > .title::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -0.5rem;
+                width: 0.2rem;
+                height: 100%;
+                background-color: @colorPrimary;
+            }
+
+            > .content {
+                font-size: 0.9rem;
             }
         }
     }

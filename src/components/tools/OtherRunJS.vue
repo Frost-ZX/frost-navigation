@@ -75,7 +75,7 @@ export default {
 
         // 清空
         btnClear() {
-            this.$confirm('确定要清空输入和输出的内容吗？', '确认', {
+            this.$confirm('确定要清空输入和输出的内容吗？', '', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'
