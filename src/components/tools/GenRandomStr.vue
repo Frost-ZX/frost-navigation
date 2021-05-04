@@ -25,7 +25,7 @@
                         >大小写</el-checkbox>
                         <el-checkbox v-model="info.option.lowerCase"
                             name="option" label="lowerCase"
-                        >全小写（需要选择“字母”且不选择“大小写”）</el-checkbox>
+                        >全小写（需关闭“大小写”）</el-checkbox>
                     </el-form-item>
                     <!-- 生成结果 -->
                     <el-form-item label="生成结果">

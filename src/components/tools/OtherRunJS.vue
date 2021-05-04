@@ -13,7 +13,7 @@
         <div class="action">
             <div class="title">操作</div>
             <div class="btns">
-                <el-button type="primary" @click="btnRun()">运行</el-button>
+                <el-button type="primary" @click="btnRun()">执行</el-button>
                 <el-button type="danger" @click="btnClear()">清空</el-button>
             </div>
         </div>

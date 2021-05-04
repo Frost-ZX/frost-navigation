@@ -106,11 +106,5 @@ export default {
         max-width: 50rem;
         background-color: #FFF;
     }
-
-    /deep/ .el-form-item {
-        .el-form-item__label {
-            font-weight: bold;
-        }
-    }
 }
 </style>
