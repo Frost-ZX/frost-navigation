@@ -96,6 +96,7 @@ export default {
     align-items: center;
     padding: 2rem;
     background-color: @colorWhite;
+    overflow-y: auto;
 
     .wrapper {
         padding: 1.5rem 2rem;
