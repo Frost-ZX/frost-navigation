@@ -10,7 +10,6 @@ export default {
     data() {
         return {
             utils: this.$root.utils,
-            routeQuery: {},
             toolElem: null
         }
     },
@@ -18,16 +17,35 @@ export default {
         next(vm => {
             var params = vm.$route.params;
             var query = vm.$route.query;
+            var loading = null;
 
             console.log('[打开工具] params', params);
             console.log('[打开工具] query', query);
 
-            vm.toolElem = () => {
+            // 异步，防止找不到 target
+            setTimeout(() => {
+                // 开启 Loading
+                loading = vm.$loading({
+                    background: '#FFF',
+                    lock: true,
+                    // Loading 需要覆盖的 DOM 节点
+                    target: '.drawer-full .el-drawer__body'
+                });
+            }, 0);
+
+            vm.toolElem = (() => {
                 // 动态引入组件
                 var elem = import(`@/components/tools/${query.component}.vue`);
 
+                Promise.all([elem]).then(() => {
+                    setTimeout(() => {
+                        // 关闭 Loading
+                        loading.close();
+                    }, 200);
+                });
+
                 return elem;
-            };
+            });
         });
     }
 }

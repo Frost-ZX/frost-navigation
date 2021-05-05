@@ -115,8 +115,9 @@ export default {
             // 更新页面标题
             this.utils.changeTitle(info.title);
             // 更新 drawer 标题
-            this.detail.title = info.title;
+            this.detail.title = `${info.title} [${info.version}_${info.update}]`;
             // 路由跳转
+            // 注：当前路由相同时也进行跳转，以更新 query
             this.$router.push({
                 name: 'ToolsDetail',
                 params: {
