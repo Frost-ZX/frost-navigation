@@ -43,6 +43,8 @@ let navTools = {
                 title: '生成随机字符串',
                 desc: '生成随机组合的字符串，可用于密码',
                 component: 'GenRandomStr',
+                update: '20210504',
+                version: '1',
                 enabled: true
             }
         }
@@ -86,13 +88,15 @@ let navTools = {
             'new-window': {
                 title: '新窗口（小窗）中打开',
                 component: 'OtherNewWindow',
-                update: '2021-05-03',
+                update: '20210503',
+                version: '1',
                 enabled: true
             },
             'run-js': {
                 title: '执行 JavaScript',
                 component: 'OtherRunJS',
-                update: '2021-05-03',
+                update: '20210503',
+                version: '1',
                 enabled: true
             }
         }
