@@ -23,7 +23,7 @@
                 <el-menu-item v-for="(item, itemIndex) in navLinks.list"
                     :key="'list-' + itemIndex" :index="itemIndex.toString()"
                 >
-                    <i class="el-icon-link"></i>
+                    <i :class="item.icon || 'el-icon-link'"></i>
                     <span slot="title">{{ item.title }}</span>
                 </el-menu-item>
 
@@ -42,6 +42,7 @@
 
                         <!-- 输入 -->
                         <input v-model="searchEngine.keyword" class="input" type="text"
+                            @blur="searchEngine.isFocus = false" @focus="searchEngine.isFocus = true"
                             @keydown.enter.exact="searchEngineSubmit()"
                         />
 
@@ -60,7 +61,9 @@
                     </div>
 
                     <!-- 选择搜索引擎 -->
-                    <el-radio-group v-model="config.searchEngine" class="search-type" size="small">
+                    <el-radio-group v-model="config.searchEngine" size="small"
+                        :class="['search-type', { fade: searchEngine.isFocus }]"
+                    >
 
                         <!-- 自动生成 -->
                         <el-radio v-for="item in searchEngine.types" :key="item.name"
@@ -129,6 +132,7 @@ export default {
             },
             // 搜索引擎
             searchEngine: {
+                isFocus: false,
                 keyword: '',
                 types: this.$root.config.searchEngines
             },
@@ -353,6 +357,11 @@ export default {
             justify-content: center;
             margin: 2rem 0;
             font-size: 1rem;
+            transition: opacity calc(@transitionTime * 4);
+
+            &.fade {
+                opacity: 0.5;
+            }
 
             > label {
                 margin: 1em .5em;
