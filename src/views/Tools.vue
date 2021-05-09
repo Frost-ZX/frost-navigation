@@ -84,28 +84,34 @@ export default {
          * @param {string} toolName 工具名称
          */
         detailOpen(toolCatrgory, toolName) {
+            var vm = this;
             // 当前工具信息
             var info = {};
+            // 错误提示
+            var errMsg = `无法打开该工具（分类：${toolCatrgory} 名称：${toolName}）`;
             
             try {
 
-                info = this.toolList[toolCatrgory]['list'][toolName];
+                info = vm.toolList[toolCatrgory]['list'][toolName];
 
                 if (info === undefined) {
-                    throw new Error('该分类中不存在工具 ' + toolName);
+                    throw new Error(errMsg);
                 }
 
             } catch (err) {
-                
-                console.warn(`[打开工具] 无法打开该工具（分类：${toolCatrgory} 名称：${toolName}）`);
+
                 console.warn('[打开工具]', err);
+                vm.$message({
+                    message: errMsg,
+                    type: 'warning'
+                });
                 return;
 
             }
 
             // 禁用
             if (!info.enabled) {
-                this.$message({
+                vm.$message({
                     message: '该工具未启用',
                     type: 'warning'
                 });
@@ -113,25 +119,22 @@ export default {
             }
 
             // 更新页面标题
-            this.utils.changeTitle(info.title);
+            vm.utils.changeTitle(info.title);
             // 更新 drawer 标题
-            this.detail.title = `${info.title} [${info.version}_${info.update}]`;
+            vm.detail.title = `${info.title} [${info.version}_${info.update}]`;
             // 路由跳转
             // 注：当前路由相同时也进行跳转，以更新 query
-            this.$router.push({
+            vm.$router.push({
                 name: 'ToolsDetail',
                 params: {
                     category: toolCatrgory,
                     name: toolName
-                },
-                query: {
-                    component: info.component
                 }
             }).catch((err) => {
                 console.log('[路由跳转]', err.name);
             });
             // 显示 drawer
-            this.detail.show = true;
+            vm.detail.show = true;
         },
 
         /**

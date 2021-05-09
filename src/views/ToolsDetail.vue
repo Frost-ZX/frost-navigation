@@ -5,22 +5,24 @@
 </template>
 
 <script>
+import navTools from '@/assets/js/navTools.js';
+
 export default {
     name: 'ToolsDetail',
     data() {
         return {
             utils: this.$root.utils,
+            toolList: navTools,
             toolElem: null
         }
     },
     beforeRouteEnter(to, from, next) {
         next(vm => {
             var params = vm.$route.params;
-            var query = vm.$route.query;
+            var toolComponent = vm.toolList[params.category]['list'][params.name].component;
             var loading = null;
 
             console.log('[打开工具] params', params);
-            console.log('[打开工具] query', query);
 
             // 异步，防止找不到 target
             setTimeout(() => {
@@ -35,7 +37,7 @@ export default {
 
             vm.toolElem = (() => {
                 // 动态引入组件
-                var elem = import(`@/components/tools/${query.component}.vue`);
+                var elem = import(`@/components/tools/${toolComponent}.vue`);
 
                 Promise.all([elem]).then(() => {
                     setTimeout(() => {
