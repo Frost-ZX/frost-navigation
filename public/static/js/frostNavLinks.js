@@ -1,15 +1,17 @@
 // 导航链接列表
-// 更新：2021-05-03
+// 更新：2021-05-09
 
 var frostNavLinks = {
     // 版本号
-    version: '20210503-1',
+    version: '20210509-5',
     // 列表
     list: [
         // 主分类
         {
             // 标题
             title: '百科 / 教程 / 科普 / 资料',
+            // 图标
+            icon: 'el-icon-document',
             // 子路径
             sub: [
                 {
@@ -120,6 +122,7 @@ var frostNavLinks = {
         },
         {
             title: '博客 / 论坛 / 社区 / 社交 / 通讯',
+            icon: 'el-icon-chat-line-round',
             sub: [
                 {
                     title: '博客',
@@ -324,6 +327,7 @@ var frostNavLinks = {
         },
         {
             title: '创作 / 制作',
+            icon: 'el-icon-edit',
             sub: [
                 {
                     title: '版本控制',
@@ -518,6 +522,7 @@ var frostNavLinks = {
         },
         {
             title: '动漫 / 二次元',
+            icon: 'el-icon-star-off',
             sub: [
                 {
                     title: 'CLAMP',
@@ -543,6 +548,7 @@ var frostNavLinks = {
         },
         {
             title: '多媒体',
+            icon: 'el-icon-film',
             sub: [
                 {
                     title: '视频',
@@ -551,9 +557,9 @@ var frostNavLinks = {
                             title: '网站',
                             links: [
                                 {
-                                    link: 'https://www.8kraw.com//',
+                                    link: 'https://www.8kraw.com/',
                                     title: '8KRAW - 正版视频素材库',
-                                    update: '2021-02-08'
+                                    update: '2021-05-09'
                                 },
                                 {
                                     link: 'http://www.iqiyi.com/',
@@ -839,6 +845,7 @@ var frostNavLinks = {
         },
         {
             title: '工具',
+            icon: 'el-icon-setting',
             sub: [
                 {
                     title: '编辑',
@@ -1237,6 +1244,7 @@ var frostNavLinks = {
         },
         {
             title: '购物',
+            icon: 'el-icon-shopping-bag-2',
             sub: [
                 {
                     title: '网站',
@@ -1332,6 +1340,7 @@ var frostNavLinks = {
         },
         {
             title: '金融',
+            icon: 'el-icon-wallet',
             sub: [
                 {
                     title: '银行',
@@ -1382,6 +1391,7 @@ var frostNavLinks = {
         },
         {
             title: '设计',
+            icon: 'el-icon-magic-stick',
             links: [
                 {
                     link: 'https://huaban.com/',
@@ -1417,6 +1427,7 @@ var frostNavLinks = {
         },
         {
             title: '生活 / 出行',
+            icon: 'el-icon-bicycle',
             links: [
                 {
                     link: 'http://www.pm25.com/',
@@ -1521,6 +1532,7 @@ var frostNavLinks = {
         },
         {
             title: '调试',
+            icon: 'el-icon-set-up',
             links: [
                 {
                     link: 'view-source:页面的链接',
@@ -1643,6 +1655,7 @@ var frostNavLinks = {
         },
         {
             title: '网络',
+            icon: 'el-icon-monitor',
             sub: [
                 {
                     title: '管理',
@@ -1774,6 +1787,7 @@ var frostNavLinks = {
         },
         {
             title: '系统',
+            icon: 'el-icon-cpu',
             sub: [
                 {
                     title: 'Android',
@@ -1876,6 +1890,7 @@ var frostNavLinks = {
         },
         {
             title: '写作',
+            icon: 'el-icon-edit-outline',
             links: [
                 {
                     link: 'https://www.jianshu.com/',
@@ -1891,6 +1906,7 @@ var frostNavLinks = {
         },
         {
             title: '学习',
+            icon: 'el-icon-reading',
             sub: [
                 {
                     link: 'https://www.91suke.com/',
@@ -1921,6 +1937,7 @@ var frostNavLinks = {
         },
         {
             title: '游戏',
+            icon: 'el-icon-mouse',
             sub: [
                 {
                     title: '网站',
@@ -2029,9 +2046,9 @@ var frostNavLinks = {
                                     title: 'Wiki',
                                     links: [
                                         {
-                                            link: 'https://minecraft-zh.gamepedia.com/',
+                                            link: 'https://minecraft.fandom.com/zh/',
                                             title: '中文 Minecraft Wiki',
-                                            update: '2021-02-08'
+                                            update: '2021-05-09'
                                         },
                                         {
                                             link: 'https://www.mcmod.cn/',
@@ -2255,6 +2272,7 @@ var frostNavLinks = {
         },
         {
             title: '资讯',
+            icon: 'el-icon-news',
             links: [
                 {
                     link: 'https://36kr.com/',
@@ -2322,6 +2340,7 @@ var frostNavLinks = {
         },
         {
             title: '资源',
+            icon: 'el-icon-files',
             sub: [
                 {
                     title: '建站',
