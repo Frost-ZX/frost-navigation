@@ -165,7 +165,13 @@ export default {
             }
         }
     },
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            vm.utils.changeTitle();
+        });
+    },
     methods: {
+
         /** 
          * 更改当前显示的分类
         */
@@ -189,6 +195,7 @@ export default {
 
             this.linkSearch.keyword = '';
         },
+
         /**
          * 打开链接
          * 
@@ -206,6 +213,7 @@ export default {
                 window.open(link, '_blank');
             }
         },
+
         /**
          * 搜索引擎
          */
@@ -218,6 +226,9 @@ export default {
 
             if (keyword == '') {
                 return false;
+            } else {
+                // 编码
+                keyword = window.encodeURIComponent(keyword);
             }
 
             for (let index in types) {
@@ -228,6 +239,7 @@ export default {
                 }
             }
         },
+
         /**
          * 搜索链接
          */
@@ -255,13 +267,9 @@ export default {
             }
 
             return result;
-        }
+        },
+
     },
-    beforeRouteEnter(to, from, next) {
-        next(vm => {
-            vm.utils.changeTitle();
-        });
-    }
 }
 </script>
 
