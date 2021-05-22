@@ -1,9 +1,9 @@
 // 导航链接列表
-// 更新：2021-05-09
+// 更新：2021-05-22
 
 var frostNavLinks = {
     // 版本号
-    version: '20210509-5',
+    version: '20210522-5',
     // 列表
     list: [
         // 主分类
@@ -326,7 +326,7 @@ var frostNavLinks = {
             ]
         },
         {
-            title: '创作 / 制作',
+            title: '创作 / 开发 / 制作',
             icon: 'el-icon-edit',
             sub: [
                 {
@@ -343,6 +343,11 @@ var frostNavLinks = {
                             update: '2021-04-16'
                         },
                         {
+                            link: 'https://git-scm.com/',
+                            title: 'Git',
+                            update: '2021-05-22'
+                        },
+                        {
                             link: 'https://gitee.com/',
                             title: 'Gitee（码云）',
                             update: '2021-02-08'
@@ -355,38 +360,100 @@ var frostNavLinks = {
                     ]
                 },
                 {
-                    title: '编程',
+                    title: '开发',
+                    sub: [
+                        {
+                            title: '工具',
+                            links: [
+                                {
+                                    link: 'https://developer.android.google.cn/studio/',
+                                    title: 'Android Studio',
+                                    update: '2021-02-07'
+                                },
+                                {
+                                    link: 'http://www.codeblocks.org/',
+                                    title: 'Code::Blocks',
+                                    update: '2021-02-07'
+                                },
+                                {
+                                    link: 'http://www.eclipse.org/',
+                                    title: 'Eclipse',
+                                    update: '2021-02-07'
+                                },
+                                {
+                                    link: 'https://developers.google.cn/blockly/',
+                                    title: 'Google Blockly',
+                                    update: '2021-02-07'
+                                },
+                                {
+                                    link: 'https://www.python.org/',
+                                    title: 'Python',
+                                    update: '2021-02-07'
+                                },
+                                {
+                                    link: 'https://code.visualstudio.com/',
+                                    title: 'Visual Studio Code',
+                                    update: '2021-02-07'
+                                }
+                            ]
+                        },
+                        {
+                            title: '前端',
+                            links: [
+                                {
+                                    link: 'https://www.bootcss.com/',
+                                    title: 'Bootstrap 中文网',
+                                    update: '2021-02-08'
+                                },
+                                {
+                                    link: 'https://highlightjs.org/',
+                                    title: 'highlight.js',
+                                    update: '2021-02-08'
+                                },
+                                {
+                                    link: 'https://jquery.com/',
+                                    title: 'jQuery',
+                                    update: '2021-02-08'
+                                },
+                                {
+                                    link: 'http://www.jq22.com/',
+                                    title: 'jQuery 插件库',
+                                    update: '2021-02-08'
+                                },
+                                {
+                                    link: 'http://www.htmleaf.com/',
+                                    title: 'jQuery 之家',
+                                    update: '2021-02-08'
+                                },
+                                {
+                                    link: 'http://layer.layui.com/',
+                                    title: 'layer',
+                                    update: '2021-02-08'
+                                },
+                                {
+                                    link: 'https://leafletjs.com/',
+                                    title: 'Leaflet - 可交互的地图',
+                                    update: '2021-02-08'
+                                },
+                                {
+                                    link: 'http://threejs.org/',
+                                    title: 'three.js – JavaScript 3D library',
+                                    update: '2021-02-08'
+                                }
+                            ]
+                        },
+                    ],
                     links: [
                         {
-                            link: 'https://developer.android.google.cn/studio/',
-                            title: 'Android Studio',
-                            update: '2021-02-07'
+                            link: 'https://nodejs.org/',
+                            title: 'Node.js',
+                            update: '2021-05-22'
                         },
                         {
-                            link: 'http://www.codeblocks.org/',
-                            title: 'Code::Blocks',
-                            update: '2021-02-07'
+                            link: 'https://vuejs.org/',
+                            title: 'Vue.js',
+                            update: '2021-05-22'
                         },
-                        {
-                            link: 'http://www.eclipse.org/',
-                            title: 'Eclipse',
-                            update: '2021-02-07'
-                        },
-                        {
-                            link: 'https://developers.google.cn/blockly/',
-                            title: 'Google Blockly',
-                            update: '2021-02-07'
-                        },
-                        {
-                            link: 'https://www.python.org/',
-                            title: 'Python',
-                            update: '2021-02-07'
-                        },
-                        {
-                            link: 'https://code.visualstudio.com/',
-                            title: 'Visual Studio Code',
-                            update: '2021-02-07'
-                        }
                     ]
                 },
                 {
@@ -429,6 +496,21 @@ var frostNavLinks = {
                         {
                             link: 'https://playcanvas.com/',
                             title: 'PlayCanvas',
+                            update: '2021-02-08'
+                        }
+                    ]
+                },
+                {
+                    title: '写作',
+                    links: [
+                        {
+                            link: 'https://www.jianshu.com/',
+                            title: '简书',
+                            update: '2021-02-08'
+                        },
+                        {
+                            link: 'http://www.lofter.com/',
+                            title: 'LOFTER',
                             update: '2021-02-08'
                         }
                     ]
@@ -630,6 +712,11 @@ var frostNavLinks = {
                                             link: 'https://www.bilibili.com/',
                                             title: 'bilibili（主站）',
                                             update: '2021-02-08'
+                                        },
+                                        {
+                                            link: 'https://manga.bilibili.com/',
+                                            title: 'bilibili（漫画）',
+                                            update: '2021-05-16'
                                         },
                                         {
                                             link: 'https://live.bilibili.com/',
@@ -925,6 +1012,11 @@ var frostNavLinks = {
                             link: 'https://bios-pw.org/',
                             title: 'BIOS Master Password Generator',
                             update: '2021-02-25'
+                        },
+                        {
+                            link: 'https://www.ipip.net/',
+                            title: 'IPIP.NET - 专业的 IP 地址库',
+                            update: '2021-05-22'
                         }
                     ],
                     sub: [
@@ -1139,6 +1231,11 @@ var frostNavLinks = {
                             update: '2021-02-08'
                         },
                         {
+                            link: 'https://cloud.189.cn/',
+                            title: '天翼云盘',
+                            update: '2021-05-22'
+                        },
+                        {
                             link: 'https://www.wenshushu.cn/',
                             title: '文叔叔 - 传文件，找文叔叔',
                             update: '2021-04-16'
@@ -1196,6 +1293,41 @@ var frostNavLinks = {
                     ]
                 },
                 {
+                    title: '文档',
+                    links: [
+                        {
+                            link: 'https://docs.qq.com/',
+                            title: '腾讯文档',
+                            update: '2021-05-22'
+                        },
+                        {
+                            link: 'http://yuque.com/',
+                            title: '语雀',
+                            update: '2021-05-22'
+                        }
+                    ]
+                },
+                {
+                    title: '问卷',
+                    links: [
+                        {
+                            link: 'https://wj.qq.com/',
+                            title: '腾讯问卷',
+                            update: '2021-02-08'
+                        },
+                        {
+                            link: 'https://survey.163.com/',
+                            title: '网易问卷',
+                            update: '2021-05-22'
+                        },
+                        {
+                            link: 'https://www.wjx.cn/',
+                            title: '问卷星',
+                            update: '2021-05-22'
+                        }
+                    ]
+                },
+                {
                     title: '娱乐',
                     links: [
                         {
@@ -1228,11 +1360,6 @@ var frostNavLinks = {
                 {
                     title: '其他',
                     links: [
-                        {
-                            link: 'https://wj.qq.com/',
-                            title: '腾讯问卷',
-                            update: '2021-02-08'
-                        },
                         {
                             link: 'http://www.net2ftp.com/',
                             title: 'net2ftp',
@@ -1889,22 +2016,6 @@ var frostNavLinks = {
             ]
         },
         {
-            title: '写作',
-            icon: 'el-icon-edit-outline',
-            links: [
-                {
-                    link: 'https://www.jianshu.com/',
-                    title: '简书',
-                    update: '2021-02-08'
-                },
-                {
-                    link: 'http://www.lofter.com/',
-                    title: 'LOFTER',
-                    update: '2021-02-08'
-                }
-            ]
-        },
-        {
             title: '学习',
             icon: 'el-icon-reading',
             sub: [
@@ -2369,6 +2480,11 @@ var frostNavLinks = {
                             update: '2021-02-08'
                         },
                         {
+                            link: 'https://valine.js.org/',
+                            title: 'Valine - 无后端评论系统',
+                            update: '2021-02-08'
+                        },
+                        {
                             link: 'https://www.vuepress.cn/',
                             title: 'VuePress - Vue 驱动的静态网站生成器',
                             update: '2021-04-17'
@@ -2441,56 +2557,6 @@ var frostNavLinks = {
                     ]
                 },
                 {
-                    title: '前端',
-                    links: [
-                        {
-                            link: 'https://www.bootcss.com/',
-                            title: 'Bootstrap 中文网',
-                            update: '2021-02-08'
-                        },
-                        {
-                            link: 'https://highlightjs.org/',
-                            title: 'highlight.js',
-                            update: '2021-02-08'
-                        },
-                        {
-                            link: 'https://jquery.com/',
-                            title: 'jQuery',
-                            update: '2021-02-08'
-                        },
-                        {
-                            link: 'http://www.jq22.com/',
-                            title: 'jQuery 插件库',
-                            update: '2021-02-08'
-                        },
-                        {
-                            link: 'http://www.htmleaf.com/',
-                            title: 'jQuery 之家',
-                            update: '2021-02-08'
-                        },
-                        {
-                            link: 'http://layer.layui.com/',
-                            title: 'layer',
-                            update: '2021-02-08'
-                        },
-                        {
-                            link: 'https://leafletjs.com/',
-                            title: 'Leaflet - 可交互的地图',
-                            update: '2021-02-08'
-                        },
-                        {
-                            link: 'http://threejs.org/',
-                            title: 'three.js – JavaScript 3D library',
-                            update: '2021-02-08'
-                        },
-                        {
-                            link: 'https://valine.js.org/',
-                            title: 'Valine - 无后端评论系统',
-                            update: '2021-02-08'
-                        }
-                    ]
-                },
-                {
                     title: '软件',
                     sub: [
                         {
@@ -2516,6 +2582,11 @@ var frostNavLinks = {
                         {
                             title: '播放器',
                             links: [
+                                {
+                                    link: 'http://www.aimp.ru/',
+                                    title: 'AIMP',
+                                    update: '2021-05-22'
+                                },
                                 {
                                     link: 'https://player.qq.com/',
                                     title: 'QQ影音',
@@ -2918,6 +2989,21 @@ var frostNavLinks = {
                             link: 'https://open.oppomobile.com/',
                             title: 'OPPO开放平台',
                             update: '2021-02-08'
+                        }
+                    ]
+                },
+                {
+                    title: 'CDN',
+                    links: [
+                        {
+                            title: '75CDN - 前端静态资源库',
+                            link: 'https://cdn.baomitu.com/',
+                            update: '2021-05-22'
+                        },
+                        {
+                            title: 'Staticfile CDN',
+                            link: 'http://www.staticfile.org/',
+                            update: '2021-05-22'
                         }
                     ]
                 },
