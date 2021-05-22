@@ -4,7 +4,7 @@ module.exports = {
     productionSourceMap: false,
     assetsDir: 'static',
     publicPath: './',
-    outputDir: 'docs',
+    outputDir: 'dist',
 
     pages: {
         mainPage: {

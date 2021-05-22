@@ -1,7 +1,5 @@
 .DS_Store
 .vscode
 
-/docs
 node_modules
-
-*-debug.log*
+/dist
