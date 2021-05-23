@@ -1,9 +1,9 @@
 // 导航链接列表
-// 更新：2021-05-22
+// 更新：2021-05-23
 
 var frostNavLinks = {
     // 版本号
-    version: '20210522-5',
+    version: '20210523-2',
     // 列表
     list: [
         // 主分类
@@ -1105,6 +1105,46 @@ var frostNavLinks = {
                                 }
                             ]
                         }
+                    ]
+                },
+                {
+                    title: '翻译',
+                    links: [
+                        {
+                            link: 'https://fanyi.baidu.com/',
+                            title: '百度翻译',
+                            update: '2021-05-23'
+                        },
+                        {
+                            link: 'https://cn.bing.com/translator/',
+                            title: '必应翻译',
+                            update: '2021-05-23'
+                        },
+                        {
+                            link: 'https://translate.google.cn/',
+                            title: '谷歌翻译',
+                            update: '2021-05-23'
+                        },
+                        {
+                            link: 'https://translate.google.com/',
+                            title: '谷歌翻译',
+                            update: '2021-05-23'
+                        },
+                        {
+                            link: 'https://www.iciba.com/',
+                            title: '金山词霸',
+                            update: '2021-05-23'
+                        },
+                        {
+                            link: 'https://fanyi.youdao.com/',
+                            title: '有道翻译',
+                            update: '2021-05-23'
+                        },
+                        {
+                            link: 'https://www.deepl.com/translator',
+                            title: 'DeepL',
+                            update: '2021-05-23'
+                        },
                     ]
                 },
                 {
