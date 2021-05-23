@@ -8,27 +8,27 @@
         "lint": "vue-cli-service lint"
     },
     "dependencies": {
-        "core-js": "^3.6.5",
-        "element-ui": "^2.15.0",
-        "ress": "^3.0.0",
-        "vue": "^2.6.11",
-        "vue-router": "^3.2.0"
+        "core-js": "^3.12.1",
+        "element-ui": "^2.15.1",
+        "ress": "^4.0.0",
+        "vue": "^2.6.12",
+        "vue-router": "^3.5.1"
     },
     "devDependencies": {
-        "@vue/cli-plugin-babel": "~4.5.0",
-        "@vue/cli-plugin-eslint": "~4.5.0",
-        "@vue/cli-plugin-router": "~4.5.0",
-        "@vue/cli-service": "~4.5.0",
+        "@vue/cli-plugin-babel": "~4.5.13",
+        "@vue/cli-plugin-eslint": "~4.5.13",
+        "@vue/cli-plugin-router": "~4.5.13",
+        "@vue/cli-service": "~4.5.13",
         "babel-eslint": "^10.1.0",
-        "eslint": "^6.7.2",
-        "eslint-plugin-vue": "^6.2.2",
+        "eslint": "^7.27.0",
+        "eslint-plugin-vue": "^7.9.0",
         "less": "^3.0.4",
         "less-loader": "^5.0.0",
         "postcss-pxtorem": "^5.1.1",
         "sass": "^1.26.5",
         "sass-loader": "^8.0.2",
         "style-resources-loader": "^1.4.1",
-        "vue-cli-plugin-style-resources-loader": "^0.1.4",
-        "vue-template-compiler": "^2.6.11"
+        "vue-cli-plugin-style-resources-loader": "^0.1.5",
+        "vue-template-compiler": "^2.6.12"
     }
 }
