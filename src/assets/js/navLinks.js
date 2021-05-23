@@ -47,7 +47,7 @@ let utils = {
                         console.warn('[出错的 obj]', obj);
                     }
 
-                    // 删除自身
+                    // 到达最后一项，删除 links 自身
                     if (index === (arr.length - 1)) {
                         delete obj.links;
                     }
@@ -59,7 +59,7 @@ let utils = {
                 obj.sub.forEach(item => {
                     setTimeout(() => {
                         fn(item);
-                    }, 20 * currentIndex);
+                    }, 10 * currentIndex);
                 });
             }
         };
@@ -82,12 +82,12 @@ let utils = {
                 // 写入缓存
                 setTimeout(() => {
                     this.cache('W', navLinks);
-                }, 2 * currentIndex);
+                }, 1000);
             }
 
             // 同步
             currentIndexCpy = currentIndex;
-        }, 1000);
+        }, 5000);
 
         return fn;
     },
