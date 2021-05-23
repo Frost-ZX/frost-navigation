@@ -9,13 +9,6 @@ import navTools from '@/assets/js/navTools.js';
 
 export default {
     name: 'ToolsDetail',
-    data() {
-        return {
-            utils: this.$root.utils,
-            toolList: navTools,
-            toolElem: null
-        }
-    },
     beforeRouteEnter(to, from, next) {
         next(vm => {
             var params = vm.$route.params;
@@ -49,7 +42,14 @@ export default {
                 return elem;
             });
         });
-    }
+    },
+    data() {
+        return {
+            utils: this.$root.utils,
+            toolList: navTools,
+            toolElem: null
+        }
+    },
 }
 </script>
 

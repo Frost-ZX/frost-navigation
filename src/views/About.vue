@@ -42,6 +42,11 @@
 <script>
 export default {
     name: 'About',
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            vm.utils.changeTitle('关于');
+        });
+    },
     data() {
         return {
             navLinks: this.$root.navLinks,
@@ -51,11 +56,6 @@ export default {
             }
         }
     },
-    beforeRouteEnter(to, from, next) {
-        next(vm => {
-            vm.utils.changeTitle('关于');
-        });
-    }
 }
 </script>
 

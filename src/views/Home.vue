@@ -120,6 +120,11 @@ export default {
     components: {
         Icon
     },
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            vm.utils.changeTitle();
+        });
+    },
     data() {
         return {
             config: this.$root.config.storage,
@@ -164,11 +169,6 @@ export default {
                 this.$refs.linkTree.filter(this.linkSearch.keyword);
             }
         }
-    },
-    beforeRouteEnter(to, from, next) {
-        next(vm => {
-            vm.utils.changeTitle();
-        });
     },
     methods: {
 

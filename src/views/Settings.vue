@@ -35,16 +35,16 @@
 <script>
 export default {
     name: 'Settings',
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            vm.utils.changeTitle('设置');
+        });
+    },
     data() {
         return {
             config: this.$root.config.storage,
             utils: this.$root.utils
         }
-    },
-    beforeRouteEnter(to, from, next) {
-        next(vm => {
-            vm.utils.changeTitle('设置');
-        });
     },
     methods: {
 

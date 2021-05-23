@@ -49,6 +49,20 @@ import navTools from '@/assets/js/navTools.js';
 
 export default {
     name: 'Tools',
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            var route = vm.$route;
+
+            // 判断进入的路由
+            if (route.name == 'ToolsDetail') {
+                // 进入：工具内容页面
+                vm.detailOpen(route.params.category, route.params.name);
+            } else {
+                // 进入：工具列表页面
+                vm.utils.changeTitle('小工具');
+            }
+        });
+    },
     data() {
         return {
             utils: this.$root.utils,
@@ -147,20 +161,6 @@ export default {
         }
 
     },
-    beforeRouteEnter(to, from, next) {
-        next(vm => {
-            var route = vm.$route;
-
-            // 判断进入的路由
-            if (route.name == 'ToolsDetail') {
-                // 进入：工具内容页面
-                vm.detailOpen(route.params.category, route.params.name);
-            } else {
-                // 进入：工具列表页面
-                vm.utils.changeTitle('小工具');
-            }
-        });
-    }
 }
 </script>
 
