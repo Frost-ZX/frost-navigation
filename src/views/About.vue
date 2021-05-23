@@ -7,6 +7,7 @@
                 <div class="content">
                     <p>一个多功能的网址导航，绿色无广告。</p>
                     <p>当前版本：2.0.0</p>
+                    <p>链接版本：{{ navLinks.version }}</p>
                 </div>
             </div>
 
@@ -43,6 +44,7 @@ export default {
     name: 'About',
     data() {
         return {
+            navLinks: this.$root.navLinks,
             utils: this.$root.utils,
             info: {
                 github: 'https://github.com/Frost-ZX/frost-navigation'
