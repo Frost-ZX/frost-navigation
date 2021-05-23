@@ -246,24 +246,29 @@ export default {
         searchLink(value, data) {
             // 关键词为空，显示全部
 
-            if (value == '') {
-                return true
+            if (value === '') {
+                return true;
             }
+
+            // 小写
+            value = value.toLowerCase();
 
             // 过滤后
 
             var searchType = this.linkSearch.type;
+            var title = data.title.toLowerCase();
+            var link = (data.link || '');
             var result = false;
 
             if (searchType == 'all') {
                 // 全部
-                result = (data.title.toLowerCase().indexOf(value) !== -1) || (data.link && (data.link.indexOf(value) !== -1));
+                result = ((title.indexOf(value) !== -1) || (link.indexOf(value) !== -1));
             } else if (searchType == 'title') {
                 // 标题
-                result = (data.title.toLowerCase().indexOf(value) !== -1);
+                result = (title.indexOf(value) !== -1);
             } else if (searchType == 'link') {
                 // 链接
-                result = (data.link && (data.link.indexOf(value) !== -1));
+                result = (link.indexOf(value) !== -1);
             }
 
             return result;
