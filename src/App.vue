@@ -6,7 +6,7 @@
             <el-header class="main-header shadow-1">
 
                 <!-- LOGO -->
-                <el-avatar class="logo" shape="square" size="small" src="./favicon.ico"></el-avatar>
+                <div class="logo"></div>
 
                 <!-- 菜单 -->
                 <el-menu class="menu" :default-active="headerDefaultActive" mode="horizontal" router>
@@ -187,6 +187,12 @@ export default {
     .logo {
         flex-shrink: 0;
         margin-right: 1rem;
+        width: 2rem;
+        height: 2rem;
+        background-image: url("./assets/icon/favicon.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
     }
 
     .menu {
