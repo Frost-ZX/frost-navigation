@@ -1,9 +1,9 @@
 // 导航链接列表
-// 更新：2021-05-23
+// 更新：2021-05-28
 
 var frostNavLinks = {
     // 版本号
-    version: '20210523-2',
+    version: '20210528-2',
     // 列表
     list: [
         // 主分类
@@ -121,7 +121,7 @@ var frostNavLinks = {
             ]
         },
         {
-            title: '博客 / 论坛 / 社区 / 社交 / 通讯',
+            title: '博客 / 社区 / 社交 / 通讯',
             icon: 'el-icon-chat-line-round',
             sub: [
                 {
@@ -193,25 +193,16 @@ var frostNavLinks = {
                     ]
                 },
                 {
-                    title: '论坛',
-                    links: [
-                        {
-                            link: 'http://www.ditiezu.com/',
-                            title: '地铁族',
-                            update: '2021-02-07'
-                        },
-                        {
-                            link: 'https://www.pc426.com/',
-                            title: 'PC426'
-                        }
-                    ]
-                },
-                {
-                    title: '社区',
+                    title: '论坛 / 社区',
                     links: [
                         {
                             link: 'https://tieba.baidu.com/',
                             title: '百度贴吧',
+                            update: '2021-02-07'
+                        },
+                        {
+                            link: 'http://www.ditiezu.com/',
+                            title: '地铁族',
                             update: '2021-02-07'
                         },
                         {
@@ -230,9 +221,18 @@ var frostNavLinks = {
                             update: '2021-02-07'
                         },
                         {
+                            link: 'https://bbs.tianya.cn/',
+                            title: '天涯社区（天涯论坛）',
+                            update: '2021-05-28'
+                        },
+                        {
                             link: 'https://www.zhihu.com/',
                             title: '知乎',
                             update: '2021-02-07'
+                        },
+                        {
+                            link: 'https://www.pc426.com/',
+                            title: 'PC426'
                         },
                         {
                             link: 'https://segmentfault.com/',
@@ -289,37 +289,35 @@ var frostNavLinks = {
                             title: 'Discord',
                             update: '2021-02-07'
                         }
-                    ],
-                    sub: [
+                    ]
+                },
+                {
+                    title: '邮箱',
+                    links: [
                         {
-                            title: '邮箱',
-                            links: [
-                                {
-                                    link: 'http://mail.126.com/',
-                                    title: '126邮箱',
-                                    update: '2021-02-07'
-                                },
-                                {
-                                    link: 'https://mail.163.com/',
-                                    title: '网易邮箱',
-                                    update: '2021-02-07'
-                                },
-                                {
-                                    link: 'https://mail.sina.com.cn/',
-                                    title: '新浪邮箱',
-                                    update: '2021-02-07'
-                                },
-                                {
-                                    link: 'https://outlook.live.com/',
-                                    title: 'Outlook',
-                                    update: '2021-02-07'
-                                },
-                                {
-                                    link: 'https://mail.qq.com/',
-                                    title: 'QQ邮箱',
-                                    update: '2021-02-07'
-                                }
-                            ]
+                            link: 'http://mail.126.com/',
+                            title: '126邮箱',
+                            update: '2021-02-07'
+                        },
+                        {
+                            link: 'https://mail.163.com/',
+                            title: '网易邮箱',
+                            update: '2021-02-07'
+                        },
+                        {
+                            link: 'https://mail.sina.com.cn/',
+                            title: '新浪邮箱',
+                            update: '2021-02-07'
+                        },
+                        {
+                            link: 'https://outlook.live.com/',
+                            title: 'Outlook',
+                            update: '2021-02-07'
+                        },
+                        {
+                            link: 'https://mail.qq.com/',
+                            title: 'QQ邮箱',
+                            update: '2021-02-07'
                         }
                     ]
                 }
