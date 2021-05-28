@@ -8,6 +8,7 @@ import navLinks from './assets/js/navLinks';
 import utils from './assets/js/utils';
 
 import 'ress/ress.css';
+import 'font-awesome/css/font-awesome.min.css';
 import './assets/css/element.scss';
 import './assets/css/global.less';
 
