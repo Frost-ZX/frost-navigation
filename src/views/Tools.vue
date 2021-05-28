@@ -198,7 +198,7 @@ export default {
             flex-shrink: 0;
             margin: .5rem;
             padding: 1rem;
-            width: 18rem;
+            width: 16rem;
             border-left: .2rem solid @colorPrimary;
             border-radius: .25rem;
             background-color: #FFF;
@@ -224,7 +224,7 @@ export default {
             }
 
             .item-content {
-                height: calc(1.5em * 3);
+                height: calc(1.5em * 2);
                 line-height: 1.5em;
                 font-size: .75rem;
                 color: #999;

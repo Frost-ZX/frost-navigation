@@ -52,6 +52,12 @@ let navTools = {
     conversion: {
         title: '转换',
         list: {
+            'text-structure': {
+                title: '文本结构转换',
+                desc: '横排、竖排、倒序等',
+                component: 'ConvertTextStructure',
+                enabled: false
+            },
             'uri': {
                 title: 'URI 编码转换',
                 desc: 'URI 编码、解码',
@@ -70,19 +76,19 @@ let navTools = {
         title: 'Minecraft',
         list: {
             'chunk-location-calc': {
-                title: 'Minecraft 区块位置计算',
+                title: '区块位置计算',
                 component: 'MinecraftChunkLocationCalc',
                 enabled: false
             },
             'dynmap-renderdata-gen': {
-                title: 'Minecraft Dynmap renderdata 生成',
-                desc: '生成用于 Minecraft Dynmap 插件 / 模组的 renderdata',
+                title: 'Dynmap renderdata 生成',
+                desc: '生成用于 Minecraft Dynmap 插件 / 模组的 renderdata 数据',
                 component: 'MinecraftDynmapRenderdataGen',
                 enabled: false
             },
             'uuidConverter': {
-                title: 'Minecraft UUID 转换',
-                desc: 'UUID 与 UUIDLeast、UUIDMost 相互转换',
+                title: 'UUID 转换',
+                desc: 'UUID 与 UUID Least、UUID Most 相互转换',
                 component: 'MinecraftUUIDConverter',
                 enabled: false
             }
