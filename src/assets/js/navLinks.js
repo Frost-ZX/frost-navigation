@@ -16,12 +16,12 @@ let utils = {
      * 设置唯一 ID & 改变结构
      */
     init: function () {
-        // 载入中提示
+        // 初始化提示
         var loading = Loading.service({
             customClass: 'loading-link',
             lock: true,
             spinner: 'el-icon-loading',
-            text: '导航链接列表正在初始化，请稍候'
+            text: ''
         });
 
         var currentIndex = 0;
@@ -62,22 +62,25 @@ let utils = {
                     }, 10 * currentIndex);
                 });
             }
+
+            // 提示文本
+            loading.text = `初始化导航链接，请稍候 [${currentIndex}]`;
         };
 
         // 检测 currentIndex 是否已停止变化
         var timer = setInterval(() => {
-            if (currentIndex == currentIndexCpy) {
+            if (currentIndexCpy == currentIndex) {
                 // 停止检测
                 clearInterval(timer);
 
                 // 日志
                 console.log('[导航链接] 初始化完毕');
 
-                // 关闭载入中提示
+                // 关闭提示
                 loading.close();
 
                 // 更新
-                datas.list = navLinks;
+                datas.list = JSON.parse(JSON.stringify(navLinks));
 
                 // 写入缓存
                 setTimeout(() => {
