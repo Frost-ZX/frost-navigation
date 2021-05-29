@@ -149,7 +149,7 @@ let config = {
     storage: {
         fontSize: 16,
         showSiteTitle: true,
-        sideMenuCollapse: false,
+        sideMenuCollapse: true,
         searchEngine: '百度'
     }
 };
