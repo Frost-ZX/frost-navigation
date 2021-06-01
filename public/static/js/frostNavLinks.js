@@ -1,9 +1,7 @@
-// 导航链接列表
-// 更新：2021-05-28
-
+// 导航链接数据
 var frostNavLinks = {
     // 版本号
-    version: '20210528-2',
+    version: '2021-06-01_2',
     // 列表
     list: [
         // 主分类
@@ -404,6 +402,11 @@ var frostNavLinks = {
                                     update: '2021-02-08'
                                 },
                                 {
+                                    link: 'https://bennettfeely.com/clippy/',
+                                    title: 'Clippy - CSS clip-path 生成器',
+                                    update: '2021-06-01'
+                                },
+                                {
                                     link: 'https://highlightjs.org/',
                                     title: 'highlight.js',
                                     update: '2021-02-08'
@@ -434,12 +437,32 @@ var frostNavLinks = {
                                     update: '2021-02-08'
                                 },
                                 {
+                                    link: 'http://www.spritecow.com/',
+                                    title: 'Sprite Cow - Generate CSS for sprite sheets',
+                                    update: '2021-06-01'
+                                },
+                                {
                                     link: 'http://threejs.org/',
                                     title: 'three.js – JavaScript 3D library',
                                     update: '2021-02-08'
                                 }
                             ]
                         },
+                        {
+                            title: 'Electron',
+                            links: [
+                                {
+                                    link: 'https://www.electronjs.org/',
+                                    title: 'Electron - 使用 JavaScript，HTML 和 CSS 构建跨平台的桌面应用程序',
+                                    update: '2021-06-01'
+                                },
+                                {
+                                    link: 'https://www.electron.build/',
+                                    title: 'Electron Builder',
+                                    update: '2021-06-01'
+                                }
+                            ]
+                        }
                     ],
                     links: [
                         {
@@ -1015,6 +1038,11 @@ var frostNavLinks = {
                             link: 'https://www.ipip.net/',
                             title: 'IPIP.NET - 专业的 IP 地址库',
                             update: '2021-05-22'
+                        },
+                        {
+                            link: 'https://mathsolver.microsoft.com/',
+                            title: 'Microsoft Math Solver（数学求解器）',
+                            update: '2021-06-01'
                         }
                     ],
                     sub: [
@@ -1820,7 +1848,7 @@ var frostNavLinks = {
         },
         {
             title: '网络',
-            icon: 'el-icon-monitor',
+            icon: 'fa fa-globe',
             sub: [
                 {
                     title: '管理',
@@ -1848,6 +1876,21 @@ var frostNavLinks = {
                         {
                             link: 'http://tplogin.cn/',
                             title: '路由器（TP-LINK）'
+                        }
+                    ]
+                },
+                {
+                    title: '内网穿透（内网映射）',
+                    links: [
+                        {
+                            link: 'https://frp.cool/',
+                            title: '浮居内网穿透',
+                            update: '2021-03-31'
+                        },
+                        {
+                            link: 'https://www.natfrp.com/',
+                            title: 'Sakura Frp',
+                            update: '2021-03-31'
                         }
                     ]
                 },
@@ -1900,26 +1943,14 @@ var frostNavLinks = {
                             update: '2021-04-16'
                         },
                         {
+                            link: 'https://vercel.com/',
+                            title: 'Vercel',
+                            update: '2021-06-01'
+                        },
+                        {
                             link: 'https://vultr.com/',
                             title: 'Vultr',
                             update: '2021-04-16'
-                        }
-                    ],
-                    sub: [
-                        {
-                            title: '内网穿透（内网映射）',
-                            links: [
-                                {
-                                    link: 'https://frp.cool/',
-                                    title: '浮居内网穿透',
-                                    update: '2021-03-31'
-                                },
-                                {
-                                    link: 'https://www.natfrp.com/',
-                                    title: 'Sakura Frp',
-                                    update: '2021-03-31'
-                                }
-                            ]
                         }
                     ]
                 },
@@ -2086,7 +2117,7 @@ var frostNavLinks = {
         },
         {
             title: '游戏',
-            icon: 'el-icon-mouse',
+            icon: 'fa fa-gamepad',
             sub: [
                 {
                     title: '网站',
@@ -2741,6 +2772,11 @@ var frostNavLinks = {
                                     update: '2021-04-16'
                                 },
                                 {
+                                    link: 'https://www.todesk.com/',
+                                    title: 'ToDesk - 远程控制',
+                                    update: '2021-06-01'
+                                },
+                                {
                                     link: 'https://www.typora.io/',
                                     title: 'Typora - Markdown 编辑器',
                                     update: '2021-04-16'
@@ -2988,9 +3024,9 @@ var frostNavLinks = {
                             update: '2021-02-08'
                         },
                         {
-                            link: 'http://www.itpk.cn/robot.php',
-                            title: '茉莉机器人 API',
-                            update: '2021-02-08'
+                            link: 'http://www.itpk.cn/',
+                            title: '茉莉机器人',
+                            update: '2021-06-01'
                         },
                         {
                             link: 'https://open.tencent.com/',
@@ -3017,6 +3053,11 @@ var frostNavLinks = {
                             link: 'https://www.xfyun.cn/',
                             title: '讯飞开放平台',
                             update: '2021-02-08'
+                        },
+                        {
+                            link: 'https://alapi.cn/',
+                            title: 'ALAPI',
+                            update: '2021-06-01'
                         },
                         {
                             link: 'https://app.crisp.chat/',
@@ -3065,6 +3106,27 @@ var frostNavLinks = {
                         }
                     ]
                 }
+            ]
+        },
+        {
+            title: '其他',
+            icon: 'el-icon-more',
+            links: [
+                {
+                    link: 'https://www.amd.com/',
+                    title: 'AMD - 高性能处理器和显卡',
+                    update: '2021-06-01'
+                },
+                {
+                    link: 'https://www.intel.cn/',
+                    title: 'Intel - 数据中心解决方案、物联网和电脑创新',
+                    update: '2021-06-01'
+                },
+                {
+                    link: 'https://www.nvidia.cn/',
+                    title: 'NVIDIA - 引领人工智能计算',
+                    update: '2021-06-01'
+                },
             ]
         }
     ]
