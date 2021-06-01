@@ -318,14 +318,14 @@ export default {
     flex-direction: column;
     align-items: center;
     position: relative;
-    padding: 1rem;
+    padding: 1rem 2rem;
     background-color: @colorWhite;
     overflow-y: scroll;
 
     .wrapper {
         width: 100%;
         min-width: 16rem;
-        max-width: 60rem;
+        max-width: 64rem;
     }
 }
 
@@ -408,7 +408,7 @@ export default {
             .el-radio {
                 margin: .5rem;
                 padding: .8rem 1rem;
-                width: 16rem;
+                width: 15rem;
                 border-radius: .25rem;
                 border-left: solid .2rem transparent;
                 background-color: #FFF;
