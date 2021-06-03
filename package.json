@@ -14,8 +14,9 @@
         "core-js": "^3.13.1",
         "element-ui": "^2.15.2",
         "font-awesome": "^4.7.0",
+        "lodash": "^4.17.21",
         "ress": "^4.0.0",
-        "vue": "^2.6.12",
+        "vue": "^2.6.13",
         "vue-router": "^3.5.1"
     },
     "devDependencies": {
@@ -33,6 +34,6 @@
         "sass-loader": "^8.0.2",
         "style-resources-loader": "^1.4.1",
         "vue-cli-plugin-style-resources-loader": "^0.1.5",
-        "vue-template-compiler": "^2.6.12"
+        "vue-template-compiler": "^2.6.13"
     }
 }
