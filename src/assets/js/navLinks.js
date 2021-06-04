@@ -33,13 +33,13 @@ let utils = {
 
             // 有链接
             if (obj.links != undefined) {
-                // 无子路径
+                // 无子分类
                 if (obj.sub === undefined) {
                     obj.sub = [];
                 }
 
                 obj.links.forEach((item, index, arr) => {
-                    // 添加到子路径（适配 Element UI - Tree）
+                    // 添加到子分类（适配 Element UI - Tree）
                     try {
                         obj.sub.push(item);
                     } catch (err) {
@@ -59,7 +59,7 @@ let utils = {
                 obj.sub.forEach(item => {
                     setTimeout(() => {
                         fn(item);
-                    }, 10 * currentIndex);
+                    }, 2 * currentIndex);
                 });
             }
 
