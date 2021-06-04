@@ -119,6 +119,7 @@
                     <div
                         slot-scope="{ node, data }" class="link-item" :title="data.update"
                         @click="openLink(data.link, data.showOnly)"
+                        @contextmenu.prevent="openDetail(data)"
                     >
                         <span class="title">{{ node.label }}</span>
                         <span class="link">{{ data.link }}</span>
@@ -127,6 +128,34 @@
 
             </div>
         </el-main>
+
+        <el-dialog
+            custom-class="link-detail"
+            title="详情"
+            :visible="linkDetail.show"
+            @close="linkDetail.show = false"
+        >
+            <div class="content">
+                <div class="row">
+                    <div class="label">ID：</div>
+                    <div class="text">{{ linkDetail.id }}</div>
+                </div>
+                <div class="row">
+                    <div class="label">标题：</div>
+                    <div class="text">{{ linkDetail.title }}</div>
+                </div>
+                <div class="row">
+                    <div class="label">链接：</div>
+                    <div class="text">
+                        <el-link type="primary" :href="linkDetail.link" target="_blank">{{ linkDetail.link }}</el-link>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="label">更新：</div>
+                    <div class="text">{{ linkDetail.update }}</div>
+                </div>
+            </div>
+        </el-dialog>
 
     </el-container>
 </template>
@@ -170,6 +199,14 @@ export default {
                 debounce: null,
                 keyword: '',
                 type: 'all'
+            },
+            // 链接详情
+            linkDetail: {
+                show: false,
+                id: '',
+                title: '',
+                link: '',
+                update: ''
             }
         };
     },
@@ -214,6 +251,26 @@ export default {
             }
 
             this.searchLink.keyword = '';
+        },
+
+        /**
+         * 查看详情
+         * 
+         * @param {object} datas 当前链接的数据
+         */
+        openDetail(datas) {
+            // 非链接
+            if (datas.link === undefined) {
+                return;
+            }
+
+            var detail = this.linkDetail;
+
+            detail.id = datas.id;
+            detail.title = datas.title;
+            detail.link = datas.link;
+            detail.update = datas.update || '无';
+            detail.show = true;
         },
 
         /**
@@ -523,6 +580,24 @@ export default {
             margin-top: .2rem;
             opacity: .5;
         }
+    }
+}
+
+/deep/ .link-detail {
+    width: 80%;
+    max-width: 32rem;
+
+    .row {
+        line-height: 2rem;
+
+        > div {
+            display: inline-block;
+        }
+    }
+
+    .label {
+        width: 3.5em;
+        text-align: right;
     }
 }
 </style>
