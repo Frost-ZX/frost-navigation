@@ -6,6 +6,7 @@
                 <div class="title">简介</div>
                 <div class="content">
                     <p>一个多功能的网址导航，绿色无广告。</p>
+                    <p>右键点击（PC端）或长按（移动端）链接项可查看链接详情。</p>
                     <p>当前版本：2.0.0</p>
                     <p>链接版本：{{ navLinks.version }}</p>
                 </div>
