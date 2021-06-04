@@ -506,12 +506,17 @@ export default {
     }
 
     .link-item {
+        flex-grow: 1;
+        width: 0;
+
         > span {
-            display: -webkit-box;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .title {
-            font-weight: bold;
+            opacity: 1;
         }
 
         .link {
