@@ -11,8 +11,8 @@ module.exports = {
         parser: 'babel-eslint'
     },
     rules: {
-        'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-        'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+        'no-console': 'off',
+        'no-debugger': 'off',
         'vue/html-closing-bracket-newline': 'off',
         'vue/html-indent': 'off',
         'vue/html-self-closing': 'off',
