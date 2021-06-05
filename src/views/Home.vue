@@ -48,7 +48,8 @@
                         <!-- 输入 -->
                         <input
                             v-model="searchEngine.keyword"
-                            class="input" type="text"
+                            class="input"
+                            type="text"
                             @blur="searchEngine.isFocus = false"
                             @focus="searchEngine.isFocus = true"
                             @keydown.enter.exact="searchEngineSubmit()"
@@ -77,15 +78,21 @@
                         :class="['search-type', { fade: searchEngine.isFocus }]"
                     >
                         <!-- 分类 -->
-                        <div v-for="(category, cIndex) in searchEngine.list" :key="cIndex" class="category">
+                        <div
+                            v-for="(category, cIndex) in searchEngine.list"
+                            :key="cIndex"
+                            class="category"
+                        >
 
                             <!-- 标题 -->
                             <div class="title">{{ category.title }}</div>
 
                             <!-- 项 -->
                             <el-radio
-                                v-for="item in category.list" :key="item.name"
-                                :label="item.name" class="shadow-2"
+                                v-for="item in category.list"
+                                :key="item.name"
+                                :label="item.name"
+                                class="shadow-2"
                             >
                                 <Icon :path="item.icon || 'website/default.svg'" size="1.2em" />
                                 <i class="name">{{ item.name }}</i>
@@ -99,8 +106,11 @@
 
                 <!-- 链接搜索框 -->
                 <el-input
-                    v-show="show.searchLink" v-model="searchLink.keyword"
-                    class="link-search shadow-2" placeholder="搜索链接" clearable
+                    v-show="show.searchLink"
+                    v-model="searchLink.keyword"
+                    class="link-search shadow-2"
+                    placeholder="搜索链接"
+                    clearable
                 >
                     <el-select slot="prepend" v-model="searchLink.type" placeholder="类型">
                         <el-option label="全部" value="all"></el-option>
@@ -111,13 +121,21 @@
 
                 <!-- 链接列表树 -->
                 <el-tree
-                    v-show="show.linkTree" ref="linkTree" class="link-tree shadow-2"
-                    :data="currentLinks" node-key="id" empty-text=""
-                    :props="{ label: 'title', children: 'sub' }" :filter-node-method="searchLinkSubmit"
-                    :default-expand-all="false" :expand-on-click-node="true"
+                    v-show="show.linkTree"
+                    ref="linkTree"
+                    class="link-tree shadow-2"
+                    :data="currentLinks"
+                    node-key="id"
+                    empty-text=""
+                    :props="{ label: 'title', children: 'sub' }"
+                    :filter-node-method="searchLinkSubmit"
+                    :default-expand-all="false"
+                    :expand-on-click-node="true"
                 >
                     <div
-                        slot-scope="{ node, data }" class="link-item" :title="data.update"
+                        slot-scope="{ node, data }"
+                        class="link-item"
+                        :title="data.update"
                         @click="openLink(data.link, data.showOnly)"
                         @contextmenu.prevent="openDetail(data)"
                     >
@@ -148,7 +166,17 @@
                 <div class="row">
                     <div class="label">链接：</div>
                     <div class="text">
-                        <el-link type="primary" :href="linkDetail.link" target="_blank">{{ linkDetail.link }}</el-link>
+                        <el-link
+                            v-show="!linkDetail.linkCopy"
+                            type="primary"
+                            :href="linkDetail.link"
+                            target="_blank"
+                        >{{ linkDetail.link }}</el-link>
+                        <input
+                            v-show="linkDetail.linkCopy"
+                            type="text"
+                            :value="linkDetail.link"
+                        />
                     </div>
                 </div>
                 <div class="row">
@@ -207,6 +235,7 @@ export default {
                 id: '',
                 title: '',
                 link: '',
+                linkCopy: false,
                 update: ''
             }
         };
@@ -260,7 +289,7 @@ export default {
          * @param {object} datas 当前链接的数据
          */
         openDetail(datas) {
-            // 非链接
+            // 非链接 / 仅显示
             if (datas.link === undefined) {
                 return;
             }
@@ -270,6 +299,7 @@ export default {
             detail.id = datas.id;
             detail.title = datas.title;
             detail.link = datas.link;
+            detail.linkCopy = datas.showOnly || false;
             detail.update = datas.update || '无';
             detail.show = true;
         },
@@ -286,7 +316,11 @@ export default {
             }
 
             if (showOnly) {
-                window.prompt('请复制后手动在新标签页中打开', link);
+                this.$message({
+                    duration: 5000,
+                    message: '请在链接详情中复制后手动打开',
+                    type: 'warning'
+                });
             } else {
                 window.open(link, '_blank');
             }
@@ -362,7 +396,6 @@ export default {
 
 <style lang="less" scoped>
 .home-aside {
-    // width: 18rem !important;
     width: auto !important;
     overflow-x: hidden;
 
@@ -401,7 +434,7 @@ export default {
         width: 100%;
         max-width: 40rem;
         height: 2.8rem;
-        border-radius: .25rem;
+        border-radius: 0.25rem;
         background-color: #FFF;
         overflow: hidden;
 
@@ -421,13 +454,13 @@ export default {
             width: 2.8rem;
             height: 2.8rem;
             background-color: transparent;
-            font-size: 1.2rem;    
+            font-size: 1.2rem;
             cursor: pointer;
         }
 
         .btn-clear {
             width: 2rem;
-            opacity: .5;
+            opacity: 0.5;
             transition: opacity @transitionTime;
 
             &:hover {
@@ -453,22 +486,22 @@ export default {
         transition: opacity calc(@transitionTime * 4);
 
         &.fade {
-            opacity: .5;
+            opacity: 0.5;
         }
 
         /deep/ .category {
-            padding: .5rem 0;
+            padding: 0.5rem 0;
 
             .title {
-                margin: .5rem 0;
+                margin: 0.5rem 0;
             }
 
             .el-radio {
-                margin: .5rem;
-                padding: .8rem 1rem;
+                margin: 0.5rem;
+                padding: 0.8rem 1rem;
                 width: 15rem;
-                border-radius: .25rem;
-                border-left: solid .2rem transparent;
+                border-radius: 0.25rem;
+                border-left: solid 0.2rem transparent;
                 background-color: #FFF;
                 text-align: left;
                 font-weight: normal;
@@ -497,13 +530,13 @@ export default {
 
                 i {
                     display: inline-block;
-                    padding: .125rem 0;
+                    padding: 0.125rem 0;
                     font-style: normal;
                 }
 
                 .fn-icon {
                     flex-shrink: 0;
-                    margin-right: .4rem;
+                    margin-right: 0.4rem;
                 }
 
                 .name {
@@ -512,8 +545,8 @@ export default {
 
                 .desc {
                     flex-grow: 1;
-                    margin-left: .5rem;
-                    font-size: .8rem;
+                    margin-left: 0.5rem;
+                    font-size: 0.8rem;
                     color: #CCC;
                 }
             }
@@ -528,11 +561,12 @@ export default {
     z-index: 100;
     top: 0;
     margin-bottom: 1rem;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     line-height: @height;
     overflow: hidden;
 
-    > div, > input {
+    > div,
+    > input {
         border: none;
     }
 
@@ -543,7 +577,7 @@ export default {
             width: 4.5rem;
 
             input {
-                padding: 0 .75rem;
+                padding: 0 0.75rem;
             }
         }
     }
@@ -555,8 +589,8 @@ export default {
 }
 
 .link-tree {
-    padding: .5rem;
-    border-radius: .25rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
     font-size: 14px;
 
     /deep/ .el-tree-node__content {
@@ -578,8 +612,8 @@ export default {
         }
 
         .link {
-            margin-top: .2rem;
-            opacity: .5;
+            margin-top: 0.2rem;
+            opacity: 0.5;
         }
     }
 }
@@ -602,6 +636,17 @@ export default {
 
     .text {
         flex-grow: 1;
+    }
+
+    input[type="text"] {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        border: none;
+        border-radius: 0;
+        line-height: 1em;
+        font-size: inherit;
+        color: @colorSecondary;
     }
 }
 </style>
