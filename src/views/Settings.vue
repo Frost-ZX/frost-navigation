@@ -4,9 +4,13 @@
 
             <el-form label-position="left" label-width="7rem">
 
-                <el-form-item label="字体大小">
-                    <el-input-number v-model="config.fontSize"
-                        :min="12" :max="32" label="字体大小" size="small"
+                <el-form-item label="字体大小" class="set-font">
+                    <el-input-number
+                        v-model="config.fontSize"
+                        :min="12"
+                        :max="32"
+                        label="字体大小"
+                        size="small"
                     ></el-input-number>
                 </el-form-item>
 
@@ -19,11 +23,19 @@
                 </el-form-item>
 
                 <el-form-item label="清除数据">
-                    <el-button type="danger" size="medium" @click="resetDatas('settings')">清除设置</el-button>
+                    <el-button
+                        type="danger"
+                        size="medium"
+                        @click="resetDatas('settings')"
+                    >清除设置</el-button>
                 </el-form-item>
 
                 <el-form-item>
-                    <el-button type="danger" size="medium" @click="resetDatas('cache')">清除缓存</el-button>
+                    <el-button
+                        type="danger"
+                        size="medium"
+                        @click="resetDatas('cache')"
+                    >清除缓存</el-button>
                 </el-form-item>
 
             </el-form>
@@ -101,10 +113,16 @@ export default {
     overflow-y: auto;
 
     .wrapper {
-        padding: 1.5rem 2rem;
+        padding: 1.5rem;
         width: 100%;
         max-width: 50rem;
         background-color: #FFF;
+    }
+}
+
+.set-font {
+    /deep/ .el-input-number {
+        width: 7rem;
     }
 }
 </style>

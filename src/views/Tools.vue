@@ -196,11 +196,11 @@ export default {
 
         .tool-item {
             flex-shrink: 0;
-            margin: .5rem;
+            margin: 0.5rem;
             padding: 1rem;
             width: 16rem;
-            border-left: .2rem solid @colorPrimary;
-            border-radius: .25rem;
+            border-left: 0.2rem solid @colorPrimary;
+            border-radius: 0.25rem;
             background-color: #FFF;
             font-size: 0;
             color: #555;
@@ -210,7 +210,7 @@ export default {
 
             &:hover {
                 border-left-color: @colorSecondary;
-                transform: translateY(-.2rem);
+                transform: translateY(-0.2rem);
             }
 
             &.disabled {
@@ -218,15 +218,15 @@ export default {
             }
 
             .item-title {
-                margin-bottom: .5rem;
+                margin-bottom: 0.5rem;
                 font-weight: bold;
-                font-size: .9rem;
+                font-size: 0.9rem;
             }
 
             .item-content {
                 height: calc(1.5em * 2);
                 line-height: 1.5em;
-                font-size: .75rem;
+                font-size: 0.75rem;
                 color: #999;
             }
         }

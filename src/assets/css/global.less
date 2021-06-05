@@ -3,8 +3,8 @@
 // 滚动条
 
 ::-webkit-scrollbar {
-    width: .5rem;
-    height: .5rem;
+    width: 0.5rem;
+    height: 0.5rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -18,6 +18,13 @@
     &:hover {
         background-color: #BBB;
     }
+}
+
+// 选中文本
+
+::selection {
+    background-color: @colorPrimary;
+    color: #FFF;
 }
 
 // 标签
@@ -76,21 +83,21 @@ body {
 // 阴影
 
 .shadow-1 {
-    box-shadow: 0 0 .5rem rgba(0, 0, 0, .1);
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 .shadow-2 {
-    box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .05);
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.05);
 }
 
 .shadow-3 {
-    box-shadow: 0 .5rem 1rem -.4rem rgba(0, 0, 0, .12);
+    box-shadow: 0 0.5rem 1rem -0.4rem rgba(0, 0, 0, 0.12);
 }
 
 // 载入中（链接列表）
 
 .loading-link {
-    background-color: rgba(255, 255, 255, .5) !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
     backdrop-filter: blur(.2rem);
 
     .el-loading-spinner {
@@ -120,13 +127,17 @@ body {
         padding: 1rem 1.5rem !important;
         background-color: @colorPrimary;
         color: #FFF;
-        .shadow-3();
+        .shadow-3;
     }
 
     .el-drawer__body {
         padding: 2rem;
         overflow-y: auto;
     }
+}
+
+.el-form-item {
+    margin-bottom: 0.5rem;
 }
 
 .el-input {
@@ -153,6 +164,28 @@ body {
         font-size: 1.125rem;
         vertical-align: middle;
     }
+}
+
+.el-message {
+    width: 80%;
+    min-width: 16rem;
+    max-width: 25rem;
+    .shadow-2;
+
+    &.el-message--info {
+        background-color: #FFF;
+    }
+}
+
+.el-message-box {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    min-width: 16rem;
+    max-width: 25rem;
+    transform: translate(-50%, -50%);
 }
 
 .el-select-dropdown {
