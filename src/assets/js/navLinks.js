@@ -1,18 +1,19 @@
 import { Loading, Notification } from 'element-ui';
 
 let datas = {
-    // 列表（初始化后）
+    // 链接数据（初始化后）
     list: [],
-    // 版本号
-    version: 0
+    // 版本信息
+    version: ''
 };
 
-// 列表（初始化前）
+// 链接数据（初始化前）
 let navLinks = [];
 
 let utils = {
+
     /**
-     * 初始化导航链接列表
+     * 初始化导航链接数据
      * 设置唯一 ID & 改变结构
      */
     init: function () {
@@ -96,12 +97,12 @@ let utils = {
     },
 
     /**
-    * 导航链接列表缓存
+    * 导航链接数据缓存
     * 
     * @param {string} mode 模式（读 - R，写 - W）
-    * @param {array} list 写入的导航链接列表（模式为“W”时）
+    * @param {array} list 写入的导航链接数据（模式为“W”时）
     * 
-    * @returns {Object} 缓存为最新时 status 为 1，list 为缓存中的导航链接列表，否则 status 为 0。
+    * @returns {object} 缓存为最新时 status 为 1，否则为 0；list 为缓存中的导航链接数据。
     */
     cache: function (mode, list) {
         var datasCacheStr;
@@ -122,7 +123,7 @@ let utils = {
                 datasCache = JSON.parse(datasCacheStr)
             }
 
-            // 列表为空
+            // 链接数据为空
             if (datasCache.list === undefined || datasCache.list.length == 0) {
                 return {
                     status: 0
@@ -151,9 +152,10 @@ let utils = {
 
         }
     }
+
 };
 
-// 读取链接列表
+// 读取链接数据
 (function () {
 
     let scriptElem = document.createElement('script');
@@ -190,8 +192,8 @@ let utils = {
         });
     };
 
-    scriptElem.type = 'text/javascript';
-    scriptElem.src = 'static/js/frostNavLinks.js';
+    scriptElem.setAttribute('type', 'text/javascript');
+    scriptElem.setAttribute('src', 'static/js/frostNavLinks.js');
 
     document.body.appendChild(scriptElem);
 
