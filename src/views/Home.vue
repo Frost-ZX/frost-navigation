@@ -130,6 +130,7 @@
         </el-main>
 
         <el-dialog
+            :append-to-body='true'
             custom-class="link-detail"
             title="详情"
             :visible="linkDetail.show"
@@ -588,16 +589,19 @@ export default {
     max-width: 32rem;
 
     .row {
-        line-height: 2rem;
-
-        > div {
-            display: inline-block;
-        }
+        display: flex;
+        align-items: flex-start;
+        line-height: 1.5rem;
     }
 
     .label {
+        flex-shrink: 0;
         width: 3.5em;
         text-align: right;
+    }
+
+    .text {
+        flex-grow: 1;
     }
 }
 </style>
