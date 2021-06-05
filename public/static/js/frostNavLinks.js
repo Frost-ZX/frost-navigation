@@ -1,7 +1,7 @@
 // 导航链接数据
 var frostNavLinks = {
     // 版本号
-    version: '2021-06-04_2',
+    version: '2021-06-05_2',
     // 列表
     list: [
         // 主分类
@@ -199,6 +199,20 @@ var frostNavLinks = {
                     title: '论坛 / 社区',
                     links: [
                         {
+                            link: 'https://www.pc426.com/',
+                            title: 'PC426'
+                        },
+                        {
+                            link: 'https://segmentfault.com/',
+                            title: 'SegmentFault 思否',
+                            update: '2021-02-07'
+                        },
+                        {
+                            link: 'https://www.v2ex.com/',
+                            title: 'V2EX',
+                            update: '2021-02-08'
+                        },
+                        {
                             link: 'https://tieba.baidu.com/',
                             title: '百度贴吧',
                             update: '2021-02-07'
@@ -229,6 +243,11 @@ var frostNavLinks = {
                             update: '2021-02-07'
                         },
                         {
+                            link: 'https://www.skypixel.com/',
+                            title: '天空之城 - 全球航拍爱好者和专业摄影师的作品社区',
+                            update: '2021-06-05'
+                        },
+                        {
                             link: 'https://bbs.tianya.cn/',
                             title: '天涯社区（天涯论坛）',
                             update: '2021-05-28'
@@ -237,20 +256,6 @@ var frostNavLinks = {
                             link: 'https://www.zhihu.com/',
                             title: '知乎',
                             update: '2021-02-07'
-                        },
-                        {
-                            link: 'https://www.pc426.com/',
-                            title: 'PC426'
-                        },
-                        {
-                            link: 'https://segmentfault.com/',
-                            title: 'SegmentFault 思否',
-                            update: '2021-02-07'
-                        },
-                        {
-                            link: 'https://www.v2ex.com/',
-                            title: 'V2EX',
-                            update: '2021-02-08'
                         }
                     ]
                 },
@@ -847,6 +852,11 @@ var frostNavLinks = {
                                     update: '2021-02-08'
                                 },
                                 {
+                                    link: 'https://www.gztv.com/',
+                                    title: '广视网',
+                                    update: '2021-06-05'
+                                },
+                                {
                                     link: 'http://www.le.com/',
                                     title: '乐视视频',
                                     update: '2021-02-08'
@@ -1100,6 +1110,11 @@ var frostNavLinks = {
                                     title: 'Rainy Mood'
                                 },
                                 {
+                                    link: 'https://happi123.com/',
+                                    title: '陶笛简谱网',
+                                    update: '2021-06-05'
+                                },
+                                {
                                     link: 'http://www.multiplayerpiano.com/',
                                     title: '在线多人钢琴'
                                 },
@@ -1148,6 +1163,16 @@ var frostNavLinks = {
                         {
                             link: 'http://www.color.org/version4html.xalter',
                             title: 'ICC Version 4 检测'
+                        },
+                        {
+                            link: 'https://www.speedtest.net/',
+                            title: 'Speedtest by Ookla',
+                            update: '2021-06-05'
+                        },
+                        {
+                            link: 'https://www.speedtest.cn/',
+                            title: '测速网',
+                            update: '2021-06-05'
                         },
                         {
                             link: 'http://mybrowse.osfipin.com/',
@@ -1614,6 +1639,11 @@ var frostNavLinks = {
                     title: '转换',
                     links: [
                         {
+                            link: 'https://carbon.now.sh/',
+                            title: 'Carbon - 代码转图片',
+                            update: '2021-06-05'
+                        },
+                        {
                             link: 'https://smallpdf.com/',
                             title: 'Smallpdf - 您所有 PDF 问题的免费解决方案',
                             update: '2021-02-08'
@@ -1627,6 +1657,11 @@ var frostNavLinks = {
                             link: 'http://www.docpe.com/',
                             title: '档铺网 - 在线文档免费处理',
                             update: '2021-02-08'
+                        },
+                        {
+                            link: 'https://jianwai.youdao.com/',
+                            title: '网易见外',
+                            update: '2021-06-05'
                         }
                     ]
                 },
@@ -1637,6 +1672,11 @@ var frostNavLinks = {
                             link: 'http://www.net2ftp.com/',
                             title: 'net2ftp',
                             update: '2021-02-08'
+                        },
+                        {
+                            link: 'https://txc.qq.com/',
+                            title: '腾讯兔小巢-免费便捷的用户意见反馈服务平台',
+                            update: '2021-06-05'
                         }
                     ]
                 }
@@ -2196,14 +2236,24 @@ var frostNavLinks = {
             icon: 'el-icon-reading',
             sub: [
                 {
-                    link: 'https://www.certiport.com/',
-                    title: 'My Certiport',
-                    update: '2021-02-08'
+                    link: 'https://certiport.pearsonvue.com/',
+                    title: 'Certiport',
+                    update: '2021-06-05'
+                },
+                {
+                    link: 'https://www.freecodecamp.org/',
+                    title: 'freeCodeCamp - Learn to Code',
+                    update: '2021-06-05'
                 },
                 {
                     link: 'https://www.91suke.com/',
                     title: '九一速课网',
                     update: '2021-02-08'
+                },
+                {
+                    link: 'https://www.nowcoder.com/',
+                    title: '牛客网',
+                    update: '2021-06-05'
                 },
                 {
                     link: 'https://ke.qq.com/',
@@ -2351,6 +2401,11 @@ var frostNavLinks = {
                                             link: 'https://www.mcmod.cn/',
                                             title: 'MC百科',
                                             update: '2021-02-08'
+                                        },
+                                        {
+                                            link: 'https://wiki.vg/',
+                                            title: 'wiki.vg',
+                                            update: '2021-06-05'
                                         }
                                     ]
                                 }
@@ -2475,6 +2530,11 @@ var frostNavLinks = {
                                     link: 'https://minotar.net/',
                                     title: 'Minotar（Minecraft 头像 API）',
                                     update: '2021-04-17'
+                                },
+                                {
+                                    link: 'https://www.planetminecraft.com/pmcskin3d/',
+                                    title: 'PMCSkin3D - 多功能皮肤编辑器',
+                                    update: '2021-06-05'
                                 },
                                 {
                                     link: 'https://zh-cn.namemc.com/',
@@ -2771,6 +2831,21 @@ var frostNavLinks = {
                             ]
                         },
                         {
+                            title: 'PPT 插件',
+                            links: [
+                                {
+                                    link: 'https://www.islide.cc/',
+                                    title: 'iSlide - 让PPT设计简单起来',
+                                    update: '2021-06-05'
+                                },
+                                {
+                                    link: 'http://oktools.xyz/',
+                                    title: 'OneKeyTools',
+                                    update: '2021-06-05'
+                                },
+                            ]
+                        },
+                        {
                             title: '播放器',
                             links: [
                                 {
@@ -2827,12 +2902,22 @@ var frostNavLinks = {
                                     link: 'http://opentoonz.github.io/e/index.html',
                                     title: 'OpenToonz',
                                     update: '2021-03-31'
+                                },
+                                {
+                                    link: 'https://miao.wondershare.cn/',
+                                    title: '万兴喵影 - 视频剪辑软件',
+                                    update: '2021-06-05'
                                 }
                             ]
                         },
                         {
                             title: '工具',
                             links: [
+                                {
+                                    link: 'http://www.eguidedog.net/cn/ekho_cn.php',
+                                    title: 'Ekho（余音）- 中文语音合成软件',
+                                    update: '2021-06-05'
+                                },
                                 {
                                     link: 'https://zh-cn.emeditor.com/',
                                     title: 'EmEditor（文本编辑器）',
@@ -2921,7 +3006,7 @@ var frostNavLinks = {
                             ]
                         },
                         {
-                            title: '浏览器插件',
+                            title: '浏览器扩展',
                             links: [
                                 {
                                     link: 'http://www.cnplugins.com/',
@@ -2998,6 +3083,11 @@ var frostNavLinks = {
                                     link: 'https://www.postman.com/',
                                     title: 'Postman',
                                     update: '2021-06-04'
+                                },
+                                {
+                                    link: 'https://elifulkerson.com/projects/tcping.php',
+                                    title: 'tcping.exe - TCP 端口 PING 工具',
+                                    update: '2021-06-05'
                                 },
                                 {
                                     link: 'http://www.gnu.org/software/wget/faq.html#download',
