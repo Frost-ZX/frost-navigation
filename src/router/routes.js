@@ -1,32 +1,42 @@
-import Home from '@/views/Home.vue';
-
 const routes = [
     {
-        path: '/',
         name: 'Home',
-        component: Home
+        path: '/',
+        meta: {
+            loadingBar: true
+        },
+        component: (resolve) => require(['@/views/Home.vue'], resolve)
     },
     {
-        path: '/tools',
         name: 'Tools',
-        component: () => import('@/views/Tools.vue'),
+        path: '/tools',
+        meta: {
+            loadingBar: true
+        },
+        component: (resolve) => require(['@/views/Tools.vue'], resolve),
         children: [
             {
                 path: '/tools/:category/:name',
                 name: 'ToolsDetail',
-                component: () => import('@/views/ToolsDetail.vue')
+                component: (resolve) => require(['@/views/ToolsDetail.vue'], resolve)
             }
         ]
     },
     {
-        path: '/settings',
         name: 'Settings',
-        component: () => import('@/views/Settings.vue')
+        path: '/settings',
+        meta: {
+            loadingBar: true
+        },
+        component: (resolve) => require(['@/views/Settings.vue'], resolve)
     },
     {
-        path: '/about',
         name: 'About',
-        component: () => import('@/views/About.vue')
+        path: '/about',
+        meta: {
+            loadingBar: true
+        },
+        component: (resolve) => require(['@/views/About.vue'], resolve)
     }
 ];
 

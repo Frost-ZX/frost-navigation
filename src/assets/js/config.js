@@ -1,4 +1,7 @@
 let config = {
+    loading: {
+        subPage: false
+    },
     searchEngines: {
         search: {
             title: '搜索',

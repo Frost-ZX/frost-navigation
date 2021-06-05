@@ -1,5 +1,10 @@
 <template>
     <div id="app">
+
+        <div v-show="config.loading.subPage" class="loading-bar">
+            <div class="bar-content"></div>
+        </div>
+
         <el-container>
 
             <!-- Header -->
@@ -50,6 +55,7 @@
             </keep-alive>
 
         </el-container>
+
     </div>
 </template>
 
@@ -104,6 +110,7 @@ export default {
         }
     },
     watch: {
+
         // 路由名称
         '$route.name': {
             handler() {
@@ -111,6 +118,7 @@ export default {
                 this.showHeaderDropdown = false;
             }
         },
+
         // 更新储存的设置
         'config.storage': {
             handler(obj) {
@@ -122,6 +130,7 @@ export default {
             },
             deep: true
         },
+
         // 改变字体大小
         'config.storage.fontSize': {
             handler(value) {
@@ -133,6 +142,7 @@ export default {
                 }, 1000);
             }
         }
+
     },
     mounted() {
         var configStr = localStorage.getItem('navConfig');
@@ -147,6 +157,40 @@ export default {
 </script>
 
 <style lang="less">
+.loading-bar {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.2rem;
+
+    .bar-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: @colorPrimary;
+        animation: loadingBar 4s ease-in-out infinite;
+    }
+
+    @keyframes loadingBar {
+        0% {
+            left: 0;
+            width: 0;
+        }
+        50% {
+            left: 0;
+            width: 100%;
+        }
+        100% {
+            left: 100%;
+            width: 0;
+        }
+    }
+}
+
 .main-header {
     display: flex;
     align-items: center;
