@@ -4,5 +4,7 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 // 颜色
 $--color-primary: #2196F3;
 $--color-success: #4CAF50;
+$--color-text-primary: #555555;
+$--color-text-secondary: #909090;
 
 @import "~element-ui/packages/theme-chalk/src/index";

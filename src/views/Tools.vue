@@ -191,7 +191,7 @@ export default {
             top: 1rem;
             left: 0;
             font-weight: bold;
-            color: #555;
+            color: @textPrimary;
         }
 
         .tool-item {
@@ -203,7 +203,7 @@ export default {
             border-radius: 0.25rem;
             background-color: #FFF;
             font-size: 0;
-            color: #555;
+            color: @textPrimary;
             overflow: hidden;
             transition: all @transitionTime;
             cursor: pointer;
@@ -227,7 +227,7 @@ export default {
                 height: calc(1.5em * 2);
                 line-height: 1.5em;
                 font-size: 0.75rem;
-                color: #999;
+                color: @textSecondary;
             }
         }
     }

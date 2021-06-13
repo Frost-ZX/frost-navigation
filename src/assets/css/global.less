@@ -13,10 +13,10 @@
 
 ::-webkit-scrollbar-thumb {
     border-radius: 1rem;
-    background-color: #DDD;
+    background-color: #DFDFDF;
 
     &:hover {
-        background-color: #BBB;
+        background-color: #CCCCCC;
     }
 }
 
@@ -34,7 +34,7 @@ html {
 }
 
 body {
-    color: #555;
+    color: @textPrimary;
     overflow: hidden;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -98,7 +98,7 @@ body {
 
 .loading-link {
     background-color: rgba(255, 255, 255, 0.5) !important;
-    backdrop-filter: blur(.2rem);
+    backdrop-filter: blur(0.2rem);
 
     .el-loading-spinner {
         transform: translateY(-50%);

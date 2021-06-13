@@ -68,7 +68,7 @@ export default {
                 position: relative;
                 margin: 1.5rem 0;
                 font-size: 1rem;
-                color: #222;
+                color: @textPrimary;
             }
 
             > .title::before {

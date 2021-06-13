@@ -82,12 +82,13 @@ export default {
         .title {
             line-height: 2.5rem;
             font-size: 1rem;
+            color: @textPrimary;
         }
 
         .content {
             line-height: 1.8rem;
             font-size: 0.85rem;
-            color: #888;
+            color: @textSecondary;
         }
     }
 }
