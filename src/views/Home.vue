@@ -126,7 +126,7 @@
                     class="link-tree shadow-2"
                     :data="currentLinks"
                     node-key="id"
-                    empty-text=""
+                    empty-text="没有查找到内容"
                     :props="{ label: 'title', children: 'sub' }"
                     :filter-node-method="searchLinkSubmit"
                     :default-expand-all="false"
@@ -148,7 +148,7 @@
         </el-main>
 
         <el-dialog
-            :append-to-body='true'
+            :append-to-body="true"
             custom-class="link-detail"
             title="详情"
             :visible="linkDetail.show"
