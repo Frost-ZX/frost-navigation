@@ -1,7 +1,7 @@
 // 导航链接数据
 var frostNavLinks = {
     // 版本号
-    version: '2021-06-05_2',
+    version: '2021-06-14_1',
     // 列表
     list: [
         // 主分类
@@ -10,7 +10,7 @@ var frostNavLinks = {
             title: '百科 / 教程 / 科普 / 资料',
             // 图标
             icon: 'el-icon-document',
-            // 子路径
+            // 子分类
             sub: [
                 {
                     // 标题
@@ -1170,6 +1170,11 @@ var frostNavLinks = {
                             update: '2021-06-05'
                         },
                         {
+                            link: 'https://www.testufo.com/',
+                            title: 'UFO Test（显示器 / 屏幕刷新率测试）',
+                            update: '2021-06-06'
+                        },
+                        {
                             link: 'https://www.speedtest.cn/',
                             title: '测速网',
                             update: '2021-06-05'
@@ -1200,6 +1205,11 @@ var frostNavLinks = {
                             link: 'https://bios-pw.org/',
                             title: 'BIOS Master Password Generator',
                             update: '2021-02-25'
+                        },
+                        {
+                            link: 'https://codetime.datreks.com/',
+                            title: 'CodeTime（编程时长统计与分析）',
+                            update: '2021-06-08'
                         },
                         {
                             link: 'https://monitor.firefox.com/',
@@ -2246,6 +2256,16 @@ var frostNavLinks = {
                     update: '2021-06-05'
                 },
                 {
+                    link: 'https://hinative.com/',
+                    title: 'HiNative - 一个针对外语学习者的问答平台',
+                    update: '2021-06-10'
+                },
+                {
+                    link: 'https://lang-8.com/',
+                    title: 'Lang-8 - 多国语言学习交流平台',
+                    update: '2021-06-10'
+                },
+                {
                     link: 'https://www.91suke.com/',
                     title: '九一速课网',
                     update: '2021-02-08'
@@ -2589,6 +2609,11 @@ var frostNavLinks = {
                                 {
                                     title: '网站',
                                     links: [
+                                        {
+                                            link: 'https://mcpedl.com/',
+                                            title: 'MCPE DL（Minecraft 基岩版资源下载）',
+                                            update: '2021-06-14'
+                                        },
                                         {
                                             link: 'https://www.curseforge.com/minecraft',
                                             title: 'Minecraft CurseForge',
@@ -3254,6 +3279,11 @@ var frostNavLinks = {
                             link: 'https://app.crisp.chat/',
                             title: 'Crisp',
                             update: '2021-02-08'
+                        },
+                        {
+                            link: 'https://www.my-ip.io/',
+                            title: 'MyIP（IP 地址查询）',
+                            update: '2021-06-10'
                         },
                         {
                             link: 'https://open.oppomobile.com/',
