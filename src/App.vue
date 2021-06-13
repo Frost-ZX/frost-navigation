@@ -1,10 +1,12 @@
 <template>
     <div id="app">
 
+        <!-- 加载动画 -->
         <div v-show="config.loading.subPage" class="loading-bar">
             <div class="bar-content"></div>
         </div>
 
+        <!-- 内容区域 -->
         <el-container>
 
             <!-- Header -->
@@ -56,12 +58,20 @@
 
         </el-container>
 
+        <!-- 悬浮按钮 -->
+        <FloatingBtn />
+
     </div>
 </template>
 
 <script>
+import FloatingBtn from '@/components/FloatingBtn.vue';
+
 export default {
     name: 'App',
+    components: {
+        FloatingBtn,
+    },
     data() {
         return {
             config: this.$root.config,
