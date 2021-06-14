@@ -32,7 +32,7 @@
                     <el-menu-item :class="['item-dropdown', { active: showHeaderDropdown }]"
                         @click="showHeaderDropdown = !showHeaderDropdown"
                     >
-                        <i class="el-icon-menu"></i>
+                        <i class="fa fa-bars"></i>
                     </el-menu-item>
 
                 </el-menu>
@@ -229,10 +229,9 @@ export default {
                 right: 0;
                 margin: 0;
                 padding: 0;
-                line-height: 2.2rem;
 
                 i {
-                    font-size: 2em;
+                    font-size: 1.75em;
                 }
             }
         }

@@ -2,7 +2,7 @@
     <el-container class="home">
 
         <!-- 侧边栏 -->
-        <el-aside class="home-aside">
+        <el-aside class="home-aside shadow-1">
             <el-menu
                 class="side-nav"
                 default-active="search"
@@ -396,11 +396,14 @@ export default {
 
 <style lang="less" scoped>
 .home-aside {
+    position: relative;
+    z-index: 110;
     width: auto !important;
     overflow-x: hidden;
 
     .side-nav {
         min-height: 100%;
+        border: none;
     }
 }
 
@@ -409,8 +412,9 @@ export default {
     flex-direction: column;
     align-items: center;
     position: relative;
-    padding: 1rem 2rem;
+    padding: 2rem;
     background-color: @colorWhite;
+    overflow-x: hidden;
     overflow-y: scroll;
 
     .wrapper {
@@ -429,7 +433,7 @@ export default {
         display: flex;
         align-items: center;
         position: sticky;
-        top: 3rem;
+        top: 2.5rem;
         z-index: 100;
         width: 100%;
         max-width: 40rem;
@@ -494,6 +498,7 @@ export default {
 
             .title {
                 margin: 0.5rem 0;
+                text-align: left;
             }
 
             .el-radio {
@@ -647,6 +652,32 @@ export default {
         line-height: 1em;
         font-size: inherit;
         color: @colorSecondary;
+    }
+}
+</style>
+
+<style lang="less" scoped>
+@media screen and (max-width: 400px) {
+    .home-content {
+        padding: 1rem;
+    }
+
+    .search-engine {
+        .search-bar {
+            top: 1rem;
+        }
+
+        .search-type {
+            margin: 2rem 0;
+        }
+
+        .category {
+            text-align: center;
+
+            .el-radio {
+                width: 90% !important;
+            }
+        }
     }
 }
 </style>

@@ -103,6 +103,7 @@ export default {
             width: 2.6rem;
             height: 2.6rem;
             font-size: 1rem;
+            color: #FFF;
         }
     }
 }
@@ -115,8 +116,8 @@ export default {
         height: 0;
         background-color: @colorSecondary;
         font-size: 0;
-        transition: all calc(@transitionTime * 1.6),
-            font-size calc(@transitionTime * 0.8);
+        color: transparent;
+        transition: all calc(@transitionTime * 1.6);
 
         &:not(:first-child) {
             margin-top: 0.75rem;
@@ -171,7 +172,7 @@ export default {
     }
 
     &.animate::after {
-        animation: floatingBtnClick 0.5s linear;
+        animation: floatingBtnClick calc(@transitionTime * 2) linear;
     }
 }
 
@@ -195,6 +196,15 @@ export default {
         width: 100%;
         height: 100%;
         opacity: 0;
+    }
+}
+</style>
+
+<style lang="less" scoped>
+@media screen and (max-width: 400px) {
+    .floating-btn {
+        right: 1.5rem;
+        bottom: 1.5rem;
     }
 }
 </style>
