@@ -1,20 +1,20 @@
 <template>
     <div class="floating-btn">
         <div class="btns-inner">
-            <div class="btn" title="折叠侧边菜单" @click="toggleSideCollapse()">
+            <button class="btn" type="button" title="折叠侧边菜单" @click="toggleSideCollapse()">
                 <i class="el-icon-menu" aria-hidden="true"></i>
-            </div>
-            <div class="btn" title="刷新" @click="refreshPage()">
+            </button>
+            <button class="btn" type="button" title="刷新" @click="refreshPage()">
                 <i class="el-icon-refresh-right" aria-hidden="true"></i>
-            </div>
-            <div class="btn" title="返回主页" @click="backToHome()">
+            </button>
+            <button class="btn" type="button" title="返回主页" @click="backToHome()">
                 <i class="el-icon-s-home" aria-hidden="true"></i>
-            </div>
+            </button>
         </div>
         <div class="btns-outer">
-            <div class="btn" title="悬浮菜单">
+            <button class="btn" type="button" title="菜单">
                 <i class="fa fa-bars" aria-hidden="true"></i>
-            </div>
+            </button>
         </div>
     </div>
 </template>
@@ -27,7 +27,27 @@ export default {
             config: this.$root.config.storage
         }
     },
+    mounted () {
+        this.initAnimation();
+    },
     methods: {
+
+        /**
+         * 设置动画
+         */
+        initAnimation() {
+            var btns = document.querySelectorAll('.floating-btn .btn');
+            var className = 'animate';
+
+            btns.forEach((elem) => {
+                elem.onclick = function () {
+                    this.classList.remove(className);
+                    setTimeout(() => {
+                        this.classList.add(className);
+                    }, 20);
+                };
+            });
+        },
 
         /**
          * 返回主页
@@ -80,9 +100,9 @@ export default {
 
     &:hover {
         .btns-inner .btn {
-            width: 2.5rem;
-            height: 2.5rem;
-            font-size: 0.9rem;
+            width: 2.6rem;
+            height: 2.6rem;
+            font-size: 1rem;
         }
     }
 }
@@ -95,7 +115,8 @@ export default {
         height: 0;
         background-color: @colorSecondary;
         font-size: 0;
-        transition: all calc(@transitionTime * 1.2);
+        transition: all calc(@transitionTime * 1.6),
+            font-size calc(@transitionTime * 0.8);
 
         &:not(:first-child) {
             margin-top: 0.75rem;
@@ -108,8 +129,8 @@ export default {
 
     .btn {
         margin-top: 1rem;
-        width: 3rem;
-        height: 3rem; 
+        width: 3.2rem;
+        height: 3.2rem; 
         background-color: @colorPrimary;
     }
 }
@@ -130,21 +151,50 @@ export default {
     overflow: hidden;
     cursor: pointer;
 
-    &::after {
+    &::before, &::after {
         content: "";
         display: block;
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 50%;
+        left: 50%;
         width: 100%;
         height: 100%;
+        border-radius: 50%;
         background-color: #FFF;
         opacity: 0;
-        transition: opacity @transitionTime
+        transition: opacity @transitionTime;
+        transform: translate(-50%, -50%);
     }
 
-    &:hover::after {
+    &:hover::before {
+        opacity: 0.1;
+    }
+
+    &.animate::after {
+        animation: floatingBtnClick 0.5s linear;
+    }
+}
+
+@keyframes floatingBtnClick {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    25% {
         opacity: 0.2;
+    }
+    50% {
+        width: 100%;
+        height: 100%;
+    }
+    75% {
+        opacity: 0.2;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
     }
 }
 </style>
