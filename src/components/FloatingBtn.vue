@@ -1,6 +1,6 @@
 <template>
-    <div class="floating-btn">
-        <div class="btns-inner">
+    <div ref="floatingBtn" class="floating-btn">
+        <div :class="['btns-inner', { show: showInner }]">
             <button class="btn" type="button" title="折叠侧边菜单" @click="toggleSideCollapse()">
                 <i class="el-icon-menu" aria-hidden="true"></i>
             </button>
@@ -24,7 +24,8 @@ export default {
     name: 'FloatingBtn',
     data() {
         return {
-            config: this.$root.config.storage
+            config: this.$root.config.storage,
+            showInner: false
         }
     },
     mounted () {
@@ -36,17 +37,27 @@ export default {
          * 设置动画
          */
         initAnimation() {
-            var btns = document.querySelectorAll('.floating-btn .btn');
+            var vm = this;
+            var el = vm.$refs['floatingBtn'];
+            var btns = el.querySelectorAll('.btn');
             var className = 'animate';
 
             btns.forEach((elem) => {
-                elem.onclick = function () {
+                elem.addEventListener('click', function () {
                     this.classList.remove(className);
                     setTimeout(() => {
                         this.classList.add(className);
+                        vm.toggleInnerBtns();
                     }, 20);
-                };
+                });
             });
+        },
+
+        /**
+         * 切换按钮显示
+         */
+        toggleInnerBtns() {
+            this.showInner = !this.showInner;
         },
 
         /**
@@ -82,7 +93,6 @@ export default {
          */
         toggleSideCollapse() {
             var cfg = this.config;
-
             cfg.sideMenuCollapse = !cfg.sideMenuCollapse;
         },
 
@@ -98,13 +108,11 @@ export default {
     bottom: 2rem;
     text-align: center;
 
-    &:hover {
-        .btns-inner .btn {
-            width: 2.6rem;
-            height: 2.6rem;
-            font-size: 1rem;
-            color: #FFF;
-        }
+    .btns-inner.show .btn {
+        width: 2.6rem;
+        height: 2.6rem;
+        font-size: 1rem;
+        color: #FFF;
     }
 }
 
@@ -117,7 +125,7 @@ export default {
         background-color: @colorSecondary;
         font-size: 0;
         color: transparent;
-        transition: all calc(@transitionTime * 1.6);
+        transition: all @transitionTime;
 
         &:not(:first-child) {
             margin-top: 0.75rem;
