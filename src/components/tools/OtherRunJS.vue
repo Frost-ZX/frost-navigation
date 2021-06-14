@@ -4,9 +4,9 @@
         <!-- 输入 -->
         <div class="input">
             <div class="title">代码</div>
-            <el-input v-model="input.value" type="textarea" class="text"
-                :placeholder="input.placeholder" rows="10"
-            ></el-input>
+            <div class="text">
+                <textarea ref="jsInput" placeholder="代码"></textarea>
+            </div>
         </div>
 
         <!-- 操作 -->
@@ -32,13 +32,17 @@
 </template>
 
 <script>
+import CodeMirror from 'codemirror/lib/codemirror';
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/lib/codemirror.css';
+
 export default {
     name: 'OtherRunJS',
     data() {
         return {
             input: {
-                value: '',
-                placeholder: '请在此处输入 JavaScript 代码'
+                editor: null,
+                value: ''
             },
             output: {
                 id: 0,
@@ -46,7 +50,37 @@ export default {
             }
         }
     },
+    mounted () {
+        this.init();
+    },
     methods: {
+
+        // 初始化
+        init() {
+            var jsInput = this.$refs['jsInput'];
+            var datas = this.input;
+
+            datas.editor = CodeMirror.fromTextArea(jsInput, {
+                indentWithTabs: false,
+                indentUnit: 4,
+                lineNumbers: true,
+                mode: 'javascript',
+                theme: 'default'
+            });
+
+            datas.editor.setOption('extraKeys', {
+                // Tab 转空格
+                Tab: function(cm) {
+                    var spaces = Array(cm.getOption('indentUnit') + 1).join(' ');
+                    cm.replaceSelection(spaces);
+                }
+            });
+
+            datas.editor.on('change', function (instance) {
+                // 同步 value
+                datas.value = instance.doc.getValue();
+            });
+        },
 
         // 运行
         btnRun() {
@@ -81,7 +115,7 @@ export default {
                 type: 'warning'
             }).then(() => {
 
-                this.input.value = '';
+                this.input.editor.doc.setValue('');
                 this.output.lines = [];
                 this.$message({
                     message: '已清除',
@@ -104,7 +138,9 @@ export default {
 
 <style lang="less" scoped>
 .tool-elem {
-    @lineHeight: 1.2rem;
+    @lineHeight: 1.25rem;
+
+    padding-bottom: 5rem;
 
     > div {
         .text {
@@ -115,8 +151,10 @@ export default {
     }
 
     .input {
-        /deep/ .text textarea {
-            padding: 0.75rem;
+        /deep/ .CodeMirror {
+            width: 100%;
+            height: calc(@lineHeight * 20 + 0.5rem);
+            box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
             line-height: @lineHeight;
         }
     }

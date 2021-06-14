@@ -107,8 +107,8 @@ let navTools = {
             'run-js': {
                 title: '执行 JavaScript',
                 component: 'OtherRunJS',
-                update: '20210503',
-                version: '1',
+                update: '20210614',
+                version: '2',
                 enabled: true
             }
         }
