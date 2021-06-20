@@ -81,6 +81,13 @@ let config = {
                     icon: 'website/bilibili.svg',
                     show: true
                 },
+                {
+                    name: 'QQ音乐',
+                    desc: 'y.qq.com',
+                    url: 'https://y.qq.com/n/ryqq/search?w=%keyword%',
+                    icon: 'website/qq_music.svg',
+                    show: true
+                }
             ]
         },
         technology: {
