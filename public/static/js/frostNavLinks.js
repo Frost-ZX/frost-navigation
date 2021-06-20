@@ -1,7 +1,7 @@
 // 导航链接数据
 var frostNavLinks = {
     // 版本号
-    version: '2021-06-14_1',
+    version: '2021-06-20_1',
     // 列表
     list: [
         // 主分类
@@ -26,14 +26,9 @@ var frostNavLinks = {
                             update: '2021-02-07'
                         },
                         {
-                            link: 'https://ipaperclip.net/',
-                            title: '回形针手册',
-                            update: '2021-02-07'
-                        },
-                        {
-                            link: 'https://zh.moegirl.org/',
+                            link: 'https://zh.moegirl.org.cn/',
                             title: '萌娘百科',
-                            update: '2021-02-07'
+                            update: '2021-06-20'
                         },
                         {
                             link: 'https://zh.wikipedia.org/',
@@ -180,8 +175,9 @@ var frostNavLinks = {
                             update: '2021-02-07'
                         },
                         {
-                            link: 'https://blog.littleha.cn/',
-                            title: '小哈的博客'
+                            link: 'http://www.ruanyifeng.com/blog/',
+                            title: '阮一峰的网络日志',
+                            update: '2021-06-20'
                         },
                         {
                             link: 'https://2heng.xin/',
@@ -206,6 +202,11 @@ var frostNavLinks = {
                             link: 'https://segmentfault.com/',
                             title: 'SegmentFault 思否',
                             update: '2021-02-07'
+                        },
+                        {
+                            link: 'https://stackoverflow.com/',
+                            title: 'Stack Overflow',
+                            update: '2021-06-20'
                         },
                         {
                             link: 'https://www.v2ex.com/',
@@ -482,6 +483,11 @@ var frostNavLinks = {
                             update: '2021-02-08'
                         },
                         {
+                            link: 'https://gitlab.com/',
+                            title: 'GitLab',
+                            update: '2021-06-20'
+                        },
+                        {
                             link: 'https://github.com/',
                             title: 'GitHub',
                             update: '2021-02-08'
@@ -528,56 +534,86 @@ var frostNavLinks = {
                         },
                         {
                             title: '前端',
-                            links: [
+                            sub: [
                                 {
-                                    link: 'https://www.bootcss.com/',
-                                    title: 'Bootstrap 中文网',
-                                    update: '2021-02-08'
+                                    title: '工具',
+                                    links: [
+                                        {
+                                            link: 'https://animista.net/',
+                                            title: 'Animista - CSS 动画生成工具',
+                                            update: '2021-06-20'
+                                        },
+                                        {
+                                            link: 'https://bennettfeely.com/clippy/',
+                                            title: 'Clippy - CSS clip-path 生成工具',
+                                            update: '2021-06-01'
+                                        },
+                                        {
+                                            link: 'https://cssgradient.io/',
+                                            title: 'CSS Gradient - CSS 渐变生成工具',
+                                            update: '2021-06-20'
+                                        },
+                                        {
+                                            link: 'https://cubic-bezier.com/',
+                                            title: 'cubic-bezier - CSS cubic-bezier() 生成工具',
+                                            update: '2021-06-20'
+                                        },
+                                        {
+                                            link: 'http://www.spritecow.com/',
+                                            title: 'Sprite Cow - 精灵图样式生成工具',
+                                            update: '2021-06-01'
+                                        }
+                                    ]
                                 },
                                 {
-                                    link: 'https://bennettfeely.com/clippy/',
-                                    title: 'Clippy - CSS clip-path 生成器',
-                                    update: '2021-06-01'
+                                    title: '框架 / 库',
+                                    links: [
+                                        {
+                                            link: 'https://www.bootcss.com/',
+                                            title: 'Bootstrap 中文网',
+                                            update: '2021-02-08'
+                                        },
+                                        {
+                                            link: 'https://highlightjs.org/',
+                                            title: 'highlight.js',
+                                            update: '2021-02-08'
+                                        },
+                                        {
+                                            link: 'https://jquery.com/',
+                                            title: 'jQuery',
+                                            update: '2021-02-08'
+                                        },
+                                        {
+                                            link: 'https://www.layui.com/',
+                                            title: 'Layui - 经典开源模块化前端 UI 框架',
+                                            update: '2021-06-20'
+                                        },
+                                        {
+                                            link: 'https://leafletjs.com/',
+                                            title: 'Leaflet - 可交互的地图',
+                                            update: '2021-02-08'
+                                        },
+                                        {
+                                            link: 'http://threejs.org/',
+                                            title: 'three.js – JavaScript 3D library',
+                                            update: '2021-02-08'
+                                        }
+                                    ]
                                 },
                                 {
-                                    link: 'https://highlightjs.org/',
-                                    title: 'highlight.js',
-                                    update: '2021-02-08'
-                                },
-                                {
-                                    link: 'https://jquery.com/',
-                                    title: 'jQuery',
-                                    update: '2021-02-08'
-                                },
-                                {
-                                    link: 'http://www.jq22.com/',
-                                    title: 'jQuery 插件库',
-                                    update: '2021-02-08'
-                                },
-                                {
-                                    link: 'http://www.htmleaf.com/',
-                                    title: 'jQuery 之家',
-                                    update: '2021-02-08'
-                                },
-                                {
-                                    link: 'http://layer.layui.com/',
-                                    title: 'layer',
-                                    update: '2021-02-08'
-                                },
-                                {
-                                    link: 'https://leafletjs.com/',
-                                    title: 'Leaflet - 可交互的地图',
-                                    update: '2021-02-08'
-                                },
-                                {
-                                    link: 'http://www.spritecow.com/',
-                                    title: 'Sprite Cow - Generate CSS for sprite sheets',
-                                    update: '2021-06-01'
-                                },
-                                {
-                                    link: 'http://threejs.org/',
-                                    title: 'three.js – JavaScript 3D library',
-                                    update: '2021-02-08'
+                                    title: '资源',
+                                    links: [
+                                        {
+                                            link: 'http://www.jq22.com/',
+                                            title: 'jQuery 插件库',
+                                            update: '2021-02-08'
+                                        },
+                                        {
+                                            link: 'http://www.htmleaf.com/',
+                                            title: 'jQuery 之家',
+                                            update: '2021-02-08'
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -607,7 +643,7 @@ var frostNavLinks = {
                             link: 'https://vuejs.org/',
                             title: 'Vue.js',
                             update: '2021-05-22'
-                        },
+                        }
                     ]
                 },
                 {
@@ -666,6 +702,16 @@ var frostNavLinks = {
                             link: 'https://www.jianshu.com/',
                             title: '简书',
                             update: '2021-02-08'
+                        },
+                        {
+                            link: 'https://xiezuocat.com/',
+                            title: '秘塔写作猫',
+                            update: '2021-02-08'
+                        },
+                        {
+                            link: 'https://mubu.com/',
+                            title: '幕布 - 极简大纲笔记',
+                            update: '2021-06-20'
                         }
                     ]
                 },
@@ -764,6 +810,16 @@ var frostNavLinks = {
                 {
                     title: '其他',
                     links: [
+                        {
+                            link: 'https://www.processon.com/',
+                            title: 'ProcessOn - 免费在线作图，思维导图，流程图，实时协作',
+                            update: '2021-06-20'
+                        },
+                        {
+                            link: 'https://smartmockups.com/',
+                            title: 'Smartmockups - 产品模板生成工具',
+                            update: '2021-02-08'
+                        },
                         {
                             link: 'https://cfm.xiaoice.com/',
                             title: 'X Studio · 主播',
@@ -1022,6 +1078,11 @@ var frostNavLinks = {
                             title: '工具',
                             links: [
                                 {
+                                    link: 'https://bigjpg.com/',
+                                    title: 'Bigjpg - AI人工智能图片无损放大',
+                                    update: '2021-06-20'
+                                },
+                                {
                                     link: 'https://www.fotor.com/',
                                     title: 'Fotor'
                                 },
@@ -1036,6 +1097,11 @@ var frostNavLinks = {
                                 {
                                     link: 'http://tineye.com/',
                                     title: 'TinEye'
+                                },
+                                {
+                                    link: 'http://waifu2x.udp.jp/',
+                                    title: 'waifu2x - 使用卷积神经网络对图片进行放大操作',
+                                    update: '2021-06-20'
                                 },
                                 {
                                     link: 'https://www.polaxiong.com/',
@@ -1144,17 +1210,7 @@ var frostNavLinks = {
                             link: 'https://simplemde.com/',
                             title: 'SimpleMDE - JavaScript Markdown Editor',
                             update: '2021-02-08'
-                        },
-                        {
-                            link: 'https://smartmockups.com/',
-                            title: 'Smartmockups - 免费产品模板生成工具',
-                            update: '2021-02-08'
-                        },
-                        {
-                            link: 'https://xiezuocat.com/',
-                            title: '秘塔写作猫',
-                            update: '2021-02-08'
-                        },
+                        }
                     ]
                 },
                 {
@@ -1599,6 +1655,11 @@ var frostNavLinks = {
                     title: '文档',
                     links: [
                         {
+                            link: 'https://shimo.im/',
+                            title: '石墨文档 - 企业在线协同办公系统平台',
+                            update: '2021-06-20'
+                        },
+                        {
                             link: 'https://docs.qq.com/',
                             title: '腾讯文档',
                             update: '2021-05-22'
@@ -1638,6 +1699,11 @@ var frostNavLinks = {
                 {
                     title: '娱乐',
                     links: [
+                        {
+                            link: 'https://aidn.jp/mikutap/',
+                            title: 'Mikutap',
+                            update: '2021-06-20'
+                        },
                         {
                             link: 'https://theuselessweb.com/',
                             title: 'The Useless Web',
@@ -2035,9 +2101,19 @@ var frostNavLinks = {
                     title: '内网穿透（内网映射）',
                     links: [
                         {
+                            link: 'https://www.cpolar.com/',
+                            title: 'cpolar - 安全的内网穿透工具',
+                            update: '2021-06-20'
+                        },
+                        {
                             link: 'https://natapp.cn/',
                             title: 'NATAPP',
                             update: '2021-02-08'
+                        },
+                        {
+                            link: 'https://ngrok.com/',
+                            title: 'ngrok - secure introspectable tunnels to localhost',
+                            update: '2021-06-20'
                         },
                         {
                             link: 'https://www.natfrp.com/',
@@ -3332,14 +3408,19 @@ var frostNavLinks = {
                     title: 'CDN',
                     links: [
                         {
-                            title: '75CDN - 前端静态资源库',
                             link: 'https://cdn.baomitu.com/',
+                            title: '75CDN - 前端静态资源库',
                             update: '2021-05-22'
                         },
                         {
-                            title: 'Staticfile CDN',
                             link: 'http://www.staticfile.org/',
+                            title: 'Staticfile CDN',
                             update: '2021-05-22'
+                        },
+                        {
+                            link: 'https://unpkg.com/',
+                            title: 'UNPKG - npm 资源的全球内容分发网络（CDN）',
+                            update: '2021-06-20'
                         }
                     ]
                 },
