@@ -72,9 +72,9 @@ export default {
                 type: 'warning'
             }).then(() => {
 
-                if (type == 'cache') {
+                if (type === 'cache') {
                     localStorage.removeItem('navLinksCache');
-                } else if (type == 'settings') {
+                } else if (type === 'settings') {
                     localStorage.removeItem('navConfig');
                 } else {
                     return

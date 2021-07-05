@@ -42,10 +42,10 @@ export default {
                 return style;
             }
 
-            if (this.from == 'inner') {
+            if (this.from === 'inner') {
                 // 内部
                 iconPath = require(`@/assets/icon/${this.path}`);
-            } else if (this.from == 'outer') {
+            } else if (this.from === 'outer') {
                 // 外部
                 iconPath = this.path;
             }

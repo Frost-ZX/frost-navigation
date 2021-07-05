@@ -54,7 +54,7 @@ export default {
             var route = vm.$route;
 
             // 判断进入的路由
-            if (route.name == 'ToolsDetail') {
+            if (route.name === 'ToolsDetail') {
                 // 进入：工具内容页面
                 vm.detailOpen(route.params.category, route.params.name);
             } else {

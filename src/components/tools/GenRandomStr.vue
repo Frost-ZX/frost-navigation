@@ -60,9 +60,9 @@ export default {
             info: {
                 strLength: 8,
                 option: {
-                    caseSensitive: false,
-                    hasNum: false,
-                    hasChar: false,
+                    caseSensitive: true,
+                    hasNum: true,
+                    hasChar: true,
                     hasSymbol: false,
                     lowerCase: false
                 },
@@ -98,7 +98,7 @@ export default {
         genRandomStr(strLength, hasNum, hasChar, hasSymbol, caseSensitive, lowerCase) {
             var result = '请选中数字、字母或其他符号的其中一项！';
 
-            if (hasNum == false && hasChar == false && hasSymbol == false) {
+            if (hasNum === false && hasChar === false && hasSymbol === false) {
                 return result;
             }
 
@@ -107,15 +107,15 @@ export default {
             for (var i = strLength; i > 0; i--) {
                 let num = Math.floor((Math.random() * 94) + 33);
                 let flag = ((
-                    (hasNum == false) && ((num >= 48) && (num <= 57))
+                    (hasNum === false) && ((num >= 48) && (num <= 57))
                 ) || (
-                    (hasChar == false) && ((
+                    (hasChar === false) && ((
                         (num >= 65) && (num <= 90)
                     ) || (
                         (num >= 97) && (num <= 122)
                     ))
                 ) || (
-                    (hasSymbol == false) && ((
+                    (hasSymbol === false) && ((
                         (num >= 33) && (num <= 47)
                     ) || (
                         (num >= 58) && (num <= 64)
@@ -146,7 +146,7 @@ export default {
                 result += String.fromCharCode(num);
             }
 
-            if (caseSensitive == false) {
+            if (caseSensitive === false) {
                 result = (lowerCase ? result.toLocaleLowerCase() : result.toUpperCase());
             }
 

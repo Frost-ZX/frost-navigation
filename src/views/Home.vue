@@ -270,12 +270,12 @@ export default {
          * 更改当前显示的分类
          */
         changeCategory(index) {
-            if (index == 'search') {
+            if (index === 'search') {
                 this.currentLinks = [];
                 this.show.searchEngine = true;
                 this.show.searchLink = false;
                 this.show.linkTree = false;
-            } else if (index == 'all') {
+            } else if (index === 'all') {
                 this.currentLinks = this.navLinks.list;
                 this.show.searchEngine = false;
                 this.show.searchLink = true;
@@ -344,7 +344,7 @@ export default {
             var keyword = search.keyword;
             var url = '';
 
-            if (keyword == '') {
+            if (keyword === '') {
                 return false;
             } else {
                 keyword = window.encodeURIComponent(keyword);
@@ -354,7 +354,7 @@ export default {
                 let list = search.list[category].list;
 
                 for (let index in list) {
-                    if (list[index].name == selected) {
+                    if (list[index].name === selected) {
                         url = list[index].url.replace(/%keyword%/, keyword);
                         break;
                     }

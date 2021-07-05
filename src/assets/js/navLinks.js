@@ -70,7 +70,7 @@ let utils = {
 
         // 检测 currentIndex 是否已停止变化
         var timer = setInterval(() => {
-            if (currentIndexCpy == currentIndex) {
+            if (currentIndexCpy === currentIndex) {
                 // 停止检测
                 clearInterval(timer);
 
@@ -109,7 +109,7 @@ let utils = {
         var datasCache = {};
         var datasCurrent = {};
 
-        if (mode == 'R') {
+        if (mode === 'R') {
 
             // 读取缓存
             datasCacheStr = localStorage.getItem('navLinksCache');
@@ -124,7 +124,7 @@ let utils = {
             }
 
             // 链接数据为空
-            if (datasCache.list === undefined || datasCache.list.length == 0) {
+            if (datasCache.list === undefined || datasCache.list.length === 0) {
                 return {
                     status: 0
                 };
@@ -142,7 +142,7 @@ let utils = {
                 };
             }
 
-        } else if (mode == 'W') {
+        } else if (mode === 'W') {
 
             datasCurrent.version = datas.version;
             datasCurrent.list = list;
@@ -179,7 +179,7 @@ let utils = {
         let cache = utils.cache('R');
 
         // 缓存可以使用
-        if (cache.status == 1) {
+        if (cache.status === 1) {
             datas.list = cache.list;
             return;
         }
