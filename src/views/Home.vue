@@ -7,6 +7,7 @@
                 class="side-nav"
                 default-active="search"
                 :collapse="config.sideMenuCollapse"
+                :collapse-transition="false"
                 @select="changeCategory"
             >
 
@@ -116,6 +117,7 @@
                         <el-option label="全部" value="all"></el-option>
                         <el-option label="标题" value="title"></el-option>
                         <el-option label="链接" value="link"></el-option>
+                        <el-option label="简介" value="desc"></el-option>
                     </el-select>
                 </el-input>
 
@@ -179,7 +181,11 @@
                         />
                     </div>
                 </div>
-                <div class="row">
+                <div v-show="linkDetail.desc != ''" class="row">
+                    <div class="label">简介：</div>
+                    <div class="text">{{ linkDetail.desc }}</div>
+                </div>
+                <div v-show="linkDetail.update != ''" class="row">
                     <div class="label">更新：</div>
                     <div class="text">{{ linkDetail.update }}</div>
                 </div>
@@ -236,6 +242,7 @@ export default {
                 title: '',
                 link: '',
                 linkCopy: false,
+                desc: '',
                 update: ''
             }
         };
@@ -255,13 +262,13 @@ export default {
                 // 更改搜索类型时自动重新搜索
                 this.$refs.linkTree.filter(this.searchLink.keyword);
             }
-        }
+        },
     },
     methods: {
 
         /** 
          * 更改当前显示的分类
-        */
+         */
         changeCategory(index) {
             if (index == 'search') {
                 this.currentLinks = [];
@@ -300,7 +307,8 @@ export default {
             detail.title = datas.title;
             detail.link = datas.link;
             detail.linkCopy = datas.showOnly || false;
-            detail.update = datas.update || '无';
+            detail.desc = datas.desc || '';
+            detail.update = datas.update || '';
             detail.show = true;
         },
 
@@ -358,10 +366,12 @@ export default {
 
         /**
          * 搜索链接
+         * 
+         * @param {string} value 关键词
+         * @param {object} data 每一项链接的信息
          */
         searchLinkSubmit(value, data) {
             // 关键词为空，显示全部
-
             if (value === '') {
                 return true;
             }
@@ -369,22 +379,29 @@ export default {
             // 小写
             value = value.toLowerCase();
 
-            // 过滤后
-
             var searchType = this.searchLink.type;
             var title = data.title.toLowerCase();
             var link = (data.link || '');
+            var desc = (data.desc || '');
             var result = false;
 
-            if (searchType == 'all') {
+            if (searchType === 'all') {
                 // 全部
-                result = ((title.indexOf(value) !== -1) || (link.indexOf(value) !== -1));
-            } else if (searchType == 'title') {
+                let checks = [
+                    (title.indexOf(value) !== -1),
+                    (link.indexOf(value) !== -1),
+                    (desc.indexOf(value) !== -1),
+                ];
+                result = (checks[0] || checks[1] || checks[2]);
+            } else if (searchType === 'title') {
                 // 标题
                 result = (title.indexOf(value) !== -1);
-            } else if (searchType == 'link') {
+            } else if (searchType === 'link') {
                 // 链接
                 result = (link.indexOf(value) !== -1);
+            } else if (searchType === 'desc') {
+                // 简介
+                result = (desc.indexOf(value) !== -1);
             }
 
             return result;
