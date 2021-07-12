@@ -17,6 +17,32 @@ class Utils {
         }
     }
 
+    /**
+     * JSONP
+     * 
+     * @param {object} options 配置选项
+     */
+    jsonp(options) {
+        var config = {
+            url: '',
+            cbName: 'cb',
+            cbFunc: function (data) {
+                console.log('[JSONP]', data);
+            },
+        };
+        var scriptElem = document.createElement('script');
+
+        Object.assign(config, options);
+        window[config.cbName] = config.cbFunc;
+
+        scriptElem.addEventListener('load', function () {
+            this.remove();
+        });
+        scriptElem.setAttribute('src', config.url);
+
+        document.body.appendChild(scriptElem);
+    }
+
 }
 
 const utils = new Utils;
