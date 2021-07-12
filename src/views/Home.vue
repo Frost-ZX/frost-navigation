@@ -44,7 +44,7 @@
                 <div v-show="show.searchEngine" class="search-engine">
 
                     <!-- 搜索栏 -->
-                    <div class="search-bar shadow-3">
+                    <div :class="['search-bar', 'shadow-3', { suggest: showSES }]">
 
                         <!-- 输入 -->
                         <input
@@ -68,6 +68,17 @@
                         <!-- 搜索 -->
                         <div class="btn btn-search" @click="searchEngineSubmit()">
                             <i class="el-icon-search"></i>
+                        </div>
+
+                        <!-- 关键词建议 -->
+                        <div class="suggestion shadow-3">
+                            <ul>
+                                <li
+                                    v-for="item in searchEngine.suggestions"
+                                    :key="item.id"
+                                    @click="searchEngine.keyword = item.label"
+                                >{{ item.label }}</li>
+                            </ul>
                         </div>
 
                     </div>
@@ -149,6 +160,7 @@
             </div>
         </el-main>
 
+        <!-- 链接详情 -->
         <el-dialog
             :append-to-body="true"
             custom-class="link-detail"
@@ -222,8 +234,10 @@ export default {
             searchEngine: {
                 isFocus: false,
                 keyword: '',
+                list: this.$root.config.searchEngines,
                 url: '',
-                list: this.$root.config.searchEngines
+                debounce: null,
+                suggestions: [],
             },
             // 导航链接
             navLinks: this.$root.navLinks,
@@ -243,15 +257,42 @@ export default {
                 link: '',
                 linkCopy: false,
                 desc: '',
-                update: ''
-            }
+                update: '',
+            },
         };
     },
+    computed: {
+
+        /**
+         * 显示搜索引擎关键词建议
+         */
+        showSES() {
+            var se = this.searchEngine;
+            var isShow = (
+                (se.isFocus) &&
+                (se.keyword !== '') &&
+                (se.suggestions.length > 0)
+            );
+
+            return isShow;
+        },
+
+    },
     watch: {
+        'searchEngine.keyword': {
+            handler(value) {
+                if (!this.config.searchSuggestion) {
+                    return;
+                }
+                clearInterval(this.searchEngine.debounce);
+                this.searchEngine.debounce = setTimeout(() => {
+                    this.searchEngineGS(value);
+                }, 500);
+            }
+        },
         'searchLink.keyword': {
             handler(value) {
                 clearTimeout(this.searchLink.debounce);
-
                 this.searchLink.debounce = setTimeout(() => {
                     this.$refs.linkTree.filter(value);
                 }, 500);
@@ -335,13 +376,54 @@ export default {
         },
 
         /**
-         * 搜索引擎
+         * 搜索引擎（获取关键词建议）
+         * 
+         * @param {string} keyword 当前输入的关键词
+         */
+        searchEngineGS(keyword) {
+            var se = this.searchEngine;
+            var reqURL = `https://www.baidu.com/sugrec?json=1&prod=pc&wd=${keyword}&cb=cbSES`;
+
+            se.suggestions = [];
+
+            if (keyword === '') {
+                return;
+            }
+
+            var cbFunc = (data) => {
+                var word = (data.q || '');   // 当前关键词
+                var result = (data.g || []); // 建议
+                var id = 0;                  // ID 
+
+                if (result.length === 0) {
+                    return;
+                }
+
+                result.forEach((item) => {
+                    id += 1;
+                    se.suggestions.push({
+                        id,
+                        label: item.q,
+                        highlight: word
+                    });
+                });
+            };
+
+            this.utils.jsonp({
+                url: reqURL,
+                cbName: 'cbSES',
+                cbFunc
+            });
+        },
+
+        /**
+         * 搜索引擎（搜索）
          */
         searchEngineSubmit() {
             var vm = this;
-            var search = this.searchEngine;
-            var selected = this.config.searchEngine;
-            var keyword = search.keyword;
+            var se = this.searchEngine;
+            var selectedSE = this.config.searchEngine;
+            var keyword = se.keyword;
             var url = '';
 
             if (keyword === '') {
@@ -350,11 +432,11 @@ export default {
                 keyword = window.encodeURIComponent(keyword);
             }
 
-            for (let category in search.list) {
-                let list = search.list[category].list;
+            for (let category in se.list) {
+                let list = se.list[category].list;
 
                 for (let index in list) {
-                    if (list[index].name === selected) {
+                    if (list[index].name === selectedSE) {
                         url = list[index].url.replace(/%keyword%/, keyword);
                         break;
                     }
@@ -365,7 +447,7 @@ export default {
         },
 
         /**
-         * 搜索链接
+         * 搜索链接（搜索）
          * 
          * @param {string} value 关键词
          * @param {object} data 每一项链接的信息
@@ -447,6 +529,9 @@ export default {
     flex-direction: column;
 
     .search-bar {
+        @barHeight: 2.8rem;
+        @barRadius: 0.3rem;
+
         display: flex;
         align-items: center;
         position: sticky;
@@ -454,10 +539,13 @@ export default {
         z-index: 100;
         width: 100%;
         max-width: 40rem;
-        height: 2.8rem;
-        border-radius: 0.25rem;
+        height: @barHeight;
+        border-radius: @barRadius;
         background-color: #FFF;
-        overflow: hidden;
+
+        &.suggest {
+            border-radius: @barRadius @barRadius 0 0;
+        }
 
         .input {
             flex-grow: 1;
@@ -490,6 +578,7 @@ export default {
         }
 
         .btn-search {
+            border-radius: 0 @barRadius @barRadius 0;
             color: @colorPrimary;
             transition: background @transitionTime, color @transitionTime;
 
@@ -497,6 +586,43 @@ export default {
                 background-color: @colorPrimary;
                 color: #FFF;
             }
+        }
+        &.suggest .btn-search {
+            border-bottom-right-radius: 0;
+        }
+
+        .suggestion {
+            display: block;
+            visibility: hidden;
+            position: absolute;
+            top: @barHeight;
+            width: 100%;
+            border-top: 0.1rem solid #EEE;
+            border-radius: 0 0 @barRadius @barRadius;
+            background-color: #FFF;
+            overflow: hidden;
+            // 延迟隐藏
+            transition: visibility 0.2s;
+
+            ul {
+                padding: 0.5rem 0;
+                list-style: none;
+                line-height: 1.5rem;
+                font-size: 0.9rem;
+                color: #000;
+            }
+
+            li {
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: @colorWhite;
+                }
+            }
+        }
+        &.suggest .suggestion {
+            visibility: visible;
         }
     }
 

@@ -2,13 +2,14 @@
     <el-container class="settings">
         <div class="wrapper shadow-2">
 
-            <el-form label-position="left" label-width="7rem">
+            <el-form label-position="left" label-width="12rem">
 
                 <el-form-item label="字体大小" class="set-font">
                     <el-input-number
                         v-model="config.fontSize"
                         :min="12"
                         :max="32"
+                        controls-position="right"
                         label="字体大小"
                         size="small"
                     ></el-input-number>
@@ -18,8 +19,12 @@
                     <el-switch v-model="config.showSiteTitle"></el-switch>
                 </el-form-item>
 
-                <el-form-item label="折叠侧边菜单">
+                <el-form-item label="折叠主页侧边菜单">
                     <el-switch v-model="config.sideMenuCollapse"></el-switch>
+                </el-form-item>
+
+                <el-form-item label="获取搜索引擎关键词建议">
+                    <el-switch v-model="config.searchSuggestion"></el-switch>
                 </el-form-item>
 
                 <el-form-item label="清除数据">
@@ -28,9 +33,6 @@
                         size="medium"
                         @click="resetDatas('settings')"
                     >清除设置</el-button>
-                </el-form-item>
-
-                <el-form-item>
                     <el-button
                         type="danger"
                         size="medium"
@@ -113,7 +115,7 @@ export default {
     overflow-y: auto;
 
     .wrapper {
-        padding: 1.5rem;
+        padding: 1.5rem 2rem;
         width: 100%;
         max-width: 50rem;
         background-color: #FFF;
@@ -123,6 +125,17 @@ export default {
 .set-font {
     /deep/ .el-input-number {
         width: 7rem;
+    }
+}
+
+/deep/ .el-form-item {
+    @media screen and (max-width: 520px) {
+        .el-form-item__label {
+            float: unset !important;
+        }
+        .el-form-item__content {
+            margin-left: 0 !important;
+        }
     }
 }
 </style>

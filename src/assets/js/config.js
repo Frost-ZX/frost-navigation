@@ -160,8 +160,9 @@ let config = {
         fontSize: 16,
         showSiteTitle: true,
         sideMenuCollapse: true,
-        searchEngine: '百度'
-    }
+        searchEngine: '百度',
+        searchSuggestion: false,
+    },
 };
 
 export default config;
