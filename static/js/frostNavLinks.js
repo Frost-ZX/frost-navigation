@@ -1,7 +1,7 @@
 // 导航链接数据
 var frostNavLinks = {
     // 版本号
-    version: '2021-06-20_1',
+    version: '2021-07-05_1',
     // 列表
     list: [
         // 主分类
@@ -22,6 +22,8 @@ var frostNavLinks = {
                             link: 'https://baike.baidu.com/',
                             // 标题
                             title: '百度百科',
+                            // 简介
+                            desc: '',
                             // 更新日期
                             update: '2021-02-07'
                         },
@@ -48,19 +50,19 @@ var frostNavLinks = {
                                 },
                                 {
                                     link: 'https://unicode-table.com/cn/tools/encoder/',
-                                    title: '工具 - 编码器'
+                                    title: '编码器'
                                 },
                                 {
                                     link: 'https://unicode-table.com/cn/tools/decoder/',
-                                    title: '工具 - 解码器'
+                                    title: '解码器'
                                 },
                                 {
                                     link: 'https://unicode-table.com/cn/tools/flip/',
-                                    title: '工具 - 翻转'
+                                    title: '翻转'
                                 },
                                 {
                                     link: 'https://unicode-table.com/cn/tools/generator/',
-                                    title: '工具 - Unicode 字符表生成'
+                                    title: 'Unicode 字符表生成'
                                 }
                             ]
                         }
@@ -111,7 +113,8 @@ var frostNavLinks = {
                     links: [
                         {
                             link: 'https://topbook.cc/',
-                            title: 'Topbook - 高效生活视频书',
+                            title: 'Topbook',
+                            desc: '高效生活视频书',
                             update: '2021-04-16'
                         }
                     ]
@@ -133,6 +136,7 @@ var frostNavLinks = {
                         {
                             link: 'https://blog.frost-zx.top/',
                             title: 'Frost-ZX',
+                            desc: '一个分享技术、资源，记录学习与生活的博客。',
                             update: '2021-02-07'
                         },
                         {
@@ -230,7 +234,8 @@ var frostNavLinks = {
                         },
                         {
                             link: 'https://sharecuts.cn/',
-                            title: '捷径社区 - 发现和分享 Siri 捷径、快捷指令',
+                            title: '捷径社区',
+                            desc: '发现和分享 Siri 捷径、快捷指令',
                             update: '2021-06-04'
                         },
                         {
@@ -240,12 +245,14 @@ var frostNavLinks = {
                         },
                         {
                             link: 'https://www.codeseeding.com/',
-                            title: '码云社 - 用代码改变世界',
+                            title: '码云社',
+                            desc: '用代码改变世界',
                             update: '2021-02-07'
                         },
                         {
                             link: 'https://www.skypixel.com/',
-                            title: '天空之城 - 全球航拍爱好者和专业摄影师的作品社区',
+                            title: '天空之城',
+                            desc: '全球航拍爱好者和专业摄影师的作品社区',
                             update: '2021-06-05'
                         },
                         {
@@ -300,7 +307,8 @@ var frostNavLinks = {
                         },
                         {
                             link: 'https://www.materialtools.com/',
-                            title: '云短信 - 在线短信接收',
+                            title: '云短信',
+                            desc: '在线短信接收',
                             update: '2021-02-07'
                         }
                     ]
@@ -1203,12 +1211,14 @@ var frostNavLinks = {
                     links: [
                         {
                             link: 'https://pandao.github.io/editor.md/',
-                            title: 'Editor.md - 开源在线 Markdown 编辑器',
+                            title: 'Editor.md',
+                            desc: '开源在线 Markdown 编辑器',
                             update: '2021-02-08'
                         },
                         {
                             link: 'https://simplemde.com/',
-                            title: 'SimpleMDE - JavaScript Markdown Editor',
+                            title: 'SimpleMDE',
+                            desc: '一个使用 JavaScript 开发的 Markdown 编辑器',
                             update: '2021-02-08'
                         }
                     ]
@@ -1286,6 +1296,11 @@ var frostNavLinks = {
                             link: 'https://mathsolver.microsoft.com/',
                             title: 'Microsoft Math Solver（数学求解器）',
                             update: '2021-06-01'
+                        },
+                        {
+                            link: 'https://wakatime.com/',
+                            title: 'WakaTime（编程时长统计与分析）',
+                            update: '2021-07-05'
                         },
                         {
                             link: 'https://time.is/',
@@ -2704,6 +2719,11 @@ var frostNavLinks = {
                                             link: 'http://www.minecraftxz.com/',
                                             title: 'Minecraft 中文下载站',
                                             update: '2021-02-08'
+                                        },
+                                        {
+                                            link: 'https://www.spigotmc.org/',
+                                            title: 'SpigotMC',
+                                            update: '2021-06-23'
                                         }
                                     ]
                                 },
@@ -2819,7 +2839,7 @@ var frostNavLinks = {
                         },
                         {
                             link: 'https://www.lsky.pro/',
-                            title: 'Lsky Pro - 图床',
+                            title: 'Lsky Pro（图床）',
                             update: '2021-02-08'
                         },
                         {
@@ -2833,12 +2853,14 @@ var frostNavLinks = {
                         },
                         {
                             link: 'https://valine.js.org/',
-                            title: 'Valine - 无后端评论系统',
+                            title: 'Valine',
+                            desc: '无后端评论系统',
                             update: '2021-02-08'
                         },
                         {
                             link: 'https://www.vuepress.cn/',
-                            title: 'VuePress - Vue 驱动的静态网站生成器',
+                            title: 'VuePress',
+                            desc: 'Vue 驱动的静态网站生成器',
                             update: '2021-04-17'
                         },
                         {
@@ -2936,7 +2958,8 @@ var frostNavLinks = {
                             links: [
                                 {
                                     link: 'https://www.islide.cc/',
-                                    title: 'iSlide - 让PPT设计简单起来',
+                                    title: 'iSlide',
+                                    desc: '让 PPT 设计简单起来',
                                     update: '2021-06-05'
                                 },
                                 {
@@ -3452,17 +3475,20 @@ var frostNavLinks = {
             links: [
                 {
                     link: 'https://www.amd.com/',
-                    title: 'AMD - 高性能处理器和显卡',
+                    title: 'AMD',
+                    desc: '高性能处理器和显卡',
                     update: '2021-06-01'
                 },
                 {
                     link: 'https://www.intel.cn/',
-                    title: 'Intel - 数据中心解决方案、物联网和电脑创新',
+                    title: 'Intel',
+                    desc: '数据中心解决方案、物联网和电脑创新',
                     update: '2021-06-01'
                 },
                 {
                     link: 'https://www.nvidia.cn/',
-                    title: 'NVIDIA - 引领人工智能计算',
+                    title: 'NVIDIA',
+                    desc: '引领人工智能计算',
                     update: '2021-06-01'
                 },
             ]
