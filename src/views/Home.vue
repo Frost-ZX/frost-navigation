@@ -74,10 +74,20 @@
                         <div class="suggestion shadow-3">
                             <ul>
                                 <li
-                                    v-for="item in searchEngine.suggestions"
+                                    v-for="item in searchEngine.suggest.list"
                                     :key="item.id"
                                     @click="searchEngine.keyword = item.label"
-                                >{{ item.label }}</li>
+                                >
+                                    <!-- 文本 -->
+                                    <span class="label">{{ item.label }}</span>
+                                    <!-- 来源 -->
+                                    <el-tag
+                                        class="tag"
+                                        effect="plain"
+                                        size="mini"
+                                        type="success"
+                                    >{{ searchEngine.suggest.name }}</el-tag>
+                                </li>
                             </ul>
                         </div>
 
@@ -237,7 +247,10 @@ export default {
                 list: this.$root.config.searchEngines,
                 url: '',
                 debounce: null,
-                suggestions: [],
+                suggest: {
+                    list: [],
+                    name: '',
+                },
             },
             // 导航链接
             navLinks: this.$root.navLinks,
@@ -271,7 +284,7 @@ export default {
             var isShow = (
                 (se.isFocus) &&
                 (se.keyword !== '') &&
-                (se.suggestions.length > 0)
+                (se.suggest.list.length > 0)
             );
 
             return isShow;
@@ -286,6 +299,7 @@ export default {
                 }
                 clearInterval(this.searchEngine.debounce);
                 this.searchEngine.debounce = setTimeout(() => {
+                    value = window.encodeURIComponent(value);
                     this.searchEngineGS(value);
                 }, 500);
             }
@@ -381,34 +395,82 @@ export default {
          * @param {string} keyword 当前输入的关键词
          */
         searchEngineGS(keyword) {
-            var se = this.searchEngine;
-            var reqURL = `https://www.baidu.com/sugrec?json=1&prod=pc&wd=${keyword}&cb=cbSES`;
+            var suggest = this.searchEngine.suggest;
+            // 设置的搜索引擎名称
+            var configSE = this.config.searchEngine;
+            // 关键词建议来源信息（默认使用百度）
+            var reqURLs = [
+                {
+                    name: '百度',
+                    url: `https://www.baidu.com/sugrec?json=1&prod=pc&wd=${keyword}&cb=cbSES`
+                },
+                {
+                    name: 'bilibili',
+                    url: `https://s.search.bilibili.com/main/suggest?func=suggest&main_ver=v1&term=${keyword}&jsonp=jsonp&callback=cbSES`
+                },
+            ];
+            var reqURL = reqURLs[0].url;
 
-            se.suggestions = [];
+            suggest.list = [];
+            suggest.name = reqURLs[0].name;
 
             if (keyword === '') {
                 return;
             }
 
-            var cbFunc = (data) => {
-                var word = (data.q || '');   // 当前关键词
-                var result = (data.g || []); // 建议
-                var id = 0;                  // ID 
+            // 根据当前搜索引擎选择请求地址
+            for (let i = 0; i < reqURLs.length; i++) {
+                let item = reqURLs[i];
+                if (item.name === configSE) {
+                    reqURL = item.url;
+                    suggest.name = item.name;
+                    break;
+                }
+            }
 
-                if (result.length === 0) {
-                    return;
+            // 处理数据
+            var cbFunc = (data) => {
+
+                var id = 0;                  // 结果 ID 
+                var reqName = suggest.name;  // 来源名称
+                
+                if (reqName === '百度') {
+                    // [百度]
+                    let result = (data.g || []);
+
+                    if (result.length === 0) {
+                        return;
+                    }
+
+                    result.forEach((item) => {
+                        id += 1;
+                        suggest.list.push({
+                            id,
+                            label: item.q,
+                            highlight: keyword
+                        });
+                    });
+                } else if (reqName === 'bilibili') {
+                    // [bilibili]
+                    let result = (data.result ? (data.result.tag || []) : []);
+
+                    if (result.length === 0) {
+                        return;
+                    }
+
+                    result.forEach((item) => {
+                        id += 1;
+                        suggest.list.push({
+                            id,
+                            label: item.value,
+                            highlight: keyword
+                        });
+                    });
                 }
 
-                result.forEach((item) => {
-                    id += 1;
-                    se.suggestions.push({
-                        id,
-                        label: item.q,
-                        highlight: word
-                    });
-                });
             };
 
+            // 使用 JSONP 获取
             this.utils.jsonp({
                 url: reqURL,
                 cbName: 'cbSES',
@@ -613,12 +675,24 @@ export default {
             }
 
             li {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
                 padding: 0.5rem 1rem;
                 cursor: pointer;
 
                 &:hover {
                     background-color: @colorWhite;
                 }
+            }
+
+            .label {
+                flex-grow: 1;
+                padding-right: 0.5em;
+            }
+
+            .tag {
+                flex-shrink: 0;
             }
         }
         &.suggest .suggestion {
