@@ -1,7 +1,7 @@
 // 导航链接数据
 var frostNavLinks = {
     // 版本号
-    version: '2021-07-05_1',
+    version: '2021-08-03_1',
     // 列表
     list: [
         // 主分类
@@ -506,41 +506,6 @@ var frostNavLinks = {
                     title: '开发',
                     sub: [
                         {
-                            title: '工具',
-                            links: [
-                                {
-                                    link: 'https://developer.android.google.cn/studio/',
-                                    title: 'Android Studio',
-                                    update: '2021-02-07'
-                                },
-                                {
-                                    link: 'http://www.codeblocks.org/',
-                                    title: 'Code::Blocks',
-                                    update: '2021-02-07'
-                                },
-                                {
-                                    link: 'http://www.eclipse.org/',
-                                    title: 'Eclipse',
-                                    update: '2021-02-07'
-                                },
-                                {
-                                    link: 'https://developers.google.cn/blockly/',
-                                    title: 'Google Blockly',
-                                    update: '2021-02-07'
-                                },
-                                {
-                                    link: 'https://www.python.org/',
-                                    title: 'Python',
-                                    update: '2021-02-07'
-                                },
-                                {
-                                    link: 'https://code.visualstudio.com/',
-                                    title: 'Visual Studio Code (VSCode)',
-                                    update: '2021-02-07'
-                                }
-                            ]
-                        },
-                        {
                             title: '前端',
                             sub: [
                                 {
@@ -550,6 +515,12 @@ var frostNavLinks = {
                                             link: 'https://animista.net/',
                                             title: 'Animista - CSS 动画生成工具',
                                             update: '2021-06-20'
+                                        },
+                                        {
+                                            link: 'https://caniuse.com/',
+                                            title: 'Can I use...',
+                                            desc: '查询 HTML5、CSS3 等在不同浏览器上的支持情况',
+                                            update: '2021-08-03'
                                         },
                                         {
                                             link: 'https://bennettfeely.com/clippy/',
@@ -623,6 +594,41 @@ var frostNavLinks = {
                                         }
                                     ]
                                 }
+                            ]
+                        },
+                        {
+                            title: '软件',
+                            links: [
+                                {
+                                    link: 'https://developer.android.google.cn/studio/',
+                                    title: 'Android Studio',
+                                    update: '2021-02-07'
+                                },
+                                {
+                                    link: 'http://www.codeblocks.org/',
+                                    title: 'Code::Blocks',
+                                    update: '2021-02-07'
+                                },
+                                {
+                                    link: 'http://www.eclipse.org/',
+                                    title: 'Eclipse',
+                                    update: '2021-02-07'
+                                },
+                                {
+                                    link: 'https://developers.google.cn/blockly/',
+                                    title: 'Google Blockly',
+                                    update: '2021-02-07'
+                                },
+                                {
+                                    link: 'https://www.python.org/',
+                                    title: 'Python',
+                                    update: '2021-02-07'
+                                },
+                                {
+                                    link: 'https://code.visualstudio.com/',
+                                    title: 'Visual Studio Code (VSCode)',
+                                    update: '2021-02-07'
+                                },
                             ]
                         },
                         {
@@ -2265,6 +2271,12 @@ var frostNavLinks = {
                                             update: '2021-02-08'
                                         },
                                         {
+                                            link: 'https://f-droid.org/',
+                                            title: 'F-Droid',
+                                            desc: '一个 Android 平台上的 FOSS（Free and Open Source Software，自由开源软件）目录，并提供下载安装支持。',
+                                            update: '2021-08-03'
+                                        },
+                                        {
                                             link: 'https://play.google.com/',
                                             title: 'Google Play',
                                             update: '2021-02-08'
@@ -3259,7 +3271,34 @@ var frostNavLinks = {
                                     update: '2021-02-08'
                                 }
                             ]
-                        }
+                        },
+                        {
+                            title: '运行库',
+                            links: [
+                                {
+                                    link: 'https://adoptium.net/',
+                                    title: 'Adoptium',
+                                    desc: 'Open source, prebuilt OpenJDK binaries',
+                                    update: '2021-08-03'
+                                },
+                                {
+                                    link: 'https://adoptopenjdk.net/',
+                                    title: 'AdoptOpenJDK',
+                                    desc: 'Open source, prebuilt OpenJDK binaries',
+                                    update: '2021-08-03'
+                                },
+                                {
+                                    link: 'https://www.java.com/',
+                                    title: 'Java',
+                                    update: '2021-08-03'
+                                },
+                                {
+                                    link: 'https://www.oracle.com/java/technologies/javase-downloads.html',
+                                    title: 'Java SE',
+                                    update: '2021-08-03'
+                                },
+                            ]
+                        },
                     ]
                 },
                 {
@@ -3461,6 +3500,12 @@ var frostNavLinks = {
                             update: '2021-02-25'
                         },
                         {
+                            link: 'https://uupdump.net/',
+                            title: 'UUP Dump',
+                            desc: '轻松地从 Windows 更新服务器下载 UUP 文件',
+                            update: '2021-07-18'
+                        },
+                        {
                             link: 'http://ys168.com/',
                             title: '永硕E盘',
                             update: '2021-02-25'
@@ -3484,6 +3529,11 @@ var frostNavLinks = {
                     title: 'Intel',
                     desc: '数据中心解决方案、物联网和电脑创新',
                     update: '2021-06-01'
+                },
+                {
+                    link: 'https://www.microsoft.com/',
+                    title: 'Microsoft',
+                    update: '2021-07-18'
                 },
                 {
                     link: 'https://www.nvidia.cn/',
