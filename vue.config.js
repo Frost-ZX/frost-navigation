@@ -1,4 +1,9 @@
 const path = require('path');
+const packageName = process.env.npm_package_name;
+
+if (packageName) {
+    process.title = packageName;
+}
 
 module.exports = {
     productionSourceMap: false,
@@ -17,8 +22,8 @@ module.exports = {
             // 标题
             title: 'Frost 网址导航',
             // 包含的块
-            chunks: ['chunk-common', 'chunk-vendors', 'mainPage']
-        }
+            chunks: ['chunk-common', 'chunk-vendors', 'mainPage'],
+        },
     },
 
     pluginOptions: {
@@ -26,12 +31,13 @@ module.exports = {
             preProcessor: 'less',
             // 全局 Less 变量
             patterns: [
-                path.resolve(__dirname, 'src/assets/css/variable.less')
-            ]
-        }
+                path.resolve(__dirname, 'src/assets/css/variable.less'),
+            ],
+        },
     },
 
     devServer: {
-        port: 9005
+        host: '0.0.0.0',
+        port: 9005,
     }
 };
