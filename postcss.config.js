@@ -7,8 +7,10 @@ module.exports = {
             ]
         },
         'postcss-pxtorem': {
+            mediaQuery: true,
+            propList: ['*'],
             rootValue: 16,
-            propList: ['*']
+            unitPrecision: 3,
         }
     }
 };
