@@ -1,7 +1,7 @@
 // 导航链接数据
 var frostNavLinks = {
     // 版本号
-    version: '2021-08-03_1',
+    version: '2021-11-07',
     // 列表
     list: [
         // 主分类
@@ -112,11 +112,17 @@ var frostNavLinks = {
                     title: '其他',
                     links: [
                         {
+                            link: 'https://www.emojiall.com/',
+                            title: 'EmojiAll',
+                            desc: 'Emoji 大全 / Emoji 表情符号词典',
+                            update: '2021-10-27'
+                        },
+                        {
                             link: 'https://topbook.cc/',
                             title: 'Topbook',
                             desc: '高效生活视频书',
                             update: '2021-04-16'
-                        }
+                        },
                     ]
                 }
             ]
@@ -242,6 +248,12 @@ var frostNavLinks = {
                             link: 'https://www.oschina.net/',
                             title: '开源中国',
                             update: '2021-02-07'
+                        },
+                        {
+                            link: 'https://www.landian.vip/',
+                            title: '蓝点网',
+                            desc: '给你感兴趣的内容',
+                            update: '2021-11-07'
                         },
                         {
                             link: 'https://www.codeseeding.com/',
@@ -848,6 +860,12 @@ var frostNavLinks = {
             icon: 'el-icon-star-off',
             links: [
                 {
+                    title: 'God is Madoka',
+                    desc: 'kaname madoka かなめ まどか 鹿目圆香 魔法少女まどか☆マギカ',
+                    link: 'https://kami.im/',
+                    update: '2021-09-20'
+                },
+                {
                     title: '二次元秘店 - 动漫游戏同人综合论坛',
                     link: 'http://www.ecymd.net/bbs/',
                     update: '2021-06-02'
@@ -1003,11 +1021,6 @@ var frostNavLinks = {
                                     title: '哔哩哔哩唧唧',
                                     update: '2021-02-08'
                                 },
-                                {
-                                    link: 'https://www.kanbilibili.com/',
-                                    title: '看哔哩哔哩',
-                                    update: '2021-02-08'
-                                }
                             ]
                         },
                         {
@@ -1042,7 +1055,12 @@ var frostNavLinks = {
                                     link: 'http://v.163.com/',
                                     title: '网易直播',
                                     update: '2021-02-08'
-                                }
+                                },
+                                {
+                                    link: 'https://livechina.cctv.com/',
+                                    title: '直播中国',
+                                    update: '2021-08-21'
+                                },
                             ]
                         },
                         {
@@ -1314,9 +1332,19 @@ var frostNavLinks = {
                             update: '2021-02-25'
                         },
                         {
+                            link: 'http://typhoon.zjwater.gov.cn/',
+                            title: '台风路径',
+                            update: '2021-08-21'
+                        },
+                        {
                             link: 'https://www.tianyancha.com/',
                             title: '天眼查',
                             update: '2021-02-25'
+                        },
+                        {
+                            link: 'https://ga.aopa.org.cn/',
+                            title: '通用机场信息平台',
+                            update: '2021-09-20'
                         },
                         {
                             link: 'http://www.weather.com.cn/',
@@ -1327,7 +1355,12 @@ var frostNavLinks = {
                             link: 'http://www.nmc.cn/',
                             title: '中央气象台',
                             update: '2021-02-25'
-                        }
+                        },
+                        {
+                            link: 'http://typhoon.nmc.cn/',
+                            title: '中央气象台台风网',
+                            update: '2021-08-21'
+                        },
                     ],
                     sub: [
                         {
@@ -1737,8 +1770,15 @@ var frostNavLinks = {
                     links: [
                         {
                             link: 'https://carbon.now.sh/',
-                            title: 'Carbon - 代码转图片',
+                            title: 'Carbon',
+                            desc: '代码转图片',
                             update: '2021-06-05'
+                        },
+                        {
+                            link: 'https://convertio.co/',
+                            title: 'Convertio',
+                            desc: '在线文件转换器',
+                            update: '2021-10-27'
                         },
                         {
                             link: 'https://smallpdf.com/',
@@ -1759,7 +1799,7 @@ var frostNavLinks = {
                             link: 'https://jianwai.youdao.com/',
                             title: '网易见外',
                             update: '2021-06-05'
-                        }
+                        },
                     ]
                 },
                 {
@@ -2113,9 +2153,17 @@ var frostNavLinks = {
                             title: '局域网（192.168.5.1）'
                         },
                         {
+                            link: 'http://192.168.31.1/',
+                            title: '局域网（192.168.31.1）'
+                        },
+                        {
                             link: 'http://tplogin.cn/',
                             title: '路由器（TP-LINK）'
-                        }
+                        },
+                        {
+                            link: 'http://miwifi.com/',
+                            title: '路由器（Xiaomi / Redmi）'
+                        },
                     ]
                 },
                 {
@@ -2318,7 +2366,12 @@ var frostNavLinks = {
                                     link: 'https://man.linuxde.net/',
                                     title: 'Linux 命令大全',
                                     update: '2021-02-08'
-                                }
+                                },
+                                {
+                                    link: 'https://netplan.io/',
+                                    title: 'Netplan',
+                                    update: '2021-09-30'
+                                },
                             ]
                         }
                     ]
@@ -2360,18 +2413,26 @@ var frostNavLinks = {
                 },
                 {
                     link: 'https://hinative.com/',
-                    title: 'HiNative - 一个针对外语学习者的问答平台',
+                    title: 'HiNative',
+                    desc: '一个针对外语学习者的问答平台',
                     update: '2021-06-10'
                 },
                 {
                     link: 'https://lang-8.com/',
-                    title: 'Lang-8 - 多国语言学习交流平台',
+                    title: 'Lang-8',
+                    desc: '多国语言学习交流平台',
                     update: '2021-06-10'
                 },
                 {
                     link: 'https://www.91suke.com/',
                     title: '九一速课网',
                     update: '2021-02-08'
+                },
+                {
+                    link: 'https://leetcode-cn.com/',
+                    title: '力扣（LeetCode）',
+                    desc: '全球极客挚爱的技术成长平台',
+                    update: '2021-09-20'
                 },
                 {
                     link: 'https://www.nowcoder.com/',
@@ -2742,6 +2803,11 @@ var frostNavLinks = {
                                 {
                                     title: '模组',
                                     links: [
+                                        {
+                                            link: 'https://fabricmc.net/',
+                                            title: 'Fabric',
+                                            update: '2021-08-21'
+                                        },
                                         {
                                             link: 'http://files.minecraftforge.net/',
                                             title: 'Forge',
@@ -3305,11 +3371,6 @@ var frostNavLinks = {
                     title: '素材',
                     links: [
                         {
-                            link: 'http://www.easyicon.net/',
-                            title: 'Easyicon',
-                            update: '2021-02-08'
-                        },
-                        {
                             link: 'https://www.iconfont.cn/',
                             title: 'Iconfont - 阿里巴巴矢量图标库',
                             update: '2021-02-08'
@@ -3501,7 +3562,7 @@ var frostNavLinks = {
                         },
                         {
                             link: 'https://uupdump.net/',
-                            title: 'UUP Dump',
+                            title: 'UUP dump',
                             desc: '轻松地从 Windows 更新服务器下载 UUP 文件',
                             update: '2021-07-18'
                         },
