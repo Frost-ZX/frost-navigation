@@ -27,7 +27,7 @@ let navTools = {
                 title: '简易计算器',
                 component: 'CalcSimple',
                 enabled: false
-            }
+            },
         }
     },
     generator: {
@@ -46,7 +46,7 @@ let navTools = {
                 update: '20210504',
                 version: '1',
                 enabled: true
-            }
+            },
         }
     },
     conversion: {
@@ -69,7 +69,7 @@ let navTools = {
                 desc: 'Unix 时间戳转时间 / 时间转 Unix 时间戳',
                 component: 'ConvertTimestamp',
                 enabled: false
-            }
+            },
         }
     },
     minecraft: {
@@ -91,7 +91,7 @@ let navTools = {
                 desc: 'UUID 与 UUID Least、UUID Most 相互转换',
                 component: 'MinecraftUUIDConverter',
                 enabled: false
-            }
+            },
         }
     },
     other: {
@@ -110,7 +110,14 @@ let navTools = {
                 update: '20210614',
                 version: '2',
                 enabled: true
-            }
+            },
+            'websocket': {
+                title: 'WebSocket',
+                component: 'OtherWebSocket',
+                update: '20211106',
+                version: '1',
+                enabled: true
+            },
         }
     }
 };
