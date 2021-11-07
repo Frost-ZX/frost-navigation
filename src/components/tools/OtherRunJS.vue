@@ -93,7 +93,7 @@ export default {
                 window.eval(this.input.value);
 
             } catch (err) {
-                
+
                 let time = new Date();
 
                 output.id += 1;

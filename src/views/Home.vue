@@ -38,7 +38,7 @@
 
         <!-- 内容 -->
         <el-main class="home-content">
-            <div class="wrapper">
+            <div class="wrapper" @contextmenu.prevent>
 
                 <!-- 搜索引擎 -->
                 <div v-show="show.searchEngine" class="search-engine">

@@ -114,6 +114,11 @@ export default {
         font-size: 1rem;
         color: #FFF;
     }
+
+    @media screen and (max-width: 400px) {
+        right: 1.5rem;
+        bottom: 1.5rem;
+    }
 }
 
 .btns-inner {
@@ -139,7 +144,7 @@ export default {
     .btn {
         margin-top: 1rem;
         width: 3.2rem;
-        height: 3.2rem; 
+        height: 3.2rem;
         background-color: @colorPrimary;
     }
 }
@@ -204,15 +209,6 @@ export default {
         width: 100%;
         height: 100%;
         opacity: 0;
-    }
-}
-</style>
-
-<style lang="less" scoped>
-@media screen and (max-width: 400px) {
-    .floating-btn {
-        right: 1.5rem;
-        bottom: 1.5rem;
     }
 }
 </style>

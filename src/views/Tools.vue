@@ -179,7 +179,7 @@ export default {
 
     .category {
         display: flex;
-        align-items: top;
+        align-items: flex-start;
         flex-wrap: wrap;
         justify-content: flex-start;
         position: relative;

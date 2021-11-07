@@ -70,26 +70,24 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.tool-elem {
-    .content {
-        max-width: 40rem;
+.content {
+    max-width: 40rem;
 
-        > div {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            margin: 0.5rem 0;
-        }
+    > div {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 0.5rem 0;
+    }
 
-        .label {
-            display: inline-block;
-            flex-shrink: 0;
-            width: 5rem;
-        }
+    .label {
+        display: inline-block;
+        flex-shrink: 0;
+        width: 5rem;
+    }
 
-        .el-input {
-            margin: 0 0.5rem;
-        }
+    .el-input {
+        margin: 0 0.5rem;
     }
 }
 </style>

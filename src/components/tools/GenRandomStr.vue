@@ -158,9 +158,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.tool-elem {
-    .content {
-        max-width: 30rem;
-    }
+.content {
+    max-width: 30rem;
 }
 </style>

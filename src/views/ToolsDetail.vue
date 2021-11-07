@@ -56,7 +56,7 @@ export default {
 <style lang="less" scoped>
 .tools-detail {
     display: flex;
-    align-items: top;
+    align-items: flex-start;
     justify-content: center;
 
     /deep/ .tool-elem {
