@@ -1,7 +1,7 @@
 // 导航链接数据
 var frostNavLinks = {
     // 版本号
-    version: '2021-09-20',
+    version: '2021-11-07',
     // 列表
     list: [
         // 主分类
@@ -112,11 +112,17 @@ var frostNavLinks = {
                     title: '其他',
                     links: [
                         {
+                            link: 'https://www.emojiall.com/',
+                            title: 'EmojiAll',
+                            desc: 'Emoji 大全 / Emoji 表情符号词典',
+                            update: '2021-10-27'
+                        },
+                        {
                             link: 'https://topbook.cc/',
                             title: 'Topbook',
                             desc: '高效生活视频书',
                             update: '2021-04-16'
-                        }
+                        },
                     ]
                 }
             ]
@@ -242,6 +248,12 @@ var frostNavLinks = {
                             link: 'https://www.oschina.net/',
                             title: '开源中国',
                             update: '2021-02-07'
+                        },
+                        {
+                            link: 'https://www.landian.vip/',
+                            title: '蓝点网',
+                            desc: '给你感兴趣的内容',
+                            update: '2021-11-07'
                         },
                         {
                             link: 'https://www.codeseeding.com/',
@@ -1009,11 +1021,6 @@ var frostNavLinks = {
                                     title: '哔哩哔哩唧唧',
                                     update: '2021-02-08'
                                 },
-                                {
-                                    link: 'https://www.kanbilibili.com/',
-                                    title: '看哔哩哔哩',
-                                    update: '2021-02-08'
-                                }
                             ]
                         },
                         {
@@ -1763,8 +1770,15 @@ var frostNavLinks = {
                     links: [
                         {
                             link: 'https://carbon.now.sh/',
-                            title: 'Carbon - 代码转图片',
+                            title: 'Carbon',
+                            desc: '代码转图片',
                             update: '2021-06-05'
+                        },
+                        {
+                            link: 'https://convertio.co/',
+                            title: 'Convertio',
+                            desc: '在线文件转换器',
+                            update: '2021-10-27'
                         },
                         {
                             link: 'https://smallpdf.com/',
@@ -1785,7 +1799,7 @@ var frostNavLinks = {
                             link: 'https://jianwai.youdao.com/',
                             title: '网易见外',
                             update: '2021-06-05'
-                        }
+                        },
                     ]
                 },
                 {
@@ -2352,7 +2366,12 @@ var frostNavLinks = {
                                     link: 'https://man.linuxde.net/',
                                     title: 'Linux 命令大全',
                                     update: '2021-02-08'
-                                }
+                                },
+                                {
+                                    link: 'https://netplan.io/',
+                                    title: 'Netplan',
+                                    update: '2021-09-30'
+                                },
                             ]
                         }
                     ]
