@@ -113,9 +113,10 @@ let navTools = {
             },
             'websocket': {
                 title: 'WebSocket',
+                desc: 'WebSocket 测试工具',
                 component: 'OtherWebSocket',
-                update: '20211106',
-                version: '1',
+                update: '20211108',
+                version: '2',
                 enabled: true
             },
         }

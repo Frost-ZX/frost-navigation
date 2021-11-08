@@ -186,6 +186,9 @@ export default {
   mounted() {
     this.init();
   },
+  beforeDestroy () {
+    this.wsClose();
+  },
   methods: {
 
     /**
@@ -207,15 +210,25 @@ export default {
      * 清空输入
      */
     clearInputs() {
-      this.inputs = '';
+      const msg = '确定要清空输入内容吗？';
+      this.$confirm(msg, '确认', {
+        type: 'warning',
+      }).then(() => {
+        this.inputs = '';
+      }).catch(() => { });
     },
 
     /**
      * 清空消息
      */
     clearMessages() {
-      this.messages = [];
-      this.messageID = 0;
+      const msg = '确定要清空消息内容吗？';
+      this.$confirm(msg, '确认', {
+        type: 'warning',
+      }).then(() => {
+        this.messages = [];
+        this.messageID = 0;
+      }).catch(() => { });
     },
 
     /**
@@ -420,10 +433,12 @@ export default {
     background-color: #FFF;
     line-height: 1.6em;
     overflow-y: auto;
+    user-select: text;
   }
 
   .item {
     margin: 0.5rem 0;
+    word-break: break-all;
   }
 
   .el-tag {
