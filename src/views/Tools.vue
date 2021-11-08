@@ -49,6 +49,16 @@ import navTools from '@/assets/js/navTools.js';
 
 export default {
     name: 'Tools',
+    data() {
+        return {
+            utils: this.$root.utils,
+            toolList: navTools,
+            detail: {
+                show: false,
+                title: ''
+            },
+        }
+    },
     beforeRouteEnter(to, from, next) {
         next(vm => {
             var route = vm.$route;
@@ -62,16 +72,6 @@ export default {
                 vm.utils.changeTitle('小工具');
             }
         });
-    },
-    data() {
-        return {
-            utils: this.$root.utils,
-            toolList: navTools,
-            detail: {
-                show: false,
-                title: ''
-            }
-        };
     },
     methods: {
 
@@ -103,7 +103,7 @@ export default {
             var info = {};
             // 错误提示
             var errMsg = `无法打开该工具（分类：${toolCatrgory} 名称：${toolName}）`;
-            
+
             try {
 
                 info = vm.toolList[toolCatrgory]['list'][toolName];
@@ -135,7 +135,7 @@ export default {
             // 更新页面标题
             vm.utils.changeTitle(info.title);
             // 更新 drawer 标题
-            vm.detail.title = `${info.title} [${info.version}_${info.update}]`;
+            vm.detail.title = `${info.title} [${info.version}][${info.update}]`;
             // 路由跳转
             // 注：当前路由相同时也进行跳转，以更新 query
             vm.$router.push({
@@ -158,7 +158,7 @@ export default {
             var url = window.location.href;
 
             window.open(url, '_blank');
-        }
+        },
 
     },
 }
