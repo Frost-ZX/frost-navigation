@@ -43,7 +43,7 @@ let navTools = {
                 title: '生成随机字符串',
                 desc: '生成随机组合的字符串，可用于密码',
                 component: 'GenRandomStr',
-                update: '20210504',
+                update: '2021-05-04',
                 version: '1',
                 enabled: true
             },
@@ -52,16 +52,18 @@ let navTools = {
     conversion: {
         title: '转换',
         list: {
+            'encode-decode': {
+                title: '编码转换',
+                desc: 'HTML / URI 编码、解码',
+                component: 'ConvertEncodeDecode',
+                update: '2021-11-10',
+                version: '1',
+                enabled: true
+            },
             'text-structure': {
                 title: '文本结构转换',
                 desc: '横排、竖排、倒序等',
                 component: 'ConvertTextStructure',
-                enabled: false
-            },
-            'uri': {
-                title: 'URI 编码转换',
-                desc: 'URI 编码、解码',
-                component: 'ConvertURI',
                 enabled: false
             },
             'timestamp': {
@@ -100,14 +102,14 @@ let navTools = {
             'new-window': {
                 title: '新窗口（小窗）中打开',
                 component: 'OtherNewWindow',
-                update: '20210503',
+                update: '2021-05-03',
                 version: '1',
                 enabled: true
             },
             'run-js': {
                 title: '执行 JavaScript',
                 component: 'OtherRunJS',
-                update: '20210614',
+                update: '2021-06-14',
                 version: '2',
                 enabled: true
             },
@@ -115,7 +117,7 @@ let navTools = {
                 title: 'WebSocket',
                 desc: 'WebSocket 测试工具',
                 component: 'OtherWebSocket',
-                update: '20211108',
+                update: '2021-11-08',
                 version: '2',
                 enabled: true
             },

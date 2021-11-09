@@ -98,15 +98,18 @@ export default {
          * @param {string} toolName 工具名称
          */
         detailOpen(toolCatrgory, toolName) {
-            var vm = this;
             // 当前工具信息
-            var info = {};
+            var info = {
+                title: '',
+                update: '',
+                version: '',
+            };
             // 错误提示
             var errMsg = `无法打开该工具（分类：${toolCatrgory} 名称：${toolName}）`;
 
             try {
 
-                info = vm.toolList[toolCatrgory]['list'][toolName];
+                info = this.toolList[toolCatrgory]['list'][toolName];
 
                 if (info === undefined) {
                     throw new Error(errMsg);
@@ -115,7 +118,7 @@ export default {
             } catch (err) {
 
                 console.warn('[打开工具]', err);
-                vm.$message({
+                this.$message({
                     message: errMsg,
                     type: 'warning'
                 });
@@ -125,7 +128,7 @@ export default {
 
             // 禁用
             if (!info.enabled) {
-                vm.$message({
+                this.$message({
                     message: '该工具未启用',
                     type: 'warning'
                 });
@@ -133,12 +136,12 @@ export default {
             }
 
             // 更新页面标题
-            vm.utils.changeTitle(info.title);
+            this.utils.changeTitle(info.title);
             // 更新 drawer 标题
-            vm.detail.title = `${info.title} [${info.version}][${info.update}]`;
+            this.detail.title = `${info.title} [${info.version || '未知'}][${info.update || '未知'}]`;
             // 路由跳转
             // 注：当前路由相同时也进行跳转，以更新 query
-            vm.$router.push({
+            this.$router.push({
                 name: 'ToolsDetail',
                 params: {
                     category: toolCatrgory,
@@ -148,15 +151,14 @@ export default {
                 console.log('[路由跳转]', err.name);
             });
             // 显示 drawer
-            vm.detail.show = true;
+            this.detail.show = true;
         },
 
         /**
          * 打开工具（新标签页）
          */
         detailOpenNewTab() {
-            var url = window.location.href;
-
+            const url = window.location.href;
             window.open(url, '_blank');
         },
 
