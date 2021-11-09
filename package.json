@@ -16,10 +16,12 @@
         "lint:fix": "vue-cli-service lint"
     },
     "dependencies": {
+        "bookmark-file-parser": "^1.0.6",
         "codemirror": "^5.63.3",
         "core-js": "^3.6.5",
         "element-ui": "^2.15.6",
         "font-awesome": "^4.7.0",
+        "html-entities": "^2.3.2",
         "lodash": "^4.17.21",
         "ress": "^4.0.0",
         "vue": "^2.6.11",
