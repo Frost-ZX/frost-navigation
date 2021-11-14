@@ -142,6 +142,11 @@ body {
 }
 
 .el-input {
+    &.is-disabled .el-input__inner {
+        background-color: #FFF;
+        color: #888;
+    }
+
     input::-webkit-inner-spin-button,
     input::-webkit-outer-spin-button {
         -webkit-appearance: none;

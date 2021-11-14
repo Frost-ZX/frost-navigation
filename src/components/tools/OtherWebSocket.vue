@@ -1,5 +1,5 @@
 <template>
-  <div class="tool-elem">
+  <div class="tool-page">
 
     <!-- 操作 -->
     <div class="ctrl">

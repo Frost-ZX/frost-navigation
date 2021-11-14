@@ -1,5 +1,5 @@
 <template>
-    <div class="tool-elem">
+    <div class="tool-page">
 
         <div class="info">
             <div class="title">配置选项 &amp; 结果</div>

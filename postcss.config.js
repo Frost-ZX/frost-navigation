@@ -10,7 +10,7 @@ module.exports = {
             mediaQuery: true,
             propList: ['*'],
             rootValue: 16,
-            unitPrecision: 3,
+            unitPrecision: 4,
         }
     }
 };

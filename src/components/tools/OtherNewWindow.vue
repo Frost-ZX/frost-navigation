@@ -1,5 +1,5 @@
 <template>
-    <div class="tool-elem">
+    <div class="tool-page">
 
         <div class="info">
             <div class="title">信息</div>

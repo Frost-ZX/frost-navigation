@@ -10,11 +10,7 @@ class Utils {
      * @param {string} [value] 新的标题
      */
     changeTitle(value) {
-        if (value) {
-            document.title = config.siteName + ' - ' + value;
-        } else {
-            document.title = config.siteName;
-        }
+        document.title = (value ? (value + ' - ') : '') + config.siteName;
     }
 
     /**

@@ -1,5 +1,5 @@
 <template>
-    <div class="tool-elem">
+    <div class="tool-page">
 
         <!-- 输入 -->
         <div class="input">
@@ -137,7 +137,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.tool-elem {
+.tool-page {
     @lineHeight: 1.25rem;
 
     padding-bottom: 5rem;
