@@ -38,7 +38,7 @@
 
         <!-- 内容 -->
         <el-main class="home-content">
-            <div class="wrapper" @contextmenu.prevent>
+            <div class="wrapper">
 
                 <!-- 搜索引擎 -->
                 <div v-show="show.searchEngine" class="search-engine">
@@ -162,8 +162,13 @@
                         @click="openLink(data.link, data.showOnly)"
                         @contextmenu.prevent="openDetail(data)"
                     >
-                        <span class="title">{{ node.label }}</span>
-                        <span class="link">{{ data.link }}</span>
+                        <div class="row title">
+                            <span>{{ node.label }}</span>
+                            <span v-if="data.desc"> - {{ data.desc }}</span>
+                        </div>
+                        <div class="row link">
+                            <span>{{ data.link }}</span>
+                        </div>
                     </div>
                 </el-tree>
 
@@ -589,188 +594,188 @@ export default {
     display: flex;
     align-items: center;
     flex-direction: column;
+}
 
-    .search-bar {
-        @barHeight: 2.8rem;
-        @barRadius: 0.3rem;
+.search-bar {
+    @barHeight: 2.8rem;
+    @barRadius: 0.3rem;
 
-        display: flex;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 2.5rem;
+    z-index: 100;
+    width: 100%;
+    max-width: 40rem;
+    height: @barHeight;
+    border-radius: @barRadius;
+    background-color: #FFF;
+
+    &.suggest {
+        border-radius: @barRadius @barRadius 0 0;
+    }
+
+    .input {
+        flex-grow: 1;
+        padding-left: 1rem;
+        width: 0;
+        height: 100%;
+        outline: none;
+    }
+
+    .btn {
+        display: inline-flex;
         align-items: center;
-        position: sticky;
-        top: 2.5rem;
-        z-index: 100;
-        width: 100%;
-        max-width: 40rem;
-        height: @barHeight;
-        border-radius: @barRadius;
-        background-color: #FFF;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 2.8rem;
+        height: 2.8rem;
+        background-color: transparent;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
 
-        &.suggest {
-            border-radius: @barRadius @barRadius 0 0;
-        }
+    .btn-clear {
+        width: 2rem;
+        opacity: 0.5;
+        transition: opacity @transitionTime;
 
-        .input {
-            flex-grow: 1;
-            padding-left: 1rem;
-            width: 0;
-            height: 100%;
-            outline: none;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            width: 2.8rem;
-            height: 2.8rem;
-            background-color: transparent;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        .btn-clear {
-            width: 2rem;
-            opacity: 0.5;
-            transition: opacity @transitionTime;
-
-            &:hover {
-                opacity: 1;
-            }
-        }
-
-        .btn-search {
-            border-radius: 0 @barRadius @barRadius 0;
-            color: @colorPrimary;
-            transition: background @transitionTime, color @transitionTime;
-
-            &:hover {
-                background-color: @colorPrimary;
-                color: #FFF;
-            }
-        }
-        &.suggest .btn-search {
-            border-bottom-right-radius: 0;
-        }
-
-        .suggestion {
-            display: block;
-            visibility: hidden;
-            position: absolute;
-            top: @barHeight;
-            width: 100%;
-            border-top: 0.1rem solid #EEE;
-            border-radius: 0 0 @barRadius @barRadius;
-            background-color: #FFF;
-            overflow: hidden;
-            // 延迟隐藏
-            transition: visibility 0.2s;
-
-            ul {
-                padding: 0.5rem 0;
-                list-style: none;
-                line-height: 1.5rem;
-                font-size: 0.9rem;
-                color: #000;
-            }
-
-            li {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0.5rem 1rem;
-                cursor: pointer;
-
-                &:hover {
-                    background-color: @colorWhite;
-                }
-            }
-
-            .label {
-                flex-grow: 1;
-                padding-right: 0.5em;
-            }
-
-            .tag {
-                flex-shrink: 0;
-            }
-        }
-        &.suggest .suggestion {
-            visibility: visible;
+        &:hover {
+            opacity: 1;
         }
     }
 
-    .search-type {
-        display: block;
-        margin: 4.5rem 0;
-        font-size: 1rem;
-        transition: opacity calc(@transitionTime * 4);
+    .btn-search {
+        border-radius: 0 @barRadius @barRadius 0;
+        color: @colorPrimary;
+        transition: background @transitionTime, color @transitionTime;
 
-        &.fade {
-            opacity: 0.5;
+        &:hover {
+            background-color: @colorPrimary;
+            color: #FFF;
+        }
+    }
+    &.suggest .btn-search {
+        border-bottom-right-radius: 0;
+    }
+
+    .suggestion {
+        display: block;
+        visibility: hidden;
+        position: absolute;
+        top: @barHeight;
+        width: 100%;
+        border-top: 0.1rem solid #EEE;
+        border-radius: 0 0 @barRadius @barRadius;
+        background-color: #FFF;
+        overflow: hidden;
+        // 延迟隐藏
+        transition: visibility 0.2s;
+
+        ul {
+            padding: 0.5rem 0;
+            list-style: none;
+            line-height: 1.5rem;
+            font-size: 0.9rem;
+            color: #000;
         }
 
-        /deep/ .category {
-            padding: 0.5rem 0;
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
 
-            .title {
-                margin: 0.5rem 0;
-                text-align: left;
+            &:hover {
+                background-color: @colorWhite;
+            }
+        }
+
+        .label {
+            flex-grow: 1;
+            padding-right: 0.5em;
+        }
+
+        .tag {
+            flex-shrink: 0;
+        }
+    }
+    &.suggest .suggestion {
+        visibility: visible;
+    }
+}
+
+.search-type {
+    display: block;
+    margin: 4.5rem 0;
+    font-size: 1rem;
+    transition: opacity calc(@transitionTime * 4);
+
+    &.fade {
+        opacity: 0.5;
+    }
+
+    /deep/ .category {
+        padding: 0.5rem 0;
+
+        .title {
+            margin: 0.5rem 0;
+            text-align: left;
+        }
+
+        .el-radio {
+            margin: 0.5rem;
+            padding: 0.8rem 1rem;
+            width: 15rem;
+            border-radius: 0.25rem;
+            border-left: solid 0.2rem transparent;
+            background-color: #FFF;
+            text-align: left;
+            font-weight: normal;
+            transition: border @transitionTime;
+
+            &:hover {
+                border-left-color: @colorSecondary;
+                color: @colorSecondary;
             }
 
-            .el-radio {
-                margin: 0.5rem;
-                padding: 0.8rem 1rem;
-                width: 15rem;
-                border-radius: 0.25rem;
-                border-left: solid 0.2rem transparent;
-                background-color: #FFF;
-                text-align: left;
-                font-weight: normal;
-                transition: border @transitionTime;
+            &.is-checked {
+                border-left-color: @colorPrimary;
+                color: @colorPrimary;
+            }
+        }
 
-                &:hover {
-                    border-left-color: @colorSecondary;
-                    color: @colorSecondary;
-                }
+        .el-radio__input {
+            display: none;
+        }
 
-                &.is-checked {
-                    border-left-color: @colorPrimary;
-                    color: @colorPrimary;
-                }
+        .el-radio__label {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            transition: color @transitionTime;
+
+            i {
+                display: inline-block;
+                padding: 0.125rem 0;
+                font-style: normal;
             }
 
-            .el-radio__input {
-                display: none;
+            .fn-icon {
+                flex-shrink: 0;
+                margin-right: 0.4rem;
             }
 
-            .el-radio__label {
-                display: flex;
-                align-items: center;
-                padding: 0;
-                transition: color @transitionTime;
+            .name {
+                flex-shrink: 0;
+            }
 
-                i {
-                    display: inline-block;
-                    padding: 0.125rem 0;
-                    font-style: normal;
-                }
-
-                .fn-icon {
-                    flex-shrink: 0;
-                    margin-right: 0.4rem;
-                }
-
-                .name {
-                    flex-shrink: 0;
-                }
-
-                .desc {
-                    flex-grow: 1;
-                    margin-left: 0.5rem;
-                    font-size: 0.8rem;
-                    color: #CCC;
-                }
+            .desc {
+                flex-grow: 1;
+                margin-left: 0.5rem;
+                font-size: 0.8rem;
+                color: #CCC;
             }
         }
     }
@@ -823,10 +828,11 @@ export default {
         flex-grow: 1;
         width: 0;
 
-        > span {
+        > div {
             display: block;
             overflow: hidden;
             text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .title {

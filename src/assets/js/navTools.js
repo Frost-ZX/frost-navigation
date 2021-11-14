@@ -96,7 +96,7 @@ let navTools = {
                 component: 'MinecraftDynmapRenderdataGen',
                 enabled: false
             },
-            'uuidConverter': {
+            'uuid-converter': {
                 title: 'UUID 转换',
                 desc: 'UUID 与 UUID Least、UUID Most 相互转换。',
                 component: 'MinecraftUUIDConverter',
@@ -125,8 +125,8 @@ let navTools = {
                 title: 'WebSocket',
                 desc: 'WebSocket 测试工具',
                 component: 'OtherWebSocket',
-                update: '2021-11-08',
-                version: '2',
+                update: '2021-11-14',
+                version: '3',
                 enabled: true
             },
         }

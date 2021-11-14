@@ -1,6 +1,31 @@
 <template>
   <div class="tool-page">
 
+    <!-- 输入 -->
+    <div class="inputs">
+      <div class="title">输入</div>
+      <div class="content">
+        <div class="input-address">
+          <div class="title">连接地址</div>
+          <el-input v-model="address.suffix">
+            <el-select slot="prepend" v-model="address.prefix">
+              <el-option label="ws://" value="ws://"></el-option>
+              <el-option label="wss://" value="wss://"></el-option>
+            </el-select>
+          </el-input>
+        </div>
+        <div class="input-send">
+          <div class="title">发送内容</div>
+          <el-input
+            v-model="inputs"
+            type="textarea"
+            placeholder="在此处输入要发送的内容（换行符会被移除）"
+            :rows="2"
+          ></el-input>
+        </div>
+      </div>
+    </div>
+
     <!-- 操作 -->
     <div class="ctrl">
       <div class="title">操作</div>
@@ -39,31 +64,6 @@
           plain
           @click="clearMessages()"
         >清空消息</el-button>
-      </div>
-    </div>
-
-    <!-- 输入 -->
-    <div class="inputs">
-      <div class="title">输入</div>
-      <div class="content">
-        <div class="input-address">
-          <div class="title">连接地址</div>
-          <el-input v-model="address.suffix">
-            <el-select slot="prepend" v-model="address.prefix">
-              <el-option label="ws://" value="ws://"></el-option>
-              <el-option label="wss://" value="wss://"></el-option>
-            </el-select>
-          </el-input>
-        </div>
-        <div class="input-send">
-          <div class="title">发送内容</div>
-          <el-input
-            v-model="inputs"
-            type="textarea"
-            placeholder="在此处输入要发送的内容（换行符会被移除）"
-            :rows="2"
-          ></el-input>
-        </div>
       </div>
     </div>
 
