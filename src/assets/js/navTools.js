@@ -11,7 +11,7 @@ let navTools = {
                 // 工具标题
                 title: '计算下载用时',
                 // 工具简介
-                desc: '根据设定的文件大小和下载速度简单计算大约下载完成所需的时间',
+                desc: '根据设定的文件大小和下载速度简单计算大约下载完成所需的时间。',
                 // 组件名称
                 component: 'CalcDownloadTime',
                 // 更新时间
@@ -20,8 +20,12 @@ let navTools = {
                 enabled: false
             },
             'ratio': {
-                title: '计算比例',
-                component: 'CalcRatio'
+                title: '比例计算',
+                desc: '按设定的比例计算给出的数值所对应的数值。',
+                component: 'CalcRatio',
+                update: '2021-11-14',
+                version: '1',
+                enabled: true
             },
             'simple': {
                 title: '简易计算器',
@@ -35,13 +39,15 @@ let navTools = {
         list: {
             'links': {
                 title: '生成批量下载链接',
-                desc: '根据设置，生成有一定规律的用于批量下载的链接',
+                desc: '根据设置，生成有一定规律的用于批量下载的链接。',
                 component: 'GenLinks',
-                enabled: false
+                update: '2021-11-14',
+                version: '1',
+                enabled: true
             },
             'random-str': {
                 title: '生成随机字符串',
-                desc: '生成随机组合的字符串，可用于密码',
+                desc: '生成随机组合的字符串，可用于密码。',
                 component: 'GenRandomStr',
                 update: '2021-05-04',
                 version: '1',
@@ -68,9 +74,11 @@ let navTools = {
             },
             'timestamp': {
                 title: 'Unix 时间戳转换',
-                desc: 'Unix 时间戳转时间 / 时间转 Unix 时间戳',
+                desc: '时间戳转时间 / 时间转时间戳',
                 component: 'ConvertTimestamp',
-                enabled: false
+                update: '2021-11-14',
+                version: '1',
+                enabled: true
             },
         }
     },
@@ -84,13 +92,13 @@ let navTools = {
             },
             'dynmap-renderdata-gen': {
                 title: 'Dynmap renderdata 生成',
-                desc: '生成用于 Minecraft Dynmap 插件 / 模组的 renderdata 数据',
+                desc: '生成用于 Minecraft Dynmap 插件 / 模组的 renderdata 数据。',
                 component: 'MinecraftDynmapRenderdataGen',
                 enabled: false
             },
             'uuidConverter': {
                 title: 'UUID 转换',
-                desc: 'UUID 与 UUID Least、UUID Most 相互转换',
+                desc: 'UUID 与 UUID Least、UUID Most 相互转换。',
                 component: 'MinecraftUUIDConverter',
                 enabled: false
             },
