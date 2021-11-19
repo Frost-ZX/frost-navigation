@@ -11,11 +11,11 @@
       </div>
     </div>
 
-    <div class="digits">
+    <div class="decimals">
       <div class="title">小数位数</div>
       <div class="content">
         <el-input-number
-          v-model="digits"
+          v-model="decimals"
           controls-position="right"
           size="small"
           :min="0"
@@ -34,7 +34,10 @@
           v-model="base.a"
           controls-position="right"
           size="small"
+          :min="limit.min"
+          :max="limit.max"
           :step="1"
+          step-strictly
           @change="update()"
         ></el-input-number>
         <span class="split">:</span>
@@ -42,7 +45,10 @@
           v-model="base.b"
           controls-position="right"
           size="small"
+          :min="limit.min"
+          :max="limit.max"
           :step="1"
+          step-strictly
           @change="update()"
         ></el-input-number>
       </div>
@@ -75,7 +81,7 @@
 </template>
 
 <script>
-import { divide, multiply, round } from 'mathjs';
+import { bignumber, divide, floor, multiply, round } from 'mathjs';
 
 export default {
   name: 'CalcRatio',
@@ -92,7 +98,12 @@ export default {
         b: 1,
       },
       // 小数位数
-      digits: 5,
+      decimals: 5,
+      // 数值范围限制
+      limit: {
+        min: -99999999,
+        max: 99999999,
+      },
       // 模式
       mode: '1-to-2',
     }
@@ -102,18 +113,35 @@ export default {
     /**
      * 计算
      */
-    update() {
-      const base = this.base;
-      const calc = this.calc;
-      const digits = this.digits;
-      const mode = this.mode;
-      const ratio = base.a / base.b;
+    calculate() {
+      const { base, calc, decimals, mode } = this;
+      const { min, max } = this.limit;
+      const ratio = divide(bignumber(base.a), bignumber(base.b));
 
       if (mode === '1-to-2') {
-        calc.b = round(divide(calc.a, ratio), digits);
+        // 限制
+        (calc.a = floor(calc.a));
+        (calc.a < min) && (calc.a = min);
+        (calc.a > max) && (calc.a = max);
+        // 计算
+        calc.b = round(divide(bignumber(calc.a), ratio), decimals);
       } else if (mode === '2-to-1') {
-        calc.a = round(multiply(calc.b, ratio), digits);
+        // 限制
+        (calc.b = floor(calc.b));
+        (calc.b < min) && (calc.b = min);
+        (calc.b > max) && (calc.b = max);
+        // 计算
+        calc.a = round(multiply(bignumber(calc.b), ratio), decimals);
       }
+    },
+
+    /**
+     * 更新
+     */
+    update() {
+      this.$nextTick(() => {
+        this.calculate();
+      });
     },
 
   },

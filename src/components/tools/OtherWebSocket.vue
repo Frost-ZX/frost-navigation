@@ -1,6 +1,15 @@
 <template>
   <div class="tool-page">
 
+    <!-- 注意 -->
+    <div class="inputs">
+      <div class="title">注意</div>
+      <div class="content">
+        <p>由于浏览器限制，通过 HTTPS 访问网站时只能连接带 SSL 的 WebSocket（WSS）；</p>
+        <p>若需要连接不带 SSL 的 WebSocket（WS），建议下载到本地后使用。</p>
+      </div>
+    </div>
+
     <!-- 输入 -->
     <div class="inputs">
       <div class="title">输入</div>
@@ -105,6 +114,19 @@
           ></el-input-number>
         </div>
 
+        <!-- 日志最大行数 -->
+        <div class="config-item">
+          <div class="title">日志最大行数</div>
+          <el-input-number
+            v-model="logsMax"
+            size="medium"
+            :min="1"
+            :max="8192"
+            :step="1"
+            step-strictly
+          ></el-input-number>
+        </div>
+
         <!-- 解析类型 -->
         <div class="config-item">
           <div class="title">解析类型</div>
@@ -168,6 +190,8 @@ export default {
       inputs: '',
       // 日志高度
       logsHeight: 20,
+      // 日志最大行数
+      logsMax: 100,
       // 接收内容
       messages: [],
       // 消息ID
@@ -232,6 +256,36 @@ export default {
     },
 
     /**
+     * 添加消息
+     * 
+     * @param {string} type 类型（receive、send）
+     * @param {string} msg 消息内容
+     */
+    pushMessage(type, msg = '') {
+      const types = ['receive', 'send'];
+
+      if (types.indexOf(type) === -1) {
+        return;
+      }
+
+      const current = this.messages.length;
+      const max = this.logsMax;
+
+      // 最大行数
+      if (current >= max) {
+        this.messages.splice(0, (current - max + 1));
+      }
+
+      this.messageID += 1;
+      this.messages.push({
+        id: this.messageID,
+        message: msg,
+        time: (new Date().getTime()),
+        type: type,
+      });
+    },
+
+    /**
      * 提示信息
      * 
      * @param {object} options 配置选项
@@ -287,13 +341,7 @@ export default {
       console.log('%c%s', 'color: #2196F3;', '[接收]', (parsed || result));
 
       // 记录消息
-      this.messageID += 1;
-      this.messages.push({
-        id: this.messageID,
-        message: msg,
-        time: (new Date().getTime()),
-        type: 'receive',
-      });
+      this.pushMessage('receive', msg);
 
       // 自动滚动
       this.$nextTick(() => {
@@ -327,7 +375,7 @@ export default {
     wsConnect() {
       const data = this.address;
       const address = (data.prefix + data.suffix);
-      
+
       try {
         const ws = new WebSocket(address);
 
@@ -392,13 +440,7 @@ export default {
       if (ws && parsed) {
         console.log('%c%s', 'color: #4CAF50;', '[发送]', parsed);
         ws.send(msg);
-        this.messageID += 1;
-        this.messages.push({
-          id: this.messageID,
-          message: msg,
-          time: (new Date().getTime()),
-          type: 'send',
-        });
+        this.pushMessage('send', msg);
       }
     },
 

@@ -23,8 +23,8 @@ let navTools = {
                 title: '比例计算',
                 desc: '按设定的比例计算给出的数值所对应的数值。',
                 component: 'CalcRatio',
-                update: '2021-11-14',
-                version: '1',
+                update: '2021-11-16',
+                version: '2',
                 enabled: true
             },
             'simple': {
@@ -125,8 +125,8 @@ let navTools = {
                 title: 'WebSocket',
                 desc: 'WebSocket 测试工具',
                 component: 'OtherWebSocket',
-                update: '2021-11-14',
-                version: '3',
+                update: '2021-11-19',
+                version: '4',
                 enabled: true
             },
         }
