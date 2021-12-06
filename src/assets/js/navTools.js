@@ -9,15 +9,17 @@ let navTools = {
             // 工具
             'download-time': {
                 // 工具标题
-                title: '计算下载用时',
+                title: '下载用时计算',
                 // 工具简介
                 desc: '根据设定的文件大小和下载速度简单计算大约下载完成所需的时间。',
                 // 组件名称
                 component: 'CalcDownloadTime',
                 // 更新时间
-                update: '',
+                update: '2021-12-06',
+                // 版本
+                version: '1',
                 // 启用状态
-                enabled: false
+                enabled: true
             },
             'ratio': {
                 title: '比例计算',
@@ -68,9 +70,11 @@ let navTools = {
             },
             'text-structure': {
                 title: '文本结构转换',
-                desc: '横排、竖排、倒序等',
+                desc: '倒序、横竖互换等',
                 component: 'ConvertTextStructure',
-                enabled: false
+                update: '2021-12-06',
+                version: '1',
+                enabled: true,
             },
             'timestamp': {
                 title: 'Unix 时间戳转换',
@@ -86,21 +90,25 @@ let navTools = {
         title: 'Minecraft',
         list: {
             'chunk-location-calc': {
-                title: '区块位置计算',
+                title: 'Minecraft 区块位置计算',
                 component: 'MinecraftChunkLocationCalc',
                 enabled: false
             },
             'dynmap-renderdata-gen': {
                 title: 'Dynmap renderdata 生成',
-                desc: '生成用于 Minecraft Dynmap 插件 / 模组的 renderdata 数据。',
+                desc: '生成用于 Minecraft Dynmap 插件或模组的 renderdata 数据。',
                 component: 'MinecraftDynmapRenderdataGen',
-                enabled: false
+                update: '2021-12-06',
+                version: '1',
+                enabled: true,
             },
             'uuid-converter': {
-                title: 'UUID 转换',
-                desc: 'UUID 与 UUID Least、UUID Most 相互转换。',
+                title: 'Minecraft UUID 转换',
+                desc: '随机生成或转换 Minecraft 的 UUID。',
                 component: 'MinecraftUUIDConverter',
-                enabled: false
+                update: '2021-12-06',
+                version: '1',
+                enabled: true
             },
         }
     },
