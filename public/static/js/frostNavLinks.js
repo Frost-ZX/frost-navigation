@@ -1,7 +1,7 @@
 // 导航链接数据
 var frostNavLinks = {
     // 版本号
-    version: '2021-11-14',
+    version: '2021-12-29',
     // 列表
     list: [
         // 主分类
@@ -122,6 +122,11 @@ var frostNavLinks = {
                             desc: '高效生活视频书',
                             link: 'https://topbook.cc/',
                             update: '2021-04-16'
+                        },
+                        {
+                            title: '语言文字标记（language subtag registry）',
+                            link: 'http://www.iana.org/assignments/language-subtag-registry',
+                            update: '2021-12-29'
                         },
                     ]
                 }
@@ -1134,7 +1139,13 @@ var frostNavLinks = {
                                     title: '百度图片',
                                     link: 'https://image.baidu.com/',
                                     update: '2021-02-08'
-                                }
+                                },
+                                {
+                                    title: '闪萌',
+                                    desc: '全球最大的中文GIF搜索引擎',
+                                    link: 'https://www.weshineapp.com/',
+                                    update: '2021-12-29'
+                                },
                             ]
                         },
                         {
@@ -1449,6 +1460,11 @@ var frostNavLinks = {
                                     update: '2021-02-25'
                                 },
                                 {
+                                    title: 'F 搜',
+                                    link: 'https://fsou.cc/',
+                                    update: '2021-12-29'
+                                },
+                                {
                                     title: 'Google 搜索',
                                     link: 'https://www.google.com/',
                                     update: '2021-02-25'
@@ -1473,7 +1489,12 @@ var frostNavLinks = {
                                     title: '搜狗搜索',
                                     link: 'https://www.sogou.com/',
                                     update: '2021-02-25'
-                                }
+                                },
+                                {
+                                    title: '无追搜索',
+                                    link: 'https://www.wuzhuiso.com/',
+                                    update: '2021-12-29'
+                                },
                             ]
                         },
                         {
@@ -1706,7 +1727,7 @@ var frostNavLinks = {
                     ]
                 },
                 {
-                    title: '网站',
+                    title: '网络 / 网站',
                     links: [
                         {
                             link: 'https://www.17ce.com/',
@@ -1724,6 +1745,12 @@ var frostNavLinks = {
                             desc: '网络空间安全搜索引擎',
                             link: 'https://fofa.so/',
                             update: '2021-02-08'
+                        },
+                        {
+                            title: 'IT狗',
+                            desc: '在线 ping、网站测速、路由追踪',
+                            link: 'https://www.itdog.cn/',
+                            update: '2021-12-29'
                         },
                         {
                             title: 'OHTTPS',
@@ -2684,6 +2711,12 @@ var frostNavLinks = {
                                             update: '2021-02-20'
                                         },
                                         {
+                                            title: 'Get Bukkit',
+                                            desc: '下载 CraftBukkit、Spigot 服务端',
+                                            link: 'https://getbukkit.org/',
+                                            update: '2021-12-02'
+                                        },
+                                        {
                                             title: 'PaperMC',
                                             link: 'https://papermc.io/downloads',
                                             update: '2021-02-20'
@@ -3086,6 +3119,11 @@ var frostNavLinks = {
                             title: '清华大学开源软件镜像站',
                             link: 'https://mirrors.tuna.tsinghua.edu.cn/',
                             update: '2021-02-08'
+                        },
+                        {
+                            title: '山东大学镜像站',
+                            link: 'https://mirrors.sdu.edu.cn/',
+                            update: '2021-12-29'
                         },
                         {
                             title: '腾讯软件源',
