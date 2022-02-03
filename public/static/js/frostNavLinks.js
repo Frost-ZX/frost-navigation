@@ -1,7 +1,7 @@
 // 导航链接数据
 var frostNavLinks = {
     // 版本号
-    version: '2021-12-29',
+    version: '2022-02-03',
     // 列表
     list: [
         // 主分类
@@ -122,6 +122,12 @@ var frostNavLinks = {
                             desc: '高效生活视频书',
                             link: 'https://topbook.cc/',
                             update: '2021-04-16'
+                        },
+                        {
+                            title: '小鸡词典',
+                            desc: '查网络流行语',
+                            link: 'https://jikipedia.com/',
+                            update: '2022-02-03'
                         },
                         {
                             title: '语言文字标记（language subtag registry）',
@@ -2627,7 +2633,7 @@ var frostNavLinks = {
                     title: 'Minecraft',
                     sub: [
                         {
-                            title: '网站',
+                            title: '官方',
                             links: [
                                 {
                                     title: 'Minecraft 官网',
@@ -2640,63 +2646,42 @@ var frostNavLinks = {
                                     link: 'https://bugs.mojang.com/',
                                     update: '2021-11-14'
                                 },
-                            ],
-                            sub: [
+                            ]
+                        },
+                        {
+                            title: '百科',
+                            links: [
                                 {
-                                    title: '论坛',
-                                    links: [
-                                        {
-                                            title: 'Minecraft 中文论坛',
-                                            link: 'https://www.mcbbs.net/',
-                                            update: '2021-02-08'
-                                        },
-                                        {
-                                            title: 'Minecraft-HK Community',
-                                            link: 'http://forum.minecraft-hk.com/',
-                                            update: '2021-02-08'
-                                        },
-                                        {
-                                            title: 'Planet Minecraft Community',
-                                            link: 'https://www.planetminecraft.com/',
-                                            update: '2021-02-08'
-                                        },
-                                        {
-                                            title: '最MC论坛',
-                                            link: 'http://www.zuimc.com/',
-                                            update: '2021-02-08'
-                                        },
-                                    ]
+                                    title: 'Minecraft Shaders Wiki',
+                                    desc: '光影百科',
+                                    link: 'https://shaders.fandom.com/',
+                                    update: '2022-02-03'
                                 },
                                 {
-                                    title: 'Wiki',
-                                    links: [
-                                        {
-                                            title: 'Minecraft Wiki',
-                                            link: 'https://minecraft.fandom.com/zh/',
-                                            update: '2021-05-09'
-                                        },
-                                        {
-                                            title: 'Minecraft Wiki（哔哩哔哩）',
-                                            link: 'https://wiki.biligame.com/mc/Minecraft_Wiki',
-                                            update: '2021-06-04'
-                                        },
-                                        {
-                                            title: 'Minecraft 插件百科',
-                                            link: 'http://mineplugin.org/',
-                                            update: '2021-02-08'
-                                        },
-                                        {
-                                            title: 'MC百科',
-                                            link: 'https://www.mcmod.cn/',
-                                            update: '2021-02-08'
-                                        },
-                                        {
-                                            title: 'wiki.vg',
-                                            link: 'https://wiki.vg/',
-                                            update: '2021-06-05'
-                                        }
-                                    ]
-                                }
+                                    title: 'Minecraft Wiki',
+                                    link: 'https://minecraft.fandom.com/zh/',
+                                    update: '2021-05-09'
+                                },
+                                {
+                                    title: 'Minecraft Wiki（哔哩哔哩）',
+                                    link: 'https://wiki.biligame.com/mc/Minecraft_Wiki',
+                                    update: '2021-06-04'
+                                },
+                                {
+                                    title: 'Minecraft 插件百科',
+                                    link: 'http://mineplugin.org/',
+                                    update: '2021-02-08'
+                                },
+                                {
+                                    title: 'MC百科',
+                                    link: 'https://www.mcmod.cn/',
+                                    update: '2021-02-08'
+                                },
+                                {
+                                    title: 'wiki.vg',
+                                    link: 'https://wiki.vg/',
+                                    update: '2021-06-05'
+                                },
                             ]
                         },
                         {
@@ -2894,7 +2879,38 @@ var frostNavLinks = {
                                     title: 'Forge 文档',
                                     link: 'https://mcforge.readthedocs.io/',
                                     update: '2021-02-20'
-                                }
+                                },
+                                {
+                                    title: '森罗万象',
+                                    desc: '一个 Minecraft Java 版资源包制作指南',
+                                    link: 'https://sqwatermark.com/resguide/',
+                                    update: '2022-02-03'
+                                },
+                            ]
+                        },
+                        {
+                            title: '论坛',
+                            links: [
+                                {
+                                    title: 'Minecraft 中文论坛',
+                                    link: 'https://www.mcbbs.net/',
+                                    update: '2021-02-08'
+                                },
+                                {
+                                    title: 'Minecraft-HK Community',
+                                    link: 'http://forum.minecraft-hk.com/',
+                                    update: '2021-02-08'
+                                },
+                                {
+                                    title: 'Planet Minecraft Community',
+                                    link: 'https://www.planetminecraft.com/',
+                                    update: '2021-02-08'
+                                },
+                                {
+                                    title: '最MC论坛',
+                                    link: 'http://www.zuimc.com/',
+                                    update: '2021-02-08'
+                                },
                             ]
                         },
                         {
@@ -2922,6 +2938,12 @@ var frostNavLinks = {
                                             title: 'Minecraft 中文下载站',
                                             link: 'http://www.minecraftxz.com/',
                                             update: '2021-02-08'
+                                        },
+                                        {
+                                            title: 'Modrinth',
+                                            desc: '开源的模组平台',
+                                            link: 'https://modrinth.com/',
+                                            update: '2022-02-03'
                                         },
                                         {
                                             title: 'SpigotMC',
