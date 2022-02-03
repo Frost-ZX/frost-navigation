@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "module": "CommonJS",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        },
+        "sourceMap": false,
+        "target": "ES5"
+    },
+    "include": [
+        "src/**/*.vue",
+        "src/**/*.js"
+    ]
+}
