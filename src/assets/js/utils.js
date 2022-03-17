@@ -5,8 +5,7 @@ class Utils {
     constructor() { }
 
     /**
-     * 改变网页标题
-     * 
+     * @description 改变网页标题
      * @param {string} [value] 新的标题
      */
     changeTitle(value) {
@@ -14,8 +13,7 @@ class Utils {
     }
 
     /**
-     * JSONP
-     * 
+     * @description JSONP
      * @param {object} options 配置选项
      */
     jsonp(options) {
@@ -40,11 +38,9 @@ class Utils {
     }
 
     /**
-     * 以文本方式读取文件（异步）
-     * 
+     * @description 以文本方式读取文件（异步）
      * @param {Event} ev 输入框 change 事件对象
      * @param {boolean} resetValue 是否自动重置输入框 value 属性
-     * 
      * @returns {Promise<string[]>} `{ name: 文件名, content: 文件内容 }`
      */
     readFileAsText(ev, resetValue) {

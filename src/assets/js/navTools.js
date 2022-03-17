@@ -1,24 +1,30 @@
-// 工具信息列表
-let navTools = {
-    // 分类
+/**
+ * @typedef {object} ToolItem
+ * @property {string}  title     工具标题
+ * @property {string}  [desc]    工具简介
+ * @property {string}  component 组件名称
+ * @property {string}  [update]  更新日期
+ * @property {string}  [version] 版本号
+ * @property {boolean} enabled   启用状态
+ */
+
+/**
+ * @typedef {object} ToolCategory
+ * @property {string} title 分类标题
+ * @property {Object.<string, ToolItem>} list 工具列表
+ */
+
+/** @type {Object.<string, ToolCategory>} */
+const navTools = {
     calculation: {
-        // 分类标题
         title: '计算',
-        // 分类列表
         list: {
-            // 工具
             'download-time': {
-                // 工具标题
                 title: '下载用时计算',
-                // 工具简介
                 desc: '根据设定的文件大小和下载速度简单计算大约下载完成所需的时间。',
-                // 组件名称
                 component: 'CalcDownloadTime',
-                // 更新时间
                 update: '2021-12-06',
-                // 版本
                 version: '1',
-                // 启用状态
                 enabled: true
             },
             'ratio': {

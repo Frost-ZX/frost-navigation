@@ -61,16 +61,6 @@ import navTools from '@/assets/js/navTools.js';
 
 export default {
   name: 'ToolsView',
-  data() {
-    return {
-      utils: this.$root.utils,
-      toolList: navTools,
-      detail: {
-        show: false,
-        title: ''
-      },
-    }
-  },
   beforeRouteEnter(to, from, next) {
     next(vm => {
       const { name: rName, params: rParams } = vm.$route;
@@ -84,6 +74,16 @@ export default {
         vm.utils.changeTitle('小工具');
       }
     });
+  },
+  data() {
+    return {
+      utils: this.$root.utils,
+      toolList: navTools,
+      detail: {
+        show: false,
+        title: ''
+      },
+    }
   },
   methods: {
 
