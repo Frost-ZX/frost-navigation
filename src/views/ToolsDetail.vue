@@ -39,7 +39,7 @@ export default {
 
       vm.toolPage = (() => {
         // 动态引入组件
-        const component = import(`@/components/tools/${componentName}.vue`);
+        const component = import(`@/components/Tools/${componentName}.vue`);
 
         Promise.all([component]).then(() => {
           setTimeout(() => {

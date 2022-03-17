@@ -116,7 +116,7 @@
                                 :label="item.name"
                                 class="shadow-2"
                             >
-                                <Icon :path="item.icon || 'website/default.svg'" size="1.2em" />
+                                <IconElement :path="item.icon || 'website/default.svg'" size="1.2em" />
                                 <i class="name">{{ item.name }}</i>
                                 <i class="desc limit-line-1">{{ item.desc }}</i>
                             </el-radio>
@@ -223,12 +223,12 @@
 </template>
 
 <script>
-import Icon from '@/components/Icon.vue';
+import IconElement from '@/components/IconElement.vue';
 
 export default {
     name: 'HomeView',
     components: {
-        Icon
+        IconElement
     },
     beforeRouteEnter(to, from, next) {
         next(vm => {
