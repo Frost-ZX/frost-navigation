@@ -1,42 +1,58 @@
+/** @type { import('vue-router').RouteConfig[] } */
 const routes = [
     {
-        name: 'Home',
         path: '/',
+        name: 'Home',
         meta: {
             loadingBar: true
         },
-        component: (resolve) => require(['@/views/Home.vue'], resolve)
+        component: () => import(
+            /* webpackChunkName: 'home-view' */
+            '@/views/HomeView.vue'
+        )
     },
     {
-        name: 'Tools',
         path: '/tools',
+        name: 'Tools',
         meta: {
             loadingBar: true
         },
-        component: (resolve) => require(['@/views/Tools.vue'], resolve),
+        component: () => import(
+            /* webpackChunkName: 'tools-view' */
+            '@/views/ToolsView.vue'
+        ),
         children: [
             {
                 path: '/tools/:category/:name',
                 name: 'ToolsDetail',
-                component: (resolve) => require(['@/views/ToolsDetail.vue'], resolve)
+                component: () => import(
+                    /* webpackChunkName: 'tools-detail' */
+                    '@/views/ToolsDetail.vue'
+                )
             }
         ]
     },
     {
-        name: 'Settings',
         path: '/settings',
+        name: 'Settings',
         meta: {
             loadingBar: true
         },
-        component: (resolve) => require(['@/views/Settings.vue'], resolve)
+        component: () => import(
+            /* webpackChunkName: 'settings-view' */
+            '@/views/SettingsView.vue'
+        )
     },
     {
-        name: 'About',
         path: '/about',
+        name: 'About',
         meta: {
             loadingBar: true
         },
-        component: (resolve) => require(['@/views/About.vue'], resolve)
+        component: () => import(
+            /* webpackChunkName: 'about-view' */
+            '@/views/AboutView.vue'
+        )
     }
 ];
 
