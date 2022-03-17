@@ -2,6 +2,7 @@ import Vue from 'vue';
 import ElementUI from 'element-ui';
 import App from './App.vue';
 import router from './router';
+import store from './store';
 
 import config from './assets/js/config';
 import navLinks from './assets/js/navLinks';
@@ -18,6 +19,7 @@ Vue.config.productionTip = false;
 
 new Vue({
     router,
+    store,
     data: function () {
         return {
             config,
