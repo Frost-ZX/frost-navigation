@@ -1,15 +1,51 @@
 const path = require('path');
-const packageName = process.env.npm_package_name;
+
+const { defineConfig } = require('@vue/cli-service');
+
+const { npm_package_name: packageName } = process.env;
+
+function addStyleRes({ config = null, processor = '', patterns = [] }) {
+    if (!config) {
+        return;
+    }
+
+    const rule = config.module.rule(processor);
+    const types = ['normal', 'normal-modules', 'vue', 'vue-modules'];
+
+    types.forEach((type) => {
+        rule.oneOf(type)
+            .use('style-resources-loader')
+            .loader('style-resources-loader')
+            .options({ patterns });
+    });
+}
 
 if (packageName) {
     process.title = packageName;
 }
 
-module.exports = {
-    productionSourceMap: false,
+module.exports = defineConfig({
+
     assetsDir: 'static',
-    publicPath: './',
     outputDir: 'dist',
+    publicPath: './',
+    productionSourceMap: false,
+    transpileDependencies: false,
+
+    chainWebpack: (config) => {
+        addStyleRes({
+            config,
+            processor: 'less',
+            patterns: [
+                path.resolve(__dirname, 'src/assets/css/variable.less'),
+            ]
+        });
+    },
+
+    devServer: {
+        host: '0.0.0.0',
+        port: 9005,
+    },
 
     pages: {
         mainPage: {
@@ -26,18 +62,4 @@ module.exports = {
         },
     },
 
-    pluginOptions: {
-        'style-resources-loader': {
-            preProcessor: 'less',
-            // 全局 Less 变量
-            patterns: [
-                path.resolve(__dirname, 'src/assets/css/variable.less'),
-            ],
-        },
-    },
-
-    devServer: {
-        host: '0.0.0.0',
-        port: 9005,
-    }
-};
+});

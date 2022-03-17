@@ -1,14 +1,21 @@
 {
     "compilerOptions": {
         "baseUrl": "./",
-        "module": "CommonJS",
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable",
+            "scripthost"
+        ],
+        "module": "esnext",
+        "moduleResolution": "node",
         "paths": {
             "@/*": [
                 "src/*"
             ]
         },
         "sourceMap": false,
-        "target": "ES5"
+        "target": "es5"
     },
     "include": [
         "src/**/*.vue",
