@@ -42,7 +42,7 @@
 
 <script>
 export default {
-    name: 'About',
+    name: 'AboutView',
     beforeRouteEnter(to, from, next) {
         next(vm => {
             vm.utils.changeTitle('关于');

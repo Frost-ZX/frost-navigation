@@ -48,7 +48,7 @@
 
 <script>
 export default {
-    name: 'Settings',
+    name: 'SettingsView',
     beforeRouteEnter(to, from, next) {
         next(vm => {
             vm.utils.changeTitle('设置');

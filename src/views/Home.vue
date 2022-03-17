@@ -226,7 +226,7 @@
 import Icon from '@/components/Icon.vue';
 
 export default {
-    name: 'Home',
+    name: 'HomeView',
     components: {
         Icon
     },

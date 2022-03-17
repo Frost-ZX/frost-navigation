@@ -1,10 +1,10 @@
 <template>
-    <i class="fn-icon bg-center-contain" :style="iconStyle"></i>
+    <i class="icon-element bg-center-contain" :style="iconStyle"></i>
 </template>
 
 <script>
 export default {
-    name: 'Icon',
+    name: 'IconElement',
     props: {
         // 来源（inner、outer）
         from: {
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.fn-icon {
+.icon-element {
     display: inline-block;
     vertical-align: middle;
     font-style: normal;

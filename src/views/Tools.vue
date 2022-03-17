@@ -60,7 +60,7 @@
 import navTools from '@/assets/js/navTools.js';
 
 export default {
-  name: 'Tools',
+  name: 'ToolsView',
   data() {
     return {
       utils: this.$root.utils,
