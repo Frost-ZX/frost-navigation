@@ -35,11 +35,6 @@ const navTools = {
                 version: '2',
                 enabled: true
             },
-            'simple': {
-                title: '简易计算器',
-                component: 'CalcSimple',
-                enabled: false
-            },
         }
     },
     generator: {
@@ -121,6 +116,13 @@ const navTools = {
     other: {
         title: '其他',
         list: {
+            'edit-csv': {
+                title: 'CSV 编辑工具',
+                component: 'OtherEditCSV',
+                update: '2022-03-17',
+                version: '1',
+                enabled: true,
+            },
             'new-window': {
                 title: '新窗口（小窗）中打开',
                 component: 'OtherNewWindow',
