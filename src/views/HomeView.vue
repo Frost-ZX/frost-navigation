@@ -150,7 +150,7 @@
           :data="currentLinks"
           node-key="id"
           empty-text="没有查找到内容"
-          :props="{ label: 'title', children: 'sub' }"
+          :props="{ label: 'title', children: 'items' }"
           :filter-node-method="searchLinkSubmit"
           :default-expand-all="false"
           :expand-on-click-node="true"
@@ -223,6 +223,13 @@
 </template>
 
 <script>
+/**
+ * @typedef {object} NavLinkItem
+ * @property {string} title
+ * @property {string} desc
+ * @property {string} link
+ */
+
 import IconElement from '@/components/IconElement.vue';
 
 export default {
@@ -326,33 +333,32 @@ export default {
   },
   methods: {
 
-    /** 
-     * 更改当前显示的分类
-     */
+    /** 更改当前显示的分类 */
     changeCategory(index) {
+      const { navLinks, searchLink, show } = this;
+
       if (index === 'search') {
         this.currentLinks = [];
-        this.show.searchEngine = true;
-        this.show.searchLink = false;
-        this.show.linkTree = false;
+        show.searchEngine = true;
+        show.searchLink = false;
+        show.linkTree = false;
       } else if (index === 'all') {
-        this.currentLinks = this.navLinks.list;
-        this.show.searchEngine = false;
-        this.show.searchLink = true;
-        this.show.linkTree = true;
+        this.currentLinks = navLinks.list;
+        show.searchEngine = false;
+        show.searchLink = true;
+        show.linkTree = true;
       } else {
-        this.currentLinks = this.navLinks.list[Number(index)].sub;
-        this.show.searchEngine = false;
-        this.show.searchLink = true;
-        this.show.linkTree = true;
+        this.currentLinks = navLinks.list[Number(index)].items;
+        show.searchEngine = false;
+        show.searchLink = true;
+        show.linkTree = true;
       }
 
-      this.searchLink.keyword = '';
+      searchLink.keyword = '';
     },
 
     /**
-     * 查看详情
-     * 
+     * @description 查看详情
      * @param {object} datas 当前链接的数据
      */
     openDetail(datas) {
@@ -373,8 +379,7 @@ export default {
     },
 
     /**
-     * 打开链接
-     * 
+     * @description 打开链接
      * @param {string} link 需要打开的链接
      * @param {boolean} showOnly 是否仅显示链接
      */
@@ -426,8 +431,7 @@ export default {
     },
 
     /**
-     * 搜索引擎（获取关键词建议）
-     * 
+     * @description 搜索引擎（获取关键词建议）
      * @param {string} keyword 当前输入的关键词
      */
     searchEngineGS(keyword) {
@@ -467,9 +471,9 @@ export default {
       // 处理数据
       var cbFunc = (data) => {
 
-        var id = 0;                  // 结果 ID 
+        var id = 0;                  // 结果 ID
         var reqName = suggest.name;  // 来源名称
-        
+
         if (reqName === '百度') {
           // [百度]
           let result = (data.g || []);
@@ -498,7 +502,7 @@ export default {
             id += 1;
             suggest.list.push({
               id,
-              label: item.value,
+              label: item['value'],
               highlight: keyword
             });
           });
@@ -514,9 +518,7 @@ export default {
       });
     },
 
-    /**
-     * 搜索引擎（搜索）
-     */
+    /** 搜索引擎（搜索） */
     searchEngineSubmit() {
       var vm = this;
       var se = this.searchEngine;
@@ -524,10 +526,10 @@ export default {
       var keyword = se.keyword;
       var url = '';
 
-      if (keyword === '') {
-        return false;
-      } else {
+      if (keyword) {
         keyword = window.encodeURIComponent(keyword);
+      } else {
+        return false;
       }
 
       for (let category in se.list) {
@@ -545,46 +547,47 @@ export default {
     },
 
     /**
-     * 搜索链接（搜索）
-     * 
-     * @param {string} value 关键词
-     * @param {object} data 每一项链接的信息
+     * @description 搜索链接（搜索）
+     * @param {string} keyword 关键词
+     * @param {NavLinkItem} data 每一项链接的信息
      */
-    searchLinkSubmit(value, data) {
+    searchLinkSubmit(keyword, data) {
+
       // 关键词为空，显示全部
-      if (value === '') {
+      if (keyword === '') {
         return true;
       }
 
-      // 小写
-      value = value.toLowerCase();
+      // 转为小写
+      keyword = keyword.toLowerCase();
 
-      var searchType = this.searchLink.type;
-      var title = data.title.toLowerCase();
-      var link = (data.link || '');
-      var desc = (data.desc || '');
-      var result = false;
+      const type = this.searchLink.type;
+      const title = (data.title || '').toLowerCase();
+      const link = (data.link || '').toLowerCase();
+      const desc = (data.desc || '').toLowerCase();
 
-      if (searchType === 'all') {
+      switch (type) {
         // 全部
-        let checks = [
-          (title.indexOf(value) !== -1),
-          (link.indexOf(value) !== -1),
-          (desc.indexOf(value) !== -1),
-        ];
-        result = (checks[0] || checks[1] || checks[2]);
-      } else if (searchType === 'title') {
+        case 'all':
+          return (
+            title.includes(keyword) ||
+            link.includes(keyword) ||
+            desc.includes(keyword)
+          );
         // 标题
-        result = (title.indexOf(value) !== -1);
-      } else if (searchType === 'link') {
+        case 'title':
+          return title.includes(keyword);
         // 链接
-        result = (link.indexOf(value) !== -1);
-      } else if (searchType === 'desc') {
+        case 'link':
+          return link.includes(keyword);
         // 简介
-        result = (desc.indexOf(value) !== -1);
+        case 'desc':
+          return desc.includes(keyword);
+        // 未知
+        default:
+          return false;
       }
 
-      return result;
     },
 
   },
