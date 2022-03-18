@@ -70,23 +70,25 @@ export default {
     > .title {
       position: relative;
       margin: 1.5rem 0;
-      font-size: 1rem;
-      color: @textPrimary;
+      color: @colorPrimary;
+      font-size: 1.125rem;
     }
 
     > .title::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: -0.5rem;
-      width: 0.2rem;
-      height: 100%;
+      top: 50%;
+      left: -0.5em;
+      width: 0.25em;
+      height: calc(100% - 0.25em);
+      transform: translateY(-50%);
       background-color: @colorPrimary;
     }
 
     > .content {
-      line-height: 1.6em;
-      font-size: 0.9rem;
+      color: @textPrimary;
+      font-size: 1rem;
+      line-height: 1.5em;
     }
   }
 }
