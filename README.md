@@ -29,11 +29,12 @@
 
 - 部分链接由于不能及时更新，可能已过期（不存在、指向了错误的网站等），访问时请注意。若您在使用时发现相关情况，欢迎进行反馈。
 
-## 本项目使用
+## 项目中主要使用的组件库和插件
 
 - [Vue](https://vuejs.org/)
   - [Vue CLI](https://cli.vuejs.org/)
   - [Vue Router](https://router.vuejs.org/)
+  - [Vuex](https://vuex.vuejs.org/)
 - [Element UI - 桌面端组件库](https://element.eleme.cn/)
 - [Font Awesome](https://github.com/FortAwesome/Font-Awesome)
 - [lodash](https://github.com/lodash/lodash)
@@ -59,23 +60,23 @@
 ### Project setup
 
 ```
-npm install
+pnpm install
 ```
 
 ### Compiles and hot-reloads for development
 
 ```
-npm run serve
+pnpm run serve
 ```
 
 ### Compiles and minifies for production
 
 ```
-npm run build
+pnpm run build-modern
 ```
 
 ### Lints and fixes files
 
 ```
-npm run lint:fix
+pnpm run lint-fix
 ```
