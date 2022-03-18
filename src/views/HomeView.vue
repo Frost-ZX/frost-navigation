@@ -395,6 +395,37 @@ export default {
     },
 
     /**
+     * @typedef MDNSearchIndexDatas
+     * @type {{ title: string, url: string }[]}
+     */
+
+    /**
+     * @description 解析 MDN 搜索关键词
+     * @param {MDNSearchIndexDatas} datas 关键词数据
+     * @param {string} keyword 输入的关键词
+     * @param {number} [max] 最多返回的结果数量，默认为 10
+     * @returns {MDNSearchIndexDatas} 匹配到的关键词
+     */
+    parseMDNSearchWords(datas = [], keyword = '', max = 10) {
+      /** @type {MDNSearchIndexDatas} */
+      const result = [];
+      const word = String(keyword).toLowerCase();
+
+      let count = 0;
+
+      for (const item of datas) {
+        if (item.title.toLowerCase().indexOf(word) > -1) {
+          result.push(item);
+          if ((count += 1) >= max) {
+            break;
+          }
+        }
+      }
+
+      return result;
+    },
+
+    /**
      * 搜索引擎（获取关键词建议）
      * 
      * @param {string} keyword 当前输入的关键词
@@ -769,6 +800,7 @@ export default {
 
       .name {
         flex-shrink: 0;
+        margin-left: 0.5rem;
       }
 
       .desc {
