@@ -12,7 +12,7 @@
   <div class="tool-page">
 
     <div class="actions">
-      <div class="title">导入 / 导出</div>
+      <div class="title">打开 / 保存</div>
       <div class="content">
 
         <file-upload accept=".csv" @changed="importCSV">
@@ -20,7 +20,7 @@
             type="success"
             size="small"
             plain
-          >导入 CSV</el-button>
+          >打开 CSV</el-button>
         </file-upload>
 
         <el-button
@@ -28,7 +28,7 @@
           size="small"
           plain
           @click="exportCSV()"
-        >导出 CSV</el-button>
+        >保存 CSV</el-button>
 
         <el-button
           type="primary"
@@ -90,7 +90,30 @@
     <div class="editor">
       <div class="title">编辑区</div>
       <div class="content">
-        <div ref="dgxl" class="grid"></div>
+        <div
+          ref="dgxl"
+          class="grid"
+          :style="{ height: `${editorHeight}rem` }"
+        ></div>
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="title">设置</div>
+      <div class="content">
+
+        <div class="config-item">
+          <div class="title">编辑区高度</div>
+          <el-input-number
+            v-model="editorHeight"
+            size="medium"
+            :min="15"
+            :max="50"
+            :step="1"
+            step-strictly
+          ></el-input-number>
+        </div>
+
       </div>
     </div>
 
@@ -185,6 +208,7 @@ export default {
   data() {
     return {
 
+      editorHeight: 25,
       gridInstance: null,
 
     }
@@ -296,12 +320,12 @@ export default {
 
     },
 
-    /** 导出 CSV */
+    /** 保存 CSV */
     exportCSV() {
       this.callGrid('downloadDataAsCSV');
     },
 
-    /** 导入 CSV */
+    /** 打开 CSV */
     importCSV(datas) {
 
       const files = datas.list;
@@ -388,7 +412,7 @@ export default {
 
   .grid {
     width: 100%;
-    height: 400px;
+    height: 25rem;
     border: 0.125rem solid #2196f3;
     border-radius: 0.375rem;
   }
@@ -425,6 +449,16 @@ export default {
 
   /deep/ .dgxl-part-credits {
     display: none !important;
+  }
+}
+
+.config .config-item {
+  > div {
+    display: inline-block;
+  }
+
+  .title {
+    margin-right: 0.5em;
   }
 }
 </style>

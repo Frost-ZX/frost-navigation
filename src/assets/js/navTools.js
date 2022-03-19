@@ -118,13 +118,15 @@ const navTools = {
         list: {
             'edit-csv': {
                 title: 'CSV 编辑工具',
+                desc: '查看或编辑 CSV 文件',
                 component: 'OtherEditCSV',
                 update: '2022-03-17',
-                version: '1',
+                version: '2',
                 enabled: true,
             },
             'new-window': {
                 title: '新窗口（小窗）中打开',
+                desc: '从新的小窗口中打开指定的链接（仅支持 PC 端浏览器）',
                 component: 'OtherNewWindow',
                 update: '2021-05-03',
                 version: '1',
@@ -132,6 +134,7 @@ const navTools = {
             },
             'run-js': {
                 title: '执行 JavaScript',
+                desc: '执行简单的 JavaScript 代码片段',
                 component: 'OtherRunJS',
                 update: '2021-06-14',
                 version: '2',

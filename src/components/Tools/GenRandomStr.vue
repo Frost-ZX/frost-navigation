@@ -59,18 +59,20 @@
       <div class="content">
         <el-button
           type="primary"
+          size="small"
+          plain
           @click="btnGenerate()"
         >生成</el-button>
       </div>
     </div>
 
     <div class="reference">
-      <div class="title">参考资料</div>
+      <div class="title">算法参考</div>
       <div class="content">
         <el-link
           href="https://www.cnblogs.com/hankuksui/p/9892729.html"
           target="_blank"
-          type="primary"
+          type="success"
         >博客园 - hankuksui</el-link>
       </div>
     </div>

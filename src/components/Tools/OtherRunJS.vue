@@ -13,8 +13,18 @@
     <div class="action">
       <div class="title">操作</div>
       <div class="btns">
-        <el-button type="primary" @click="btnRun()">执行</el-button>
-        <el-button type="danger" @click="btnClear()">清空</el-button>
+        <el-button
+          type="primary"
+          size="small"
+          plain
+          @click="btnRun()"
+        >执行</el-button>
+        <el-button
+          type="danger"
+          size="small"
+          plain
+          @click="btnClear()"
+        >清空</el-button>
       </div>
     </div>
 
