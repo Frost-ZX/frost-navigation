@@ -1,6 +1,23 @@
-// 导航链接数据
+/**
+ * @typedef  {object}     LinkItem
+ * @property {string}     [icon]     链接分类图标
+ * @property {string}     title      链接分类标题 / 链接项标题
+ * @property {string}     [desc]     链接项简介
+ * @property {string}     [link]     链接项 URL
+ * @property {string}     [update]   链接项更新日期
+ * @property {boolean}    [showOnly] 是否只显示详情，不跳转
+ * @property {LinkItem[]} [items]    子链接列表
+ */
+
+/**
+ * @typedef  {object}     LinkDatas
+ * @property {string}     version 链接数据版本
+ * @property {LinkItem[]} list    链接列表
+ */
+
+/** @type {LinkDatas} */
 var frostNavLinks = {
-  version: '2022-03-18',
+  version: '2022-03-20',
   list: [
     {
       title: '百科 / 教程 / 科普 / 资料',
@@ -1391,11 +1408,6 @@ var frostNavLinks = {
                   title: '鸠摩搜索',
                   desc: '文档搜索引擎',
                   link: 'https://www.jiumodiary.com/',
-                  update: '2021-02-25'
-                },
-                {
-                  title: '秘迹搜索',
-                  link: 'https://mijisou.com/',
                   update: '2021-02-25'
                 },
                 {
@@ -2959,6 +2971,12 @@ var frostNavLinks = {
             }
           ]
         },
+        {
+          title: 'CSSBattle',
+          desc: 'CSS 代码高尔夫（code-golfing）游戏',
+          link: 'https://cssbattle.dev/',
+          update: '2022-03-20'
+        },
       ]
     },
     {
@@ -3741,12 +3759,6 @@ var frostNavLinks = {
           desc: '高性能处理器和显卡',
           link: 'https://www.amd.com/',
           update: '2021-06-01'
-        },
-        {
-          title: 'CSSBattle',
-          desc: 'CSS 代码高尔夫（code-golfing）游戏',
-          link: 'https://www.nvidia.cn/',
-          update: '2021-11-14'
         },
         {
           title: 'Intel',
