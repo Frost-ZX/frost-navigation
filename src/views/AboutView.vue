@@ -43,15 +43,9 @@
 <script>
 export default {
   name: 'AboutView',
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.utils.changeTitle('关于');
-    });
-  },
   data() {
     return {
       navLinks: this.$root.navLinks,
-      utils: this.$root.utils,
       info: {
         github: 'https://github.com/Frost-ZX/frost-navigation'
       }

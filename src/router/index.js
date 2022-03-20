@@ -2,7 +2,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import routes from './routes';
-import config from '../assets/js/config';
+import config from '@/assets/js/config';
+import utils from '@/assets/js/utils';
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,7 @@ router.afterEach((to) => {
     if (to.meta.loadingBar) {
         config.loading.subPage = false;
     }
+    utils.changeTitle(to.meta.title);
 });
 
 export default router;

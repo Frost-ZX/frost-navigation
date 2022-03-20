@@ -237,11 +237,6 @@ export default {
   components: {
     IconElement
   },
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.utils.changeTitle();
-    });
-  },
   data() {
     return {
       config: this.$root.config.storage,

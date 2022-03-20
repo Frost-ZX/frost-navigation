@@ -1,10 +1,13 @@
+import tools from './tools';
+
 /** @type { import('vue-router').RouteConfig[] } */
 const routes = [
     {
         path: '/',
         name: 'Home',
         meta: {
-            loadingBar: true
+            loadingBar: true,
+            title: '主页',
         },
         component: () => import(
             /* webpackChunkName: 'home-view' */
@@ -15,28 +18,33 @@ const routes = [
         path: '/tools',
         name: 'Tools',
         meta: {
-            loadingBar: true
+            loadingBar: true,
+            title: '小工具',
         },
         component: () => import(
             /* webpackChunkName: 'tools-view' */
             '@/views/ToolsView.vue'
+        )
+    },
+    {
+        path: '/tool',
+        name: 'Tool',
+        meta: {
+            loadingBar: true,
+            title: '小工具',
+        },
+        component: () => import(
+            /* webpackChunkName: 'tools-detail' */
+            '@/views/ToolsDetail.vue'
         ),
-        children: [
-            {
-                path: '/tools/:category/:name',
-                name: 'ToolsDetail',
-                component: () => import(
-                    /* webpackChunkName: 'tools-detail' */
-                    '@/views/ToolsDetail.vue'
-                )
-            }
-        ]
+        children: tools
     },
     {
         path: '/settings',
         name: 'Settings',
         meta: {
-            loadingBar: true
+            loadingBar: true,
+            title: '设置',
         },
         component: () => import(
             /* webpackChunkName: 'settings-view' */
@@ -47,7 +55,8 @@ const routes = [
         path: '/about',
         name: 'About',
         meta: {
-            loadingBar: true
+            loadingBar: true,
+            title: '关于',
         },
         component: () => import(
             /* webpackChunkName: 'about-view' */

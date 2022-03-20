@@ -1,56 +1,82 @@
 <template>
   <div class="tools-detail">
-    <component :is="toolPage" />
+
+    <div class="tools-header">
+
+      <!-- 标题 -->
+      <div class="title">
+        <span>{{ routeMeta.title }}</span>
+        <span
+          v-show="Boolean(routeMeta.version)"
+        >[{{ routeMeta.version }}]</span>
+        <span
+          v-show="Boolean(routeMeta.update)"
+        >[{{ routeMeta.update }}]</span>
+      </div>
+
+      <!-- 在新标签页打开 -->
+      <el-tooltip content="在新标签页中打开" placement="left">
+        <div
+          class="btn el-icon-copy-document"
+          @click="openNewTab()"
+        ></div>
+      </el-tooltip>
+
+      <!-- 关闭 -->
+      <el-tooltip content="关闭工具" placement="left">
+        <div
+          class="btn el-icon-close"
+          @click="close()"
+        ></div>
+      </el-tooltip>
+
+    </div>
+
+    <div class="tools-content">
+      <router-view></router-view>
+    </div>
+
   </div>
 </template>
 
 <script>
-import navTools from '@/assets/js/navTools.js';
-
 export default {
   name: 'ToolsDetail',
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      const { params, query } = vm.$route;
-      const { category: cCategory, name: cName } = params;
-      const componentName = vm.toolList[cCategory]['list'][cName].component;
-
-      var loading = null;
-
-      console.log('[打开工具]', { params, query });
-
-      // 异步，防止找不到 target
-      setTimeout(() => {
-        // 开启 Loading
-        loading = vm.$loading({
-          background: '#FFF',
-          lock: true,
-          // Loading 需要覆盖的 DOM 节点
-          target: '.drawer-full .el-drawer__body'
-        });
-      }, 0);
-
-      vm.toolPage = (() => {
-        // 动态引入组件
-        const component = import(`@/components/Tools/${componentName}.vue`);
-
-        Promise.all([component]).then(() => {
-          setTimeout(() => {
-            // 关闭 Loading
-            loading.close();
-          }, 200);
-        });
-
-        return component;
-      });
-    });
-  },
   data() {
     return {
-      utils: this.$root.utils,
-      toolList: navTools,
-      toolPage: null,
+
+
+
     }
+  },
+  computed: {
+
+    /** 路由 meta 信息 */
+    routeMeta() {
+      return (this.$route.meta || {});
+    },
+
+  },
+  methods: {
+
+    /** 关闭工具 */
+    close() {
+      this.$confirm('是否关闭？').then(() => {
+
+        // 返回工具页面
+        this.$router.push({
+          name: 'Tools'
+        });
+
+      }).catch(() => { });
+    },
+
+    /** 在新标签页打开工具 */
+    openNewTab() {
+      const url = window.location.href;
+      window.open(url, '_blank');
+    },
+
   },
 }
 </script>
@@ -58,13 +84,62 @@ export default {
 <style lang="less" scoped>
 .tools-detail {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+}
+
+.tools-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 20;
+  padding: 1rem;
+  width: 100%;
+  box-shadow: 0 0.5rem 1rem -0.5rem rgba(0, 0, 0, 0.2);
+  background-color: @colorPrimary;
+  color: #FFF;
+
+  .title {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    span {
+      margin-right: 0.25em;
+    }
+  }
+
+  .btn {
+    flex-shrink: 0;
+    margin-left: 0.5em;
+    cursor: pointer;
+  }
+}
+
+.tools-content {
+  flex-grow: 1;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 0;
+  overflow-y: auto;
 }
 
 /deep/ .tool-page {
+  margin: 0 auto;
+  padding: 1rem 2rem;
   width: 100%;
+  height: auto;
   max-width: 60rem;
+  background-color: #FFF;
 
   > div {
     > .title {

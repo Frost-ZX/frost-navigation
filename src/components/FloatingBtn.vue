@@ -64,14 +64,10 @@ export default {
      * 返回主页
      */
     backToHome() {
-      var routeName = 'Home';
+      const routeName = 'Home';
 
       if (this.$route.name != routeName) {
-        this.$router.push({
-          name: routeName
-        }).then(() => {
-          window.location.reload();
-        });
+        this.$router.push({ name: routeName });
       } else {
         this.$message({
           duration: 2000,

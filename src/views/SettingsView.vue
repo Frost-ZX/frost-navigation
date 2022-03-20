@@ -49,15 +49,9 @@
 <script>
 export default {
   name: 'SettingsView',
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.utils.changeTitle('设置');
-    });
-  },
   data() {
     return {
       config: this.$root.config.storage,
-      utils: this.$root.utils
     }
   },
   methods: {
