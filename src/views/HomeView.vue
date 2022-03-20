@@ -6,7 +6,7 @@
       <el-menu
         class="side-nav"
         default-active="search"
-        :collapse="config.sideMenuCollapse"
+        :collapse="appConfig.sideMenuCollapse"
         :collapse-transition="false"
         @select="changeCategory"
       >
@@ -41,32 +41,32 @@
       <div class="wrapper">
 
         <!-- 搜索引擎 -->
-        <div v-show="show.searchEngine" class="search-engine">
+        <div v-show="show.searchNet" class="search-engine">
 
           <!-- 搜索栏 -->
           <div :class="['search-bar', 'shadow-3', { suggest: showSES }]">
 
             <!-- 输入 -->
             <input
-              v-model="searchEngine.keyword"
+              v-model="searchNet.keyword"
               class="input"
               type="text"
-              @blur="searchEngine.isFocus = false"
-              @focus="searchEngine.isFocus = true"
-              @keydown.enter.exact="searchEngineSubmit()"
+              @blur="searchNet.isFocus = false"
+              @focus="searchNet.isFocus = true"
+              @keydown.enter.exact="searchNetSubmit()"
             />
 
             <!-- 清除 -->
             <div
-              v-show="searchEngine.keyword.length > 0"
+              v-show="searchNet.keyword.length > 0"
               class="btn btn-clear"
-              @click="searchEngine.keyword = ''"
+              @click="searchNet.keyword = ''"
             >
               <i class="el-icon-close"></i>
             </div>
 
             <!-- 搜索 -->
-            <div class="btn btn-search" @click="searchEngineSubmit()">
+            <div class="btn btn-search" @click="searchNetSubmit()">
               <i class="el-icon-search"></i>
             </div>
 
@@ -74,9 +74,9 @@
             <div class="suggestion shadow-3">
               <ul>
                 <li
-                  v-for="item in searchEngine.suggest.list"
+                  v-for="item in searchNet.suggest.list"
                   :key="item.id"
-                  @click="searchEngine.keyword = item.label"
+                  @click="searchNet.keyword = item.label"
                 >
                   <!-- 文本 -->
                   <span class="label">{{ item.label }}</span>
@@ -86,7 +86,7 @@
                     effect="plain"
                     size="mini"
                     type="success"
-                  >{{ searchEngine.suggest.name }}</el-tag>
+                  >{{ searchNet.suggest.name }}</el-tag>
                 </li>
               </ul>
             </div>
@@ -95,13 +95,13 @@
 
           <!-- 选择搜索引擎 -->
           <el-radio-group
-            v-model="config.searchEngine"
+            v-model="configSearchEngine"
             size="small"
-            :class="['search-type', { fade: searchEngine.isFocus }]"
+            :class="['search-type', { fade: searchNet.isFocus }]"
           >
             <!-- 分类 -->
             <div
-              v-for="(category, cIndex) in searchEngine.list"
+              v-for="(category, cIndex) in searchNet.list"
               :key="cIndex"
               class="category"
             >
@@ -230,6 +230,11 @@
  * @property {string} link
  */
 
+import { mapState } from 'vuex';
+
+import navLinks from '@/assets/js/navLinks';
+import searchUtils from '@/assets/js/search-utils';
+import utils from '@/assets/js/utils';
 import IconElement from '@/components/IconElement.vue';
 
 export default {
@@ -239,19 +244,19 @@ export default {
   },
   data() {
     return {
-      config: this.$root.config.storage,
-      utils: this.$root.utils,
-      // 显示的内容
+
+      /** 显示的内容 */
       show: {
-        searchEngine: true,
+        searchNet: true,
         searchLink: false,
         linkTree: false,
       },
-      // 搜索引擎
-      searchEngine: {
+
+      /** 网络搜索 */
+      searchNet: {
         isFocus: false,
         keyword: '',
-        list: this.$root.config.searchEngines,
+        list: searchUtils.searchEngines,
         url: '',
         debounce: null,
         suggest: {
@@ -259,17 +264,21 @@ export default {
           name: '',
         },
       },
-      // 导航链接
-      navLinks: this.$root.navLinks,
-      // 当前显示的链接
+
+      /** 导航链接数据 */
+      navLinks,
+
+      /** 当前显示的链接 */
       currentLinks: [],
-      // 搜索链接
+
+      /** 链接搜索 */
       searchLink: {
         debounce: null,
         keyword: '',
         type: 'all'
       },
-      // 链接详情
+
+      /** 链接详情 */
       linkDetail: {
         show: false,
         id: '',
@@ -279,19 +288,39 @@ export default {
         desc: '',
         update: '',
       },
+
     };
   },
   computed: {
 
+    ...mapState({
+      appConfig: 'config',
+    }),
+
+    /** 设置 - 搜索引擎名称 */
+    configSearchEngine: {
+      /** @this */
+      get() {
+        return this.appConfig.searchEngine;
+      },
+      set(value) {
+        this.$store.commit('setConfig', {
+          key: 'searchEngine',
+          value,
+        });
+      },
+    },
+
     /**
-     * 显示搜索引擎关键词建议
+     * @description 显示搜索引擎关键词建议
+     * @this
      */
     showSES() {
-      var se = this.searchEngine;
+      var sn = this.searchNet;
       var isShow = (
-        (se.isFocus) &&
-        (se.keyword !== '') &&
-        (se.suggest.list.length > 0)
+        (sn.isFocus) &&
+        (sn.keyword !== '') &&
+        (sn.suggest.list.length > 0)
       );
 
       return isShow;
@@ -299,18 +328,20 @@ export default {
 
   },
   watch: {
-    'searchEngine.keyword': {
+
+    'searchNet.keyword': {
       handler(value) {
-        if (!this.config.searchSuggestion) {
+        if (!this.appConfig.searchSuggestion) {
           return;
         }
-        clearInterval(this.searchEngine.debounce);
-        this.searchEngine.debounce = setTimeout(() => {
+        clearInterval(this.searchNet.debounce);
+        this.searchNet.debounce = setTimeout(() => {
           value = window.encodeURIComponent(value);
-          this.searchEngineGS(value);
+          this.searchNetGS(value);
         }, 500);
       }
     },
+
     'searchLink.keyword': {
       handler(value) {
         clearTimeout(this.searchLink.debounce);
@@ -319,12 +350,14 @@ export default {
         }, 500);
       }
     },
+
     'searchLink.type': {
       handler() {
         // 更改搜索类型时自动重新搜索
         this.$refs.linkTree.filter(this.searchLink.keyword);
       }
     },
+
   },
   methods: {
 
@@ -334,17 +367,17 @@ export default {
 
       if (index === 'search') {
         this.currentLinks = [];
-        show.searchEngine = true;
+        show.searchNet = true;
         show.searchLink = false;
         show.linkTree = false;
       } else if (index === 'all') {
         this.currentLinks = navLinks.list;
-        show.searchEngine = false;
+        show.searchNet = false;
         show.searchLink = true;
         show.linkTree = true;
       } else {
         this.currentLinks = navLinks.list[Number(index)].items;
-        show.searchEngine = false;
+        show.searchNet = false;
         show.searchLink = true;
         show.linkTree = true;
       }
@@ -395,44 +428,13 @@ export default {
     },
 
     /**
-     * @typedef MDNSearchIndexDatas
-     * @type {{ title: string, url: string }[]}
-     */
-
-    /**
-     * @description 解析 MDN 搜索关键词
-     * @param {MDNSearchIndexDatas} datas 关键词数据
-     * @param {string} keyword 输入的关键词
-     * @param {number} [max] 最多返回的结果数量，默认为 10
-     * @returns {MDNSearchIndexDatas} 匹配到的关键词
-     */
-    parseMDNSearchWords(datas = [], keyword = '', max = 10) {
-      /** @type {MDNSearchIndexDatas} */
-      const result = [];
-      const word = String(keyword).toLowerCase();
-
-      let count = 0;
-
-      for (const item of datas) {
-        if (item.title.toLowerCase().indexOf(word) > -1) {
-          result.push(item);
-          if ((count += 1) >= max) {
-            break;
-          }
-        }
-      }
-
-      return result;
-    },
-
-    /**
      * @description 搜索引擎（获取关键词建议）
      * @param {string} keyword 当前输入的关键词
      */
-    searchEngineGS(keyword) {
-      var suggest = this.searchEngine.suggest;
+    searchNetGS(keyword) {
+      var suggest = this.searchNet.suggest;
       // 设置的搜索引擎名称
-      var configSE = this.config.searchEngine;
+      var configSE = this.configSearchEngine;
       // 关键词建议来源信息（默认使用百度）
       var reqURLs = [
         {
@@ -506,7 +508,7 @@ export default {
       };
 
       // 使用 JSONP 获取
-      this.utils.jsonp({
+      utils.jsonp({
         url: reqURL,
         cbName: 'cbSES',
         cbFunc
@@ -514,11 +516,11 @@ export default {
     },
 
     /** 搜索引擎（搜索） */
-    searchEngineSubmit() {
+    searchNetSubmit() {
       var vm = this;
-      var se = this.searchEngine;
-      var selectedSE = this.config.searchEngine;
-      var keyword = se.keyword;
+      var sn = this.searchNet;
+      var selectedSE = this.configSearchEngine;
+      var keyword = sn.keyword;
       var url = '';
 
       if (keyword) {
@@ -527,8 +529,8 @@ export default {
         return false;
       }
 
-      for (let category in se.list) {
-        let list = se.list[category].list;
+      for (let category in sn.list) {
+        let list = sn.list[category].list;
 
         for (let index in list) {
           if (list[index].name === selectedSE) {

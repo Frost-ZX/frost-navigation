@@ -24,8 +24,7 @@ export default {
   name: 'FloatingBtn',
   data() {
     return {
-      config: this.$root.config.storage,
-      showInner: false
+      showInner: false,
     }
   },
   mounted () {
@@ -33,9 +32,7 @@ export default {
   },
   methods: {
 
-    /**
-     * 设置动画
-     */
+    /** 设置动画 */
     initAnimation() {
       var vm = this;
       var el = vm.$refs['floatingBtn'];
@@ -53,16 +50,12 @@ export default {
       });
     },
 
-    /**
-     * 切换按钮显示
-     */
+    /** 切换按钮显示 */
     toggleInnerBtns() {
       this.showInner = !this.showInner;
     },
 
-    /**
-     * 返回主页
-     */
+    /** 返回主页 */
     backToHome() {
       const routeName = 'Home';
 
@@ -77,19 +70,14 @@ export default {
       }
     },
 
-    /**
-     * 刷新
-     */
+    /** 刷新 */
     refreshPage() {
       window.location.reload();
     },
 
-    /**
-     * 切换侧边菜单折叠状态
-     */
+    /** 切换侧边菜单折叠状态 */
     toggleSideCollapse() {
-      var cfg = this.config;
-      cfg.sideMenuCollapse = !cfg.sideMenuCollapse;
+      this.$store.dispatch('toggleSideCollapse');
     },
 
   },

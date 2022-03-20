@@ -41,11 +41,13 @@
 </template>
 
 <script>
+import navLinks from '@/assets/js/navLinks';
+
 export default {
   name: 'AboutView',
   data() {
     return {
-      navLinks: this.$root.navLinks,
+      navLinks,
       info: {
         github: 'https://github.com/Frost-ZX/frost-navigation'
       }

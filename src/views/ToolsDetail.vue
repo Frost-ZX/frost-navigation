@@ -43,11 +43,7 @@
 export default {
   name: 'ToolsDetail',
   data() {
-    return {
-
-
-
-    }
+    return { }
   },
   computed: {
 

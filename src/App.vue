@@ -2,7 +2,7 @@
   <div id="app">
 
     <!-- 加载动画 -->
-    <div v-show="config.loading.subPage" class="loading-bar">
+    <div v-show="showLoading" class="loading-bar">
       <div class="bar-content"></div>
     </div>
 
@@ -20,7 +20,7 @@
 
           <!-- 标题 -->
           <el-menu-item
-            v-show="config.storage.showSiteTitle"
+            v-show="appConfig.showSiteTitle"
             index="title"
             class="title"
             disabled
@@ -79,6 +79,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import FloatingBtn from '@/components/FloatingBtn.vue';
 
 export default {
@@ -88,12 +90,10 @@ export default {
   },
   data() {
     return {
-      config: this.$root.config,
-      debounce: {
-        saveConfig: null,
-        updateConfig: null
-      },
-      // Header 菜单项
+
+      debounceFontSize: null,
+
+      /** Header 菜单项 */
       headerMenuItems: [
         {
           id: 'home',
@@ -116,12 +116,20 @@ export default {
           routeName: 'About'
         }
       ],
-      // 显示下拉菜单
-      showHeaderDropdown: false
+
+      /** 显示下拉菜单 */
+      showHeaderDropdown: false,
+
     }
   },
   computed: {
-    // Header 默认激活的菜单项
+
+    ...mapState({
+      appConfig: 'config',
+      showLoading: 'showLoading',
+    }),
+
+    /** Header 默认激活的菜单项 */
     headerDefaultActive() {
       var routeName = this.$route.name;
       var item = '';
@@ -131,9 +139,22 @@ export default {
       }
 
       return item;
-    }
+    },
+
   },
   watch: {
+
+    // 更新字体大小
+    'appConfig.fontSize': {
+      handler(value) {
+        
+        clearTimeout(this.debounceFontSize);
+        this.debounceFontSize = setTimeout(() => {
+          document.documentElement.style.fontSize = `${value}px`;
+        }, 500);
+
+      }
+    },
 
     // 路由名称
     '$route.name': {
@@ -143,40 +164,18 @@ export default {
       }
     },
 
-    // 更新储存的设置
-    'config.storage': {
-      handler(obj) {
-        clearTimeout(this.debounce.saveConfig);
-
-        this.debounce.saveConfig = setTimeout(() => {
-          localStorage.setItem('navConfig', JSON.stringify(obj));
-        }, 2000);
-      },
-      deep: true
+  },
+  created() {
+    this.init();
+  },
+  methods: {
+    
+    /** 初始化 */
+    init() {
+      this.$store.commit('readConfig');
     },
 
-    // 改变字体大小
-    'config.storage.fontSize': {
-      handler(value) {
-        clearTimeout(this.debounce.updateConfig);
-
-        this.debounce.updateConfig = setTimeout(() => {
-          // 改变字体大小
-          document.documentElement.style.fontSize = value + 'px';
-        }, 1000);
-      }
-    }
-
   },
-  mounted() {
-    var configStr = localStorage.getItem('navConfig');
-    var configObj = {};
-
-    if (configStr != null) {
-      configObj = JSON.parse(configStr);
-      Object.assign(this.config.storage, configObj);
-    }
-  }
 }
 </script>
 

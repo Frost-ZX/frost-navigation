@@ -6,7 +6,7 @@
 
         <el-form-item label="字体大小" class="set-font">
           <el-input-number
-            v-model="config.fontSize"
+            v-model="configFontSize"
             :min="12"
             :max="32"
             controls-position="right"
@@ -16,28 +16,23 @@
         </el-form-item>
 
         <el-form-item label="显示网站标题">
-          <el-switch v-model="config.showSiteTitle"></el-switch>
+          <el-switch v-model="configShowSiteTitle"></el-switch>
         </el-form-item>
 
         <el-form-item label="折叠主页侧边菜单">
-          <el-switch v-model="config.sideMenuCollapse"></el-switch>
+          <el-switch v-model="configSideMenuCollapse"></el-switch>
         </el-form-item>
 
         <el-form-item label="获取搜索引擎关键词建议">
-          <el-switch v-model="config.searchSuggestion"></el-switch>
+          <el-switch v-model="configSearchSuggestion"></el-switch>
         </el-form-item>
 
         <el-form-item label="清除数据">
           <el-button
             type="danger"
             size="medium"
-            @click="resetDatas('settings')"
+            @click="resetDatas()"
           >清除设置</el-button>
-          <el-button
-            type="danger"
-            size="medium"
-            @click="resetDatas('cache')"
-          >清除缓存</el-button>
         </el-form-item>
 
       </el-form>
@@ -47,34 +42,83 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'SettingsView',
   data() {
-    return {
-      config: this.$root.config.storage,
-    }
+    return { }
+  },
+  computed: {
+
+    ...mapState({
+      appConfig: 'config',
+    }),
+
+    configFontSize: {
+      /** @this */
+      get() {
+        return this.appConfig.fontSize;
+      },
+      set(value) {
+        this.$store.commit('setConfig', {
+          key: 'fontSize',
+          value,
+        });
+      },
+    },
+
+    configShowSiteTitle: {
+      /** @this */
+      get() {
+        return this.appConfig.showSiteTitle;
+      },
+      set(value) {
+        this.$store.commit('setConfig', {
+          key: 'showSiteTitle',
+          value,
+        });
+      },
+    },
+
+    configSideMenuCollapse: {
+      /** @this */
+      get() {
+        return this.appConfig.sideMenuCollapse;
+      },
+      set(value) {
+        this.$store.commit('setConfig', {
+          key: 'sideMenuCollapse',
+          value,
+        });
+      },
+    },
+
+    configSearchSuggestion: {
+      /** @this */
+      get() {
+        return this.appConfig.searchSuggestion;
+      },
+      set(value) {
+        this.$store.commit('setConfig', {
+          key: 'searchSuggestion',
+          value,
+        });
+      },
+    },
+
   },
   methods: {
 
-    /**
-     * 清除数据
-     * 
-     * @param {string} type 清除类型（cache、settings）
-     */
-    resetDatas(type) {
+    /** 清除数据 */
+    resetDatas() {
       this.$confirm('确定要清除吗？', '', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
 
-        if (type === 'cache') {
-          localStorage.removeItem('navLinksCache');
-        } else if (type === 'settings') {
-          localStorage.removeItem('navConfig');
-        } else {
-          return
-        }
+        this.$store.commit('resetConfig');
 
         this.$message({
           message: '已清除，2s 后自动刷新',

@@ -1,5 +1,3 @@
-import config from './config.js';
-
 class Utils {
 
     constructor() { }
@@ -9,7 +7,7 @@ class Utils {
      * @param {string} [value] 新的标题
      */
     changeTitle(value) {
-        document.title = (value ? (value + ' - ') : '') + config.siteName;
+        document.title = ((value ? `${value} - ` : '') + 'Frost 网址导航');
     }
 
     /**
