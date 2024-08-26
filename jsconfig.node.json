@@ -1,0 +1,15 @@
+{
+  "extends": "@tsconfig/node20/tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "composite": true,
+    "noEmit": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "types": ["node"]
+  },
+  "exclude": [],
+  "include": [
+    "vite.config.js"
+  ]
+}

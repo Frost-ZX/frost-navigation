@@ -1,0 +1,4 @@
+dist
+node_modules
+types/env.d.ts
+types/web.d.ts

@@ -1,0 +1,7 @@
+{
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "files.autoSave": "off",
+  "files.eol": "\n",
+  "typescript.suggest.autoImports": false,
+}

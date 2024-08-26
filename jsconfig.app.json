@@ -1,0 +1,20 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "composite": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@package-json": ["./package.json"],
+    }
+  },
+  "exclude": [],
+  "include": [
+    "package.json",
+    "src/**/*.js",
+    "src/**/*.vue",
+    "types/env.d.ts",
+    "types/web.d.ts"
+  ]
+}

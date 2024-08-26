@@ -1,0 +1,35 @@
+{
+  "name": "frost-navigation",
+  "version": "3.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+  },
+  "dependencies": {
+    "@frost-utils/javascript": "^2.1.3",
+    "@mdi/font": "^7.4.47",
+    "@vueuse/core": "^11.0.3",
+    "axios": "^1.7.5",
+    "naive-ui": "^2.39.0",
+    "radash": "^12.1.0",
+    "uuid": "^10.0.0",
+    "vue": "^3.4.29",
+    "vue-router": "^4.3.3",
+    "zxing-wasm": "^1.2.12"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.14.5",
+    "@types/uuid": "^10.0.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue-jsx": "^4.0.0",
+    "@vue/tsconfig": "^0.5.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "less": "^4.2.0",
+    "vite": "^5.3.1"
+  }
+}
