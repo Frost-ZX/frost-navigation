@@ -3,13 +3,22 @@
     :date-locale="configProviderProps.dateLocale"
     :inline-theme-disabled="configProviderProps.inlineThemeDisabled"
     :locale="configProviderProps.locale"
+    :style="{
+      '--color-error': themeVars.errorColor,
+      '--color-info': themeVars.infoColor,
+      '--color-primary': themeVars.primaryColor,
+      '--color-success': themeVars.successColor,
+      '--color-warning': themeVars.warningColor,
+    }"
   >
 
     <!-- Naive UI 全局样式 -->
     <n-global-style></n-global-style>
 
     <!-- 全局侧边栏 -->
-    <div class="app-aside"></div>
+    <div class="app-aside-wrapper">
+      <app-aside />
+    </div>
 
     <!-- 路由页面 -->
     <router-view class="app-view"></router-view>
@@ -19,12 +28,17 @@
 
 <script setup>
 import {
-  NConfigProvider, NGlobalStyle,
+  NConfigProvider, NGlobalStyle, useThemeVars,
 } from 'naive-ui';
 
 import {
   configProviderProps,
 } from './assets/js/naive-ui';
+
+import AppAside from './components/AppAside.vue';
+
+/** 主题变量 */
+const themeVars = useThemeVars();
 </script>
 
 <style lang="less">
@@ -73,6 +87,7 @@ html {
   background-color: #FFF;
   color: var(--color-black);
   font-size: 16px;
+  line-height: 1;
 }
 
 .n-config-provider {
@@ -84,8 +99,9 @@ html {
   height: 100%;
 }
 
-.app-aside {
-  width: 80px;
+.app-aside-wrapper {
+  width: 64px;
+  border-right: 1px solid var(--color-gray);
 }
 
 .app-view {
