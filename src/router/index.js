@@ -1,4 +1,13 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import {
+  createRouter,
+  createWebHashHistory,
+} from 'vue-router';
+
+import {
+  ENABLE_SEARCH_MODULE,
+  ENABLE_NAV_MODULE,
+  ENABLE_TOOLBOX_MODULE,
+} from '@/config/modules';
 
 import AboutView from '@/views/AboutView/AboutView.vue';
 import IndexView from '@/views/IndexView/IndexView.vue';
@@ -22,7 +31,7 @@ export const router = createRouter({
       component: () => import('@/views/SearchView/SearchView.vue'),
       meta: {
         iconClass: 'mdi mdi-magnify',
-        showInAside: true,
+        showInAside: ENABLE_SEARCH_MODULE,
         title: '搜索',
       },
     },
@@ -32,7 +41,7 @@ export const router = createRouter({
       component: () => import('@/views/NavView/NavView.vue'),
       meta: {
         iconClass: 'mdi mdi-compass-outline',
-        showInAside: true,
+        showInAside: ENABLE_NAV_MODULE,
         title: '导航',
       },
     },
@@ -42,7 +51,7 @@ export const router = createRouter({
       component: () => import('@/views/ToolboxView/ToolboxView.vue'),
       meta: {
         iconClass: 'mdi mdi-tools',
-        showInAside: true,
+        showInAside: ENABLE_TOOLBOX_MODULE,
         title: '工具箱',
       },
     },
