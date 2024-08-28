@@ -4,12 +4,13 @@
     :inline-theme-disabled="configProviderProps.inlineThemeDisabled"
     :locale="configProviderProps.locale"
     :style="{
-      '--color-error': themeVars.errorColor,
-      '--color-info': themeVars.infoColor,
-      '--color-primary': themeVars.primaryColor,
-      '--color-success': themeVars.successColor,
-      '--color-warning': themeVars.warningColor,
+      '--color-error': themeCommon.errorColor,
+      '--color-info': themeCommon.infoColor,
+      '--color-primary': themeCommon.primaryColor,
+      '--color-success': themeCommon.successColor,
+      '--color-warning': themeCommon.warningColor,
     }"
+    :theme-overrides="themeOverrides"
   >
 
     <!-- Naive UI 全局样式 -->
@@ -28,7 +29,7 @@
 
 <script setup>
 import {
-  NConfigProvider, NGlobalStyle, useThemeVars,
+  NConfigProvider, NGlobalStyle,
 } from 'naive-ui';
 
 import {
@@ -37,8 +38,11 @@ import {
 
 import AppAside from './components/AppAside.vue';
 
-/** 主题变量 */
-const themeVars = useThemeVars();
+/** 主题变量配置 */
+const themeOverrides = configProviderProps.themeOverrides;
+
+/** 主题变量配置 - common */
+const themeCommon = themeOverrides.common;
 </script>
 
 <style lang="less">

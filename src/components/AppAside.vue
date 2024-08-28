@@ -131,7 +131,7 @@ onBeforeMount(() => {
 
   &:hover, &.is-active {
     background-color: #F2F2F2;
-    color: var(--color-info);
+    color: var(--color-primary);
   }
 
   span {
