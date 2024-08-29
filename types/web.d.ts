@@ -26,4 +26,12 @@ declare global {
 
 }
 
+declare module 'vue-router' {
+  interface RouteMeta {
+    iconClass?: string;
+    showInAside?: boolean;
+    title?: string;
+  }
+}
+
 export { };
