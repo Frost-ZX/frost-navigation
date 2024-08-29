@@ -4,6 +4,11 @@
     :inline-theme-disabled="configProviderProps.inlineThemeDisabled"
     :locale="configProviderProps.locale"
     :style="{
+      '--box-shadow-1': themeVars.boxShadow1,
+      '--box-shadow-2': themeVars.boxShadow2,
+      '--box-shadow-3': themeVars.boxShadow3,
+      '--color-action': themeVars.actionColor,
+      '--color-border': themeVars.borderColor,
       '--color-error': themeCommon.errorColor,
       '--color-info': themeCommon.infoColor,
       '--color-primary': themeCommon.primaryColor,
@@ -30,6 +35,7 @@
 <script setup>
 import {
   NConfigProvider, NGlobalStyle,
+  useThemeVars,
 } from 'naive-ui';
 
 import {
@@ -43,6 +49,9 @@ const themeOverrides = configProviderProps.themeOverrides;
 
 /** 主题变量配置 - common */
 const themeCommon = themeOverrides.common;
+
+/** 默认主题变量 */
+const themeVars = useThemeVars();
 </script>
 
 <style lang="less">
@@ -78,6 +87,17 @@ const themeCommon = themeOverrides.common;
   }
 }
 
+// 预设样式
+.shadow-1 {
+  box-shadow: var(--box-shadow-1);
+}
+.shadow-2 {
+  box-shadow: var(--box-shadow-2);
+}
+.shadow-3 {
+  box-shadow: var(--box-shadow-3);
+}
+
 html, body, #app, .n-config-provider {
   width: 100%;
   height: 100%;
@@ -88,10 +108,15 @@ html, body {
   -webkit-tap-highlight-color: transparent;
 }
 html {
+  box-sizing: border-box;
   background-color: #FFF;
   color: var(--color-black);
   font-size: 16px;
   line-height: 1;
+
+  * {
+    box-sizing: inherit;
+  }
 }
 
 .n-config-provider {
@@ -105,11 +130,42 @@ html {
 
 .app-aside-wrapper {
   width: 64px;
-  border-right: 1px solid var(--color-gray);
+  border-right: 1px solid var(--color-border);
 }
 
 .app-view {
   flex-grow: 1;
   width: 0;
+  background-color: var(--color-action);
+
+  &.flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app-view-header {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    height: 64px;
+    background-color: #FFF;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .app-view-content {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+
+    &.with-margin {
+      margin: 20px;
+      width: calc(100% - 40px);
+      height: calc(100% - 40px);
+      border: 1px solid var(--color-border);
+    }
+  }
 }
 </style>
