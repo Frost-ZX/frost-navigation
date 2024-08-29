@@ -4,6 +4,10 @@ import {
 } from 'vue-router';
 
 import {
+  updateAppTitle,
+} from '@/assets/js/utils';
+
+import {
   ENABLE_SEARCH_MODULE,
   ENABLE_NAV_MODULE,
   ENABLE_TOOLBOX_MODULE,
@@ -66,4 +70,8 @@ export const router = createRouter({
       },
     },
   ],
+});
+
+router.afterEach((to) => {
+  updateAppTitle(to.meta.title);
 });
