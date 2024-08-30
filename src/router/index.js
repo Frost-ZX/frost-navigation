@@ -25,7 +25,7 @@ export const router = createRouter({
       name: 'IndexView',
       component: IndexView,
       meta: {
-        iconClass: 'mdi mdi-home-outline',
+        iconClass: 'mdi mdi-home',
         showInAside: true,
         title: '主页',
       },
@@ -45,7 +45,7 @@ export const router = createRouter({
       name: 'NavView',
       component: () => import('@/views/NavView/NavView.vue'),
       meta: {
-        iconClass: 'mdi mdi-compass-outline',
+        iconClass: 'mdi mdi-compass',
         showInAside: ENABLE_NAV_MODULE,
         title: '导航',
       },
@@ -75,7 +75,7 @@ export const router = createRouter({
       name: 'AboutView',
       component: AboutView,
       meta: {
-        iconClass: 'mdi mdi-information-outline',
+        iconClass: 'mdi mdi-information',
         showInAside: true,
         title: '关于',
       },
