@@ -8,8 +8,9 @@ import {
 } from '@/assets/js/utils';
 
 import {
-  ENABLE_SEARCH_MODULE,
+  ENABLE_MC_CTRL_MODULE,
   ENABLE_NAV_MODULE,
+  ENABLE_SEARCH_MODULE,
   ENABLE_TOOLBOX_MODULE,
 } from '@/config/modules';
 
@@ -57,6 +58,16 @@ export const router = createRouter({
         iconClass: 'mdi mdi-tools',
         showInAside: ENABLE_TOOLBOX_MODULE,
         title: '工具箱',
+      },
+    },
+    {
+      path: '/minecraft-ctrl-view',
+      name: 'MinecraftCtrlView',
+      component: () => import('@/views/MinecraftCtrlView/MinecraftCtrlView.vue'),
+      meta: {
+        iconClass: 'mdi mdi-gamepad',
+        showInAside: ENABLE_MC_CTRL_MODULE,
+        title: 'MINECRAFT 联动控制',
       },
     },
     {

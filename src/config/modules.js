@@ -1,5 +1,8 @@
 import { IS_DEV } from './env';
 
+/** 启用“MINECRAFT 联动控制”模块 */
+export const ENABLE_MC_CTRL_MODULE = IS_DEV;
+
 /** 启用“导航”模块 */
 export const ENABLE_NAV_MODULE = IS_DEV;
 
