@@ -155,15 +155,15 @@ html {
   }
 
   .app-view-content {
+    flex-grow: 1;
     padding: 20px;
     width: 100%;
-    height: 100%;
+    height: 0;
     background-color: #FFF;
 
     &.with-margin {
       margin: 20px;
       width: calc(100% - 40px);
-      height: calc(100% - 40px);
       border: 1px solid var(--color-border);
     }
   }
