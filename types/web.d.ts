@@ -27,6 +27,10 @@ declare global {
     showOnly?: boolean;
     /** 链接项 URL */
     url?: string;
+    /** 自身数据，备用 */
+    _data?: NavLinkItem;
+    /** 处理后生成的唯一 ID */
+    _key?: string;
   };
 
   // window
