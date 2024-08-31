@@ -103,7 +103,7 @@ onBeforeMount(() => {
   margin: auto;
   width: 32px;
   height: 32px;
-  background-image: url("./favicon.ico");
+  background-image: url("/favicon.ico");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
