@@ -13,6 +13,9 @@
       '--color-info': themeCommon.infoColor,
       '--color-primary': themeCommon.primaryColor,
       '--color-success': themeCommon.successColor,
+      '--color-text-1': themeVars.textColor1,
+      '--color-text-2': themeVars.textColor2,
+      '--color-text-3': themeVars.textColor3,
       '--color-warning': themeCommon.warningColor,
     }"
     :theme-overrides="themeOverrides"
@@ -58,10 +61,10 @@ const themeVars = useThemeVars();
 // 全局 CSS 变量
 :root {
   // 基础颜色
-  --color-black: #252525;
+  --color-black: rgb(51, 54, 57);
   --color-gray: #E0E0E0;
   // 分类颜色
-  --color-bg-dark: #252525;
+  --color-bg-dark: rgb(51, 54, 57);
   --color-bg-light: #F8F8F8;
   // 滚动条大小
   --scrollbar-size: 8px;
