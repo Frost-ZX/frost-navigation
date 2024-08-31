@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "HarmonyOS Sans SC";
+  font-weight: normal;
+  src: url("./HarmonyOS_Sans_SC_Regular.ttf");
+}
+
+@font-face {
+  font-family: "HarmonyOS Sans SC";
+  font-weight: bold;
+  src: url("./HarmonyOS_Sans_SC_Bold.ttf");
+}

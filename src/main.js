@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import { router } from './router';
 
 import '@mdi/font/css/materialdesignicons.css';
+import '@/assets/fonts/index.css';
 
 import lunisolar from 'lunisolar';
 import lunisolarLang1 from 'lunisolar/locale/en';
