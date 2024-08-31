@@ -1,5 +1,5 @@
 <template>
-  <div class="minecraft-ctrl-view">
+  <div class="minecraft-ctrl-view flex-col">
     <div class="app-view-header">
       <span>{{ MC_CTRL_MODULE_TITLE }}</span>
     </div>
