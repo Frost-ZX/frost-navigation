@@ -12,6 +12,7 @@
   "exclude": [],
   "include": [
     "package.json",
+    "public/nav-links.js",
     "src/**/*.js",
     "src/**/*.vue",
     "types/env.d.ts",
