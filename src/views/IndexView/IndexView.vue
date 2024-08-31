@@ -92,7 +92,7 @@ function updateTime() {
 
 onBeforeMount(() => {
   updateTime();
-  timeUpdater.value = setInterval(updateTime, 1000);
+  timeUpdater.value = setInterval(updateTime, 500);
 });
 
 onBeforeUnmount(() => {
