@@ -4,6 +4,8 @@
     :inline-theme-disabled="configProviderProps.inlineThemeDisabled"
     :locale="configProviderProps.locale"
     :style="{
+      '--border-radius': themeCommon.borderRadius,
+      '--border-radius-small': themeCommon.borderRadiusSmall,
       '--box-shadow-1': themeVars.boxShadow1,
       '--box-shadow-2': themeVars.boxShadow2,
       '--box-shadow-3': themeVars.boxShadow3,
@@ -163,6 +165,10 @@ html {
     width: 100%;
     height: 0;
     background-color: #FFF;
+
+    &.is-transparent {
+      background-color: transparent;
+    }
 
     &.with-margin {
       margin: 20px;

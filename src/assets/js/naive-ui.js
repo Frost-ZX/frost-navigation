@@ -15,6 +15,8 @@ export const configProviderProps = {
   // 调整主题变量
   themeOverrides: {
     common: {
+      borderRadius: '4px',
+      borderRadiusSmall: '2px',
       errorColor: '#E34D59',
       errorColorHover: '#F36D78',
       errorColorPressed: '#C9353F',
