@@ -5,6 +5,9 @@ module.exports = {
     'plugin:vue/vue3-essential',
   ],
   parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
     ecmaVersion: 'latest',
   },
   root: true,
