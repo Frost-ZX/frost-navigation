@@ -16,7 +16,6 @@
         "lint-fix": "vue-cli-service lint"
     },
     "dependencies": {
-        "@datagridxl/datagridxl2": "^2.0.6",
         "bookmark-file-parser": "^1.0.6",
         "codemirror": "^5.65.2",
         "core-js": "^3.8.3",
