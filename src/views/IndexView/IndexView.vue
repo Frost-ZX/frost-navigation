@@ -8,11 +8,16 @@
       <div class="date-time">
         <div class="time-info">{{ timeInfo.time }}</div>
         <div class="date-info">
-          <span>{{ timeInfo.date1 }}</span>
-          <span>{{ timeInfo.week }}</span>
-          <span>{{ timeInfo.date2 }}</span>
-          <span v-show="timeInfo.festival">{{ timeInfo.festival }}</span>
-          <span v-show="timeInfo.solarTerm">{{ timeInfo.solarTerm }}</span>
+          <div class="date-info-row">
+            <span>{{ timeInfo.date1 }}</span>
+            <span>{{ timeInfo.week }}</span>
+            <span v-show="timeInfo.festival">{{ timeInfo.festival }}</span>
+            <span v-show="timeInfo.solarTerm">{{ timeInfo.solarTerm }}</span>
+          </div>
+          <div class="date-info-row">
+            <span>{{ timeInfo.date2 }}</span>
+            <span>{{ timeInfo.date3 }}</span>
+          </div>
         </div>
       </div>
 
@@ -38,8 +43,11 @@ const timeInfo = reactive({
   /** 公历 */
   date1: '',
 
-  /** 阴历 */
+  /** 农历 */
   date2: '',
+
+  /** 八字 */
+  date3: '',
 
   /** 节日 */
   festival: '',
@@ -67,8 +75,10 @@ function updateTime() {
 
   // 公历
   timeInfo.date1 = date.format('YYYY 年 M 月 D 日');
-  // 阴历
+  // 农历
   timeInfo.date2 = date.format('lMlD');
+  // 八字
+  timeInfo.date3 = date.format('cY年 cM月 cD日');
   // 节日
   timeInfo.festival = markers.list.map(v => v.name).join(' & ');
   // 节气
