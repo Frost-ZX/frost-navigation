@@ -1,3 +1,5 @@
+// 工具函数
+
 import { description as appDesc } from '@package-json';
 
 /**

@@ -1,3 +1,5 @@
+// 模块显示配置
+
 import { IS_DEV } from './env';
 
 /** 启用“MINECRAFT 联动控制”模块 */

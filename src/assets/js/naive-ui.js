@@ -1,3 +1,5 @@
+// Naive UI 配置
+
 import { dateZhCN, zhCN } from 'naive-ui';
 
 /** @type { import('naive-ui').ConfigProviderProps } */
