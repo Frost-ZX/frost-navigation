@@ -12,6 +12,7 @@
           class="search-bar-element shadow-1"
           placeholder="搜索"
           size="large"
+          :clearable="true"
           @keydown.enter="openSearchResult"
         >
           <template #suffix>
@@ -102,10 +103,6 @@ import {
     .n-input__border, .n-input__state-border {
       box-shadow: none;
       border: none !important;
-    }
-
-    .n-input__suffix {
-      margin-left: 0;
     }
   }
 
