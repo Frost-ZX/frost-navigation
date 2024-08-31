@@ -47,7 +47,7 @@
                 <img
                   class="item-icon"
                   draggable="false"
-                  :src="getAssetsUrl('website-icon/' + engineItem.icon)"
+                  :src="engineItem.icon"
                 />
                 <span class="item-label">{{ engineItem.name }}</span>
                 <span class="item-desc">{{ engineItem.desc }}</span>
@@ -71,10 +71,6 @@ import {
   openSearchResult,
   searchEngineList, searchEngineName, searchKeyword,
 } from '@/assets/js/search-engine';
-
-import {
-  getAssetsUrl,
-} from '@/assets/js/utils';
 </script>
 
 <style lang="less" scoped>
