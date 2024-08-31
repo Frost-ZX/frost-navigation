@@ -14,6 +14,7 @@
     "@mdi/font": "^7.4.47",
     "@vueuse/core": "^11.0.3",
     "axios": "^1.7.5",
+    "lunisolar": "^2.5.0",
     "naive-ui": "^2.39.0",
     "radash": "^12.1.0",
     "uuid": "^10.0.0",
