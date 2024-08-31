@@ -98,12 +98,12 @@ const navTools = {
     minecraft: {
         title: 'Minecraft',
         list: [
-            {
-                name: 'minecraft-chunk-location-calc',
-                component: 'MinecraftChunkLocationCalc',
-                title: 'Minecraft 区块位置计算',
-                enabled: false
-            },
+            // {
+            //     name: 'minecraft-chunk-location-calc',
+            //     component: 'MinecraftChunkLocationCalc',
+            //     title: 'Minecraft 区块位置计算',
+            //     enabled: false
+            // },
             {
                 name: 'minecraft-dynmap-renderdata-gen',
                 component: 'MinecraftDynmapRenderdataGen',
@@ -127,15 +127,15 @@ const navTools = {
     other: {
         title: '其他',
         list: [
-            {
-                name: 'other-edit-csv',
-                component: 'OtherEditCSV',
-                title: 'CSV 编辑工具',
-                desc: '查看或编辑 CSV 文件',
-                update: '2022-03-17',
-                version: '2',
-                enabled: true,
-            },
+            // {
+            //     name: 'other-edit-csv',
+            //     component: 'OtherEditCSV',
+            //     title: 'CSV 编辑工具',
+            //     desc: '查看或编辑 CSV 文件',
+            //     update: '2022-03-17',
+            //     version: '2',
+            //     enabled: true,
+            // },
             {
                 name: 'other-new-window',
                 component: 'OtherNewWindow',
