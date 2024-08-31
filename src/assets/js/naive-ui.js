@@ -1,6 +1,9 @@
-// Naive UI 配置
+// Naive UI 配置和功能
 
-import { dateZhCN, zhCN } from 'naive-ui';
+import {
+  createDiscreteApi,
+  dateZhCN, zhCN,
+} from 'naive-ui';
 
 /** @type { import('naive-ui').ConfigProviderProps } */
 export const configProviderProps = {
@@ -44,3 +47,22 @@ export const configProviderProps = {
   },
 
 };
+
+export const {
+  message: $message,
+  notification: $notification,
+} = createDiscreteApi(
+  [
+    'message',
+    'notification',
+  ],
+  {
+    configProviderProps: configProviderProps,
+    messageProviderProps: {
+      closable: true,
+      duration: 2000,
+      keepAliveOnHover: true,
+      placement: 'top',
+    },
+  },
+);
