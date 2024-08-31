@@ -1,7 +1,7 @@
 <template>
   <div class="about-view flex-col">
     <div class="app-view-header">
-      <span>关于</span>
+      <span>{{ ABOUT_MODULE_TITLE }}</span>
     </div>
     <div class="app-view-content with-margin">
 
@@ -34,8 +34,9 @@
 </template>
 
 <script setup>
-import { version } from '@package-json';
 import { NA, NH4, NLi, NP, NUl } from 'naive-ui';
+import { version } from '@package-json';
+import { ABOUT_MODULE_TITLE } from '@/config/modules';
 
 /** Gitee 地址 */
 const URL_GITEE = 'https://gitee.com/frost-craft/frost-navigation';

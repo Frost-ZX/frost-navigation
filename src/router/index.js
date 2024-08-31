@@ -8,10 +8,16 @@ import {
 } from '@/assets/js/utils';
 
 import {
-  ENABLE_MC_CTRL_MODULE,
-  ENABLE_NAV_MODULE,
-  ENABLE_SEARCH_MODULE,
-  ENABLE_TOOLBOX_MODULE,
+  ABOUT_MODULE_ENABLED,
+  ABOUT_MODULE_TITLE,
+  MC_CTRL_MODULE_ENABLED,
+  MC_CTRL_MODULE_TITLE,
+  NAV_MODULE_ENABLED,
+  NAV_MODULE_TITLE,
+  SEARCH_MODULE_ENABLED,
+  SEARCH_MODULE_TITLE,
+  TOOLBOX_MODULE_ENABLED,
+  TOOLBOX_MODULE_TITLE,
 } from '@/config/modules';
 
 import AboutView from '@/views/AboutView/AboutView.vue';
@@ -36,8 +42,8 @@ export const router = createRouter({
       component: () => import('@/views/SearchView/SearchView.vue'),
       meta: {
         iconClass: 'mdi mdi-magnify',
-        showInAside: ENABLE_SEARCH_MODULE,
-        title: '搜索',
+        showInAside: SEARCH_MODULE_ENABLED,
+        title: SEARCH_MODULE_TITLE,
       },
     },
     {
@@ -46,8 +52,8 @@ export const router = createRouter({
       component: () => import('@/views/NavView/NavView.vue'),
       meta: {
         iconClass: 'mdi mdi-compass',
-        showInAside: ENABLE_NAV_MODULE,
-        title: '导航',
+        showInAside: NAV_MODULE_ENABLED,
+        title: NAV_MODULE_TITLE,
       },
     },
     {
@@ -56,8 +62,8 @@ export const router = createRouter({
       component: () => import('@/views/ToolboxView/ToolboxView.vue'),
       meta: {
         iconClass: 'mdi mdi-tools',
-        showInAside: ENABLE_TOOLBOX_MODULE,
-        title: '工具箱',
+        showInAside: TOOLBOX_MODULE_ENABLED,
+        title: TOOLBOX_MODULE_TITLE,
       },
     },
     {
@@ -66,8 +72,8 @@ export const router = createRouter({
       component: () => import('@/views/MinecraftCtrlView/MinecraftCtrlView.vue'),
       meta: {
         iconClass: 'mdi mdi-gamepad',
-        showInAside: ENABLE_MC_CTRL_MODULE,
-        title: 'MINECRAFT 联动控制',
+        showInAside: MC_CTRL_MODULE_ENABLED,
+        title: MC_CTRL_MODULE_TITLE,
       },
     },
     {
@@ -76,8 +82,8 @@ export const router = createRouter({
       component: AboutView,
       meta: {
         iconClass: 'mdi mdi-information',
-        showInAside: true,
-        title: '关于',
+        showInAside: ABOUT_MODULE_ENABLED,
+        title: ABOUT_MODULE_TITLE,
       },
     },
   ],

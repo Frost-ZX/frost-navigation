@@ -1,7 +1,7 @@
 <template>
   <div class="search-view flex-col">
     <div class="app-view-header">
-      <span>搜索</span>
+      <span>{{ SEARCH_MODULE_TITLE }}</span>
     </div>
     <div class="app-view-content is-transparent">
 
@@ -72,6 +72,10 @@ import {
   openSearchResult,
   searchEngineList, searchEngineName, searchKeyword,
 } from '@/assets/js/search-engine';
+
+import {
+  SEARCH_MODULE_TITLE,
+} from '@/config/modules';
 </script>
 
 <style lang="less" scoped>
