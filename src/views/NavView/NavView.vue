@@ -25,7 +25,7 @@
         <n-layout-sider
           class="left-aside"
           collapse-mode="width"
-          show-trigger="bar"
+          show-trigger="arrow-circle"
           :bordered="true"
           :collapsed="isCollapsed"
           :collapsed-width="64"
@@ -49,20 +49,39 @@
         </n-layout-sider>
 
         <!-- 右 -->
-        <n-layout
-          class="right-content"
-          :native-scrollbar="false"
-          :scrollbar-props="{ trigger: 'none' }"
-        >
-          <div class="tree-data">
-            <n-tree
-              children-field="children"
-              key-field="_key"
-              label-field="title"
-              :block-line="true"
-              :data="navLinksCurr"
-              :render-label="renderTreeLabel"
-            />
+        <n-layout class="right-content">
+          <div class="right-content-header">
+            <n-input-group>
+              <n-select
+                v-model:value="searchType"
+                class="search-type"
+                :options="searchTypes"
+              />
+              <n-input
+                v-model:value="searchKeyword"
+                class="search-input"
+                placeholder="搜索链接项"
+                :clearable="true"
+              />
+            </n-input-group>
+          </div>
+          <div class="right-content-body">
+            <n-scrollbar trigger="none">
+              <n-tree
+                children-field="children"
+                key-field="_key"
+                label-field="title"
+                :cancelable="false"
+                :block-line="true"
+                :block-node="true"
+                :data="navLinksCurr"
+                :filter="treeDataFilter"
+                :pattern="searchKeyword"
+                :render-label="renderTreeLabel"
+                :selectable="true"
+                :show-irrelevant-nodes="false"
+              />
+            </n-scrollbar>
           </div>
         </n-layout>
 
@@ -84,16 +103,19 @@
           :column="1"
         >
           <n-descriptions-item label="ID">
-            {{ detailDrawer.data._key }}
+            {{ detailDrawer.data._key || '-' }}
           </n-descriptions-item>
           <n-descriptions-item label="链接标题">
-            {{ detailDrawer.data.title }}
+            {{ detailDrawer.data.title || '-' }}
+          </n-descriptions-item>
+          <n-descriptions-item label="链接简介">
+            {{ detailDrawer.data.desc || '-' }}
           </n-descriptions-item>
           <n-descriptions-item label="链接地址">
-            {{ detailDrawer.data.url }}
+            {{ detailDrawer.data.url || '-' }}
           </n-descriptions-item>
           <n-descriptions-item label="更新日期">
-            {{ detailDrawer.data.date }}
+            {{ detailDrawer.data.date || '-' }}
           </n-descriptions-item>
           <n-descriptions-item label="是否有效">
             {{ detailDrawer.data.isInvalid ? '否' : '是' }}
@@ -107,11 +129,10 @@
 
 <script lang="jsx" setup>
 import {
-  NButton,
-  NDescriptions, NDescriptionsItem,
-  NDrawer, NDrawerContent,
-  NLayout, NLayoutSider, NMenu, NTree,
-  NLi, NUl,
+  NButton, NDescriptions, NDescriptionsItem,
+  NDrawer, NDrawerContent, NInput, NInputGroup,
+  NLayout, NLayoutSider, NLi, NMenu,
+  NScrollbar, NSelect, NTree, NUl,
 } from 'naive-ui';
 
 import {
@@ -145,7 +166,7 @@ const detailDrawer = reactive({
 const isCollapsed = shallowRef(false);
 
 /** 完整的链接列表 */
-const navLinksAll = formatNavLinks();
+const navLinksAll = formatNavLinks(true);
 
 /**
  * @desc 链接分类列表
@@ -168,6 +189,23 @@ const navLinksCurr = shallowRef([]);
 
 /** 当前显示的链接分类标题 */
 const navLinksTitle = shallowRef('');
+
+/** 搜索关键词 */
+const searchKeyword = shallowRef('');
+
+/** 搜索类型 */
+const searchType = shallowRef('all');
+
+/**
+ * @desc 搜索类型列表
+ * @type { import('naive-ui').SelectOption[] }
+ */
+const searchTypes = [
+  { label: '全部', value: 'all' },
+  { label: '标题', value: 'title' },
+  { label: '链接', value: 'url' },
+  { label: '简介', value: 'desc' },
+];
 
 /**
  * @description 切换链接列表
@@ -244,6 +282,44 @@ function showHelp() {
 }
 
 /**
+ * @description 处理搜索
+ * @param {string}      pattern
+ * @param {NavLinkItem} node
+ */
+function treeDataFilter(pattern = '', node = null) {
+
+  if (pattern === '') {
+    return true;
+  } else {
+    pattern = pattern.toLowerCase();
+  }
+
+  let type = searchType.value;
+
+  let desc = String(node.desc).toLowerCase();
+  let title = String(node.title).toLowerCase();
+  let url = String(node.url).toLowerCase();
+
+  switch (type) {
+    case 'all':
+      return (
+        title.includes(pattern) ||
+        url.includes(pattern) ||
+        desc.includes(pattern)
+      );
+    case 'desc':
+      return desc.includes(pattern);
+    case 'title':
+      return title.includes(pattern);
+    case 'url':
+      return url.includes(pattern);
+    default:
+      return false;
+  }
+
+}
+
+/**
  * @description 切换链接详情显示隐藏
  * @param {boolean}     show
  * @param {NavLinkItem} data
@@ -280,16 +356,37 @@ onBeforeMount(() => {
   width: 0;
   height: 100%;
 
-  > div {
+  :deep(> div) {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
   }
 }
 
-.tree-data {
-  padding: 16px;
+.right-content-header,
+.right-content-body {
   width: 100%;
-  height: 100%;
+}
+
+.right-content-header {
+  // 注：右侧 padding 2px 防止输入框聚焦样式显示不全
+  padding: 10px 2px 0 16px;
+
+  .search-type {
+    width: 80px;
+  }
+
+  .search-input {
+    flex-grow: 1;
+    width: 0;
+  }
+}
+
+.right-content-body {
+  flex-grow: 1;
+  padding: 16px 2px 0 16px;
+  height: 0;
 
   :deep(.n-tree-node) {
     align-items: center;
@@ -298,6 +395,10 @@ onBeforeMount(() => {
   :deep(.n-tree-node-content) {
     color: var(--color-text-2);
     line-height: 1.5;
+  }
+
+  :deep(.n-tree-node-content__text) {
+    border-bottom: none;
   }
 
   :deep(.n-tree-node-indent > div) {

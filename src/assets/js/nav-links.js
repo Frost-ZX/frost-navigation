@@ -1,5 +1,8 @@
-/** 处理导航链接列表 */
-export function formatNavLinks() {
+/**
+ * @description 处理导航链接列表
+ * @param {boolean} withAll 是否添加“全部”项
+ */
+export function formatNavLinks(withAll = false) {
 
   /** @type {NavLinkItem[]} */
   let list0 = JSON.parse(JSON.stringify(window['NAV_LINK_LIST']));
@@ -42,6 +45,14 @@ export function formatNavLinks() {
 
     }
   })(list0, list1);
+
+  if (withAll) {
+    list1.unshift({
+      title: '全部',
+      icon: 'mdi mdi-view-grid',
+      children: JSON.parse(JSON.stringify(list1)),
+    });
+  }
 
   return list1;
 
