@@ -261,8 +261,15 @@ function renderTreeLabel(info) {
     isURL && toggleDetailDrawer(true, data);
   };
 
-  return <div class="item-wrapper" onContextmenu={show} onClick={open}>
-    <div class="item-title">{ data.title }</div>
+  return <div
+    class="item-wrapper"
+    onContextmenu={show}
+    onClick={open}
+  >
+    <div class="item-title">
+      <span>{ data.title }</span>
+      { data.desc ? <span> - { data.desc }</span> : ''}
+    </div>
     <div class="item-url">{ data.url }</div>
   </div>;
 
