@@ -189,6 +189,11 @@ html {
     border-bottom: 1px solid var(--color-border);
     font-size: 18px;
     font-weight: bold;
+
+    .placeholder {
+      flex-grow: 1;
+      width: 0;
+    }
   }
 
   .app-view-content {
@@ -207,6 +212,19 @@ html {
       width: calc(100% - 40px);
       border: 1px solid var(--color-border);
     }
+  }
+}
+
+// -- Naive UI --
+
+.n-drawer--right-placement {
+  .n-drawer-body {
+    height: 0;
+  }
+
+  .n-drawer-body-content-wrapper {
+    padding: 20px !important;
+    line-height: 1;
   }
 }
 </style>
