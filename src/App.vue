@@ -70,6 +70,11 @@ function handleContextMenu(event) {
 
   let element = event.target;
 
+  // 排除按住 Ctrl 键时
+  if (event.ctrlKey) {
+    return;
+  }
+
   // 排除输入框元素
   if (
     element instanceof HTMLInputElement &&
