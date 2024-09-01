@@ -7,30 +7,9 @@ window['NAV_LINK_LIST'] = [
         title: '百科',
         children: [
           {
-            title: 'Unicode® 字符百科',
-            children: [
-              {
-                title: 'Unicode® 字符百科',
-                date: '2021-02-07',
-                url: 'https://unicode-table.com/cn/',
-              },
-              {
-                title: '编码器',
-                url: 'https://unicode-table.com/cn/tools/encoder/',
-              },
-              {
-                title: '解码器',
-                url: 'https://unicode-table.com/cn/tools/decoder/',
-              },
-              {
-                title: '翻转',
-                url: 'https://unicode-table.com/cn/tools/flip/',
-              },
-              {
-                title: 'Unicode 字符表生成',
-                url: 'https://unicode-table.com/cn/tools/generator/',
-              },
-            ]
+            title: 'Unicode 字符百科',
+            date: '2024-09-01',
+            url: 'https://symbl.cc/',
           },
           {
             title: '百度百科',
@@ -48,7 +27,7 @@ window['NAV_LINK_LIST'] = [
             date: '2021-02-07',
             url: 'https://zh.wikipedia.org/',
           },
-        ]
+        ],
       },
       {
         title: '教程',
@@ -70,8 +49,8 @@ window['NAV_LINK_LIST'] = [
         children: [
           {
             title: '广州市非物质文化遗产保护中心',
-            date: '2021-02-08',
-            url: 'http://www.ichgz.com/',
+            date: '2024-09-01',
+            url: 'https://www.ichgz.com/',
           },
           {
             title: '全历史',
@@ -134,11 +113,6 @@ window['NAV_LINK_LIST'] = [
         title: '博客',
         children: [
           {
-            title: '4SSH',
-            date: '2021-02-07',
-            url: 'https://4ssh.cn/',
-          },
-          {
             title: 'Frost-ZX',
             date: '2021-02-07',
             desc: '一个分享技术、资源，记录学习与生活的博客。',
@@ -157,11 +131,6 @@ window['NAV_LINK_LIST'] = [
             title: 'Luminous\' Home',
             date: '2021-02-07',
             url: 'https://luotianyi.vc/',
-          },
-          {
-            title: 'UNKNOW date',
-            date: '2021-02-07',
-            url: 'https://n-a.date/',
           },
           {
             title: 'zgcwkj',
@@ -229,7 +198,8 @@ window['NAV_LINK_LIST'] = [
           },
           {
             title: '地铁族',
-            date: '2021-02-07',
+            date: '2024-09-01',
+            isInvalid: true,
             url: 'http://www.ditiezu.com/',
           },
           {
@@ -253,12 +223,6 @@ window['NAV_LINK_LIST'] = [
             date: '2021-11-07',
             desc: '给你感兴趣的内容',
             url: 'https://www.landian.vip/',
-          },
-          {
-            title: '码云社',
-            date: '2021-02-07',
-            desc: '用代码改变世界',
-            url: 'https://www.codeseeding.com/',
           },
           {
             title: '天空之城',
@@ -293,8 +257,8 @@ window['NAV_LINK_LIST'] = [
           },
           {
             title: 'Twitter',
-            date: '2021-02-07',
-            url: 'https://twitter.com/',
+            date: '2024-09-01',
+            url: 'https://x.com/',
           },
           {
             title: '新浪微博',
@@ -313,14 +277,8 @@ window['NAV_LINK_LIST'] = [
           },
           {
             title: '开黑啦',
-            date: '2021-04-07',
-            url: 'https://www.kaiheila.cn/',
-          },
-          {
-            title: '云短信',
-            date: '2021-02-07',
-            desc: '在线短信接收',
-            url: 'https://www.materialtools.com/',
+            date: '2024-09-01',
+            url: 'https://www.kookapp.cn/',
           },
         ],
       },
@@ -435,8 +393,8 @@ window['NAV_LINK_LIST'] = [
         children: [
           {
             title: '公安部“互联网+政务服务”平台',
-            date: '2021-06-04',
-            url: 'https://zwfw.mps.gov.cn/',
+            date: '2024-09-01',
+            url: 'https://ywtb.mps.gov.cn/',
           }
         ]
       },
@@ -445,8 +403,8 @@ window['NAV_LINK_LIST'] = [
         children: [
           {
             title: '飞猪旅行',
-            date: '2021-02-08',
-            url: 'https://www.alitrip.com/',
+            date: '2024-09-01',
+            url: 'https://www.fliggy.com/',
           },
           {
             title: '途牛',
@@ -462,14 +420,8 @@ window['NAV_LINK_LIST'] = [
       },
       {
         title: '生活',
-        children: [
-          {
-            title: '绿色呼吸',
-            date: '2021-02-08',
-            url: 'http://www.pm25.com/',
-          }
-        ]
-      }
+        children: [],
+      },
     ],
   },
   {
@@ -479,17 +431,6 @@ window['NAV_LINK_LIST'] = [
       {
         title: '版本控制',
         children: [
-          {
-            title: 'CODE CHINA',
-            date: '2021-04-16',
-            url: 'https://codechina.csdn.net/',
-          },
-          {
-            title: 'CODE CHINA',
-            date: '2021-04-16',
-            desc: 'GitHub 加速计划',
-            url: 'https://codechina.csdn.net/mirrors'
-          },
           {
             title: 'Git',
             date: '2021-05-22',
@@ -556,17 +497,12 @@ window['NAV_LINK_LIST'] = [
                     date: '2021-06-01',
                     desc: '精灵图样式生成工具',
                     url: 'http://www.spritecow.com/',
-                  }
-                ]
+                  },
+                ],
               },
               {
                 title: '框架 / 库',
                 children: [
-                  {
-                    title: 'Bootstrap 中文网',
-                    date: '2021-02-08',
-                    url: 'https://www.bootcss.com/',
-                  },
                   {
                     title: 'highlight.js',
                     date: '2021-02-08',
@@ -789,26 +725,19 @@ window['NAV_LINK_LIST'] = [
                     children: [
                       {
                         title: 'iVocaloid论坛',
-                        date: '2021-02-08',
+                        date: '2024-09-01',
+                        isInvalid: true,
                         url: 'http://bbs.ivocaloid.com/',
                       },
                       {
                         title: '洛天依中文网',
-                        date: '2021-02-08',
-                        url: 'http://www.luotianyi.org/forum.php'
+                        date: '2024-09-01',
+                        isInvalid: true,
+                        url: 'http://www.luotianyi.org/'
                       }
-                    ]
+                    ],
                   },
-                  {
-                    title: '资源',
-                    children: [
-                      {
-                        title: 'VOCAKEY',
-                        url: 'http://vocakey.info/',
-                      }
-                    ]
-                  }
-                ]
+                ],
               },
               {
                 title: 'Synthesizer V',
@@ -834,16 +763,16 @@ window['NAV_LINK_LIST'] = [
           },
           {
             title: '爱发电',
-            date: '2021-02-08',
-            url: 'https://afdian.net/',
+            date: '2024-09-01',
+            url: 'https://ifdian.net/',
           },
           {
             title: '面包多',
             date: '2021-06-04',
             desc: '为创作者创收',
             url: 'https://mianbaoduo.com/',
-          }
-        ]
+          },
+        ],
       },
       {
         title: '其他',
@@ -1028,7 +957,7 @@ window['NAV_LINK_LIST'] = [
             children: [
               {
                 title: 'BiliOB233',
-                date: '2021-02-08',
+                date: '2024-09-01',
                 desc: 'B站历史数据统计分析',
                 isInvalid: true,
                 url: 'https://www.biliob233.com/',
@@ -2864,7 +2793,7 @@ window['NAV_LINK_LIST'] = [
             children: [
               {
                 title: 'Minecraft 中文论坛',
-                date: '2021-02-08',
+                date: '2024-09-01',
                 isInvalid: true,
                 url: 'https://www.mcbbs.net/',
               },
