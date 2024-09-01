@@ -15,7 +15,7 @@ export const MC_CTRL_MODULE_ENABLED = IS_DEV;
 export const MC_CTRL_MODULE_TITLE = 'MINECRAFT 联动控制';
 
 /** 启用模块 */
-export const NAV_MODULE_ENABLED = IS_DEV;
+export const NAV_MODULE_ENABLED = true;
 
 /** 模块标题 */
 export const NAV_MODULE_TITLE = '网址导航';
