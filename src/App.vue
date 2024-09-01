@@ -44,6 +44,10 @@ import {
 } from 'naive-ui';
 
 import {
+  onMounted, onBeforeUnmount,
+} from 'vue';
+
+import {
   configProviderProps,
 } from './assets/js/naive-ui';
 
@@ -57,6 +61,34 @@ const themeCommon = themeOverrides.common;
 
 /** 默认主题变量 */
 const themeVars = useThemeVars();
+
+/**
+ * @description 阻止默认右键菜单
+ * @param {PointerEvent} event
+ */
+function handleContextMenu(event) {
+
+  let element = event.target;
+
+  // 排除输入框元素
+  if (
+    element instanceof HTMLInputElement &&
+    ['password', 'text', 'textarea'].includes(element.type)
+  ) {
+    return;
+  }
+
+  event.preventDefault();
+
+}
+
+onMounted(() => {
+  window.addEventListener('contextmenu', handleContextMenu);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('contextmenu', handleContextMenu);
+});
 </script>
 
 <style lang="less">
