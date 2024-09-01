@@ -49,10 +49,12 @@ export const configProviderProps = {
 };
 
 export const {
+  dialog: $dialog,
   message: $message,
   notification: $notification,
 } = createDiscreteApi(
   [
+    'dialog',
     'message',
     'notification',
   ],
@@ -63,6 +65,10 @@ export const {
       duration: 2000,
       keepAliveOnHover: true,
       placement: 'top',
+    },
+    notificationProviderProps: {
+      keepAliveOnHover: true,
+      placement: 'top-right',
     },
   },
 );
