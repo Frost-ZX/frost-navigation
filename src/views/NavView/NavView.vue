@@ -144,12 +144,21 @@ import {
 } from '@/config/modules';
 
 import {
+  SKEY_NAV_LINK_ASIDE_COLLAPSED,
+  SKEY_NAV_LINK_SEARCH_TYPE,
+} from '@/config/storage';
+
+import {
   $dialog, $message,
 } from '@/assets/js/naive-ui';
 
 import {
   formatNavLinks,
 } from '@/assets/js/nav-links';
+
+import {
+  useLocalStorage,
+} from '@vueuse/core';
 
 /** 链接详情 */
 const detailDrawer = reactive({
@@ -163,7 +172,10 @@ const detailDrawer = reactive({
 });
 
 /** 分类列表是否折叠 */
-const isCollapsed = shallowRef(false);
+const isCollapsed = useLocalStorage(
+  SKEY_NAV_LINK_ASIDE_COLLAPSED,
+  false
+);
 
 /** 完整的链接列表 */
 const navLinksAll = formatNavLinks(true);
@@ -194,7 +206,10 @@ const navLinksTitle = shallowRef('');
 const searchKeyword = shallowRef('');
 
 /** 搜索类型 */
-const searchType = shallowRef('all');
+const searchType = useLocalStorage(
+  SKEY_NAV_LINK_SEARCH_TYPE,
+  'all'
+);
 
 /**
  * @desc 搜索类型列表
