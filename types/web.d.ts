@@ -33,6 +33,36 @@ declare global {
     _key?: string;
   };
 
+  /** 工具箱分类 */
+  interface ToolboxCategory {
+    /** 分类唯一 ID */
+    id: string;
+    /** 分类名称 */
+    title: string;
+    /** 工具列表 */
+    items: ToolboxItem[];
+  }
+
+  /** 工具箱工具信息 */
+  interface ToolboxItem {
+    /** 工具唯一 ID */
+    id: string;
+    /** 工具名称 */
+    title: string;
+    /** 工具简介 */
+    desc: string;
+    /** 组件路径 */
+    component: string;
+    /** 创建日期 */
+    createdAt: string;
+    /** 更新日期 */
+    updatedAt: string;
+    /** 版本号 */
+    version: string;
+    /** 是否启用 */
+    enabled: boolean;
+  }
+
   // window
   interface Window {
 
