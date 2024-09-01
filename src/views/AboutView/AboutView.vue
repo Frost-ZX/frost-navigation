@@ -9,6 +9,7 @@
 
       <n-p>一个多功能的网址导航，绿色无广告。</n-p>
       <n-p>当前版本：V{{ version }}</n-p>
+      <n-p>导航链接列表更新日期：{{ NAV_LINK_DATE }}</n-p>
 
       <n-h4>开发人员</n-h4>
 
@@ -37,6 +38,9 @@
 import { NA, NH4, NLi, NP, NUl } from 'naive-ui';
 import { version } from '@package-json';
 import { ABOUT_MODULE_TITLE } from '@/config/modules';
+
+/** 导航链接列表更新日期 */
+const NAV_LINK_DATE = window['NAV_LINK_DATE'];
 
 /** Gitee 地址 */
 const URL_GITEE = 'https://gitee.com/frost-craft/frost-navigation';

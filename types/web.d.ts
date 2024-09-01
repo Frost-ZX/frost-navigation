@@ -36,7 +36,10 @@ declare global {
   // window
   interface Window {
 
-    /** 导航链接列表 */
+    /** 导航链接列表更新日期 */
+    NAV_LINK_DATE: string;
+
+    /** 导航链接列表数据 */
     NAV_LINK_LIST: NavLinkItem[];
 
   }

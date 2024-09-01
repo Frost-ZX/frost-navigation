@@ -1,3 +1,5 @@
+window['NAV_LINK_DATE'] = '2024-09-01';
+
 window['NAV_LINK_LIST'] = [
   {
     title: '百科 / 教程 / 科普 / 资料',
