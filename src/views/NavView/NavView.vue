@@ -231,14 +231,15 @@ function handleSelectCategory(key, item) {
 
 /**
  * @description 打开链接
- * @param {string}  url
- * @param {boolean} showOnly
+ * @param {NavLinkItem} data
  */
-function openURL(url = '', showOnly = false) {
-  if (showOnly) {
-    $message.warning('请在链接详情中复制后手动打开');
-  } else {
-    url && window.open(url, '_blank');
+function openURL(data) {
+  if (data.isInvalid) {
+    $message.warning('链接已失效，仅支持查看详情');
+  } else if (data.showOnly) {
+    $message.warning('该链接不支持直接打开，请在链接详情中复制后手动打开');
+  } else if (data.url) {
+    window.open(data.url, '_blank');
   }
 }
 
@@ -253,7 +254,7 @@ function renderTreeLabel(info) {
   let isURL = !data.children;
 
   let open = () => {
-    isURL && openURL(data.url, data.showOnly);
+    isURL && openURL(data);
   };
 
   let show = () => {
