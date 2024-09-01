@@ -1,1 +1,0 @@
-import{a3 as e,a4 as a,a5 as s,Y as t,aa as n,ae as o}from"./index-CqxiKpQD.js";const c={class:"nav-view"},_={class:"app-view-header"},i=a("div",{class:"app-view-content is-transparent"},null,-1),v={__name:"NavView",setup(r){return(p,l)=>(n(),e("div",c,[a("div",_,[a("span",null,s(t(o)),1)]),i]))}};export{v as default};

@@ -1,0 +1,1 @@
+import{z as s,A as t,B as e,C as a,D as n,bL as c}from"./index-D9XA0Ccg.js";const r={class:"minecraft-ctrl-view flex-col"},o={class:"app-view-header"},i=e("div",{class:"app-view-content is-transparent"},null,-1),f={__name:"MinecraftCtrlView",setup(_){return(l,p)=>(s(),t("div",r,[e("div",o,[e("span",null,a(n(c)),1)]),i]))}};export{f as default};

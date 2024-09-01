@@ -1,1 +1,0 @@
-import{a3 as e,a4 as a,a5 as s,Y as t,aa as n,ag as c}from"./index-CqxiKpQD.js";const r={class:"minecraft-ctrl-view"},i={class:"app-view-header"},o=a("div",{class:"app-view-content is-transparent"},null,-1),u={__name:"MinecraftCtrlView",setup(_){return(l,p)=>(n(),e("div",r,[a("div",i,[a("span",null,s(t(c)),1)]),o]))}};export{u as default};

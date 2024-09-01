@@ -1,1 +1,0 @@
-import{a3 as e,a4 as a,a5 as s,Y as o,aa as t,af as n}from"./index-CqxiKpQD.js";const c={class:"toolbox-view flex-col"},l={class:"app-view-header"},_=a("div",{class:"app-view-content is-transparent"},null,-1),u={__name:"ToolboxView",setup(i){return(r,p)=>(t(),e("div",c,[a("div",l,[a("span",null,s(o(n)),1)]),_]))}};export{u as default};
