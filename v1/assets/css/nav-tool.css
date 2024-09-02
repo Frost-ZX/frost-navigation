@@ -1,0 +1,240 @@
+@charset "UTF-8";
+
+html {
+    font-size: 16px;
+}
+
+body {
+    padding: 1.2rem 0 5rem 0;
+    background-color: #999;
+    scroll-behavior: smooth;
+}
+
+/* 主要 */
+
+.main {
+    margin: 0 auto;
+    width: 25rem;
+}
+.main > div {
+    margin: 1.2rem 0;
+    padding: 1rem;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 0.4rem;
+    background-color: #FFF;
+    box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.05);
+    user-select: none;
+}
+.main > div header {
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.main > div hr {
+    margin: 0.5rem 0;
+    height: 0.1rem;
+    border: none;
+    background-color: #EEE;
+}
+.main > div input:focus {
+    outline: none;
+}
+.main > div input[type="checkbox"] {
+    width: 0.8rem;
+    height: 0.8rem;
+}
+.main > div input[type="radio"] {
+    width: 0.8rem;
+    height: 0.8rem;
+}
+.main > div input[type="range"] {
+    -webkit-appearance: none;
+    width: 6rem;
+}
+.main > div input[type=range]::-webkit-slider-runnable-track {
+    height: 0.7rem;
+    border-radius: 0.7rem;
+    background-color: #999;
+}
+.main > div input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 1.2rem;
+    width: 1rem;
+    margin-top: -0.25rem;
+    background: #555; 
+    border-radius: 0.2rem;
+}
+.main > div input[type="text"] {
+    padding: 0.3rem 0.4rem;
+    border: 0.08rem solid #03A9F4;
+    font-size: 0.9rem;
+}
+.main > div p {
+    margin: 0.5rem 0;
+}
+.main > div textarea {
+    padding: 0.4rem;
+    box-sizing: border-box;
+    width: 100%;
+    border: 0.08rem solid #03A9F4;
+    box-shadow: 0 0 0.4rem rgba(3, 169, 244, 0.2);
+    font-size: 0.9rem;
+    resize: vertical;
+}
+.main > div textarea:focus {
+    outline: none;
+}
+/* 按钮 */
+.tool-button {
+    margin: 0.5rem 0 !important;
+}
+.tool-button > div {
+    display: inline-block;
+    user-select: none;
+    margin: 0 0.4rem 0 0 !important;
+    padding: 0.4rem 0.9rem;
+    background-color: #03A9F4;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #FFF;
+    border-radius: 0.4rem;
+    box-shadow: 0.2rem 0.2rem 0.4rem rgba(3, 169, 244, 0.4);
+    transition: background 0.2s;
+}
+.tool-button > div:hover {
+    background-color: #2196F3;
+}
+
+/* 索引 */
+
+.tool-nav ul li {
+    display: inline-block;
+    list-style: none;
+}
+.tool-nav ul li a {
+    display: block;
+    float: left;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.4rem;
+    background-color: #4CAF50;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: #FFF;
+    transition: background 0.2s;
+}
+.tool-nav ul li a:hover {
+    background-color: #8BC34A;
+}
+.tool-nav-link {
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Unix 时间戳转换 */
+#tool-unixtime > div {
+    margin: 0.2rem 0;
+}
+#tool-unixtime > div > span {
+    display: inline-block;
+    width: 7rem;
+    text-align: right;
+    font-weight: bold;
+}
+#tool-unixtime > p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    font-weight: bold;
+}
+#tool-unixtime input[type="text"] {
+    width: 10rem;
+}
+
+/* 计算下载用时 */
+#tool-downloadtime {
+    
+}
+#tool-downloadtime-input {
+    
+}
+#tool-downloadtime-output {
+    
+}
+#tool-downloadtime-help {
+    font-size: 0.9rem;
+}
+
+/* 简易计算 */
+
+#tool-calculate textarea {
+    font-size: 1rem;
+}
+#tool-calculate-tofixed {
+    width: 1rem;
+    text-align: center;
+}
+
+/* 生成批量下载链接 */
+
+#tool-genlink-link input[type="text"] {
+    width: 80%;
+}
+#tool-genlink-settings > div {
+    margin: 0.4rem 0;
+}
+#tool-genlink-settings input[type="text"] {
+    width: 1.5rem;
+    text-align: center;
+}
+#tool-genlink-settings input[type="radio"] + label {
+    font-weight: bold;
+}
+
+/* 生成随机字符串 */
+
+#genstring-result input[type="text"] {
+    width: 80%;
+    font-family: monospace;
+}
+
+/* 新窗口（小窗）中打开 */
+
+#tool-newwindow > div {
+    margin-bottom: 0.6rem;
+}
+#tool-newwindow-link input[type="text"] {
+    width: 80%;
+}
+#tool-newwindow-meta input[type="text"] {
+    width: 7rem;
+}
+
+/* 运行 JavaScript */
+
+#tool-runjs textarea {
+    font-family: monospace;
+}
+
+/* 返回顶部 */
+
+.to-top {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    box-shadow: 0 0 0.6rem 0 rgba(0, 0, 0, 0.1);
+    background-color: #FFF;
+    text-align: center;
+    line-height: 3rem;
+    font-family: monospace;
+    font-size: 1.2rem;
+    color: #2196F3;
+    user-select: none;
+}
+.to-top:hover {
+    animation: ToTopAnimation 0.5s ease-in-out;
+}
