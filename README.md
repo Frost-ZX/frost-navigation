@@ -9,6 +9,9 @@
 ### 在线
 
 - [GitHub Pages](https://frost-zx.github.io/frost-navigation/)
+  - [V1 版本](https://frost-zx.github.io/frost-navigation/v1/)（2020-09-10）
+  - [V2 版本](https://frost-zx.github.io/frost-navigation/v2/)（2024-08-31）
+  - [V3 版本](https://frost-zx.github.io/frost-navigation/v3/)（开发中）
 - [Vercel](https://frost-navigation.vercel.app/)
 
 ### 离线（需要手动更新）
