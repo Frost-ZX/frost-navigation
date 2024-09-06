@@ -52,7 +52,7 @@ const router = useRouter();
 
 /** 切换页面 */
 function changePage(routeName = '') {
-  router.replace({ name: routeName });
+  router.push({ name: routeName });
 }
 
 /** 初始化数据 */
