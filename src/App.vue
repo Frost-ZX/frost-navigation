@@ -188,6 +188,7 @@ html {
   .app-view-header {
     display: flex;
     align-items: center;
+    position: relative;
     padding: 0 16px;
     height: 64px;
     background-color: #FFF;
@@ -203,6 +204,7 @@ html {
 
   .app-view-content {
     flex-grow: 1;
+    position: relative;
     padding: 20px;
     width: 100%;
     height: 0;
