@@ -4,7 +4,7 @@ import type {
 } from 'vue';
 
 import type {
-  RouteLocationRaw,
+  RouteLocationRaw, RouteRecordRaw,
 } from 'vue-router';
 
 declare global {
@@ -86,14 +86,25 @@ declare global {
 
   // Vue Router
   type VueRouteLocationRaw = RouteLocationRaw;
+  type VueRouteRecordRaw = RouteRecordRaw;
 
 }
 
 declare module 'vue-router' {
   interface RouteMeta {
+
+    /** 主界面侧边栏图标 class */
     iconClass?: string;
+
+    /** 是否为工具页面 */
+    isToolDetail?: boolean;
+
+    /** 是否在主界面侧边栏显示 */
     showInAside?: boolean;
+
+    /** 页面标题 */
     title?: string;
+
   }
 }
 
