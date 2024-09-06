@@ -4,6 +4,10 @@ import {
 } from 'vue-router';
 
 import {
+  getToolboxRoutes,
+} from '@/assets/js/toolbox-data';
+
+import {
   updateAppTitle,
 } from '@/assets/js/utils';
 
@@ -62,9 +66,11 @@ export const router = createRouter({
       component: () => import('@/views/ToolboxView/ToolboxView.vue'),
       meta: {
         iconClass: 'mdi mdi-tools',
+        isToolDetail: false,
         showInAside: TOOLBOX_MODULE_ENABLED,
         title: TOOLBOX_MODULE_TITLE,
       },
+      children: getToolboxRoutes(),
     },
     {
       path: '/minecraft-ctrl-view',

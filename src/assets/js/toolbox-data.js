@@ -1,8 +1,7 @@
 // 工具箱
 
-// import {
-//   defineAsyncComponent,
-// } from 'vue';
+const META_URL = import.meta.url;
+const MODULES = import.meta.glob('@/views/ToolboxView/**/*.vue');
 
 /**
  * @desc 工具列表
@@ -217,3 +216,47 @@ export const toolList = [
     ],
   },
 ];
+
+/**
+ * @description 获取动态组件
+ * @param {string} path 工具页面相对路径
+ */
+function getDynamicComponent(path) {
+
+  let key = new URL(`../../views/ToolboxView/${path}.vue`, META_URL).pathname;
+  let component = MODULES[key];
+
+  return component;
+
+}
+
+/** 生成工具箱页面路由 */
+export function getToolboxRoutes() {
+
+  /** @type {VueRouteRecordRaw[]} */
+  let routes = [];
+
+  toolList.forEach((categoryItem) => {
+    categoryItem.items.forEach((toolItem) => {
+
+      // 跳过未启用的工具
+      if (!toolItem.enabled) {
+        return;
+      }
+
+      routes.push({
+        path: `/toolbox-view/${toolItem.id}`,
+        name: `Toolbox/${toolItem.component}`,
+        component: getDynamicComponent(toolItem.component),
+        meta: {
+          isToolDetail: true,
+          title: toolItem.title,
+        },
+      });
+
+    });
+  });
+
+  return routes;
+
+}
