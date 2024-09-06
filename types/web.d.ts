@@ -51,6 +51,8 @@ declare global {
     title: string;
     /** 工具简介 */
     desc: string;
+    /** 图标 */
+    iconClass: string;
     /** 组件路径 */
     component: string;
     /** 创建日期 */
