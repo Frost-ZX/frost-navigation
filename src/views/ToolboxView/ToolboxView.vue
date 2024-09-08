@@ -91,7 +91,7 @@ const routeTitle = computed(() => {
   return route.meta.title;
 });
 
-/** 
+/**
  * @description 打开工具
  * @param {ToolboxItem} data
  */
@@ -149,8 +149,25 @@ function handleOpenTool(data) {
   position: absolute;
   left: 0;
   top: 0;
+  padding: 20px;
   width: 100%;
   height: 100%;
   background-color: #FFF;
+
+  :deep(.tool-detail-page) {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+
+    > .n-card {
+      &:not(:first-child) {
+        margin-top: 20px;
+      }
+
+      .n-card__content {
+        padding-top: var(--n-padding-top);
+      }
+    }
+  }
 }
 </style>

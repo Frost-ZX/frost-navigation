@@ -11,7 +11,7 @@ export const toolList = [
   {
     id: 'calculation-tools',
     title: '计算',
-    enabled: false,
+    enabled: true,
     items: [
       {
         id: 'calc-download-time',
@@ -19,10 +19,10 @@ export const toolList = [
         title: '下载用时计算',
         iconClass: 'mdi mdi-calculator-variant-outline',
         desc: '根据设定的文件大小和下载速度简单计算大约下载完成所需的时间。',
-        createdAt: '',
-        updatedAt: '',
-        version: '0',
-        enabled: false,
+        createdAt: '2024-09-08',
+        updatedAt: '2024-09-08',
+        version: '1',
+        enabled: true,
       },
       {
         id: 'calc-ratio',
