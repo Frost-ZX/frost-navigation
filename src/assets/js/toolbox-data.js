@@ -1,7 +1,6 @@
 // 工具箱
 
-const META_URL = import.meta.url;
-const MODULES = import.meta.glob('@/views/ToolboxView/**/*.vue');
+const MODULES = import.meta.glob('../../views/ToolboxView/**/*.vue');
 
 /**
  * @desc 工具列表
@@ -230,7 +229,7 @@ export const toolList = [
  */
 function getDynamicComponent(path) {
 
-  let key = new URL(`../../views/ToolboxView/${path}.vue`, META_URL).pathname;
+  let key = `../../views/ToolboxView/${path}.vue`;
   let component = MODULES[key];
 
   return component;
