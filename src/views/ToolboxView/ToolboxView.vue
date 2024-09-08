@@ -14,6 +14,7 @@
           <!-- 分类项 -->
           <n-collapse-item
             v-for="categoryItem in toolList"
+            v-show="categoryItem.enabled"
             :key="categoryItem.id"
             :name="categoryItem.id"
             :title="categoryItem.title"

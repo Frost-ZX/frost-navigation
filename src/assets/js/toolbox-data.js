@@ -11,6 +11,7 @@ export const toolList = [
   {
     id: 'calculation-tools',
     title: '计算',
+    enabled: false,
     items: [
       {
         id: 'calc-download-time',
@@ -39,6 +40,7 @@ export const toolList = [
   {
     id: 'conversion-tools',
     title: '转换',
+    enabled: false,
     items: [
       {
         id: 'convert-html-entities',
@@ -89,6 +91,7 @@ export const toolList = [
   {
     id: 'edit-tools',
     title: '编辑',
+    enabled: false,
     items: [
       {
         id: 'csv-editor',
@@ -106,6 +109,7 @@ export const toolList = [
   {
     id: 'generator-tools',
     title: '生成',
+    enabled: false,
     items: [
       {
         id: 'generate-urls',
@@ -134,6 +138,7 @@ export const toolList = [
   {
     id: 'minecraft-tools',
     title: 'Minecraft',
+    enabled: false,
     items: [
       {
         id: 'calc-minecraft-chunk-location',
@@ -173,6 +178,7 @@ export const toolList = [
   {
     id: 'network-tools',
     title: '网络',
+    enabled: false,
     items: [
       {
         id: 'websocket-test-tool',
@@ -190,6 +196,7 @@ export const toolList = [
   {
     id: 'other-tools',
     title: '其他',
+    enabled: false,
     items: [
       {
         id: 'open-new-window',
