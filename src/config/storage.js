@@ -6,6 +6,9 @@ const PREFIX = 'frost-navigation/';
 /** 导航链接侧边栏折叠状态 */
 export const SKEY_NAV_LINK_ASIDE_COLLAPSED = PREFIX + 'nav-link-aside-collapsed';
 
+/** 导航链接当前选中分类 */
+export const SKEY_NAV_LINK_CATEGORY = PREFIX + 'nav-link-category';
+
 /** 导航链接搜索类型 */
 export const SKEY_NAV_LINK_SEARCH_TYPE = PREFIX + 'nav-link-search-type';
 

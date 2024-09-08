@@ -145,6 +145,7 @@ import {
 
 import {
   SKEY_NAV_LINK_ASIDE_COLLAPSED,
+  SKEY_NAV_LINK_CATEGORY,
   SKEY_NAV_LINK_SEARCH_TYPE,
 } from '@/config/storage';
 
@@ -228,10 +229,36 @@ const searchTypes = [
  */
 function changeList(data = null) {
 
-  let useData = data || navLinksAll[0] || null;
+  let useData = null;
+  let storedKey = '';
 
-  navLinksCurr.value = useData ? useData.children : [];
-  navLinksTitle.value = useData ? useData.title : '';
+  if (data) {
+    useData = data;
+  } else {
+    storedKey = localStorage.getItem(SKEY_NAV_LINK_CATEGORY)
+  }
+
+  if (storedKey) {
+    useData = navLinksAll.find((item) => {
+      return item.title === storedKey;
+    });
+  }
+
+  if (!useData) {
+    useData = navLinksAll[0] || null;
+  }
+
+  if (useData) {
+    localStorage.setItem(SKEY_NAV_LINK_CATEGORY, useData.title);
+    navLinksCurr.value = useData.children;
+    navLinksTitle.value = useData.title;
+  } else {
+    localStorage.setItem(SKEY_NAV_LINK_CATEGORY, '');
+    navLinksCurr.value = [];
+    navLinksTitle.value = '';
+  }
+
+
 
 }
 
