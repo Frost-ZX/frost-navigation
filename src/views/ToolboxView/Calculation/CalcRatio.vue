@@ -3,7 +3,10 @@
 
     <!-- 计算模式 -->
     <n-card size="small" title="计算模式">
-      <n-form-item :show-label="false">
+      <n-form-item
+        class="form-item-no-feedback"
+        :show-label="false"
+      >
         <n-select
           v-model:value="mode"
           :options="[
@@ -17,7 +20,10 @@
 
     <!-- 小数位数 -->
     <n-card size="small" title="小数位数">
-      <n-form-item :show-label="false">
+      <n-form-item
+        class="form-item-no-feedback"
+        :show-label="false"
+      >
         <n-input-number
           v-model:value="decimals"
           :min="0"
@@ -31,7 +37,10 @@
 
     <!-- 基础比例 -->
     <n-card size="small" title="基础比例">
-      <n-form-item :show-label="false">
+      <n-form-item
+        class="form-item-no-feedback"
+        :show-label="false"
+      >
         <n-input-number
           v-model:value="base.a"
           :min="limit.min"
@@ -54,7 +63,10 @@
 
     <!-- 计算比例 -->
     <n-card size="small" title="计算比例">
-      <n-form-item :show-label="false">
+      <n-form-item
+        class="form-item-no-feedback"
+        :show-label="false"
+      >
         <n-input-number
           v-model:value="calc.a"
           :disabled="mode === '2-to-1'"

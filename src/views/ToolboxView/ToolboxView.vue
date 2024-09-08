@@ -192,14 +192,13 @@ function handleOpenTool(data) {
     height: 100%;
     overflow-y: auto;
 
-    > .n-card {
-      &:not(:first-child) {
-        margin-top: 20px;
-      }
+    > .n-card:not(:first-child) {
+      margin-top: 20px;
+    }
 
-      .n-card__content {
-        padding-top: var(--n-padding-top);
-      }
+    .form-no-feedback .n-form-item-feedback-wrapper,
+    .form-item-no-feedback .n-form-item-feedback-wrapper {
+      min-height: 10px;
     }
   }
 }

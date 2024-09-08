@@ -4,10 +4,10 @@
     <!-- 参数 -->
     <n-card size="small" title="参数">
       <n-form
+        class="form-no-feedback"
         label-align="right"
         label-placement="left"
         label-width="auto"
-        :model="inputs"
       >
 
         <n-form-item label="文件大小：">
@@ -70,10 +70,10 @@
     <!-- 计算结果 -->
     <n-card size="small" title="计算结果">
       <n-form
+        class="form-no-feedback"
         label-align="right"
         label-placement="left"
         label-width="auto"
-        :model="outputs"
       >
 
         <n-form-item label="大约需要时长：">
