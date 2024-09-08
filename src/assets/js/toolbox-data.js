@@ -108,7 +108,7 @@ export const toolList = [
   {
     id: 'generator-tools',
     title: '生成',
-    enabled: false,
+    enabled: true,
     items: [
       {
         id: 'generate-urls',
@@ -127,10 +127,10 @@ export const toolList = [
         title: '生成随机字符串',
         iconClass: 'mdi mdi-format-text',
         desc: '生成随机组合的字符串，可用于密码。',
-        createdAt: '',
-        updatedAt: '',
-        version: '0',
-        enabled: false,
+        createdAt: '2024-09-08',
+        updatedAt: '2024-09-08',
+        version: '1',
+        enabled: true,
       },
     ]
   },
