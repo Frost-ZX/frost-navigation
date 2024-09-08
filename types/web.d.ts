@@ -39,6 +39,8 @@ declare global {
     id: string;
     /** 分类名称 */
     title: string;
+    /** 是否启用 */
+    enabled: boolean;
     /** 工具列表 */
     items: ToolboxItem[];
   }
