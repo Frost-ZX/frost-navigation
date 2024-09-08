@@ -27,7 +27,7 @@ export const SEARCH_MODULE_ENABLED = true;
 export const SEARCH_MODULE_TITLE = '搜索';
 
 /** 启用模块 */
-export const TOOLBOX_MODULE_ENABLED = IS_DEV;
+export const TOOLBOX_MODULE_ENABLED = true;
 
 /** 模块标题 */
 export const TOOLBOX_MODULE_TITLE = '工具箱';
