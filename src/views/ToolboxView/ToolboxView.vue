@@ -1,7 +1,20 @@
 <template>
   <div class="toolbox-view flex-col">
     <div class="app-view-header">
+
+      <!-- 返回上一级 -->
+      <n-button
+        v-show="isToolDetail"
+        class="back-button"
+        :text="true"
+        @click="handleCloseTool"
+      >
+        <span class="mdi mdi-arrow-left"></span>
+      </n-button>
+
+      <!-- 标题 -->
       <span>{{ routeTitle }}</span>
+
     </div>
     <div class="app-view-content is-transparent">
 
@@ -29,14 +42,23 @@
               @click="handleOpenTool(toolItem)"
             >
               <div class="item-header">
-                <span :class="['item-icon', toolItem.iconClass || 'mdi mdi-package-variant-closed']"></span>
+                <n-tooltip placement="top-start" trigger="hover">
+                  <template #trigger>
+                    <span :class="['item-icon', toolItem.iconClass || 'mdi mdi-package-variant-closed']"></span>
+                  </template>
+                  <div>
+                    <div>创建：{{ toolItem.createdAt }}</div>
+                    <div>更新：{{ toolItem.updatedAt }}</div>
+                    <div>版本：{{ toolItem.version }}</div>
+                  </div>
+                </n-tooltip>
               </div>
               <div class="item-body">
                 <div class="item-title">{{ toolItem.title }}</div>
                 <n-ellipsis
                   class="item-desc"
                   :line-clamp="2"
-                  :tooltip="true"
+                  :tooltip="{ placement: 'bottom-start' }"
                 >{{ toolItem.desc }}</n-ellipsis>
               </div>
             </div>
@@ -60,7 +82,7 @@
 
 <script setup>
 import {
-  NCollapse, NCollapseItem, NEllipsis,
+  NButton, NCollapse, NCollapseItem, NEllipsis, NTooltip,
 } from 'naive-ui';
 
 import {
@@ -91,18 +113,29 @@ const routeTitle = computed(() => {
   return route.meta.title;
 });
 
+/** 关闭工具 */
+function handleCloseTool() {
+  return router.push({
+    name: 'ToolboxView',
+  });
+}
+
 /**
  * @description 打开工具
  * @param {ToolboxItem} data
  */
 function handleOpenTool(data) {
-  router.push({
+  return router.push({
     name: `Toolbox/${data.component}`,
   });
 }
 </script>
 
 <style lang="less" scoped>
+.back-button {
+  margin-right: 0.5em;
+  font-size: 24px;
+}
 .tool-list {
   width: 100%;
   height: 100%;
