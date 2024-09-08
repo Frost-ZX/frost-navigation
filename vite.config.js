@@ -14,6 +14,11 @@ export default defineConfig({
   build: {
     assetsInlineLimit: 0,
   },
+  esbuild: {
+    supported: {
+      bigint: true,
+    },
+  },
   envPrefix: 'V_ENV_',
   plugins: [
     legacy({
