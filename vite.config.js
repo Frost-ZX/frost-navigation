@@ -22,6 +22,7 @@ export default defineConfig({
   envPrefix: 'V_ENV_',
   plugins: [
     legacy({
+      polyfills: false,
       renderLegacyChunks: true,
       renderModernChunks: true,
       targets: ['defaults', 'not IE 11'],
