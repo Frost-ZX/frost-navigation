@@ -195,8 +195,19 @@ export const toolList = [
   {
     id: 'other-tools',
     title: '其他',
-    enabled: false,
+    enabled: true,
     items: [
+      {
+        id: 'keep-screen-on',
+        component: 'Other/KeepScreenOn',
+        title: '保持亮屏',
+        iconClass: 'mdi mdi-monitor',
+        desc: '保持屏幕开启，不息屏，不休眠',
+        createdAt: '2024-10-13',
+        updatedAt: '2024-10-13',
+        version: '1',
+        enabled: true,
+      },
       {
         id: 'open-new-window',
         component: 'Other/OpenNewWindow',
