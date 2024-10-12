@@ -198,6 +198,17 @@ export const toolList = [
     enabled: true,
     items: [
       {
+        id: 'genshin-impact-clock',
+        component: 'Other/GenshinImpactClock/GenshinImpactClock',
+        title: '《原神》时钟',
+        iconClass: 'mdi mdi-clock-outline',
+        desc: '在网页上实现的《原神》时钟效果',
+        createdAt: '',
+        updatedAt: '',
+        version: '0',
+        enabled: false,
+      },
+      {
         id: 'keep-screen-on',
         component: 'Other/KeepScreenOn',
         title: '保持亮屏',
