@@ -52,10 +52,22 @@
     <!-- 表盘 -->
     <div class="clock-dial bg-contain">
       <div class="time-icons">
-        <div class="time-morning bg-contain"></div>
-        <div class="time-noon bg-contain"></div>
-        <div class="time-dusk bg-contain"></div>
-        <div class="time-night bg-contain"></div>
+        <div
+          class="time-morning bg-contain"
+          style="--self-angle-1: 270; --self-angle-2: 270;"
+        ></div>
+        <div
+          class="time-noon bg-contain"
+          style="--self-angle-1: 0; --self-angle-2: 360;"
+        ></div>
+        <div
+          class="time-dusk bg-contain"
+          style="--self-angle-1: 90; --self-angle-2: 90;"
+        ></div>
+        <div
+          class="time-night bg-contain"
+          style="--self-angle-1: 180; --self-angle-2: 180;"
+        ></div>
       </div>
     </div>
 
@@ -107,8 +119,8 @@ const clockState = reactive({
 /** 下层指针状态 */
 const lowerPointer = reactive({
 
-  /** 视图角度 */
-  viewAngle: 60,
+  /** 视图角度，用于显示 */
+  viewAngle: 0,
 
 });
 
@@ -118,11 +130,11 @@ const upperPointer = reactive({
   /** 是否为第二圈 */
   isSecond: false,
 
-  /** 实际角度 */
+  /** 上层指针与下层指针相差的角度 */
   dataAngle: 0,
 
-  /** 视图角度 */
-  viewAngle: 60,
+  /** 视图角度，用于显示和交互 */
+  viewAngle: 0,
 
 });
 
@@ -144,7 +156,9 @@ const elStyle = computed(() => {
     '--image-time-icon-night': IMAGE_TIME_ICON_NIGHT,
     '--image-time-icon-noon': IMAGE_TIME_ICON_NOON,
     '--pointer-lower-angle': `${lowerPointer.viewAngle}deg`,
+    '--pointer-lower-angle-value': lowerPointer.viewAngle,
     '--pointer-upper-angle': `${upperPointer.viewAngle}deg`,
+    '--pointer-upper-angle-value': upperPointer.viewAngle,
   };
 });
 
@@ -554,13 +568,28 @@ onBeforeUnmount(() => {
     height: 100%;
 
     > div {
+      // [角度 1 相关计算]
+      // 计算指针角度与图标所在角度的差值（可能为负数）
+      --angle-1-diff: calc(var(--self-angle-1) - var(--pointer-lower-angle-value));
+      // 计算角度差值的绝对值
+      --angle-1-abs: ~"max(var(--angle-1-diff), var(--angle-1-diff) * -1)";
+      // 限制角度最大差值为 90
+      --angle-1-use: ~"min(90, var(--angle-1-abs))";
+      // [角度 2 相关计算，主要用于 360°]
+      // 计算指针角度与图标所在角度的差值（可能为负数）
+      --angle-2-diff: calc(var(--self-angle-2) - var(--pointer-lower-angle-value));
+      // 计算角度差值的绝对值
+      --angle-2-abs: ~"max(var(--angle-2-diff), var(--angle-2-diff) * -1)";
+      // 限制角度最大差值为 90
+      --angle-2-use: ~"min(90, var(--angle-2-abs))";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      opacity: 1;
-      // transition: opacity 1s;
+      // 根据角度计算透明度
+      // 注：计算两个角度的透明度，取最大值
+      opacity: ~"calc((90 - min(var(--angle-1-use), var(--angle-2-use))) / 90)";
     }
 
     .time-morning {
