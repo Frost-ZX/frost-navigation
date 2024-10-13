@@ -350,7 +350,7 @@ onBeforeUnmount(() => {
   width: 32em;
   height: 32em;
   border-radius: 50%;
-  font-size: 1rem;
+  font-size: 11px;
   overflow: hidden;
   filter: brightness(1.1) saturate(0.9);
 }

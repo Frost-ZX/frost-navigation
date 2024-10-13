@@ -13,4 +13,5 @@ export const IMAGE_TIME_ICON_DUSK = `url("${IMAGE_BASE}/time_icon_dusk.png")`;
 export const IMAGE_TIME_ICON_MORNING = `url("${IMAGE_BASE}/time_icon_morning.png")`;
 export const IMAGE_TIME_ICON_NIGHT = `url("${IMAGE_BASE}/time_icon_night.png")`;
 export const IMAGE_TIME_ICON_NOON = `url("${IMAGE_BASE}/time_icon_noon.png")`;
+export const IMAGE_TIME_INFO_ARROW = `url("${IMAGE_BASE}/time_info_arrow.png")`;
 export const IMAGE_TIME_ZONE_COLOR = `${IMAGE_BASE}/time_zone_color.png`;

@@ -37,12 +37,11 @@ defineProps({
 .genshin-button {
   display: inline-block;
   position: relative;
-  margin: 1rem 0.5rem;
-  padding: 0.5rem;
-  border-radius: 1.5rem;
+  padding: 8px;
+  border-radius: 24px;
   background-color: #ECE3D6;
   color: #494246;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: bold;
   line-height: 1;
   white-space: nowrap;
@@ -63,7 +62,7 @@ defineProps({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.25rem;
+  padding: 4px;
   border-radius: 50%;
   background-color: #2D2D2D;
   color: #FFFFFF;
@@ -71,6 +70,6 @@ defineProps({
 
 .btn-label {
   display: inline-block;
-  padding: 0 3.5rem;
+  padding: 0 56px;
 }
 </style>
