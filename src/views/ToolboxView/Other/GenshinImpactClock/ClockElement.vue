@@ -87,24 +87,16 @@ import {
 } from 'vue';
 
 import {
-  IMAGE_CLOCK_BG_INNER,
-  IMAGE_CLOCK_BG_OUTER,
-  IMAGE_CLOCK_DIAL,
-  IMAGE_CLOCK_GEAR_1,
-  IMAGE_CLOCK_GEAR_4,
-  IMAGE_CLOCK_GEAR_5,
-  IMAGE_CLOCK_GEAR_6,
-  IMAGE_CLOCK_PARTICLES,
-  IMAGE_POINTER_LOWER,
-  IMAGE_POINTER_UPPER,
-  IMAGE_TIME_ICON_DUSK,
-  IMAGE_TIME_ICON_MORNING,
-  IMAGE_TIME_ICON_NIGHT,
-  IMAGE_TIME_ICON_NOON,
+  IMAGE_CLOCK_BG_INNER, IMAGE_CLOCK_BG_OUTER, IMAGE_CLOCK_DIAL,
+  IMAGE_CLOCK_GEAR_1, IMAGE_CLOCK_GEAR_4,
+  IMAGE_CLOCK_GEAR_5, IMAGE_CLOCK_GEAR_6,
+  IMAGE_CLOCK_PARTICLES, IMAGE_POINTER_LOWER, IMAGE_POINTER_UPPER,
+  IMAGE_TIME_ICON_DUSK, IMAGE_TIME_ICON_MORNING,
+  IMAGE_TIME_ICON_NIGHT, IMAGE_TIME_ICON_NOON,
   isAutoRotating, isTimeExceeded, isTimeTooEarly,
-  timeCurrHour, timeCurrMinute,
+  timeCurrHour, timeCurrMinute, timeCurrValue,
   timeDiffLabel, timeDiffLabelStill,
-  timeNewHour, timeNewMinute,
+  timeNewHour, timeNewMinute, timeNewValue,
 } from './common-data';
 
 import ClockColor from './ClockColor.vue';
@@ -358,6 +350,7 @@ watch(() => {
   // 计算时间值
   timeCurrHour.value = String(currHour).padStart(2, '0');
   timeCurrMinute.value = String(currMinute).padStart(2, '0');
+  timeCurrValue.value = timeValue;
 
 }, { immediate: true });
 
@@ -410,6 +403,7 @@ watch(() => {
   // 计算时间值
   timeNewHour.value = String(newHour).padStart(2, '0');
   timeNewMinute.value = String(newMinute).padStart(2, '0');
+  timeNewValue.value = timeValue;
 
 }, { immediate: true });
 
@@ -442,7 +436,7 @@ onBeforeUnmount(() => {
   width: 32em;
   height: 32em;
   border-radius: 50%;
-  font-size: 11px;
+  font-size: 12px;
   overflow: hidden;
   filter: brightness(1.1) saturate(0.9);
 }
@@ -661,7 +655,7 @@ onBeforeUnmount(() => {
 
     > div {
       // [角度 1 相关计算]
-      // 计算指针角度与图标所在角度的差值（可能为负数）
+      // 计算指针角度与图标对应角度的差值（可能为负数）
       --angle-1-diff: calc(var(--self-angle-1) - var(--pointer-lower-angle-value));
       // 计算角度差值的绝对值
       --angle-1-abs: ~"max(var(--angle-1-diff), var(--angle-1-diff) * -1)";

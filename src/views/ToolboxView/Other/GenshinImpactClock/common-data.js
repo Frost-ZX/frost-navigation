@@ -1,6 +1,10 @@
 import { ref } from "vue";
 
 export const IMAGE_BASE = `https://c.frost-zx.top/data/static/image/genshin-impact-clock`;
+export const IMAGE_BG_DUSK = `url("${IMAGE_BASE}/bg_dusk.png")`;
+export const IMAGE_BG_MORNING = `url("${IMAGE_BASE}/bg_morning.png")`;
+export const IMAGE_BG_NIGHT = `url("${IMAGE_BASE}/bg_night.png")`;
+export const IMAGE_BG_NOON = `url("${IMAGE_BASE}/bg_noon.png")`;
 export const IMAGE_CLOCK_BG_INNER = `url("${IMAGE_BASE}/clock_bg_inner.png")`;
 export const IMAGE_CLOCK_BG_OUTER = `url("${IMAGE_BASE}/clock_bg_outer.png")`;
 export const IMAGE_CLOCK_DIAL = `url("${IMAGE_BASE}/clock_dial.png")`;
@@ -33,6 +37,9 @@ export const timeCurrHour = ref('00');
 /** 当前分 */
 export const timeCurrMinute = ref('00');
 
+/** 当前时分 */
+export const timeCurrValue = ref(0);
+
 /** 时间差（动态）*/
 export const timeDiffLabel = ref('');
 
@@ -44,3 +51,6 @@ export const timeNewHour = ref('00');
 
 /** 新的分 */
 export const timeNewMinute = ref('00');
+
+/** 新的时分 */
+export const timeNewValue = ref(0);
