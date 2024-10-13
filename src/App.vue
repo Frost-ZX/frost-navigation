@@ -3,23 +3,6 @@
     :date-locale="configProviderProps.dateLocale"
     :inline-theme-disabled="configProviderProps.inlineThemeDisabled"
     :locale="configProviderProps.locale"
-    :style="{
-      '--border-radius': themeCommon.borderRadius,
-      '--border-radius-small': themeCommon.borderRadiusSmall,
-      '--box-shadow-1': themeVars.boxShadow1,
-      '--box-shadow-2': themeVars.boxShadow2,
-      '--box-shadow-3': themeVars.boxShadow3,
-      '--color-action': themeVars.actionColor,
-      '--color-border': themeVars.borderColor,
-      '--color-error': themeCommon.errorColor,
-      '--color-info': themeCommon.infoColor,
-      '--color-primary': themeCommon.primaryColor,
-      '--color-success': themeCommon.successColor,
-      '--color-text-1': themeVars.textColor1,
-      '--color-text-2': themeVars.textColor2,
-      '--color-text-3': themeVars.textColor3,
-      '--color-warning': themeCommon.warningColor,
-    }"
     :theme-overrides="themeOverrides"
   >
 
@@ -56,9 +39,6 @@ import AppAside from './components/AppAside.vue';
 /** 主题变量配置 */
 const themeOverrides = configProviderProps.themeOverrides;
 
-/** 主题变量配置 - common */
-const themeCommon = themeOverrides.common;
-
 /** 默认主题变量 */
 const themeVars = useThemeVars();
 
@@ -87,7 +67,51 @@ function handleContextMenu(event) {
 
 }
 
+/** 初始化 CSS 变量列表 */
+function initCssVars() {
+
+  let rootStyle = document.documentElement.style;
+  let overrides = themeOverrides.common;
+  let variables = themeVars.value;
+
+  let cssVars = {
+    // 主题变量
+    '--border-radius': overrides.borderRadius,
+    '--border-radius-small': overrides.borderRadiusSmall,
+    '--box-shadow-1': variables.boxShadow1,
+    '--box-shadow-2': variables.boxShadow2,
+    '--box-shadow-3': variables.boxShadow3,
+    '--color-action': variables.actionColor,
+    '--color-border': variables.borderColor,
+    '--color-error': overrides.errorColor,
+    '--color-info': overrides.infoColor,
+    '--color-primary': overrides.primaryColor,
+    '--color-success': overrides.successColor,
+    '--color-text-1': variables.textColor1,
+    '--color-text-2': variables.textColor2,
+    '--color-text-3': variables.textColor3,
+    '--color-warning': overrides.warningColor,
+    // 其他颜色
+    '--color-bg-dark': 'var(--color-text-2)',
+    '--color-bg-light': '#F8F8F8',
+    '--color-black': 'var(--color-text-2)',
+    '--color-gray': '#E0E0E0',
+    '--color-red': 'var(--color-error)',
+    '--color-green': 'var(--color-success)',
+    '--color-blue': 'var(--color-info)',
+    '--color-orange': 'var(--color-warning)',
+    // 滚动条大小
+    '--scrollbar-size': '8px',
+  };
+
+  for (let key in cssVars) {
+    rootStyle.setProperty(key, cssVars[key]);
+  }
+
+}
+
 onMounted(() => {
+  initCssVars();
   window.addEventListener('contextmenu', handleContextMenu);
 });
 
@@ -97,18 +121,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="less">
-// 全局 CSS 变量
-:root {
-  // 基础颜色
-  --color-black: rgb(51, 54, 57);
-  --color-gray: #E0E0E0;
-  // 分类颜色
-  --color-bg-dark: rgb(51, 54, 57);
-  --color-bg-light: #F8F8F8;
-  // 滚动条大小
-  --scrollbar-size: 8px;
-}
-
 // 滚动条
 ::-webkit-scrollbar {
   width: var(--scrollbar-size);
