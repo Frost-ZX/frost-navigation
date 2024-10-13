@@ -1,0 +1,1 @@
+.clock-color{position:absolute;top:0;left:0;width:100%;height:100%}.clock-color .color-circle{filter:brightness(1);transition:filter .25s}.clock-color .faded{filter:brightness(.6)}

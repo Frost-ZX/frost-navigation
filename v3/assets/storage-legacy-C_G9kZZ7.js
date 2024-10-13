@@ -1,0 +1,1 @@
+System.register([],(function(e,n){"use strict";return{execute:function(){const n="frost-navigation/";e("a",n+"nav-link-aside-collapsed"),e("c",n+"nav-link-category"),e("b",n+"nav-link-search-type"),e("S",n+"search-engine-name")}}}));
