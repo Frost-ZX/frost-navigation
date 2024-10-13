@@ -6,6 +6,7 @@
       'clock-rotation': clockState.isRotation,
     }"
     :style="elStyle"
+    @touchmove.prevent
   >
 
     <!-- 外部 -->
@@ -43,7 +44,7 @@
       <div class="pointer-wrapper pointer-upper bg-contain">
         <div
           class="pointer-content"
-          @mousedown="handleDragPointer('upper')"
+          @pointerdown="handleDragPointer('upper')"
         ></div>
       </div>
 
@@ -71,6 +72,9 @@
       </div>
     </div>
 
+    <!-- 遮罩层，用于阻止操作 -->
+    <div v-show="isAutoRotating" class="clock-mask"></div>
+
   </div>
 </template>
 
@@ -79,6 +83,7 @@ import {
   computed,
   onBeforeUnmount, onMounted,
   reactive, ref,
+  watch,
 } from 'vue';
 
 import {
@@ -96,6 +101,10 @@ import {
   IMAGE_TIME_ICON_MORNING,
   IMAGE_TIME_ICON_NIGHT,
   IMAGE_TIME_ICON_NOON,
+  isAutoRotating, isTimeExceeded, isTimeTooEarly,
+  timeCurrHour, timeCurrMinute,
+  timeDiffLabel, timeDiffLabelStill,
+  timeNewHour, timeNewMinute,
 } from './common-data';
 
 import ClockColor from './ClockColor.vue';
@@ -137,6 +146,8 @@ const upperPointer = reactive({
   viewAngle: 0,
 
 });
+
+window.upperPointer = upperPointer;
 
 /** 元素 CSS */
 const elStyle = computed(() => {
@@ -217,7 +228,11 @@ function handleDragPointer() {
   // 节流
   let last = 0;
 
-  document.onmousemove = function (ev) {
+  /**
+   * @description 处理光标移动
+   * @param {PointerEvent} ev
+   */
+  let handleMove = function (ev) {
 
     let curr = Date.now();
 
@@ -283,10 +298,10 @@ function handleDragPointer() {
 
   };
 
-  document.onmouseup = function () {
-    document.onmousemove = null;
-    document.onmouseup = null;
-  };
+  window.addEventListener('pointermove', handleMove);
+  window.addEventListener('pointerup', function () {
+    window.removeEventListener('pointermove', handleMove);
+  }, { once: true });
 
 }
 
@@ -304,6 +319,8 @@ function handleSubmitTime() {
     // 结束
     if (upperAngleCurr === 0) {
       clearInterval(timer);
+      isAutoRotating.value = false;
+      timeDiffLabelStill.value = '';
     }
 
     let upperAngleDiff = upperAngleStart - upperAngleCurr;
@@ -315,11 +332,86 @@ function handleSubmitTime() {
 
   }, 50);
 
+  /** 更新状态 */
+  isAutoRotating.value = true;
+
+  // 固定时间差文本
+  timeDiffLabelStill.value = timeDiffLabel.value;
+
 }
 
 defineExpose({
   handleSubmitTime,
 });
+
+// 检测角度变化，计算时间信息（自动旋转时）
+watch(() => {
+  return lowerPointer.viewAngle;
+}, (viewAngle) => {
+
+  // 转换为对应 24 小时的角度
+  let timeAngle = viewAngle + (viewAngle < 180 ? 180 : -180);
+  let timeValue = timeAngle / 15;
+  let currHour = Math.floor(timeValue);
+  let currMinute = Math.round((timeValue - currHour) * 60);
+
+  // 计算时间值
+  timeCurrHour.value = String(currHour).padStart(2, '0');
+  timeCurrMinute.value = String(currMinute).padStart(2, '0');
+
+}, { immediate: true });
+
+// 检测角度变化，计算时间信息（用户操作时）
+watch(() => {
+  return upperPointer.dataAngle;
+}, (dataAngle) => {
+
+  // 注：15° / 小时
+
+  let isSecond = upperPointer.isSecond;
+  let currAngle = lowerPointer.viewAngle;
+  let viewAngle = upperPointer.viewAngle;
+
+  let diffAngle = dataAngle + (isSecond ? 360 : 0);
+  let diffAngle1 = 0; // +1 日角度差
+  let diffAngle2 = 0; // +2 日角度差
+  let diffLabel = '';
+
+  // 转换为对应 24 小时的角度
+  let timeAngle = viewAngle + (viewAngle < 180 ? 180 : -180);
+  let timeValue = timeAngle / 15;
+  let newHour = Math.floor(timeValue);
+  let newMinute = Math.round((timeValue - newHour) * 60);
+
+  if (currAngle < 180) {
+    diffAngle1 = 180 - currAngle;
+    diffAngle2 = diffAngle1 + 360;
+  } else {
+    diffAngle1 = 540 - currAngle; // 360 + 180
+    diffAngle2 = diffAngle1 + 360;
+  }
+
+  // 处理时间差信息
+  if (diffAngle < diffAngle1) {
+    diffLabel = '今日';
+  } else if (diffAngle < diffAngle2) {
+    diffLabel = '次日';
+  } else {
+    diffLabel = '+2日';
+  }
+
+  // 处理提示信息显示
+  isTimeTooEarly.value = diffAngle < 7.5;
+  isTimeExceeded.value = diffAngle === 720;
+
+  // 更新时间差信息
+  timeDiffLabel.value = diffLabel;
+
+  // 计算时间值
+  timeNewHour.value = String(newHour).padStart(2, '0');
+  timeNewMinute.value = String(newMinute).padStart(2, '0');
+
+}, { immediate: true });
 
 onMounted(() => {
   timerInit();
@@ -608,6 +700,16 @@ onBeforeUnmount(() => {
       background-image: var(--image-time-icon-night);
     }
   }
+}
+
+.clock-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  cursor: wait;
 }
 
 // 顺时针旋转

@@ -1,5 +1,5 @@
 <template>
-  <div class="tool-detail-page">
+  <div class="tool-detail-page has-radius">
 
     <!-- 左 -->
     <div class="page-column">
@@ -13,17 +13,27 @@
       <clock-element ref="clockRef" />
 
       <!-- 上限提示 -->
-      <div class="time-notice">
+      <div
+        :class="{
+          'is-hide': isAutoRotating,
+          'time-notice': true,
+        }"
+      >
         <span
-          v-show="true"
+          v-show="isTimeExceeded"
           class="time-notice-text"
         >时间到达上限</span>
       </div>
 
       <!-- 确认时间 -->
-      <div class="time-submit">
+      <div
+        :class="{
+          'is-hide': isAutoRotating,
+          'time-submit': true,
+        }"
+      >
         <span
-          v-if="false"
+          v-if="isTimeTooEarly"
           class="time-notice-text"
         >时间少于30分钟</span>
         <genshin-button
@@ -43,6 +53,10 @@
 import {
   ref,
 } from 'vue';
+
+import {
+  isAutoRotating, isTimeTooEarly, isTimeExceeded,
+} from './common-data';
 
 import ClockElement from './ClockElement.vue';
 import GenshinButton from './GenshinButton.vue';
@@ -68,7 +82,6 @@ function handleConfirm() {
 
 <style lang="less" scoped>
 .tool-detail-page {
-  border-radius: 8px;
   background-color: #000;
   font-size: 16px;
   text-align: center;
@@ -89,9 +102,23 @@ function handleConfirm() {
   }
 }
 
-.time-notice {
+.time-notice, .time-submit {
   display: flex;
   height: 40px;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s, visibility 0s 0s;
+
+  // 注：
+  // visibility 动画时长用于等待 opacity 动画过渡完毕
+  &.is-hide {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.25s, visibility 0.25s 0s;
+  }
+}
+
+.time-notice {
   margin-top: 16px;
 }
 
@@ -101,10 +128,5 @@ function handleConfirm() {
   color: #FFF;
   opacity: 0.5;
   font-size: 14px;
-}
-
-.time-submit {
-  display: flex;
-  height: 40px;
 }
 </style>

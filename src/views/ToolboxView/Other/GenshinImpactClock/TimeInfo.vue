@@ -11,7 +11,11 @@
     <div class="time-title time-title-current">当前时间</div>
 
     <!-- 当前时间值 -->
-    <div class="time-value time-value-current">12:00</div>
+    <div class="time-value time-value-current">
+      <span>{{ timeCurrHour }}</span>
+      <span>:</span>
+      <span>{{ timeCurrMinute }}</span>
+    </div>
 
     <!-- 三角形图标 -->
     <div class="triangle-icon">
@@ -27,10 +31,16 @@
     </div>
 
     <!-- 目标时间值 -->
-    <div class="time-value time-value-target">12:00</div>
+    <div class="time-value time-value-target">
+      <span>{{ timeNewHour }}</span>
+      <span>:</span>
+      <span>{{ timeNewMinute }}</span>
+    </div>
 
     <!-- 时间差 -->
-    <div class="time-diff">+2日</div>
+    <div class="time-diff">
+      <span>{{ timeDiffLabelStill || timeDiffLabel }}</span>
+    </div>
 
     <!-- 装饰元素 -->
     <div class="arrow-element"></div>
@@ -41,6 +51,9 @@
 <script setup>
 import {
   IMAGE_TIME_INFO_ARROW,
+  timeCurrHour, timeCurrMinute,
+  timeDiffLabel, timeDiffLabelStill,
+  timeNewHour, timeNewMinute,
 } from './common-data';
 </script>
 
@@ -66,8 +79,17 @@ import {
 }
 
 .time-diff {
-  color: #ECE3D6;
+  display: flex;
+  width: 3.5em;
+  height: 1.75em;
+  border-radius: 1.75em;
+  background-color: #282C33;
+  color: rgba(255, 255, 255, 0.75);
   font-size: 0.75em;
+
+  span {
+    margin: auto;
+  }
 }
 
 .time-title {
