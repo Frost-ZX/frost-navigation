@@ -267,10 +267,10 @@ export function getToolboxRoutes() {
   toolList.forEach((categoryItem) => {
     categoryItem.items.forEach((toolItem) => {
 
-      // 跳过未启用的工具
-      if (!toolItem.enabled) {
-        return;
-      }
+      // // 跳过未启用的工具
+      // if (!toolItem.enabled) {
+      //   return;
+      // }
 
       routes.push({
         path: `/toolbox-view/${toolItem.id}`,
