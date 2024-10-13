@@ -214,9 +214,9 @@ export const toolList = [
         title: '保持亮屏',
         iconClass: 'mdi mdi-monitor',
         desc: '保持屏幕开启，不息屏，不休眠',
-        createdAt: '2024-10-13',
+        createdAt: '2024-10-11',
         updatedAt: '2024-10-13',
-        version: '1',
+        version: '2',
         enabled: true,
       },
       {

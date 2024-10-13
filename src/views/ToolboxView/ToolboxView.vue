@@ -192,6 +192,10 @@ function handleOpenTool(data) {
     height: 100%;
     overflow-y: auto;
 
+    &.has-radius {
+      border-radius: 8px;
+    }
+
     > .n-card:not(:first-child) {
       margin-top: 20px;
     }

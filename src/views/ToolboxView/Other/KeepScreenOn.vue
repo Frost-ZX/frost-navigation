@@ -3,6 +3,7 @@
     ref="selfRef"
     class="tool-detail-page"
     :class="{
+      'has-radius': !fullscreen.isFullscreen.value,
       'is-dark-color': isDarkColor,
       'is-faded': isFaded,
       'is-on': wakeLock.isActive.value,
