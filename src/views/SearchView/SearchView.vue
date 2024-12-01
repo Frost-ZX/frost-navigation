@@ -27,7 +27,7 @@
       <!-- 搜索引擎列表 -->
       <div class="search-engines-wrapper">
         <n-radio-group
-          v-model:value="searchEngineName"
+          v-model:value="storeSearchView.searchEngineName.value"
           class="search-engines-list"
         >
           <!-- 搜索引擎分类 -->
@@ -69,8 +69,13 @@ import {
 } from 'naive-ui';
 
 import {
+  storeSearchView,
+} from '@/assets/js/local-storage';
+
+import {
   openSearchResult,
-  searchEngineList, searchEngineName, searchKeyword,
+  searchEngineList,
+  searchKeyword,
 } from '@/assets/js/search-engine';
 
 import {

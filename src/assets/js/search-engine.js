@@ -5,12 +5,8 @@ import {
 } from 'vue';
 
 import {
-  SKEY_SEARCH_ENGINE_NAME,
-} from '@/config/storage';
-
-import {
-  useLocalStorage,
-} from '@vueuse/core';
+  storeSearchView,
+} from './local-storage';
 
 import {
   $message,
@@ -37,7 +33,7 @@ import icon_zhihu from '@/assets/website-icon/zhihu.svg';
 /** 打开搜索结果页面 */
 export function openSearchResult() {
 
-  let engine = searchEngineName.value;
+  let engine = storeSearchView.searchEngineName.value;
   let keyword = searchKeyword.value;
   let baseURL = '';
   let useURL = '';
@@ -220,9 +216,6 @@ export const searchEngineList = [
     ]
   },
 ];
-
-/** 搜索引擎名称 */
-export const searchEngineName = useLocalStorage(SKEY_SEARCH_ENGINE_NAME, '必应');
 
 /** 搜索关键词 */
 export const searchKeyword = ref('');

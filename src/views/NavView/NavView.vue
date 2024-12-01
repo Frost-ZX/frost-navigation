@@ -27,18 +27,18 @@
           collapse-mode="width"
           show-trigger="arrow-circle"
           :bordered="true"
-          :collapsed="isCollapsed"
+          :collapsed="storeNavView.isAsideCollapsed.value"
           :collapsed-width="64"
           :native-scrollbar="false"
           :scrollbar-props="{ trigger: 'hover' }"
           :width="240"
-          @collapse="isCollapsed = true"
-          @expand="isCollapsed = false"
+          @collapse="storeNavView.isAsideCollapsed.value = true"
+          @expand="storeNavView.isAsideCollapsed.value = false"
         >
           <n-menu
             v-model:value="navLinksTitle"
             mode="vertical"
-            :collapsed="isCollapsed"
+            :collapsed="storeNavView.isAsideCollapsed.value"
             :collapsed-icon-size="24"
             :collapsed-width="64"
             :icon-size="24"
@@ -53,7 +53,7 @@
           <div class="right-content-header">
             <n-input-group>
               <n-select
-                v-model:value="searchType"
+                v-model:value="storeNavView.searchType.value"
                 class="search-type"
                 :options="searchTypes"
               />
@@ -144,10 +144,8 @@ import {
 } from '@/config/modules';
 
 import {
-  SKEY_NAV_LINK_ASIDE_COLLAPSED,
-  SKEY_NAV_LINK_CATEGORY,
-  SKEY_NAV_LINK_SEARCH_TYPE,
-} from '@/config/storage';
+  storeNavView,
+} from '@/assets/js/local-storage';
 
 import {
   $dialog, $message,
@@ -171,12 +169,6 @@ const detailDrawer = reactive({
   show: false,
 
 });
-
-/** 分类列表是否折叠 */
-const isCollapsed = useLocalStorage(
-  SKEY_NAV_LINK_ASIDE_COLLAPSED,
-  false
-);
 
 /** 完整的链接列表 */
 const navLinksAll = formatNavLinks(true);
@@ -206,12 +198,6 @@ const navLinksTitle = shallowRef('');
 /** 搜索关键词 */
 const searchKeyword = shallowRef('');
 
-/** 搜索类型 */
-const searchType = useLocalStorage(
-  SKEY_NAV_LINK_SEARCH_TYPE,
-  'all'
-);
-
 /**
  * @desc 搜索类型列表
  * @type { import('naive-ui').SelectOption[] }
@@ -235,7 +221,7 @@ function changeList(data = null) {
   if (data) {
     useData = data;
   } else {
-    storedKey = localStorage.getItem(SKEY_NAV_LINK_CATEGORY)
+    storedKey = storeNavView.currentCategory.value;
   }
 
   if (storedKey) {
@@ -249,16 +235,14 @@ function changeList(data = null) {
   }
 
   if (useData) {
-    localStorage.setItem(SKEY_NAV_LINK_CATEGORY, useData.title);
+    storeNavView.currentCategory.value = useData.title;
     navLinksCurr.value = useData.children;
     navLinksTitle.value = useData.title;
   } else {
-    localStorage.setItem(SKEY_NAV_LINK_CATEGORY, '');
+    storeNavView.currentCategory.value = '';
     navLinksCurr.value = [];
     navLinksTitle.value = '';
   }
-
-
 
 }
 
@@ -344,7 +328,7 @@ function treeDataFilter(pattern = '', node = null) {
     pattern = pattern.toLowerCase();
   }
 
-  let type = searchType.value;
+  let type = storeNavView.searchType.value;
 
   let desc = String(node.desc).toLowerCase();
   let title = String(node.title).toLowerCase();
