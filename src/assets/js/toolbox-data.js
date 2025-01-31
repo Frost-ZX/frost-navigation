@@ -111,6 +111,17 @@ export const toolList = [
     enabled: true,
     items: [
       {
+        id: 'frp-config-generator',
+        component: 'Generator/FrpConfigGenerator',
+        title: 'frp 配置文件生成',
+        iconClass: 'mdi mdi-file-cog-outline',
+        desc: '生成用于 frpc、frps 的配置文件。',
+        createdAt: '',
+        updatedAt: '',
+        version: '0',
+        enabled: false,
+      },
+      {
         id: 'generate-urls',
         component: 'Generator/GenerateUrls',
         title: '生成批量下载链接',
