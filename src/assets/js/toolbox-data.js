@@ -173,6 +173,17 @@ export const toolList = [
         enabled: false,
       },
       {
+        id: 'minecraft-chat-history-reader',
+        component: 'Minecraft/ChatHistoryReader',
+        title: 'Minecraft 聊天记录查看',
+        iconClass: 'mdi mdi-format-list-text',
+        desc: '读取并解析 latest.log 文件，显示聊天记录。',
+        createdAt: '',
+        updatedAt: '',
+        version: '0',
+        enabled: false,
+      },
+      {
         id: 'minecraft-uuid-converter',
         component: 'Minecraft/UuidConverter',
         title: 'Minecraft UUID 转换',
