@@ -393,6 +393,14 @@ watch(() => {
     diffLabel = '+2日';
   }
 
+  // 注：
+  // 若指针起始位置位于表盘左半边，
+  // 且拖拽指针旋转满 2 圈，
+  // 此时计算出的小时值会大于或等于 24。
+  if (newHour >= 24) {
+    newHour -= 24;
+  }
+
   // 处理提示信息显示
   isTimeTooEarly.value = diffAngle < 7.5;
   isTimeExceeded.value = diffAngle === 720;
