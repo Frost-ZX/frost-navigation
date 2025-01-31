@@ -112,7 +112,7 @@ export const toolList = [
     items: [
       {
         id: 'frp-config-generator',
-        component: 'Generator/FrpConfigGenerator',
+        component: 'Generator/FrpConfigGenerator/FrpConfigGenerator',
         title: 'frp 配置文件生成',
         iconClass: 'mdi mdi-file-cog-outline',
         desc: '生成用于 frpc、frps 的配置文件。',
@@ -174,7 +174,7 @@ export const toolList = [
       },
       {
         id: 'minecraft-chat-history-reader',
-        component: 'Minecraft/ChatHistoryReader',
+        component: 'Minecraft/ChatHistoryReader/ChatHistoryReader',
         title: 'Minecraft 聊天记录查看',
         iconClass: 'mdi mdi-format-list-text',
         desc: '读取并解析 latest.log 文件，显示聊天记录。',
