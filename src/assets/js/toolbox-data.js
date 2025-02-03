@@ -148,7 +148,7 @@ export const toolList = [
   {
     id: 'minecraft-tools',
     title: 'Minecraft',
-    enabled: false,
+    enabled: true,
     items: [
       {
         id: 'calc-minecraft-chunk-location',
@@ -178,10 +178,10 @@ export const toolList = [
         title: 'Minecraft 聊天记录查看',
         iconClass: 'mdi mdi-format-list-text',
         desc: '读取并解析 latest.log 文件，显示聊天记录。',
-        createdAt: '',
-        updatedAt: '',
-        version: '0',
-        enabled: false,
+        createdAt: '2025-02-03',
+        updatedAt: '2025-02-03',
+        version: '1',
+        enabled: true,
       },
       {
         id: 'minecraft-uuid-converter',
