@@ -196,8 +196,14 @@ function handleOpenTool(data) {
       border-radius: 8px;
     }
 
-    > .n-card:not(:first-child) {
-      margin-top: 20px;
+    > .n-card {
+      &:not(:first-child) {
+        margin-top: 20px;
+      }
+
+      > .n-card__content {
+        height: 0;
+      }
     }
 
     .form-no-feedback .n-form-item-feedback-wrapper,

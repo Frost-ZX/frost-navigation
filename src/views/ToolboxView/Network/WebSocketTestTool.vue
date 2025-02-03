@@ -14,6 +14,7 @@
         label-align="left"
         label-placement="top"
         label-width="auto"
+        @contextmenu.stop
       >
 
         <n-form-item label="连接地址：">
@@ -79,6 +80,7 @@
         ref="logsContentRef"
         class="logs-content"
         :style="{ height: (data.logsHeight + 'px') }"
+        @contextmenu.stop
       >
         <div class="message-list">
           <div
@@ -531,7 +533,7 @@ onBeforeUnmount(() => {
 
   .message-item {
     display: flex;
-    margin: 0.5rem 0;
+    margin: 8px 0;
     word-break: break-all;
 
     > * {
