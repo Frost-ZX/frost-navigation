@@ -1,4 +1,4 @@
-window['NAV_LINK_DATE'] = '2024-09-01';
+window['NAV_LINK_DATE'] = '2025-02-03';
 
 window['NAV_LINK_LIST'] = [
   {
@@ -2558,8 +2558,8 @@ window['NAV_LINK_LIST'] = [
             children: [
               {
                 title: 'Minecraft Wiki',
-                date: '2021-05-09',
-                url: 'https://minecraft.fandom.com/zh/',
+                date: '2025-02-03',
+                url: 'https://zh.minecraft.wiki/',
               },
               {
                 title: 'Minecraft Wiki（哔哩哔哩）',
@@ -2568,8 +2568,8 @@ window['NAV_LINK_LIST'] = [
               },
               {
                 title: 'Minecraft 插件百科',
-                date: '2021-02-08',
-                url: 'http://mineplugin.org/',
+                date: '2025-02-03',
+                url: 'https://mineplugin.org/',
               },
               {
                 title: 'Minecraft 光影百科',
@@ -2802,6 +2802,7 @@ window['NAV_LINK_LIST'] = [
               {
                 title: 'Minecraft-HK Community',
                 date: '2021-02-08',
+                isInvalid: true,
                 url: 'http://forum.minecraft-hk.com/',
               },
               {
@@ -2885,10 +2886,15 @@ window['NAV_LINK_LIST'] = [
         ]
       },
       {
-        title: 'CSSBattle',
-        date: '2022-03-20',
-        desc: 'CSS 代码高尔夫（code-golfing）游戏',
-        url: 'https://cssbattle.dev/',
+        title: '其他',
+        children: [
+          {
+            title: 'CSSBattle',
+            date: '2022-03-20',
+            desc: 'CSS 代码高尔夫（code-golfing）游戏',
+            url: 'https://cssbattle.dev/',
+          },
+        ],
       },
     ],
   },
