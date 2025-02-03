@@ -4,6 +4,10 @@ import {
   description as appDesc,
 } from '@package-json';
 
+import {
+  v4 as uuidV4,
+} from 'uuid';
+
 /** 将十六进制颜色值转为灰度值 */
 export function colorHexToGrayLevel(hex = '') {
 
@@ -32,6 +36,12 @@ export function colorHexToRgb(hex = '') {
 
   return { r, g, b };
 
+}
+
+/** 获取 V4 UUID */
+export function getUuidV4(noSplit = false) {
+  let uuid = uuidV4();
+  return noSplit ? uuid.replace(/-/g, '') : uuid;
 }
 
 /**
