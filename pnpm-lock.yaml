@@ -23,6 +23,9 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
+      highlight.js:
+        specifier: ^11.11.1
+        version: 11.11.1
       lunisolar:
         specifier: ^2.5.1
         version: 2.5.1

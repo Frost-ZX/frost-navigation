@@ -1,6 +1,7 @@
 <template>
   <n-config-provider
     :date-locale="configProviderProps.dateLocale"
+    :hljs="hljs"
     :inline-theme-disabled="configProviderProps.inlineThemeDisabled"
     :locale="configProviderProps.locale"
     :theme-overrides="themeOverrides"
@@ -33,6 +34,10 @@ import {
 import {
   configProviderProps,
 } from './assets/js/naive-ui';
+
+import hljs from 'highlight.js/lib/core';
+import hljsJavascript from 'highlight.js/lib/languages/javascript';
+import hljsJson from 'highlight.js/lib/languages/json';
 
 import AppAside from './components/AppAside.vue';
 
@@ -110,8 +115,15 @@ function initCssVars() {
 
 }
 
+/** 初始化 highlight.js */
+function initHighlightJs() {
+  hljs.registerLanguage('javascript', hljsJavascript);
+  hljs.registerLanguage('json', hljsJson);
+}
+
 onMounted(() => {
   initCssVars();
+  initHighlightJs();
   window.addEventListener('contextmenu', handleContextMenu);
 });
 

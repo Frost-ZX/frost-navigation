@@ -15,6 +15,7 @@
     "@vueuse/core": "^12.5.0",
     "axios": "^1.7.9",
     "dayjs": "^1.11.13",
+    "highlight.js": "^11.11.1",
     "lunisolar": "^2.5.1",
     "mathjs": "^14.2.0",
     "naive-ui": "^2.41.0",
