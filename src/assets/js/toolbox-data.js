@@ -255,13 +255,13 @@ export const toolList = [
       {
         id: 'open-new-window',
         component: 'Other/OpenNewWindow',
-        title: '新窗口（小窗）中打开',
+        title: '新窗口中打开',
         iconClass: 'mdi mdi-window-maximize',
         desc: '从新的小窗口中打开指定的链接（仅支持 PC 端浏览器）',
-        createdAt: '',
-        updatedAt: '',
-        version: '0',
-        enabled: false,
+        createdAt: '2025-02-04',
+        updatedAt: '2025-02-04',
+        version: '1',
+        enabled: true,
       },
       {
         id: 'run-javascript',
