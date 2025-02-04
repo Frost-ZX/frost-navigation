@@ -485,6 +485,9 @@ onBeforeUnmount(() => {
   .config-item__content {
     display: flex;
     align-items: center;
+  }
+
+  .n-input-number, .n-select {
     width: 128px;
   }
 }
