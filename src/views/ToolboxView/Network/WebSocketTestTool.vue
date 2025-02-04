@@ -178,10 +178,12 @@ import {
 } from 'vue';
 
 import {
+  getCommonDateTime,
+} from '@frost-utils/javascript/common/index';
+
+import {
   $dialog, $notification,
 } from '@/assets/js/naive-ui';
-
-import getCommonDateTime from '@frost-utils/javascript/common/getCommonDateTime';
 
 /** 数据 */
 const data = reactive({
