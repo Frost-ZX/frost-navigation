@@ -217,7 +217,7 @@ function handleCopy() {
     });
   } else {
     $message.error('复制失败：当前浏览器不支持该操作');
-    return Promise.resolve(false);
+    return Promise.resolve();
   }
 }
 
