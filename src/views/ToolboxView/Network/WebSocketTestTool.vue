@@ -17,7 +17,7 @@
         @contextmenu.stop
       >
 
-        <n-form-item label="连接地址：">
+        <n-form-item label="连接地址">
           <n-input-group class="address-input">
             <n-select
               v-model:value="data.address.prefix"
@@ -33,7 +33,7 @@
           </n-input-group>
         </n-form-item>
 
-        <n-form-item label="发送内容（自动移除换行符）：">
+        <n-form-item label="发送内容（自动移除换行符）">
           <n-input
             v-model:value="data.inputs"
             placeholder="在此处输入要发送的内容"
