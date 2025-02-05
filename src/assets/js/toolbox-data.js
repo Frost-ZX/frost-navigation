@@ -39,7 +39,7 @@ export const toolList = [
   {
     id: 'conversion-tools',
     title: '转换',
-    enabled: false,
+    enabled: true,
     items: [
       {
         id: 'convert-html-entities',
@@ -80,10 +80,10 @@ export const toolList = [
         title: 'Unix 时间戳转换',
         iconClass: 'mdi mdi-swap-horizontal',
         desc: '时间戳转时间 / 时间转时间戳',
-        createdAt: '',
-        updatedAt: '',
-        version: '0',
-        enabled: false,
+        createdAt: '2025-02-05',
+        updatedAt: '2025-02-05',
+        version: '1',
+        enabled: true,
       },
     ]
   },
