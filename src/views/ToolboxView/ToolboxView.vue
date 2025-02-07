@@ -15,6 +15,19 @@
       <!-- 标题 -->
       <span>{{ routeTitle }}</span>
 
+      <!-- 占位 -->
+      <div class="placeholder"></div>
+
+      <!-- 新窗口打开 -->
+      <n-button
+        v-show="isToolDetail"
+        class="back-button"
+        :text="true"
+        @click="handleOpenNewWindow"
+      >
+        <span class="mdi mdi-open-in-new"></span>
+      </n-button>
+
     </div>
     <div class="app-view-content is-transparent">
 
@@ -120,6 +133,18 @@ function handleCloseTool() {
   });
 }
 
+/** 在新窗口中打开当前工具 */
+function handleOpenNewWindow() {
+
+  let width = window.innerWidth ?? 400;
+  let height = window.innerHeight ?? 300;
+  let url = location.href;
+  let features = `height=${height}, width=${width}, toolbar=no, menubar=no, scrollbars=yes, resizable=yes, location=yes, status=yes`;
+
+  window.open(url, '_blank', features);
+
+}
+
 /**
  * @description 打开工具
  * @param {ToolboxItem} data
@@ -136,6 +161,12 @@ function handleOpenTool(data) {
   margin-right: 0.5em;
   font-size: 24px;
 }
+
+.new-window-button {
+  font-size: 24px;
+  cursor: pointer;
+}
+
 .tool-list {
   width: 100%;
   height: 100%;
