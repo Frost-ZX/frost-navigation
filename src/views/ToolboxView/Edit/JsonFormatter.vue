@@ -225,7 +225,9 @@ function sortObjectKeys(obj) {
 .json-output {
   user-select: text;
 
-  :deep(pre) {
+  :deep(.__code__) {
+    flex-grow: 1;
+    width: 0;
     overflow-x: auto;
   }
 }
