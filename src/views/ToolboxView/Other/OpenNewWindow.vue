@@ -76,10 +76,10 @@ const data = reactive({
 /** 打开窗口 */
 function openWindow() {
 
-  var link = data.url || 'https://github.com/Frost-ZX';
-  var width = data.width ?? 400;
-  var height = data.height ?? 300;
-  var features = `height=${height}, width=${width}, toolbar=no, menubar=no, scrollbars=yes, resizable=yes, location=yes, status=yes`;
+  let link = data.url || 'https://github.com/Frost-ZX';
+  let width = data.width ?? 400;
+  let height = data.height ?? 300;
+  let features = `height=${height}, width=${width}, toolbar=no, menubar=no, scrollbars=yes, resizable=yes, location=yes, status=yes`;
 
   window.open(link, '_blank', features);
 
