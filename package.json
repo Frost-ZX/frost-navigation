@@ -1,7 +1,7 @@
 {
   "name": "frost-navigation",
   "description": "Frost Navigation",
-  "version": "3.1.2",
+  "version": "3.1.4",
   "type": "module",
   "scripts": {
     "dev": "vite",
