@@ -120,9 +120,9 @@
 
 <script setup>
 import {
-  NButton, NCard, NCode, NFlex,
+  NButton, NCard, NFlex,
   NForm, NFormItem,
-  NInput, NInputNumber, NP, NSelect, NSwitch,
+  NInput, NP, NSelect, NSwitch,
 } from 'naive-ui';
 
 import {
