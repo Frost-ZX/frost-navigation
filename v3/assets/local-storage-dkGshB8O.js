@@ -1,0 +1,1 @@
+import{u as e}from"./index-JVWQwFoa.js";const a="frost-navigation/",r={isAsideCollapsed:e(a+"nav-view/is-aside-collapsed",!1),currentCategory:e(a+"nav-view/current-category",""),searchType:e(a+"nav-view/search-type","all")},o={searchEngineName:e(a+"search-view/search-engine-name","必应")};export{r as a,o as s};

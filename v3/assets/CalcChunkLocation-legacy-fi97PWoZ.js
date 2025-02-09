@@ -1,0 +1,1 @@
+System.register(["./index-legacy-DtdHQVf4.js"],(function(e,t){"use strict";var n,r,s;return{setters:[e=>{n=e._,r=e.x,s=e.n}],execute:function(){const t={class:"tool-detail-page"};e("default",n({},[["render",function(e,n){return r(),s("div",t)}]]))}}}));
