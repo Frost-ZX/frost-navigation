@@ -57,7 +57,6 @@
         label-align="right"
         label-placement="left"
         label-width="9em"
-        @contextmenu.stop
       >
 
         <n-form-item label="本地时间：">
@@ -88,7 +87,6 @@
         label-align="right"
         label-placement="left"
         label-width="9em"
-        @contextmenu.stop
       >
 
         <n-form-item label="本地时间：">

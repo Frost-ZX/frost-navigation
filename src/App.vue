@@ -54,17 +54,26 @@ const themeVars = useThemeVars();
 function handleContextMenu(event) {
 
   let element = event.target;
+  let classValue = '';
+  let classRegExp = /(__code__|n-code|n-input|n-input-number|n-select)/;
 
   // 排除按住 Ctrl 键时
   if (event.ctrlKey) {
     return;
   }
 
+  // 获取元素 class 信息
+  if (element instanceof HTMLElement) {
+    classValue = element.classList.value;
+  }
+
   // 排除输入框元素
-  if (
-    element instanceof HTMLInputElement &&
-    ['password', 'text', 'textarea'].includes(element.type)
-  ) {
+  if (element instanceof HTMLInputElement) {
+    return;
+  }
+
+  // 排除指定元素
+  if (classValue && classRegExp.test(classValue)) {
     return;
   }
 

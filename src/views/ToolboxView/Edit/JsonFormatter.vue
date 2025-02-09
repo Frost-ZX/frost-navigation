@@ -61,7 +61,6 @@
         placeholder="请输入 JSON 字符串"
         type="textarea"
         :rows="8"
-        @contextmenu.stop
       ></n-input>
     </n-card>
 
@@ -72,7 +71,6 @@
         language="json"
         :code="data.jsonOutput"
         :show-line-numbers="true"
-        @contextmenu.stop
       />
     </n-card>
 

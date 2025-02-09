@@ -14,7 +14,6 @@
         label-align="left"
         label-placement="top"
         label-width="auto"
-        @contextmenu.stop
       >
 
         <n-form-item label="连接地址">

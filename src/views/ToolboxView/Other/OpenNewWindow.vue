@@ -8,7 +8,6 @@
         label-align="left"
         label-placement="left"
         label-width="auto"
-        @contextmenu.stop
       >
 
         <n-form-item label="目标链接：">
