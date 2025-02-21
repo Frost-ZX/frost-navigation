@@ -53,28 +53,36 @@ const themeVars = useThemeVars();
  */
 function handleContextMenu(event) {
 
-  let element = event.target;
+  let elements = event.composedPath();
   let classValue = '';
-  let classRegExp = /(__code__|n-code|n-input|n-input-number|n-select)/;
+  let classRegExp = /(n-code|n-input|n-input-number|n-ol|n-select)/;
 
   // 排除按住 Ctrl 键时
   if (event.ctrlKey) {
     return;
   }
 
-  // 获取元素 class 信息
-  if (element instanceof HTMLElement) {
-    classValue = element.classList.value;
-  }
+  for (let i = 0; i < elements.length; i++) {
 
-  // 排除输入框元素
-  if (element instanceof HTMLInputElement) {
-    return;
-  }
+    let element = elements[i];
 
-  // 排除指定元素
-  if (classValue && classRegExp.test(classValue)) {
-    return;
+    // 获取元素 class 信息
+    if (element instanceof HTMLElement) {
+      classValue = element.classList.value;
+    } else {
+      continue;
+    }
+
+    // 排除输入框元素
+    if (element instanceof HTMLInputElement) {
+      return;
+    }
+
+    // 排除指定元素
+    if (classValue && classRegExp.test(classValue)) {
+      return;
+    }
+
   }
 
   event.preventDefault();
