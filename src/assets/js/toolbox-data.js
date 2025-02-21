@@ -64,6 +64,17 @@ export const toolList = [
         enabled: false,
       },
       {
+        id: 'qrcode-reader-and-generator',
+        component: 'Conversion/QrcodeReaderAndGenerator',
+        title: '二维码解析和生成',
+        iconClass: 'mdi mdi-qrcode',
+        desc: '解析二维码、生成二维码',
+        createdAt: '2025-02-21',
+        updatedAt: '2025-02-21',
+        version: '1',
+        enabled: true,
+      },
+      {
         id: 'convert-text-structure',
         component: 'Conversion/ConvertTextStructure',
         title: '文本结构转换',
