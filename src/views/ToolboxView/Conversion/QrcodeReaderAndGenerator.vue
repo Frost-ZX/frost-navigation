@@ -307,6 +307,8 @@ function handleSelectQrImage(options) {
 
     .n-image {
       margin: auto;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -336,6 +338,8 @@ function handleSelectQrImage(options) {
 
     .n-image {
       margin: auto;
+      width: 100%;
+      height: 100%;
       image-rendering: pixelated;
     }
   }
