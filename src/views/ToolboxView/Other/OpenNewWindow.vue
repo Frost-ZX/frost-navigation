@@ -6,37 +6,36 @@
       <n-form
         class="form-no-feedback config-inputs"
         label-align="left"
-        label-placement="left"
+        label-placement="top"
         label-width="auto"
       >
 
-        <n-form-item label="目标链接：">
+        <n-form-item label="目标链接">
           <n-input
             v-model:value="data.url"
-            placeholder="请输入需要打开的 URL，需要包含协议部分（https://）"
+            placeholder="请输入 URL，需要包含协议部分（https://）"
             type="text"
           ></n-input>
         </n-form-item>
 
-        <n-form-item label="窗口大小：">
-          <n-flex align="center">
-            <span>宽度</span>
-            <n-input-number
-              v-model:value="data.width"
-              :min="0"
-              :max="9999999"
-              :precision="0"
-              :step="1"
-            ></n-input-number>
-            <span>高度</span>
-            <n-input-number
-              v-model:value="data.height"
-              :min="0"
-              :max="9999999"
-              :precision="0"
-              :step="1"
-            ></n-input-number>
-          </n-flex>
+        <n-form-item label="窗口宽度">
+          <n-input-number
+            v-model:value="data.width"
+            :min="0"
+            :max="9999999"
+            :precision="0"
+            :step="1"
+          ></n-input-number>
+        </n-form-item>
+
+        <n-form-item label="窗口高度">
+          <n-input-number
+            v-model:value="data.height"
+            :min="0"
+            :max="9999999"
+            :precision="0"
+            :step="1"
+          ></n-input-number>
         </n-form-item>
 
       </n-form>
@@ -44,12 +43,10 @@
 
     <!-- 操作 -->
     <n-card size="small" title="操作">
-      <n-flex>
-        <n-button
-          type="primary"
-          @click="openWindow"
-        >打开窗口</n-button>
-      </n-flex>
+      <n-button
+        type="primary"
+        @click="openWindow"
+      >打开窗口</n-button>
     </n-card>
 
   </div>
@@ -86,18 +83,7 @@ function openWindow() {
 </script>
 
 <style lang="less" scoped>
-.config-inputs {
-  .n-input-number {
-    flex-grow: 1;
-    width: 0;
-  }
-
-  .n-flex {
-    width: 100%;
-  }
-
-  :deep(.n-form-item-blank) {
-    max-width: 480px;
-  }
+.config-inputs .n-form-item {
+  max-width: 480px;
 }
 </style>
