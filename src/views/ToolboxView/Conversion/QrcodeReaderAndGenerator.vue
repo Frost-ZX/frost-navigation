@@ -4,12 +4,19 @@
     <!-- 解析二维码 -->
     <n-card size="small" title="解析二维码">
       <template #header-extra>
-        <n-button
-          type="error"
-          :disabled="!readerData.dataURL"
-          :text="true"
-          @click="handleClearReader"
-        >清空</n-button>
+        <n-flex>
+          <n-button
+            type="primary"
+            :text="true"
+            @click="handlePasteImage"
+          >粘贴</n-button>
+          <n-button
+            type="error"
+            :disabled="!readerData.dataURL"
+            :text="true"
+            @click="handleClearReader"
+          >清空</n-button>
+        </n-flex>
       </template>
       <n-form
         class="form-no-feedback"
@@ -262,14 +269,72 @@ function handleGenerateQrCode() {
   });
 }
 
+/** 从剪贴板中获取图片 */
+function handlePasteImage() {
+
+  let cb = navigator.clipboard;
+
+  if (!cb) {
+    $message.error('当前浏览器不支持该操作');
+    return Promise.resolve(false);
+  }
+
+  return cb.read().then((items) => {
+
+    console.debug('剪贴板内容', items);
+
+    let imageItem = null;
+    let imageType = '';
+
+    for (let i = 0; i < items.length; i++) {
+
+      let item = items[i];
+      let types = item.types;
+
+      for (let j = 0; j < types.length; j++) {
+        let type = types[j];
+        if (type.startsWith('image/')) {
+          imageItem = item;
+          imageType = type;
+          break;
+        }
+      }
+
+      if (imageItem) {
+        break;
+      }
+
+    }
+
+    if (imageItem) {
+      return imageItem.getType(imageType);
+    } else {
+      return null;
+    }
+
+  }).then((blob) => {
+
+    if (blob) {
+      return handleParseQrCode(blob);
+    } else {
+      $message.warning('未在剪贴板中找到图片');
+      return false;
+    }
+
+  }).catch((error) => {
+    console.error('读取剪贴板失败：');
+    console.error(error);
+    $message.error('读取剪贴板失败，可能是没有权限。');
+    return false;
+  });
+
+}
+
 /**
- * @description 处理选择图片
- * @type { import('naive-ui').UploadOnChange }
+ * @description 处理解析二维码图片
+ * @param {File} file
  */
-function handleSelectQrImage(options) {
-
-  let file = options.file.file;
-
+function handleParseQrCode(file) {
   return readQrCodeImage(file).then((result) => {
 
     let { error, image, textList } = result;
@@ -278,6 +343,7 @@ function handleSelectQrImage(options) {
       $message.error(error);
       readerData.dataURL = '';
       readerData.results = [];
+      return false;
     } else {
       if (textList.length === 0) {
         $message.warning('未识别到有效的二维码');
@@ -286,10 +352,18 @@ function handleSelectQrImage(options) {
       }
       readerData.dataURL = image;
       readerData.results = textList;
+      return true;
     }
 
   });
+}
 
+/**
+ * @description 处理选择图片
+ * @type { import('naive-ui').UploadOnChange }
+ */
+function handleSelectQrImage(options) {
+  return handleParseQrCode(options.file.file);
 }
 </script>
 
