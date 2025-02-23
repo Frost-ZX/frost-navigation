@@ -81,8 +81,8 @@ export const toolList = [
         iconClass: 'mdi mdi-qrcode',
         desc: '解析二维码 / 生成二维码',
         createdAt: '2025-02-21',
-        updatedAt: '2025-02-21',
-        version: '1',
+        updatedAt: '2025-02-23',
+        version: '2',
         enabled: true,
       },
       {
