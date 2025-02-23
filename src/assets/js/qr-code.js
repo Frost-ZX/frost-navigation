@@ -51,31 +51,49 @@ prepareZXingModule({
 });
 
 /**
- * @description 转换 Blob 为 DataURL
- * @param {Blob}     blob
- * @param {Callback} callback
+ * @description 在图片上绘制矩形，返回 DataURL
+ * @param {Blob}   blob  图片二进制
+ * @param {Rect[]} rects 矩形位置信息列表
  */
-function blobToDataURL(blob, callback) {
+function drawRectsOnImage(blob, rects) {
 
-  /** @typedef {(data: { error: boolean, result: string }) => void} Callback */
+  /** @typedef {{ x: number; y: number; w: number; h: number }} Rect */
 
-  let reader = new FileReader();
+  let canvas = document.createElement('canvas');
+  let ctx = canvas.getContext('2d');
 
-  reader.onerror = function () {
-    callback({
-      error: true,
-      result: reader.result,
+  return renderImageToCanvas(blob, canvas).then((success) => {
+
+    if (!success) {
+      return '';
+    }
+
+    rects.forEach((rect, index) => {
+
+      let { x, y, w, h } = rect;
+
+      let text = String(index + 1);
+
+      // 绘制矩形
+      ctx.fillStyle = 'rgba(0, 255, 0, 0.25)';
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = 'rgba(0, 255, 0, 1)';
+      ctx.fillRect(x, y, w, h);
+      ctx.strokeRect(x, y, w, h);
+
+      // 绘制文本
+      ctx.font = `bold ${Math.round(w / 2)}px sans-serif`;
+      ctx.fillStyle = 'rgba(255, 255, 255, 1)';
+      ctx.lineWidth = Number((w / 100).toFixed(4));
+      ctx.strokeStyle = 'rgba(0, 0, 0, 1)';
+      ctx.fillText(text, x, y + h);
+      ctx.strokeText(text, x, y + h);
+
     });
-  };
 
-  reader.onload = function () {
-    callback({
-      error: false,
-      result: reader.result,
-    });
-  };
+    return canvas.toDataURL('image/png');
 
-  reader.readAsDataURL(blob);
+  });
 
 }
 
@@ -144,6 +162,54 @@ function modifySvgContent(options) {
 }
 
 /**
+ * 将图片 Blob 渲染到 Canvas
+ * @param   {Blob}              blob
+ * @param   {HTMLCanvasElement} canvas
+ * @returns {Promise<boolean>}
+ */
+function renderImageToCanvas(blob, canvas) {
+
+  let ctx = canvas.getContext('2d');
+
+  if (window.createImageBitmap) {
+    return createImageBitmap(blob).then((bitmap) => {
+      canvas.width = bitmap.width;
+      canvas.height = bitmap.height;
+      ctx.drawImage(bitmap, 0, 0);
+      return true;
+    }).catch((error) => {
+      console.error('渲染图片失败：');
+      console.error(error);
+      return false;
+    });
+  } else {
+    return new Promise((resolve) => {
+
+      let image = new Image();
+      let url = URL.createObjectURL(blob);
+
+      image.onload = () => {
+        canvas.width = image.naturalWidth;
+        canvas.height = image.naturalHeight;
+        URL.revokeObjectURL(url);
+        ctx.drawImage(image, 0, 0);
+        resolve(true);
+      };
+
+      image.onerror = () => {
+        console.error(PREFIX, '渲染图片失败：加载图片失败');
+        URL.revokeObjectURL(url);
+        resolve(false);
+      };
+
+      image.src = url;
+
+    });
+  }
+
+}
+
+/**
  * @description 将 SVG 字符串渲染到 Canvas
  * @param   {object}            options
  * @param   {HTMLCanvasElement} options.canvas
@@ -177,11 +243,12 @@ function renderSvgToCanvas(options) {
 
   return new Promise((resolve) => {
 
+    let ctx = canvas.getContext('2d');
+    let image = new Image();
     let svgBlob = new Blob([svgInfo.svgString], {
       type: 'image/svg+xml;charset=utf-8',
     });
     let svgUrl = URL.createObjectURL(svgBlob);
-    let image = new Image();
 
     image.onerror = () => {
       console.error(PREFIX, '加载 SVG 失败');
@@ -190,7 +257,6 @@ function renderSvgToCanvas(options) {
     };
 
     image.onload = () => {
-      let ctx = canvas.getContext('2d');
       ctx.drawImage(
         image,
         svgInfo.offsetX, svgInfo.offsetY, svgInfo.sizeW, svgInfo.sizeH,
@@ -207,74 +273,70 @@ function renderSvgToCanvas(options) {
 
 /**
  * @description 解析二维码图片
- * @param {Blob} image 图片二进制
+ * @param {Blob} blob 图片二进制
  */
-export function readQrCodeImage(image) {
+export function readQrCodeImage(blob) {
 
   /**
    * @desc 返回结果
    * @type {{ error: string; image: string; textList: string[]; }}
    */
-  let returns = {
+  let result = {
     error: '',
     image: '',
     textList: [],
   };
 
-  /** 读取图片，转换为 DataURL */
-  let fileReader = new FileReader();
+  return readBarcodes(blob, readerOptions).then((codeList) => {
 
-  return new Promise((resolve) => {
+    let rectList = [];
+    let textList = result.textList;
 
-    // 处理读取异常
-    fileReader.onerror = function () {
-      console.error(PREFIX, '解析二维码失败：读取图片失败');
-      returns.error = '读取图片失败';
-      resolve('');
-    };
-
-    // 处理读取完成
-    fileReader.onload = function () {
-      resolve(fileReader.result);
-    };
-
-    // 开始读取
-    fileReader.readAsDataURL(image);
-
-  }).then((dataURL) => {
-    if (dataURL) {
-      returns.image = dataURL;
-      return readBarcodes(image, readerOptions);
-    } else {
-      return null;
-    }
-  }).then((resultList) => {
-
-    let textList = returns.textList;
-
-    if (resultList.length === 0) {
+    if (codeList.length === 0) {
       console.warn(PREFIX, '解析二维码失败：未识别到内容');
-      return returns;
     } else {
-      console.debug(PREFIX, '解析二维码成功：', resultList);
+      console.debug(PREFIX, '解析二维码成功：', codeList);
     }
 
-    for (let i = 0; i < resultList.length; i++) {
+    for (let i = 0; i < codeList.length; i++) {
 
-      let item = resultList[i];
+      let item = codeList[i];
+      let position = item.position;
+      let posX0 = position.topLeft.x;
+      let posX1 = position.bottomRight.x;
+      let posY0 = position.topLeft.y;
+      let posY1 = position.bottomRight.y;
 
+      // 记录二维码坐标
+      rectList.push({
+        x: posX0,
+        y: posY0,
+        w: posX1 - posX0,
+        h: posY1 - posY0,
+      });
+
+      // 记录二维码文本
       textList.push(item.text);
 
     }
 
-    return returns;
+    // 框选二维码区域
+    return drawRectsOnImage(blob, rectList);
+
+  }).then((dataURL) => {
+
+    if (dataURL) {
+      result.image = dataURL;
+    }
+
+    return result;
 
   }).catch((error) => {
     console.error(PREFIX, '解析二维码失败：');
     console.error(error);
-    returns.error = String(error);
-    return returns;
-  });;
+    result.error = String(error);
+    return result;
+  });
 
 }
 

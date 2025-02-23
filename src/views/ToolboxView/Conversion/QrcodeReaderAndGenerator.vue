@@ -50,7 +50,7 @@
                 object-fit="contain"
                 width="100%"
                 height="100%"
-                :preview-disabled="true"
+                :preview-disabled="false"
                 :src="readerData.dataURL"
               />
             </div>
