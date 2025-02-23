@@ -54,7 +54,7 @@
 
 <script setup>
 import {
-  NButton, NCard, NFlex,
+  NButton, NCard,
   NForm, NFormItem, NInput, NInputNumber,
 } from 'naive-ui';
 
