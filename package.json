@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
+  "packageManager": "pnpm@10.11.0",
   "dependencies": {
     "@frost-utils/javascript": "^2.1.3",
     "@mdi/font": "^7.4.47",
