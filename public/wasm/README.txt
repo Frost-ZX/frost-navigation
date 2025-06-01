@@ -1,2 +1,2 @@
 zxing_full.wasm
-  zxing-wasm v2.0.1
+  zxing-wasm v2.1.2
