@@ -5,7 +5,7 @@
       <!-- 返回上一级 -->
       <n-button
         v-show="isToolDetail"
-        class="back-button"
+        class="header-button"
         :text="true"
         @click="handleCloseTool"
       >
@@ -18,10 +18,20 @@
       <!-- 占位 -->
       <div class="placeholder"></div>
 
+      <!-- 查看信息 -->
+      <n-button
+        v-show="isToolDetail"
+        class="header-button"
+        :text="true"
+        @click="showToolItemInfo"
+      >
+        <span class="mdi mdi-information-slab-circle-outline"></span>
+      </n-button>
+
       <!-- 新窗口打开 -->
       <n-button
         v-show="isToolDetail"
-        class="back-button"
+        class="header-button"
         :text="true"
         @click="handleOpenNewWindow"
       >
@@ -89,17 +99,47 @@
         <router-view></router-view>
       </div>
 
+      <!-- 工具信息 -->
+      <n-modal
+        v-model:show="toolInfo.show"
+        content-class="n-dialog-content--with-max-height"
+        preset="dialog"
+        title="工具信息"
+        :show-icon="false"
+      >
+        <template v-if="true">
+          <n-h4>版本信息</n-h4>
+          <n-ul>
+            <n-li>创建日期：{{ toolInfo.dateCreated }}</n-li>
+            <n-li>更新日期：{{ toolInfo.dateUpdated }}</n-li>
+            <n-li>当前版本：{{ toolInfo.currVersion }}</n-li>
+          </n-ul>
+        </template>
+        <template v-if="toolInfo.changelogs.length > 0">
+          <n-h4>更新日志</n-h4>
+          <n-ul>
+            <n-li
+              v-for="(text, index) in toolInfo.changelogs"
+              :key="index"
+              class="changelogs-row"
+            >{{ text }}</n-li>
+          </n-ul>
+        </template>
+      </n-modal>
+
     </div>
   </div>
 </template>
 
 <script setup>
 import {
-  NButton, NCollapse, NCollapseItem, NEllipsis, NTooltip,
+  NButton, NCollapse, NCollapseItem,
+  NEllipsis, NModal, NTooltip,
+  NH4, NUl, NLi,
 } from 'naive-ui';
 
 import {
-  computed,
+  computed, reactive,
 } from 'vue';
 
 import {
@@ -112,7 +152,7 @@ import {
 
 /** 是否为工具页面 */
 const isToolDetail = computed(() => {
-  return route.meta.isToolDetail;
+  return Boolean(route.meta.isToolDetail);
 });
 
 /** 路由 */
@@ -124,6 +164,15 @@ const router = useRouter();
 /** 页面标题 */
 const routeTitle = computed(() => {
   return route.meta.title;
+});
+
+/** 工具信息 */
+const toolInfo = reactive({
+  changelogs: [],
+  currVersion: '',
+  dateCreated: '',
+  dateUpdated: '',
+  show: false,
 });
 
 /** 关闭工具 */
@@ -154,10 +203,53 @@ function handleOpenTool(data) {
     name: `Toolbox/${data.component}`,
   });
 }
+
+/** 查看当前工具信息 */
+function showToolItemInfo() {
+  
+  let routePath = route.path;
+  let toolIdMatch = routePath.match(/\/([^/]*)$/);
+  let toolIdStr = toolIdMatch ? toolIdMatch[1] : null;
+  let toolItem = null;
+
+  if (toolIdStr) {
+    for (let i = 0; i < toolList.length; i++) {
+      
+      let category = toolList[i];
+      let list = category.items;
+
+      if (!category.enabled || !list) {
+        continue;
+      }
+
+      for (let j = 0; j < list.length; j++) {
+        let item = list[j];
+        if (item.id === toolIdStr) {
+          toolItem = item;
+          break;
+        }
+      }
+
+      if (toolItem) {
+        break;
+      }
+
+    }
+  }
+
+  if (toolItem) {
+    toolInfo.changelogs = toolItem.changelogs || [];
+    toolInfo.currVersion = toolItem.version || '';
+    toolInfo.dateCreated = toolItem.createdAt || '';
+    toolInfo.dateUpdated = toolItem.updatedAt || '';
+    toolInfo.show = true;
+  }
+
+}
 </script>
 
 <style lang="less" scoped>
-.back-button {
+.header-button {
   margin-right: 0.5em;
   font-size: 24px;
 }
@@ -242,5 +334,9 @@ function handleOpenTool(data) {
       min-height: 10px;
     }
   }
+}
+
+.changelogs-row {
+  white-space: pre-wrap;
 }
 </style>

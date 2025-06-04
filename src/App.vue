@@ -122,7 +122,8 @@ function initCssVars() {
     '--color-green': 'var(--color-success)',
     '--color-blue': 'var(--color-info)',
     '--color-orange': 'var(--color-warning)',
-    // 滚动条大小
+    // 元素大小
+    '--dialog-content-max-height': 'calc(100vh - 160px)',
     '--scrollbar-size': '8px',
   };
 
@@ -264,6 +265,11 @@ html {
 }
 
 // -- Naive UI --
+
+.n-dialog-content--with-max-height {
+  max-height: var(--dialog-content-max-height);
+  overflow-y: auto;
+}
 
 .n-drawer--right-placement {
   .n-drawer-body {

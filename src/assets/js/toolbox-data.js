@@ -1,5 +1,7 @@
 // 工具箱
 
+import { CHANGE_LOGS } from './toolbox-changelogs';
+
 const MODULES = import.meta.glob('../../views/ToolboxView/**/*.vue');
 
 /**
@@ -84,6 +86,7 @@ export const toolList = [
         updatedAt: '2025-02-23',
         version: '2',
         enabled: true,
+        changelogs: CHANGE_LOGS['qrcode-reader-and-generator'],
       },
       {
         id: 'convert-text-structure',
@@ -135,6 +138,7 @@ export const toolList = [
         updatedAt: '2025-02-07',
         version: '2',
         enabled: true,
+        changelogs: CHANGE_LOGS['json-formatter'],
       },
     ],
   },
@@ -273,6 +277,7 @@ export const toolList = [
         updatedAt: '2024-10-13',
         version: '2',
         enabled: true,
+        changelogs: CHANGE_LOGS['keep-screen-on'],
       },
       {
         id: 'open-new-window',

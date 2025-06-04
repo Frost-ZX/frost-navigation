@@ -65,6 +65,8 @@ declare global {
     version: string;
     /** 是否启用 */
     enabled: boolean;
+    /** 更新日志 */
+    changelogs: string[];
   }
 
   // window
