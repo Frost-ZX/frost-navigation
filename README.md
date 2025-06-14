@@ -2,7 +2,15 @@
 
 ## 简介
 
-一个多功能的网址导航，绿色无广告。
+一个使用 Vue 3 开发的网站导航和工具箱，绿色无广告。
+
+![](./screenshots/image_01.png)
+
+![](./screenshots/image_02.png)
+
+![](./screenshots/image_03.png)
+
+![](./screenshots/image_04.png)
 
 ## 使用方法
 
