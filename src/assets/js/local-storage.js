@@ -3,19 +3,19 @@
 import { useLocalStorage } from '@vueuse/core';
 
 /** 本地储存 key 前缀 */
-const PREFIX = 'frost-navigation/';
+export const KEY_PREFIX = 'frost-navigation/';
 
 /** NavView 模块 */
 export const storeNavView = {
 
   /** 导航链接侧边栏折叠状态 */
-  isAsideCollapsed: useLocalStorage(PREFIX + 'nav-view/is-aside-collapsed', false),
+  isAsideCollapsed: useLocalStorage(KEY_PREFIX + 'nav-view/isAsideCollapsed', false),
 
   /** 导航链接当前选中分类 */
-  currentCategory: useLocalStorage(PREFIX + 'nav-view/current-category', ''),
+  currentCategory: useLocalStorage(KEY_PREFIX + 'nav-view/currentCategory', ''),
 
   /** 导航链接搜索类型 */
-  searchType: useLocalStorage(PREFIX + 'nav-view/search-type', 'all'),
+  searchType: useLocalStorage(KEY_PREFIX + 'nav-view/searchType', 'all'),
 
 };
 
@@ -23,6 +23,6 @@ export const storeNavView = {
 export const storeSearchView = {
 
   /** 当前使用的搜索引擎名称 */
-  searchEngineName: useLocalStorage(PREFIX + 'search-view/search-engine-name', '必应'),
+  searchEngineName: useLocalStorage(KEY_PREFIX + 'search-view/searchEngineName', '必应'),
 
 };
