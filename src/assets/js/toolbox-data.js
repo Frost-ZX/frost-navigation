@@ -312,6 +312,17 @@ export const toolList = [
         version: '1',
         enabled: true,
       },
+      {
+        id: 'visualized-working-hours',
+        component: 'Other/VisualizedWorkingHours/VisualizedWorkingHours',
+        title: '工作时间可视化',
+        iconClass: 'mdi mdi-clock-digital',
+        desc: '用趣味化的方式呈现工作收益与时间进度，让薪资进度和下班期待看得见。',
+        createdAt: '',
+        updatedAt: '',
+        version: '0',
+        enabled: false,
+      },
     ],
   },
 ];
