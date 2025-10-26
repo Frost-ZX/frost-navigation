@@ -20,6 +20,13 @@ export default defineConfig({
     },
   },
   envPrefix: 'V_ENV_',
+  optimizeDeps: {
+    include: [
+      // 预构建 Monaco Editor Worker
+      'monaco-editor/esm/vs/editor/editor.worker',
+      'monaco-editor/esm/vs/language/json/json.worker',
+    ],
+  },
   plugins: [
     legacy({
       polyfills: false,
