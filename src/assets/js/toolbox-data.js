@@ -129,6 +129,17 @@ export const toolList = [
         enabled: false,
       },
       {
+        id: 'json-editor',
+        component: 'Edit/JsonEditor',
+        title: 'JSON 编辑器',
+        iconClass: 'mdi mdi-code-json',
+        desc: '基于 Monaco Editor 实现的 JSON 编辑器。',
+        createdAt: '2025-10-26',
+        updatedAt: '2025-10-26',
+        version: '1',
+        enabled: true,
+      },
+      {
         id: 'json-formatter',
         component: 'Edit/JsonFormatter',
         title: 'JSON 格式化',
