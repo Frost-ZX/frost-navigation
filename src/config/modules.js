@@ -1,6 +1,6 @@
 // 模块显示配置
 
-import { IS_DEV } from './env';
+// import { IS_DEV } from './env';
 
 /** 启用模块 */
 export const ABOUT_MODULE_ENABLED = true;
@@ -9,7 +9,7 @@ export const ABOUT_MODULE_ENABLED = true;
 export const ABOUT_MODULE_TITLE = '关于';
 
 /** 启用模块 */
-export const MC_CTRL_MODULE_ENABLED = IS_DEV;
+export const MC_CTRL_MODULE_ENABLED = false;
 
 /** 模块标题 */
 export const MC_CTRL_MODULE_TITLE = 'MINECRAFT 联动控制';
