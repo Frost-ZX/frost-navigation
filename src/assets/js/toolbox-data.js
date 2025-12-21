@@ -151,6 +151,17 @@ export const toolList = [
         enabled: true,
         changelogs: CHANGE_LOGS['json-formatter'],
       },
+      {
+        id: 'text-editor',
+        component: 'Edit/TextEditor',
+        title: '文本编辑器',
+        iconClass: 'mdi mdi-text-long',
+        desc: '基于 Monaco Editor 实现的文本编辑器。',
+        createdAt: '2025-12-21',
+        updatedAt: '2025-12-21',
+        version: '1',
+        enabled: true,
+      },
     ],
   },
   {
