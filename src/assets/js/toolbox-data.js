@@ -302,6 +302,17 @@ export const toolList = [
         changelogs: CHANGE_LOGS['keep-screen-on'],
       },
       {
+        id: 'timer-tool',
+        component: 'Other/TimerTool',
+        title: '计时器',
+        iconClass: 'mdi mdi-timer-outline',
+        desc: '正计时、倒计时工具。',
+        createdAt: '2025-12-29',
+        updatedAt: '2025-12-29',
+        version: '1',
+        enabled: true,
+      },
+      {
         id: 'open-new-window',
         component: 'Other/OpenNewWindow',
         title: '新窗口中打开',
