@@ -22,8 +22,8 @@
     <!-- 代码和结果 -->
     <div class="code-and-result">
 
-      <!-- 代码编辑器 -->
-      <n-card size="small" title="代码编辑器">
+      <!-- 编辑器 -->
+      <n-card size="small" title="编辑器">
         <div ref="editorContainer" class="editor-container"></div>
       </n-card>
 

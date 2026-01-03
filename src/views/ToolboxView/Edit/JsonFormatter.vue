@@ -1,8 +1,8 @@
 <template>
   <div class="tool-detail-page">
 
-    <!-- 设置 -->
-    <n-card size="small" title="设置">
+    <!-- 配置参数 -->
+    <n-card size="small" title="配置参数">
       <n-flex>
         <!-- 缩进空格 -->
         <div class="config-item">

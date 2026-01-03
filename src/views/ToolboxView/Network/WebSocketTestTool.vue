@@ -1,8 +1,8 @@
 <template>
   <div class="tool-detail-page">
 
-    <!-- 注意 -->
-    <n-card size="small" title="注意">
+    <!-- 注意事项 -->
+    <n-card size="small" title="注意事项">
       <n-p>由于浏览器限制，通过 HTTPS 访问网站时只能连接带 SSL 的 WebSocket（WSS）。</n-p>
       <n-p>若需要连接不带 SSL 的 WebSocket（WS），建议下载到本地后使用。</n-p>
     </n-card>
@@ -73,8 +73,8 @@
       </n-flex>
     </n-card>
 
-    <!-- 日志 -->
-    <n-card size="small" title="日志">
+    <!-- 日志内容 -->
+    <n-card size="small" title="日志内容">
       <div
         ref="logsContentRef"
         class="logs-content"
@@ -107,8 +107,8 @@
       </div>
     </n-card>
 
-    <!-- 设置 -->
-    <n-card size="small" title="设置">
+    <!-- 配置参数 -->
+    <n-card size="small" title="配置参数">
       <n-form
         class="form-no-feedback"
         label-align="left"

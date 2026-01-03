@@ -1,8 +1,8 @@
 <template>
   <div class="tool-detail-page">
 
-    <!-- 控制 -->
-    <n-card size="small" title="控制">
+    <!-- 操作 -->
+    <n-card size="small" title="操作">
       <n-form
         class="form-no-feedback form-data"
         label-align="right"
@@ -80,8 +80,8 @@
       </n-form>
     </n-card>
 
-    <!-- 转换 -->
-    <n-card size="small" title="转换">
+    <!-- 结果 -->
+    <n-card size="small" title="结果">
       <n-form
         class="form-no-feedback form-data"
         label-align="right"

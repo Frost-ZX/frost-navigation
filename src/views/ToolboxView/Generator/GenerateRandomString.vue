@@ -1,8 +1,8 @@
 <template>
   <div class="tool-detail-page">
 
-    <!-- 配置选项 -->
-    <n-card size="small" title="配置选项">
+    <!-- 配置参数 -->
+    <n-card size="small" title="配置参数">
       <n-form
         class="form-no-feedback"
         label-align="right"

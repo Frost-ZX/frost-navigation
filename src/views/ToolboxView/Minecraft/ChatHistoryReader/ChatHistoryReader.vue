@@ -7,8 +7,8 @@
       <n-p>若内容出现乱码，请尝试更改“文件编码”后重新打开文件。</n-p>
     </n-card>
 
-    <!-- 设置 -->
-    <n-card size="small" title="设置">
+    <!-- 配置参数 -->
+    <n-card size="small" title="配置参数">
       <n-flex>
         <!-- 文件编码 -->
         <div class="config-item">

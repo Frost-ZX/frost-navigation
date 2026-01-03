@@ -1,7 +1,7 @@
 <template>
   <div class="tool-detail-page">
 
-    <!-- 计时器显示 -->
+    <!-- 计时器 -->
     <n-card size="small" title="计时器">
       <div class="timer-display">
         <span class="time-main">{{ formatTimeMain(data.timeDisplay) }}</span>
@@ -9,8 +9,8 @@
       </div>
     </n-card>
 
-    <!-- 控制按钮 -->
-    <n-card size="small" title="控制">
+    <!-- 操作 -->
+    <n-card size="small" title="操作">
       <n-flex justify="center" gap="12">
         <n-button
           type="success"
@@ -33,8 +33,8 @@
       </n-flex>
     </n-card>
 
-    <!-- 设置 -->
-    <n-card size="small" title="设置">
+    <!-- 配置参数 -->
+    <n-card size="small" title="配置参数">
       <n-form
         class="form-no-feedback"
         label-align="left"
