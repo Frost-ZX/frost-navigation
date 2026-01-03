@@ -13,71 +13,78 @@
     }"
     @click="isFaded = false"
   >
-    <div class="controls">
-
-      <div class="title">开关 / Switch</div>
-
-      <n-switch
-        :value="wakeLock.isActive.value"
-        size="medium"
-        :round="false"
-        @update:value="handleToggleWakeLock"
+    <!-- 配置参数 -->
+    <n-card size="small" title="配置参数">
+      <n-form
+        class="form-no-feedback"
+        label-align="left"
+        label-placement="left"
+        label-width="auto"
       >
-        <template #checked>开启</template>
-        <template #unchecked>关闭</template>
-      </n-switch>
 
-      <div class="title">背景颜色 / Background Color</div>
+        <n-form-item label="开关 / Switch">
+          <n-switch
+            :value="wakeLock.isActive.value"
+            size="medium"
+            :round="false"
+            @update:value="handleToggleWakeLock"
+          >
+            <template #checked>开启</template>
+            <template #unchecked>关闭</template>
+          </n-switch>
+        </n-form-item>
 
-      <n-color-picker
-        v-model:value="bgColor"
-        size="medium"
-        :modes="['hex']"
-        :show-preview="true"
-        :swatches="[
-          '#000000',
-          '#252525',
-          '#505050',
-          '#808080',
-          '#FFFFFF',
-        ]"
-      />
+        <n-form-item label="背景颜色 / Background Color">
+          <n-color-picker
+            v-model:value="bgColor"
+            size="medium"
+            :modes="['hex']"
+            :show-preview="true"
+            :swatches="[
+              '#000000',
+              '#252525',
+              '#505050',
+              '#808080',
+              '#FFFFFF',
+            ]"
+          />
+        </n-form-item>
 
-      <div
-        v-show="fullscreen.isSupported"
-        class="title"
-      >切换全屏 / Toggle Fullscreen</div>
+        <n-form-item
+          v-show="fullscreen.isSupported"
+          label="切换全屏 / Toggle Fullscreen"
+        >
+          <n-switch
+            size="medium"
+            :round="false"
+            :value="fullscreen.isFullscreen.value"
+            @update:value="handleToggleFullscreen"
+          >
+            <template #checked>开启</template>
+            <template #unchecked>关闭</template>
+          </n-switch>
+        </n-form-item>
 
-      <n-switch
-        v-show="fullscreen.isSupported"
-        size="medium"
-        :round="false"
-        :value="fullscreen.isFullscreen.value"
-        @update:value="handleToggleFullscreen"
-      >
-        <template #checked>开启</template>
-        <template #unchecked>关闭</template>
-      </n-switch>
+        <n-form-item label="隐藏界面 / Hide UI">
+          <n-switch
+            v-model:value="isFaded"
+            size="medium"
+            :round="false"
+            @click.stop
+          >
+            <template #checked>隐藏</template>
+            <template #unchecked>显示</template>
+          </n-switch>
+        </n-form-item>
 
-      <div class="title">隐藏界面 / Hide UI</div>
-
-      <n-switch
-        v-model:value="isFaded"
-        size="medium"
-        :round="false"
-        @click.stop
-      >
-        <template #checked>隐藏</template>
-        <template #unchecked>显示</template>
-      </n-switch>
-
-    </div>
+      </n-form>
+    </n-card>
   </div>
 </template>
 
 <script setup>
 import {
-  NColorPicker, NSwitch,
+  NCard, NColorPicker, NForm, NFormItem, NSwitch,
 } from 'naive-ui';
 
 import {
@@ -178,7 +185,6 @@ onBeforeUnmount(() => {
 
 <style lang="less" scoped>
 .tool-detail-page {
-  display: flex;
   background-color: inherit;
   transition: all 0.25s;
   user-select: none;
@@ -190,26 +196,19 @@ onBeforeUnmount(() => {
   &.is-on {
     background-color: var(--bg-color);
 
-    &.is-dark-color {
+    &.is-dark-color * {
       color: #FFF;
     }
-  }
 
-  > * {
-    transition: opacity 0.25s;
+    :deep(.n-card) {
+      border-color: transparent;
+    }
   }
 }
 
-.controls {
-  margin: auto;
-  padding-bottom: 48px;
-  text-align: center;
-}
-
-.title {
-  margin-top: 48px;
-  margin-bottom: 16px;
-  font-size: 24px;
+:deep(.n-card) {
+  background-color: transparent;
+  transition: all 0.25s;
 }
 
 :deep(.n-color-picker) {
