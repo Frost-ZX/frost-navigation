@@ -274,8 +274,8 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  gap: 12px;
-  margin-top: 12px;
+  gap: 20px;
+  margin-top: 20px;
   height: 0;
 
   .n-card {
@@ -306,7 +306,7 @@ onBeforeUnmount(() => {
     }
 
     .n-card:last-child {
-      margin-top: 12px;
+      margin-top: 20px;
     }
   }
 }
