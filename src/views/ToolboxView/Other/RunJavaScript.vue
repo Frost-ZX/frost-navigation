@@ -50,25 +50,14 @@ import {
 } from 'vue';
 
 import {
+  initMonacoEnvironment,
+} from '@/assets/js/monaco-editor';
+
+import {
   $dialog, $message,
 } from '@/assets/js/naive-ui';
 
 import * as monaco from 'monaco-editor';
-import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
-import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
-
-// 配置编辑器环境（Service Worker 等）
-if (!self.MonacoEnvironment) {
-  self.MonacoEnvironment = {
-    getWorker(workerId, label) {
-      if (label === 'javascript' || label === 'typescript') {
-        return new tsWorker();
-      } else {
-        return new editorWorker();
-      }
-    },
-  };
-}
 
 /** 模块名称 */
 const PREFIX = '[RunJavaScript]';
@@ -259,6 +248,7 @@ function updateEditorContent(text = '') {
 }
 
 onMounted(() => {
+  initMonacoEnvironment();
   initEditor();
   window.addEventListener('resize', handleWindowResize);
 });

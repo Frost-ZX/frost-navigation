@@ -48,20 +48,14 @@ import {
 } from '@vueuse/core';
 
 import {
+  initMonacoEnvironment,
+} from '@/assets/js/monaco-editor';
+
+import {
   $dialog, $message,
 } from '@/assets/js/naive-ui';
 
 import * as monaco from 'monaco-editor';
-import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
-
-// 配置编辑器环境（Service Worker 等）
-if (!self.MonacoEnvironment) {
-  self.MonacoEnvironment = {
-    getWorker() {
-      return new editorWorker();
-    },
-  };
-}
 
 /** 模块名称 */
 const PREFIX = '[TextEditor]';
@@ -220,6 +214,7 @@ fileOnChange((files) => {
 });
 
 onMounted(() => {
+  initMonacoEnvironment();
   initEditor();
   window.addEventListener('resize', handleWindowResize);
 });

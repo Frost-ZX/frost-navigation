@@ -16,23 +16,11 @@ import {
   onBeforeUnmount, onMounted,
 } from 'vue';
 
+import {
+  initMonacoEnvironment,
+} from '@/assets/js/monaco-editor';
+
 import * as monaco from 'monaco-editor';
-
-import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
-import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
-
-// 配置编辑器环境（Service Worker 等）
-if (!self.MonacoEnvironment) {
-  self.MonacoEnvironment = {
-    getWorker(workerId, label) {
-      if (label === 'json') {
-        return new jsonWorker();
-      } else {
-        return new editorWorker();
-      }
-    },
-  };
-}
 
 /** 模块名称 */
 const PREFIX = '[JsonEditor]';
@@ -126,6 +114,7 @@ function resetEditor() {
 }
 
 onMounted(() => {
+  initMonacoEnvironment();
   initEditor();
   window.addEventListener('resize', handleWindowResize);
 });
