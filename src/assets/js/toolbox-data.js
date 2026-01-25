@@ -55,6 +55,17 @@ export const toolList = [
         enabled: false,
       },
       {
+        id: 'png-to-ico',
+        component: 'Conversion/PngToIco',
+        title: 'PNG 转 ICO 图标',
+        iconClass: 'mdi mdi-image-outline',
+        desc: '将 PNG 图片转换为 ICO 图标。',
+        createdAt: '2026-01-26',
+        updatedAt: '2026-01-26',
+        version: '1',
+        enabled: true,
+      },
+      {
         id: 'convert-timestamp',
         component: 'Conversion/ConvertTimestamp',
         title: 'Unix 时间戳转换',
