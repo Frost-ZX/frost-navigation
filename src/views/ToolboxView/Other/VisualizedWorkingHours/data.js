@@ -4,7 +4,7 @@ import { KEY_PREFIX } from '@/assets/js/local-storage';
 /** 模块名称 */
 const STORAGE_PREFIX = KEY_PREFIX + 'visualized-working-hours/';
 
-/** 配置选项 */
+/** 配置参数 */
 export const configData = {
 
   /** 收入币种 */

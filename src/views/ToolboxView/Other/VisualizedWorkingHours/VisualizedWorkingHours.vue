@@ -1,12 +1,12 @@
 <template>
   <div class="tool-detail-page">
 
-    <!-- 配置选项 -->
+    <!-- 配置参数 -->
     <n-card size="small" style="--color: #2196F3;">
       <template #header>
         <div class="card-title">
           <span class="card-title__icon mdi mdi-cog-outline"></span>
-          <span class="card-title__label">配置选项</span>
+          <span class="card-title__label">配置参数</span>
         </div>
       </template>
       <n-form
