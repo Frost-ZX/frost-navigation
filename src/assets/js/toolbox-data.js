@@ -357,6 +357,17 @@ export const toolList = [
         enabled: true,
       },
       {
+        id: 'msu2-usb-monitor-controller',
+        component: 'Other/Msu2UsbMonitorController/Msu2UsbMonitorController',
+        title: 'MSU2 USB 小屏幕控制',
+        iconClass: 'mdi mdi-usb',
+        desc: 'MSU2 USB 小屏幕控制工具，参考了原 Python 程序的代码。',
+        createdAt: '2026-02-21',
+        updatedAt: '2026-02-21',
+        version: '1',
+        enabled: true,
+      },
+      {
         id: 'genshin-impact-clock',
         component: 'Other/GenshinImpactClock/GenshinImpactClock',
         title: '《原神》时钟',
