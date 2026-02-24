@@ -363,9 +363,10 @@ export const toolList = [
         iconClass: 'mdi mdi-usb',
         desc: 'MSU2 USB 小屏幕控制工具，参考了原 Python 程序的代码。',
         createdAt: '2026-02-21',
-        updatedAt: '2026-02-21',
-        version: '1',
+        updatedAt: '2026-02-24',
+        version: '2',
         enabled: true,
+        changelogs: CHANGE_LOGS['msu2-usb-monitor-controller'],
       },
       {
         id: 'genshin-impact-clock',

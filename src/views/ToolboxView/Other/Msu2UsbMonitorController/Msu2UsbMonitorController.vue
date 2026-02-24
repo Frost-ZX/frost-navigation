@@ -2,10 +2,10 @@
   <div class="tool-detail-page">
 
     <!-- 操作 -->
-    <n-card size="small" title="操作">
+    <n-card class="actions" size="small" title="操作">
       <n-flex>
         <n-button
-          type="primary"
+          type="success"
           @click="handleConnectDevice"
         >连接设备</n-button>
         <n-button
@@ -21,15 +21,35 @@
           @click="handleStopRender"
         >停止渲染</n-button>
       </n-flex>
+      <n-flex>
+        <n-button
+          type="primary"
+          @click="lcdSetDirection(0)"
+        >设置显示方向：正</n-button>
+        <n-button
+          type="primary"
+          @click="lcdSetDirection(1)"
+        >设置显示方向：反</n-button>
+        <n-button
+          type="primary"
+          :disabled="isUseNewDisplayDataConvertFunction"
+          @click="isUseNewDisplayDataConvertFunction = true"
+        >显示数据转换算法：新</n-button>
+        <n-button
+          type="primary"
+          :disabled="!isUseNewDisplayDataConvertFunction"
+          @click="isUseNewDisplayDataConvertFunction = false"
+        >显示数据转换算法：旧</n-button>
+      </n-flex>
     </n-card>
 
     <!-- 配置参数 -->
     <n-card size="small" title="配置参数">
       <n-form
         class="form-no-feedback config-form"
-        label-align="left"
-        label-placement="top"
-        :inline="true"
+        label-align="right"
+        label-placement="left"
+        label-width="6.5em"
       >
 
         <n-form-item label="分辨率：">
@@ -58,6 +78,26 @@
           />
         </n-form-item>
 
+        <n-form-item label="渲染间隔：">
+          <n-input-number
+            v-model:value="renderInterval"
+            title="单位：毫秒"
+            :min="10"
+            :max="60000"
+            :step="1"
+          />
+        </n-form-item>
+
+        <n-form-item label="发送间隔：">
+          <n-input-number
+            v-model:value="sendInterval"
+            title="单位：毫秒"
+            :min="50"
+            :max="2000"
+            :step="1"
+          />
+        </n-form-item>
+
       </n-form>
     </n-card>
 
@@ -74,7 +114,7 @@
 <script setup>
 import {
   NButton, NCard, NFlex,
-  NForm, NFormItem, NSelect,
+  NForm, NFormItem, NInputNumber, NSelect,
 } from 'naive-ui';
 
 import {
@@ -139,6 +179,15 @@ const deviceResolution = ref('320x172');
 /** 显示模式 */
 const displayMode = ref('dataText');
 
+/** 是否使用新的显示数据转换算法 */
+const isUseNewDisplayDataConvertFunction = ref(true);
+
+/** 渲染间隔，毫秒 */
+const renderInterval = ref(100);
+
+/** 发送间隔，毫秒 */
+const sendInterval = ref(100);
+
 /**
  * @desc 串口对象
  * @type {SerialPort}
@@ -159,12 +208,6 @@ let serialWriter = null;
 
 /** 连接状态，0: 未连接, 1: 已连接 */
 let deviceState = 0;
-
-/** 渲染间隔，毫秒 */
-let renderInterval = 100;
-
-/** 发送间隔，毫秒 */
-let sendInterval = 100;
 
 /** 最后一次渲染的时间戳 */
 let lastRenderTime = 0;
@@ -296,17 +339,20 @@ async function handleDisconnectDevice() {
     await serialReader.cancel();
     serialReader.releaseLock();
     serialReader = null;
+    console.info('serialReader 已释放');
   }
 
   if (serialWriter) {
     await serialWriter.close();
     serialWriter.releaseLock();
     serialWriter = null;
+    console.info('serialWriter 已释放');
   }
 
   if (serialPort) {
     await serialPort.close();
     serialPort = null;
+    console.info('serialPort 已关闭');
   }
 
   deviceState = 0;
@@ -686,10 +732,119 @@ function convertDisplayData(imageData = []) {
 
 }
 
+/**
+ * 对图像数据进行压缩处理，减少传输数据量
+ * - 旧算法，适配 `160x80` 设备
+ */
+function convertDisplayDataLegacy(imageData = []) {
+
+  let totalDataSize = imageData.length;
+  let dataPerPage = 128;
+  let dataPage1 = 0;
+  let dataPage2 = 0;
+  let hexUse = [];
+
+  // -- 按页处理数据，每页 128 个像素 --
+
+  for (let i = 0; i < Math.floor(totalDataSize / dataPerPage); i++) {
+
+    dataPage1 = dataPage2;
+    dataPage2 += dataPerPage;
+
+    let dataW = imageData.slice(dataPage1, dataPage2);
+    let cmpUse = [];
+
+    for (let j = 0; j < dataW.length; j += 2) {
+      cmpUse.push((dataW[j] << 16) | dataW[j + 1]);
+    }
+
+    // 找出最频繁的颜色作为背景色
+    let colorCount = {};
+
+    cmpUse.forEach(color => {
+      colorCount[color] = (colorCount[color] || 0) + 1;
+    });
+
+    let maxCount = 0;
+    let backgroundColor = 0;
+
+    for (let [color, count] of Object.entries(colorCount)) {
+      if (count > maxCount) {
+        maxCount = count;
+        backgroundColor = parseInt(color);
+      }
+    }
+
+    hexUse.push(2, 4);
+    hexUse.push(...convertDigitToInts(backgroundColor));
+
+    // 只记录与背景色不同的像素
+    cmpUse.forEach((cmpValue, index) => {
+      if (cmpValue !== backgroundColor) {
+        hexUse.push(4, index);
+        hexUse.push(...convertDigitToInts(cmpValue));
+      }
+    });
+
+    hexUse.push(2, 3, 8, 1, 0, 0);
+
+  }
+
+  // -- 处理剩余数据 --
+
+  let remainingDataSize = totalDataSize % dataPerPage;
+
+  if (remainingDataSize !== 0) {
+
+    let dataW = imageData.slice(-remainingDataSize);
+
+    // 补全数据
+    while (dataW.length < dataPerPage) {
+      dataW.push(0xFFFF);
+    }
+
+    let cmpUse = [];
+
+    for (let j = 0; j < dataW.length; j += 2) {
+      cmpUse.push((dataW[j] << 16) | dataW[j + 1]);
+    }
+
+    cmpUse.forEach((cmpValue, index) => {
+      hexUse.push(4, index);
+      hexUse.push(...convertDigitToInts(cmpValue));
+    });
+
+    hexUse.push(2, 3, 8, 0, remainingDataSize * 2, 0);
+
+  }
+
+  return hexUse;
+
+}
+
+/**
+ * @description 设置显示方向
+ * @param {0|1} direction 显示方向
+ * - 0：正常，1：上下翻转
+ */
+async function lcdSetDirection(direction = 0) {
+
+  let hexUse = [];
+
+  hexUse.push(2);  // LCD 多次写入指令
+  hexUse.push(3);  // 设置指令
+  hexUse.push(10); // 显示方向指令
+  hexUse.push(direction);
+  hexUse.push(0, 0);
+
+  await sendData(hexUse);
+
+}
+
 /** 设置 LCD 显示起始坐标 */
 function lcdSetDisplayXY(lcdD0 = 0, lcdD1 = 0) {
   let hexUse = [];
-  hexUse.push(2);                       // LCD 多次写入命令
+  hexUse.push(2);                       // LCD 多次写入指令
   hexUse.push(0);                       // 设置起始位置指令
   hexUse.push(Math.floor(lcdD0 / 256)); // X 坐标高字节
   hexUse.push(lcdD0 % 256);             // X 坐标低字节
@@ -701,7 +856,7 @@ function lcdSetDisplayXY(lcdD0 = 0, lcdD1 = 0) {
 /** 设置 LCD 显示区域大小 */
 function lcdSetDisplaySize(lcdD0 = 0, lcdD1 = 0) {
   let hexUse = [];
-  hexUse.push(2);                       // LCD 多次写入命令
+  hexUse.push(2);                       // LCD 多次写入指令
   hexUse.push(1);                       // 设置大小指令
   hexUse.push(Math.floor(lcdD0 / 256)); // 宽度高字节
   hexUse.push(lcdD0 % 256);             // 宽度低字节
@@ -723,7 +878,7 @@ async function lcdSetDisplaySend(lcdX = 0, lcdY = 0, lcdW = 0, lcdH = 0) {
 
   hexUse.push(...lcdSetDisplayXY(lcdX, lcdY));
   hexUse.push(...lcdSetDisplaySize(lcdW, lcdH));
-  hexUse.push(2); // LCD 多次写入命令
+  hexUse.push(2); // LCD 多次写入指令
   hexUse.push(3); // 设置指令
   hexUse.push(7); // 载入地址
   hexUse.push(0, 0, 0);
@@ -753,7 +908,7 @@ async function listenSerialData(reader, decoder) {
       // 处理接收到的数据
       let data = decoder.decode(value);
 
-      console.debug('接收数据:', data);
+      console.debug('接收数据:', { decoded: data });
 
       // 检测是否为 MSN 设备
       if (data.length > 5) {
@@ -784,7 +939,7 @@ async function listenSerialData(reader, decoder) {
 async function sendCanvas(timestamp = 0) {
 
   // 限制发送频率
-  if (timestamp - lastSendTime >= sendInterval) {
+  if (timestamp - lastSendTime >= sendInterval.value) {
 
     // 更新时间戳
     lastSendTime = timestamp;
@@ -812,7 +967,11 @@ async function sendCanvas(timestamp = 0) {
     let rgb565 = convertRgb888ToRgb565(imageData);
 
     // 压缩数据
-    let hexUse = convertDisplayData(rgb565);
+    let hexUse = (
+      isUseNewDisplayDataConvertFunction.value ?
+      convertDisplayData(rgb565) :
+      convertDisplayDataLegacy(rgb565)
+    );
 
     // 设置显示区域
     await lcdSetDisplaySend(0, 0, LCD_WIDTH, LCD_HEIGHT);
@@ -878,7 +1037,7 @@ async function sendText(text = '') {
 async function renderCanvas(timestamp = 0) {
 
   // 限制渲染频率
-  if (timestamp - lastRenderTime >= renderInterval) {
+  if (timestamp - lastRenderTime >= renderInterval.value) {
 
     // 更新时间戳
     lastRenderTime = timestamp;
@@ -1182,11 +1341,23 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="less" scoped>
+.actions {
+  .n-flex {
+    gap: 10px !important;
+
+    &:not(:first-child) {
+      margin-top: 10px;
+    }
+  }
+}
+
 .config-form {
   .n-form-item {
-    flex-grow: 1;
-    width: 0;
-    max-width: 200px;
+    max-width: 400px;
+  }
+
+  .n-input-number {
+    width: 100%;
   }
 }
 
