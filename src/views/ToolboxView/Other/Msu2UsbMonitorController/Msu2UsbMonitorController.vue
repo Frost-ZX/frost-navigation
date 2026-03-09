@@ -1487,7 +1487,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   handleDisconnectDevice();
   handleStopRender();
-  handleStartScreenCapture();
+  handleStopScreenCapture();
 });
 </script>
 
