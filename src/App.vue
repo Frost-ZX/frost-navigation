@@ -281,4 +281,8 @@ html {
     line-height: 1;
   }
 }
+
+.n-flex {
+  gap: 10px !important;
+}
 </style>

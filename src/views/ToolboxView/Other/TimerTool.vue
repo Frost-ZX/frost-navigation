@@ -11,7 +11,7 @@
 
     <!-- 操作 -->
     <n-card size="small" title="操作">
-      <n-flex justify="center" gap="12">
+      <n-flex justify="center">
         <n-button
           type="success"
           :disabled="data.isRunning"

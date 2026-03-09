@@ -1342,12 +1342,8 @@ onBeforeUnmount(() => {
 
 <style lang="less" scoped>
 .actions {
-  .n-flex {
-    gap: 10px !important;
-
-    &:not(:first-child) {
-      margin-top: 10px;
-    }
+  .n-flex:not(:first-child) {
+    margin-top: 10px;
   }
 }
 

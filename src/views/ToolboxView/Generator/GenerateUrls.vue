@@ -33,7 +33,7 @@
               label-placement="left"
               label-width="auto"
             >
-              <n-flex gap="small">
+              <n-flex>
                 <n-form-item label="首项：">
                   <n-input-number
                     v-model:value="modes.as.first"
@@ -57,7 +57,7 @@
                   ></n-input-number>
                 </n-form-item>
               </n-flex>
-              <n-flex gap="small">
+              <n-flex>
                 <n-form-item label="选项：">
                   <n-checkbox
                     v-model:checked="modes.as.zero"
@@ -83,7 +83,7 @@
               label-placement="left"
               label-width="auto"
             >
-              <n-flex gap="small">
+              <n-flex>
                 <n-form-item label="首项：">
                   <n-input-number
                     v-model:value="modes.ps.first"
@@ -107,7 +107,7 @@
                   ></n-input-number>
                 </n-form-item>
               </n-flex>
-              <n-flex gap="small">
+              <n-flex>
                 <n-form-item label="选项：">
                   <n-checkbox
                     v-model:checked="modes.ps.zero"
@@ -133,7 +133,7 @@
               label-placement="left"
               label-width="auto"
             >
-              <n-flex gap="small" align-items="center">
+              <n-flex align-items="center">
                 <n-form-item label="从：">
                   <n-input
                     v-model:value="modes.lc.start"
@@ -163,7 +163,7 @@
 
     <!-- 操作 -->
     <n-card size="small" title="操作">
-      <n-flex gap="small">
+      <n-flex>
         <n-button
           type="primary"
           @click="handleGenerate"
