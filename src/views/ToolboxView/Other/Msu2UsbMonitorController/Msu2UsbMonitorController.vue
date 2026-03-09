@@ -41,6 +41,18 @@
           @click="isUseNewDisplayDataConvertFunction = false"
         >显示数据转换算法：旧</n-button>
       </n-flex>
+      <n-flex>
+        <n-button
+          type="success"
+          :disabled="isScreenCaptureReady"
+          @click="handleStartScreenCapture"
+        >开始屏幕捕获</n-button>
+        <n-button
+          type="error"
+          :disabled="!isScreenCaptureReady"
+          @click="handleStopScreenCapture"
+        >停止屏幕捕获</n-button>
+      </n-flex>
     </n-card>
 
     <!-- 配置参数 -->
@@ -143,6 +155,10 @@ const DISPLAY_MODES = {
     label: '数字时钟',
     value: 'digitalClock',
   },
+  screenCapture: {
+    label: '屏幕捕获',
+    value: 'screenCapture',
+  },
 };
 
 /** 分辨率配置选项 */
@@ -181,6 +197,9 @@ const displayMode = ref('dataText');
 
 /** 是否使用新的显示数据转换算法 */
 const isUseNewDisplayDataConvertFunction = ref(true);
+
+/** 屏幕捕获是否已就绪 */
+const isScreenCaptureReady = ref(false);
 
 /** 渲染间隔，毫秒 */
 const renderInterval = ref(100);
@@ -246,6 +265,20 @@ let CANVAS_WIDTH = 0;  // 画布显示宽度
 let CANVAS_HEIGHT = 0; // 画布显示高度
 let LCD_WIDTH = 0;     // 设备实际宽度
 let LCD_HEIGHT = 0;    // 设备实际高度
+
+// 屏幕捕获相关变量
+
+/** @type {MediaStream} */
+let displayStream = null;
+
+/** @type {HTMLVideoElement} */
+let displayVideo = null;
+
+/** @type {ReturnType<typeof displayStream.getVideoTracks>} */
+let displayVideoTrack = null;
+
+/** 屏幕捕获是否已激活 */
+let isScreenCaptureActive = false;
 
 /** 处理更改显示模式 */
 function handleChangeDisplayMode() {
@@ -381,6 +414,17 @@ function handleStopRender() {
   // 停止音频分析
   audioAnalyserStop();
 
+}
+
+/** 开始屏幕捕获处理 */
+async function handleStartScreenCapture() {
+  await startScreenCapture();
+  isScreenCaptureReady.value = true;
+}
+
+/** 停止屏幕捕获处理 */
+function handleStopScreenCapture() {
+  stopScreenCapture();
 }
 
 /** 初始化 */
@@ -568,6 +612,64 @@ function audioAnalyserStop() {
   isAudioReady = false;
 
   console.info('音频分析已停止');
+
+}
+
+/** 开始屏幕捕获 */
+async function startScreenCapture() {
+  try {
+    displayStream = await navigator.mediaDevices.getDisplayMedia({
+      video: {
+        displaySurface: 'monitor',
+      },
+      audio: false,
+    });
+
+    displayVideo = document.createElement('video');
+    displayVideo.srcObject = displayStream;
+    displayVideo.autoplay = true;
+    displayVideo.playsInline = true;
+
+    await displayVideo.play();
+
+    displayVideoTrack = displayStream.getVideoTracks()[0];
+
+    displayVideoTrack.onended = () => {
+      stopScreenCapture();
+    };
+
+    isScreenCaptureActive = true;
+    isScreenCaptureReady.value = true;
+    console.info('屏幕捕获已开始');
+
+  } catch (error) {
+    console.error('屏幕捕获失败:', error);
+    isScreenCaptureActive = false;
+    isScreenCaptureReady.value = false;
+  }
+}
+
+/** 停止屏幕捕获 */
+function stopScreenCapture() {
+
+  if (displayVideoTrack) {
+    displayVideoTrack.stop();
+    displayVideoTrack = null;
+  }
+
+  if (displayStream) {
+    displayStream.getTracks().forEach(track => track.stop());
+    displayStream = null;
+  }
+
+  if (displayVideo) {
+    displayVideo.srcObject = null;
+    displayVideo = null;
+  }
+
+  isScreenCaptureActive = false;
+  isScreenCaptureReady.value = false;
+  console.info('屏幕捕获已停止');
 
 }
 
@@ -1059,6 +1161,9 @@ async function renderCanvas(timestamp = 0) {
       case 'digitalClock':
         await renderDigitalClock();
         break;
+      case 'screenCapture':
+        await renderScreenCapture();
+        break;
       default:
         break;
     }
@@ -1330,6 +1435,51 @@ async function renderDigitalClock() {
 
 }
 
+/** 渲染屏幕捕获内容 */
+async function renderScreenCapture() {
+
+  if (displayVideo && isScreenCaptureActive) {
+    // 清空画布
+    canvasCtx.value.fillStyle = '#000000';
+    canvasCtx.value.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  } else {
+    // 显示提示文字
+    await renderCustomText('屏幕捕获未启动');
+    return;
+  }
+
+  let videoWidth = displayVideo.videoWidth;
+  let videoHeight = displayVideo.videoHeight;
+
+  if (videoWidth === 0 || videoHeight === 0) {
+    return;
+  }
+
+  let videoAspectRatio = videoWidth / videoHeight;
+  let canvasAspectRatio = CANVAS_WIDTH / CANVAS_HEIGHT;
+
+  let drawWidth, drawHeight, offsetX, offsetY;
+
+  if (videoAspectRatio > canvasAspectRatio) {
+    drawWidth = CANVAS_WIDTH;
+    drawHeight = CANVAS_WIDTH / videoAspectRatio;
+    offsetX = 0;
+    offsetY = (CANVAS_HEIGHT - drawHeight) / 2;
+  } else {
+    drawHeight = CANVAS_HEIGHT;
+    drawWidth = CANVAS_HEIGHT * videoAspectRatio;
+    offsetX = (CANVAS_WIDTH - drawWidth) / 2;
+    offsetY = 0;
+  }
+
+  canvasCtx.value.drawImage(
+    displayVideo,
+    offsetX, offsetY,
+    drawWidth, drawHeight
+  );
+
+}
+
 onMounted(() => {
   initData();
 });
@@ -1337,6 +1487,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   handleDisconnectDevice();
   handleStopRender();
+  handleStartScreenCapture();
 });
 </script>
 
