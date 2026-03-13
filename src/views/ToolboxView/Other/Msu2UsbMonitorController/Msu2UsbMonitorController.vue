@@ -61,10 +61,10 @@
         class="form-no-feedback config-form"
         label-align="right"
         label-placement="left"
-        label-width="6.5em"
+        label-width="8.5em"
       >
 
-        <n-form-item label="分辨率：">
+        <n-form-item label="设备分辨率：">
           <n-select
             v-model:value="deviceResolution"
             :options="Object.values(RESOLUTION_LIST).map((item) => {
@@ -106,6 +106,17 @@
             title="单位：毫秒"
             :min="50"
             :max="2000"
+            :step="1"
+          />
+        </n-form-item>
+
+        <n-form-item label="屏幕捕获帧率：">
+          <n-input-number
+            v-model:value="screenCaptureFrameRate"
+            :disabled="isScreenCaptureReady"
+            title="单位：帧/秒"
+            :min="1"
+            :max="60"
             :step="1"
           />
         </n-form-item>
@@ -206,6 +217,9 @@ const renderInterval = ref(100);
 
 /** 发送间隔，毫秒 */
 const sendInterval = ref(100);
+
+/** 屏幕捕获帧率 */
+const screenCaptureFrameRate = ref(10);
 
 /**
  * @desc 串口对象
@@ -621,6 +635,9 @@ async function startScreenCapture() {
     displayStream = await navigator.mediaDevices.getDisplayMedia({
       video: {
         displaySurface: 'monitor',
+        frameRate: screenCaptureFrameRate.value,
+        width: CANVAS_WIDTH,
+        height: CANVAS_HEIGHT,
       },
       audio: false,
     });
