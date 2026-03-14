@@ -32,6 +32,13 @@
         >设置显示方向：反</n-button>
         <n-button
           type="primary"
+          title="注意：仅支持 PRO 版本的设备"
+          @click="lcdSetBrightness(lcdBrightness)"
+        >设置屏幕亮度</n-button>
+      </n-flex>
+      <n-flex>
+        <n-button
+          type="primary"
           :disabled="isUseNewDisplayDataConvertFunction"
           @click="isUseNewDisplayDataConvertFunction = true"
         >显示数据转换算法：新</n-button>
@@ -106,6 +113,16 @@
             title="单位：毫秒"
             :min="50"
             :max="2000"
+            :step="1"
+          />
+        </n-form-item>
+
+        <n-form-item label="屏幕亮度：">
+          <n-input-number
+            v-model:value="lcdBrightness"
+            title="单位：占空比"
+            :min="0"
+            :max="1000"
             :step="1"
           />
         </n-form-item>
@@ -211,6 +228,9 @@ const isUseNewDisplayDataConvertFunction = ref(true);
 
 /** 屏幕捕获是否已就绪 */
 const isScreenCaptureReady = ref(false);
+
+/** 屏幕亮度 */
+const lcdBrightness = ref(500);
 
 /** 渲染间隔，毫秒 */
 const renderInterval = ref(100);
@@ -938,6 +958,37 @@ function convertDisplayDataLegacy(imageData = []) {
   }
 
   return hexUse;
+
+}
+
+/**
+ * @description 设置屏幕亮度
+ * @param {number} pwmDuty 占空比，范围 0 ~ 1000
+ */
+async function lcdSetBrightness(pwmDuty = 500) {
+
+  if (typeof pwmDuty !== 'number' || isNaN(pwmDuty)) {
+    pwmDuty = 500;
+  }
+
+  if (pwmDuty > 1000) {
+    pwmDuty = 1000;
+  }
+
+  if (pwmDuty < 0) {
+    pwmDuty = 0;
+  }
+
+  let hexUse = [];
+
+  hexUse.push(2);                         // LCD 多次写入指令
+  hexUse.push(3);                         // 设置指令
+  hexUse.push(18);                        // 屏幕亮度指令
+  hexUse.push(Math.floor(pwmDuty / 256)); // 占空比高字节
+  hexUse.push(pwmDuty % 256);             // 占空比低字节
+  hexUse.push(0);
+
+  await sendData(hexUse);
 
 }
 
