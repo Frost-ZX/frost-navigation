@@ -175,6 +175,10 @@ const DISPLAY_MODES = {
     label: '音频可视化 - 2',
     value: 'audioVisualizer2',
   },
+  audioVisualizer3: {
+    label: '音频可视化 - 3',
+    value: 'audioVisualizer3',
+  },
   dataText: {
     label: '数据显示',
     value: 'dataText',
@@ -1223,6 +1227,9 @@ async function renderCanvas(timestamp = 0) {
       case 'audioVisualizer2':
         await renderAudioVisualizer2();
         break;
+      case 'audioVisualizer3':
+        await renderAudioVisualizer3();
+        break;
       case 'dataText':
         await renderDataText();
         break;
@@ -1459,6 +1466,51 @@ async function renderAudioVisualizer2() {
       }
 
     }
+  }
+
+}
+
+/** 渲染音频可视化内容 */
+async function renderAudioVisualizer3() {
+
+  // 初始化音频
+  if (!isAudioReady) {
+    await audioAnalyserStart();
+  }
+
+  // 清空画布
+  canvasCtx.value.fillStyle = '#000000';
+  canvasCtx.value.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+  if (!audioAnalyser) {
+    await renderCustomText('音频未初始化');
+    return;
+  }
+
+  // 获取频谱数据
+  audioAnalyser.getByteFrequencyData(audioDataArray);
+
+  // 计算柱状图宽度和间距
+  let barMargin = 2;
+  let barWidth = (CANVAS_WIDTH / audioBufferLength) * 4 - barMargin;
+  let x = 0;
+
+  // 绘制频谱柱状图
+  for (let i = 0; i < audioBufferLength; i++) {
+
+    // 每 4 个数据点绘制一个柱状图
+    if (i % 4 !== 0) {
+      continue;
+    }
+
+    let opacity = parseFloat((audioDataArray[i] / 255).toFixed(4));
+
+    canvasCtx.value.fillStyle = `rgba(0, 160, 255, ${opacity})`;
+    canvasCtx.value.fillRect(x, 0, barWidth, CANVAS_HEIGHT);
+
+    // 移动到下一个柱状图位置
+    x += barWidth + barMargin;
+
   }
 
 }
