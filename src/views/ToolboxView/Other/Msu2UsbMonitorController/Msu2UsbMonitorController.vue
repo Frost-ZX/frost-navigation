@@ -1264,11 +1264,17 @@ async function renderAudioSpectrum() {
   audioAnalyser.getByteFrequencyData(audioDataArray);
 
   // 计算柱状图宽度和间距
-  let barWidth = (CANVAS_WIDTH / audioBufferLength) * 2.5;
+  let barMargin = 1;
+  let barWidth = (CANVAS_WIDTH / audioBufferLength) * 2 - barMargin;
   let x = 0;
 
   // 绘制频谱柱状图
   for (let i = 0; i < audioBufferLength; i++) {
+
+    // 每 2 个数据点绘制一个柱状图
+    if (i % 2 !== 0) {
+      continue;
+    }
 
     // 计算柱状图高度
     let barHeight = (audioDataArray[i] / 255) * CANVAS_HEIGHT;
@@ -1284,7 +1290,7 @@ async function renderAudioSpectrum() {
     canvasCtx.value.fillRect(x, CANVAS_HEIGHT - barHeight, barWidth, barHeight);
 
     // 移动到下一个柱状图位置
-    x += barWidth + 1;
+    x += barWidth + barMargin;
 
   }
 
